@@ -1,0 +1,72 @@
+{
+    "display": {
+        "prefix": "",
+        "generate_from": "",
+        "values": [
+            "flex",
+            "inline-flex",
+            "none"
+        ],
+        "names": [],
+        "responsive": false,
+        "generate_utility": false
+    },
+    "gap": {
+        "prefix": "gap",
+        "generate_from": "spacings",
+        "values": [],
+        "names": [],
+        "responsive": true,
+        "generate_utility": false
+    },
+    "padding": {
+        "prefix": "p",
+        "generate_from": "spacings",
+        "values": [],
+        "names": [],
+        "responsive": true,
+        "generate_utility": true
+    },
+    "border-width": {
+        "prefix": "bwidth",
+        "generate_from": "spacings",
+        "values": [
+            "1px",
+            "2px",
+            "3px"
+        ],
+        "names": [
+            "a",
+            "b"
+        ],
+        "responsive": false,
+        "generate_utility": false
+    },
+    "border-style": {
+        "prefix": "bstyle",
+        "generate_from": "",
+        "values": [
+            "solid",
+            "dashed"
+        ],
+        "names": [],
+        "responsive": false,
+        "generate_utility": false
+    },
+    "border-color": {
+        "prefix": "bcolor",
+        "generate_from": "colors",
+        "values": [],
+        "names": [],
+        "responsive": false,
+        "generate_utility": false
+    },
+    "width": {
+        "prefix": "w",
+        "generate_from": "",
+        "values": ["20px", "25px"],
+        "names": ["1", "2"],
+        "responsive": true,
+        "generate_utility": false
+    }
+}
