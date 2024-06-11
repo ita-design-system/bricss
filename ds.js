@@ -157,5 +157,6 @@ const ds = {
                 content: responsive_css[screen_size]
             });
         });
+        bar.innerHTML = foo.innerHTML
     }
 }

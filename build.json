@@ -1,6 +1,6 @@
 {
     "display": {
-        "prefix": "",
+        "prefix": "d",
         "generate_from": "",
         "values": [
             "flex",
@@ -11,8 +11,32 @@
         "responsive": true,
         "generate_utility": true
     },
+    "flex-wrap": {
+        "prefix": "fwrap",
+        "generate_from": "",
+        "values": ["wrap"],
+        "names": [],
+        "responsive": true,
+        "generate_utility": false
+    },
     "gap": {
         "prefix": "gap",
+        "generate_from": "spacings",
+        "values": [],
+        "names": [],
+        "responsive": true,
+        "generate_utility": false
+    },
+    "--ita-gap": {
+        "prefix": "gap",
+        "generate_from": "spacings",
+        "values": [],
+        "names": [],
+        "responsive": true,
+        "generate_utility": false
+    },
+    "row-gap": {
+        "prefix": "row-gap",
         "generate_from": "spacings",
         "values": [],
         "names": [],
@@ -26,6 +50,14 @@
         "names": [],
         "responsive": true,
         "generate_utility": true
+    },
+    "background-color": {
+        "prefix": "bc",
+        "generate_from": "colors",
+        "values": [],
+        "names": [],
+        "responsive": false,
+        "generate_utility": false
     },
     "border-width": {
         "prefix": "bwidth",
@@ -64,8 +96,54 @@
     "width": {
         "prefix": "w",
         "generate_from": "",
-        "values": ["20px", "25px"],
-        "names": ["1", "2"],
+        "values": [
+            "20px",
+            "25px"
+        ],
+        "names": [
+            "1",
+            "2"
+        ],
+        "responsive": true,
+        "generate_utility": false
+    },
+    "--ita-fraction": {
+        "prefix": "w",
+        "generate_from": "",
+        "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15"
+        ],
+        "names": [
+            "1t",
+            "2t",
+            "3t",
+            "4t",
+            "5t",
+            "6t",
+            "7t",
+            "8t",
+            "9t",
+            "10t",
+            "11t",
+            "12t",
+            "13t",
+            "14t",
+            "15t"
+        ],
         "responsive": true,
         "generate_utility": false
     }
