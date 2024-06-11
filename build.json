@@ -8,8 +8,8 @@
             "none"
         ],
         "names": [],
-        "responsive": false,
-        "generate_utility": false
+        "responsive": true,
+        "generate_utility": true
     },
     "gap": {
         "prefix": "gap",
