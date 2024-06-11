@@ -57,48 +57,41 @@ const ds = {
         return array;
     },
     genCssMediaForScreenSize: function({screen_size, content}) {
-        return `
-            @media (min-width: ${ds.tokens.screenSizes[screen_size][0]}) and (max-width: ${ds.tokens.screenSizes[screen_size][1]}) {
-                ${content}
-            }
-        `;
+        let high_markup = ` and (max-width: ${ds.tokens.screenSizes[screen_size][1]})`;
+        const low_markup = `(min-width: ${ds.tokens.screenSizes[screen_size][0]})`;
+        const high = ds.tokens.screenSizes[screen_size][1];
+        if (high == 'infinite' || high == '') high_markup = '';
+        return `\n\n/*START @media ${screen_size}*/\n@media ${low_markup}${high_markup} {\n${content}\n}\n/*END @media ${screen_size}*/\n`;
     },
     genCssPropertyForScreenSize: function({screen_size, prefix, name, property, value, utility}) {
         const separator = prefix == '' ? '' : ds.tokens.separator;
-        let markup = `
-            .${prefix}${separator}${name}${ds.tokens.responsiveSeparator}${screen_size},
-            [${prefix}${separator}${name}*="${screen_size}"] {
-                ${property}: ${value};
-            }
-        `;
+        let markup = `\n.${prefix}${separator}${name}${ds.tokens.responsiveSeparator}${screen_size},\n[${prefix}${separator}${name}*="${screen_size}"] {\n  ${property}: ${value};\n}`;
         if (utility) {
-            markup += `
-            .${ds.tokens.utilitiesPrefix}${ds.tokens.separator}${prefix}${separator}${name}${ds.tokens.responsiveSeparator}${screen_size},
-                [${ds.tokens.utilitiesPrefix}${ds.tokens.separator}${prefix}${separator}${name}*="${screen_size}"] {
-                    ${property}: ${value} !important;
-                }
-            `;
+            markup += `\n.${ds.tokens.utilitiesPrefix}${ds.tokens.separator}${prefix}${separator}${name}${ds.tokens.responsiveSeparator}${screen_size},\n[${ds.tokens.utilitiesPrefix}${ds.tokens.separator}${prefix}${separator}${name}*="${screen_size}"] {\n  ${property}: ${value} !important;\n}`;
         }
         return markup;
     },
     genCssProperty: function({prefix, name, property, value, utility}) {
         const separator = prefix == '' ? '' : ds.tokens.separator;
-        let markup = `
-            .${prefix}${separator}${name} {
-                ${property}: ${value};
-            }
-        `;
+        let markup = `\n.${prefix}${separator}${name} {\n  ${property}: ${value};\n}`;
         if (utility) {
-            markup += `
-                .${ds.tokens.utilitiesPrefix}${ds.tokens.separator}${prefix}${separator}${name} {
-                    ${property}: ${value} !important;
-                }
-            `;
+            markup += `\n.${ds.tokens.utilitiesPrefix}${ds.tokens.separator}${prefix}${separator}${name} {\n  ${property}: ${value} !important;\n}`;
         }
         return markup;
     },
+    genCssVariables: function() {
+        const basics = ['colors', 'fontFamilies', 'fontSizes', 'spacings'];
+        let markup = '';
+        basics.forEach(function(family) {
+            Object.keys(ds.tokens[family]).forEach(function(token_name) {
+                markup += `\n  --${ds.tokens.cssVariablesPrefix}-${family}-${token_name}: ${ds.tokens[family][token_name]};`;
+            });
+        })
+        return `\n:root {\n${markup}\n}\n`;
+    },
     genAll: function() {
         const responsive_css = {};
+        foo.innerHTML += this.genCssVariables();
         Object.keys(this.tokens.screenSizes).forEach(function(screen_size) {
             responsive_css[screen_size] = '';
         });
@@ -139,7 +132,7 @@ const ds = {
                     prefix: property_data.prefix,
                     property: property,
                     name: token.name,
-                    value: token.value,
+                    value: `var(--${ds.tokens.cssVariablesPrefix}-${property_data.generate_from}-${token.name}, ${token.value})`,
                     utility: property_data.generate_utility
                 });
 
@@ -151,7 +144,7 @@ const ds = {
                             prefix: property_data.prefix,
                             property: property,
                             name: token.name,
-                            value: token.value,
+                            value: `var(--${ds.tokens.cssVariablesPrefix}-${property_data.generate_from}-${token.name}, ${token.value})`,
                             utility: property_data.generate_utility
                         });
                     });
