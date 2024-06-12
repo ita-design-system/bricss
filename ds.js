@@ -4,15 +4,15 @@ const ds = {
             fetch(`${json_url}`)
                 .then(response => response.json())
                 .then(json => {
-                    this.build = json;
-                    this._getBuildSuccess = true;
-                    this.autoGen();
-                    console.log(this.build);
+                    ds.build = json;
+                    ds._getBuildSuccess = true;
+                    ds.autoGen();
+                    console.log(ds.build);
                 })
                 .catch(error => {
                     // Handle the error
-                    console.log('Build JSON load failed');
-                    this._getBuildSuccess = false;
+                    console.log('Build JSON load failed', ds._getBuildSuccess);
+                    ds._getBuildSuccess = false;
                 });
         }
     },
@@ -21,25 +21,26 @@ const ds = {
             fetch(`${json_url}`)
                 .then(response => response.json())
                 .then(json => {
-                    this.tokens = json;
-                    this._getTokensSuccess = true;
-                    this.autoGen();
-                    console.log(this.tokens);
+                    ds.tokens = json;
+                    ds._getTokensSuccess = true;
+                    ds.autoGen();
+                    console.log(ds.tokens);
                 })
                 .catch(error => {
                     // Handle the error
-                    console.log('Tokens JSON load failed');
-                    this._getTokensSuccess = false;
+                    console.log(error, 'Tokens JSON load failed', ds._getTokensSuccess);
+                    ds._getTokensSuccess = false;
                 });
         }
     },
     _getTokensSuccess: false,
     _getBuildSuccess: false,
     autoGen: function() {
-        if (this._getBuildSuccess && this._getTokensSuccess) this.genAll();
+        console.log(ds._getBuildSuccess,ds._getTokensSuccess)
+        if (ds._getBuildSuccess && ds._getTokensSuccess) ds.genAll();
     },
     isATokenFamily: function(tokens_family) {
-        const tokens_families = Object.keys(this.tokens);
+        const tokens_families = Object.keys(ds.tokens);
         let response = false;
         if (tokens_families.indexOf(tokens_family) > -1) response = true;
         return response;
@@ -86,16 +87,16 @@ const ds = {
             Object.keys(ds.tokens[family]).forEach(function(token_name) {
                 markup += `\n  --${ds.tokens.cssVariablesPrefix}-${family}-${token_name}: ${ds.tokens[family][token_name]};`;
             });
-        })
+        });
         return `\n:root {\n${markup}\n}\n`;
     },
     genAll: function() {
         const responsive_css = {};
-        foo.innerHTML += this.genCssVariables();
-        Object.keys(this.tokens.screenSizes).forEach(function(screen_size) {
+        foo.innerHTML = ds.genCssVariables();
+        Object.keys(ds.tokens.screenSizes).forEach(function(screen_size) {
             responsive_css[screen_size] = '';
         });
-        Object.keys(this.build).forEach(function(property) {
+        Object.keys(ds.build).forEach(function(property) {
             const property_data = ds.build[property];
             const tokens_keys_and_values = ds.genFrom(property_data.generate_from);
             // console.log(tokens_keys_and_values)
@@ -157,6 +158,9 @@ const ds = {
                 content: responsive_css[screen_size]
             });
         });
-        bar.innerHTML = foo.innerHTML
+        bar.innerHTML = foo.innerHTML;
+        bar.dataset.highlighted = '';
+        hljs.highlightElement(bar);
+        
     }
 }

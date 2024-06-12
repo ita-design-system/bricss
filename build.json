@@ -46,8 +46,8 @@
     "padding": {
         "prefix": "p",
         "generate_from": "spacings",
-        "values": [],
-        "names": [],
+        "values": ["0px"],
+        "names": ["0"],
         "responsive": true,
         "generate_utility": true
     },
