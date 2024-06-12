@@ -6,47 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Design System Generator</title>
-    <style id="foo">
+    <style>
         * {
             box-sizing: border-box;
         }
-        [class*="w-1t"],
-        [class*="w-2t"],
-        [class*="w-3t"],
-        [class*="w-4t"],
-        [class*="w-5t"],
-        [class*="w-6t"],
-        [class*="w-7t"],
-        [class*="w-8t"],
-        [class*="w-9t"],
-        [class*="w-10t"],
-        [class*="w-11t"],
-        [class*="w-12t"] {
-            --ita-fraction: -;
-            --ita-total-amount-of-fractions: 12;
-            --ita-item-default-width: calc(100% * var(--ita-fraction) / var(--ita-total-amount-of-fractions));
-            --ita-item-offset: calc(var(--ita-fraction) * var(--ita-gap, 0px) * ((var(--ita-total-amount-of-fractions) / var(--ita-fraction)) - 1) / var(--ita-total-amount-of-fractions));
-            width: calc(var(--ita-item-default-width) - var(--ita-item-offset));
-            box-sizing: border-box;
-        }
     </style>
+    <style id="foo"></style>
+    <link rel="stylesheet" href="width-twelves.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
-<div class="d-flex gap-2 fwrap-wrap">
-    <div class="w-6t bc-blue-100">foo</div>
-    <div class="w-6t bc-blue-100">foo</div>
-    <div class="w-3t bc-blue-100">foo</div>
-    <div class="w-4t bc-blue-100">foo</div>
-    <div class="w-5t bc-green-100 u-d-none">foo</div>
-</div>
+<ul class="
+    d-flex gap-2 fwrap-wrap
+    p-0">
+    <li class="w-6t bc-blue-100">foo</li>
+    <li class="w-6t bc-blue-100">foo</li>
+    <li class="w-3t bc-blue-100">foo</li>
+    <li class="w-4t bc-blue-100">foo</li>
+    <li class="w-5t bc-green-100" d-none="xs">foo</li>
+</ul>
 <body>
     <pre>
         <code id="bar"></code>
     </pre>
     <script src="ds.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>
-        ds.getTokens('tokens.json');
         ds.getBuild('build.json');
+        ds.getTokens('tokens.json');
     </script>
+
+    <!-- and it's easy to individually load additional languages -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script> -->
+    
 </body>
 
 </html>

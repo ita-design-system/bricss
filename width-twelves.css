@@ -1,0 +1,20 @@
+
+[class*="w-1t"],
+[class*="w-2t"],
+[class*="w-3t"],
+[class*="w-4t"],
+[class*="w-5t"],
+[class*="w-6t"],
+[class*="w-7t"],
+[class*="w-8t"],
+[class*="w-9t"],
+[class*="w-10t"],
+[class*="w-11t"],
+[class*="w-12t"] {
+    --ita-fraction: -;
+    --ita-total-amount-of-fractions: 12;
+    --ita-item-default-width: calc(100% * var(--ita-fraction) / var(--ita-total-amount-of-fractions));
+    --ita-item-offset: calc(var(--ita-fraction) * var(--ita-gap, 0px) * ((var(--ita-total-amount-of-fractions) / var(--ita-fraction)) - 1) / var(--ita-total-amount-of-fractions));
+    width: calc(var(--ita-item-default-width) - var(--ita-item-offset));
+    box-sizing: border-box;
+}
