@@ -107,7 +107,7 @@
         "responsive": true,
         "generate_utility": false
     },
-    "--ita-fraction": {
+    "--twelves": {
         "prefix": "w",
         "generate_from": "",
         "values": [
@@ -122,10 +122,7 @@
             "9",
             "10",
             "11",
-            "12",
-            "13",
-            "14",
-            "15"
+            "12"
         ],
         "names": [
             "1t",
@@ -139,10 +136,7 @@
             "9t",
             "10t",
             "11t",
-            "12t",
-            "13t",
-            "14t",
-            "15t"
+            "12t"
         ],
         "responsive": true,
         "generate_utility": false

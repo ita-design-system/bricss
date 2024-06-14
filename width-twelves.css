@@ -11,10 +11,10 @@
 [class*="w-10t"],
 [class*="w-11t"],
 [class*="w-12t"] {
-    --ita-fraction: -;
-    --ita-total-amount-of-fractions: 12;
-    --ita-item-default-width: calc(100% * var(--ita-fraction) / var(--ita-total-amount-of-fractions));
-    --ita-item-offset: calc(var(--ita-fraction) * var(--ita-gap, 0px) * ((var(--ita-total-amount-of-fractions) / var(--ita-fraction)) - 1) / var(--ita-total-amount-of-fractions));
-    width: calc(var(--ita-item-default-width) - var(--ita-item-offset));
+    --wtw-fraction: var(--twelves, -);
+    --wtw-total-amount-of-fractions: 12;
+    --wtw-item-default-width: calc(100% * var(--wtw-fraction) / var(--wtw-total-amount-of-fractions));
+    --wtw-item-offset: calc(var(--wtw-fraction) * var(--ita-gap, 0px) * ((var(--wtw-total-amount-of-fractions) / var(--wtw-fraction)) - 1) / var(--wtw-total-amount-of-fractions));
+    width: calc(var(--wtw-item-default-width) - var(--wtw-item-offset));
     box-sizing: border-box;
 }
