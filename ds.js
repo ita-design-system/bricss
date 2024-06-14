@@ -1,7 +1,7 @@
 const ds = {
-    getBuild: function(json_url) {
-        if (typeof json_url == 'string') {
-            fetch(`${json_url}`)
+    getBuild: function(jsonUrl) {
+        if (typeof jsonUrl == 'string') {
+            fetch(`${jsonUrl}`)
                 .then(response => response.json())
                 .then(json => {
                     ds.build = json;
@@ -16,9 +16,9 @@ const ds = {
                 });
         }
     },
-    getTokens: function(json_url) {
-        if (typeof json_url == 'string') {
-            fetch(`${json_url}`)
+    getTokens: function(jsonUrl) {
+        if (typeof jsonUrl == 'string') {
+            fetch(`${jsonUrl}`)
                 .then(response => response.json())
                 .then(json => {
                     ds.tokens = json;
@@ -41,36 +41,36 @@ const ds = {
             ds.genDoc();
         }
     },
-    isATokenFamily: function(tokens_family) {
-        const tokens_families = Object.keys(ds.tokens);
+    isATokenFamily: function(tokensFamily) {
+        const tokensFamilies = Object.keys(ds.tokens);
         let response = false;
-        if (tokens_families.indexOf(tokens_family) > -1) response = true;
+        if (tokensFamilies.indexOf(tokensFamily) > -1) response = true;
         return response;
     },
-    genFrom: function(tokens_family) {
+    genFrom: function(tokensFamily) {
         const array = [];
-        if (ds.isATokenFamily(tokens_family)) {
-            Object.keys(ds.tokens[tokens_family]).forEach(function(token_name) {
+        if (ds.isATokenFamily(tokensFamily)) {
+            Object.keys(ds.tokens[tokensFamily]).forEach(function(tokenName) {
                 array.push({
-                    name: token_name,
-                    value: ds.tokens[tokens_family][token_name]
+                    name: tokenName,
+                    value: ds.tokens[tokensFamily][tokenName]
                 });
             });
         }
         return array;
     },
-    genCssMediaForScreenSize: function({screen_size, content}) {
-        let high_markup = ` and (max-width: ${ds.tokens.screenSizes[screen_size][1]})`;
-        const low_markup = `(min-width: ${ds.tokens.screenSizes[screen_size][0]})`;
-        const high = ds.tokens.screenSizes[screen_size][1];
-        if (high == 'infinite' || high == '') high_markup = '';
-        return `\n\n/*START @media ${screen_size}*/\n@media ${low_markup}${high_markup} {\n${content}\n}\n/*END @media ${screen_size}*/\n`;
+    genCssMediaForScreenSize: function({screenSize, content}) {
+        let highMarkup = ` and (max-width: ${ds.tokens.screenSizes[screenSize][1]})`;
+        const lowMarkup = `(min-width: ${ds.tokens.screenSizes[screenSize][0]})`;
+        const high = ds.tokens.screenSizes[screenSize][1];
+        if (high == 'infinite' || high == '') highMarkup = '';
+        return `\n\n/*START @media ${screenSize}*/\n@media ${lowMarkup}${highMarkup} {\n${content}\n}\n/*END @media ${screenSize}*/\n`;
     },
-    genCssPropertyForScreenSize: function({screen_size, prefix, name, property, value, utility}) {
+    genCssPropertyForScreenSize: function({screenSize, prefix, name, property, value, utility}) {
         const separator = prefix == '' ? '' : ds.tokens.separator;
-        let markup = `\n.${prefix}${separator}${name}${ds.tokens.responsiveSeparator}${screen_size},\n[${prefix}${separator}${name}*="${screen_size}"] {\n  ${property}: ${value};\n}`;
+        let markup = `\n.${prefix}${separator}${name}${ds.tokens.responsiveSeparator}${screenSize},\n[${prefix}${separator}${name}*="${screenSize}"] {\n  ${property}: ${value};\n}`;
         if (utility) {
-            markup += `\n.${ds.tokens.utilitiesPrefix}${ds.tokens.separator}${prefix}${separator}${name}${ds.tokens.responsiveSeparator}${screen_size},\n[${ds.tokens.utilitiesPrefix}${ds.tokens.separator}${prefix}${separator}${name}*="${screen_size}"] {\n  ${property}: ${value} !important;\n}`;
+            markup += `\n.${ds.tokens.utilitiesPrefix}${ds.tokens.separator}${prefix}${separator}${name}${ds.tokens.responsiveSeparator}${screenSize},\n[${ds.tokens.utilitiesPrefix}${ds.tokens.separator}${prefix}${separator}${name}*="${screenSize}"] {\n  ${property}: ${value} !important;\n}`;
         }
         return markup;
     },
@@ -86,78 +86,78 @@ const ds = {
         const basics = ['colors', 'fontFamilies', 'fontSizes', 'spacings'];
         let markup = '';
         basics.forEach(function(family) {
-            Object.keys(ds.tokens[family]).forEach(function(token_name) {
-                markup += `\n  --${ds.tokens.cssVariablesPrefix}-${family}-${token_name}: ${ds.tokens[family][token_name]};`;
+            Object.keys(ds.tokens[family]).forEach(function(tokenName) {
+                markup += `\n  --${ds.tokens.cssVariablesPrefix}-${family}-${tokenName}: ${ds.tokens[family][tokenName]};`;
             });
         });
         return `\n:root {\n${markup}\n}\n`;
     },
     genCode: function() {
-        const responsive_css = {};
+        const responsiveCss = {};
         foo.innerHTML = ds.genCssVariables();
-        Object.keys(ds.tokens.screenSizes).forEach(function(screen_size) {
-            responsive_css[screen_size] = '';
+        Object.keys(ds.tokens.screenSizes).forEach(function(screenSize) {
+            responsiveCss[screenSize] = '';
         });
         Object.keys(ds.build).forEach(function(property) {
-            const property_data = ds.build[property];
-            const tokens_keys_and_values = ds.genFrom(property_data.generate_from);
+            const propertyData = ds.build[property];
+            const tokensKeysAndValues = ds.genFrom(propertyData.generate_from);
             // console.log(tokens_keys_and_values)
             // Generate from custom values
-            property_data.values.forEach(function(value, index) {
+            propertyData.values.forEach(function(value, index) {
                 let name = value;
-                if (typeof property_data.names[index] == 'string') name = property_data.names[index];
+                if (typeof propertyData.names[index] == 'string') name = propertyData.names[index];
                 // Basic
                 foo.innerHTML += ds.genCssProperty({
-                    prefix: property_data.prefix,
+                    prefix: propertyData.prefix,
                     property: property,
                     name: name,
                     value: value,
-                    utility: property_data.generate_utility
+                    utility: propertyData.generate_utility
                 });
                 // Responsive
-                if (property_data.responsive) {
-                    Object.keys(ds.tokens.screenSizes).forEach(function(screen_size) {
-                        responsive_css[screen_size] += ds.genCssPropertyForScreenSize({
-                            screen_size: screen_size,
-                            prefix: property_data.prefix,
+                if (propertyData.responsive) {
+                    Object.keys(ds.tokens.screenSizes).forEach(function(screenSize) {
+                        responsiveCss[screenSize] += ds.genCssPropertyForScreenSize({
+                            screenSize: screenSize,
+                            prefix: propertyData.prefix,
                             property: property,
                             name: name,
                             value: value,
-                            utility: property_data.generate_utility
+                            utility: propertyData.generate_utility
                         });
                     });
                 }
             });
 
             // Generate from tokens
-            tokens_keys_and_values.forEach(function(token) {
+            tokensKeysAndValues.forEach(function(token) {
                 foo.innerHTML += ds.genCssProperty({
-                    prefix: property_data.prefix,
+                    prefix: propertyData.prefix,
                     property: property,
                     name: token.name,
-                    value: `var(--${ds.tokens.cssVariablesPrefix}-${property_data.generate_from}-${token.name}, ${token.value})`,
-                    utility: property_data.generate_utility
+                    value: `var(--${ds.tokens.cssVariablesPrefix}-${propertyData.generate_from}-${token.name}, ${token.value})`,
+                    utility: propertyData.generate_utility
                 });
 
                 // Responsive from tokens
-                if (property_data.responsive) {
-                    Object.keys(ds.tokens.screenSizes).forEach(function(screen_size) {
-                        responsive_css[screen_size] += ds.genCssPropertyForScreenSize({
-                            screen_size: screen_size,
-                            prefix: property_data.prefix,
+                if (propertyData.responsive) {
+                    Object.keys(ds.tokens.screenSizes).forEach(function(screenSize) {
+                        responsiveCss[screenSize] += ds.genCssPropertyForScreenSize({
+                            screenSize: screenSize,
+                            prefix: propertyData.prefix,
                             property: property,
                             name: token.name,
-                            value: `var(--${ds.tokens.cssVariablesPrefix}-${property_data.generate_from}-${token.name}, ${token.value})`,
-                            utility: property_data.generate_utility
+                            value: `var(--${ds.tokens.cssVariablesPrefix}-${propertyData.generate_from}-${token.name}, ${token.value})`,
+                            utility: propertyData.generate_utility
                         });
                     });
                 }
             });
         });
-        Object.keys(responsive_css).forEach(function(screen_size) {
+        Object.keys(responsiveCss).forEach(function(screenSize) {
             foo.innerHTML += ds.genCssMediaForScreenSize({
-                screen_size: screen_size,
-                content: responsive_css[screen_size]
+                screenSize: screenSize,
+                content: responsiveCss[screenSize]
             });
         });
         bar.innerHTML = foo.innerHTML;
