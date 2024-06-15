@@ -168,13 +168,20 @@ const ds = {
     setResponsive: function(evt) {
         const selectedScreenSizesNames = [];
         const elProperty = evt.target.closest('.doc__property_item');
+        const property = elProperty.dataset.property;
         const elPropertyList = elProperty.querySelector('.doc__property_item__list');
-        const elFieldset = evt.target.closest('fieldset');
-        const property = elFieldset.dataset.property;
+        const elFieldsetResponsive = elProperty.querySelector('.doc__property_item__responsive_content');
+        const elUtilityCheckbox = elProperty.querySelector(`#doc__utility__${property}`);
+        let utilityChecked = false;
+        if (elUtilityCheckbox !== null) {
+            if (elUtilityCheckbox.checked) {
+                utilityChecked = true;
+            }
+        }
         const propertyData = ds.build[property];
         const propertyAllNamesAndValues = [];
         let markup = '';
-        elFieldset.querySelectorAll('input:checked').forEach(function(el) {
+        elFieldsetResponsive.querySelectorAll('input:checked').forEach(function(el) {
             selectedScreenSizesNames.push(el.value);
         });
         // Get custom values and names
@@ -190,7 +197,12 @@ const ds = {
         });
         
         propertyAllNamesAndValues.forEach(function(data) {
-            const base = `${propertyData.prefix}${ds.tokens.separator}${data.name}`;
+            let base = `${propertyData.prefix}${ds.tokens.separator}${data.name}`;
+            let value = data.value;
+            if (utilityChecked) {
+                base = `${ds.tokens.utilitiesPrefix}${ds.tokens.separator}${base}`;
+                value += ' !important';
+            }
             if (selectedScreenSizesNames.length > 0) {
                 const responsiveAttribute = `${base}="${selectedScreenSizesNames.toString()}"`;
                 let responsiveCssClasses = '';
@@ -201,13 +213,13 @@ const ds = {
                 markup += ds.templates.docClassValueResponsiveItem({
                     classes: responsiveCssClasses,
                     attribute: responsiveAttribute,
-                    value: data.value
+                    value: value
                 });
             } else {
                 // Generate standard markup
                 markup += ds.templates.docClassValueItem({
                     className: base,
-                    value: data.value
+                    value: value
                 });
             }
         });
@@ -222,27 +234,42 @@ const ds = {
                 <li><code>${className}</code> ${value}</li>
             `;
         },
-        docScreenSizeCheckboxItem: function({id, screenSize, checked}) {
+        docUtilityCheckboxItem: function({id, label}) {
+            return `
+                <div>
+                    <input type="checkbox"
+                        id="${id}"
+                        value=""
+                        onchange="ds.setResponsive(event)">
+                    <label for="${id}">${label}</label>
+                </div>
+            `;
+        },
+        docScreenSizeCheckboxItem: function({id, screenSize}) {
             return `
                 <div>
                     <input type="checkbox"
                         id="${id}"
                         value="${screenSize}"
-                        onchange="ds.setResponsive(event)" ${checked == true ? 'checked' : ''}>
+                        onchange="ds.setResponsive(event)">
                     <label for="${id}">${screenSize}</label>
                 </div>
             `;
         },
-        docPropertyItem: function({property, content, responsiveContent}) {
+        docPropertyItem: function({property, content, responsiveContent, utilityContent}) {
             return `
-                <li class="doc__property_item">
+                <li class="doc__property_item" data-property="${property}">
                     <h4>${property}</h4>
                     <ul class="doc__property_item__list">
                         ${content}
                     </ul>
-                    <fieldset data-property="${property}">
+                    <fieldset class="doc__property_item__responsive_content">
                         <legend>Responsive</legend>
                         ${responsiveContent}
+                    </fieldset>
+                    <fieldset class="doc__property_item__utility_content">
+                        <legend>Utitity</legend>
+                        ${utilityContent}
                     </fieldset>
                 </li>
             `;
@@ -255,6 +282,7 @@ const ds = {
             const tokensKeysAndValues = ds.genFrom(propertyData.generate_from);
             let classesValuesMarkup = '';
             let responsiveMarkup = '';
+            let utilityMarkup = '';
             // Generate from custom values
             propertyData.values.forEach(function(value, index) {
                 let name = value;
@@ -276,15 +304,23 @@ const ds = {
             if (propertyData.responsive) {
                 Object.keys(ds.tokens.screenSizes).forEach(function(screenSize, index) {
                     responsiveMarkup += ds.templates.docScreenSizeCheckboxItem({
-                        id: `doc___standard__${property}_${screenSize}`,
+                        id: `doc__standard__${property}_${screenSize}`,
                         screenSize: screenSize
                     });
+                });
+            }
+            // Utility
+            if (propertyData.generate_utility) {
+                utilityMarkup = ds.templates.docUtilityCheckboxItem({
+                    id: `doc__utility__${property}`,
+                    label: `Apply`
                 });
             }
             doc__standard.innerHTML += ds.templates.docPropertyItem({
                 property: property,
                 content: classesValuesMarkup,
-                responsiveContent: responsiveMarkup
+                responsiveContent: responsiveMarkup,
+                utilityContent: utilityMarkup
             });
         })
     }
