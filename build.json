@@ -11,6 +11,28 @@
         "responsive": true,
         "generate_utility": true
     },
+    "align-items": {
+        "prefix": "ai",
+        "generate_from": "",
+        "values": ["baseline", "center", "flex-start", "flex-end"],
+        "names": [],
+        "responsive": true,
+        "generate_utility": false
+    },
+    "justify-content": {
+        "prefix": "jc",
+        "generate_from": "",
+        "values": [
+            "center",
+            "space-between",
+            "space-around",
+            "start",
+            "end"
+        ],
+        "names": [],
+        "responsive": true,
+        "generate_utility": false
+    },
     "flex-wrap": {
         "prefix": "fwrap",
         "generate_from": "",
@@ -27,6 +49,111 @@
         "responsive": true,
         "generate_utility": false
     },
+
+
+    "position": {
+        "prefix": "pos",
+        "generate_from": "",
+        "values": ["relative", "absolute", "fixed", "sticky"],
+        "names": [],
+        "responsive": true,
+        "generate_utility": false
+    },
+    "top": {
+        "prefix": "top",
+        "generate_from": "",
+        "values": ["0%", "50%", "100%"],
+        "names": ["0", "50", "100"],
+        "responsive": true,
+        "generate_utility": false
+    },
+    "right": {
+        "prefix": "right",
+        "generate_from": "",
+        "values": ["0%", "50%", "100%"],
+        "names": ["0", "50", "100"],
+        "responsive": true,
+        "generate_utility": false
+    },
+    "bottom": {
+        "prefix": "bottom",
+        "generate_from": "",
+        "values": ["0%", "50%", "100%"],
+        "names": ["0", "50", "100"],
+        "responsive": true,
+        "generate_utility": false
+    },
+    "left": {
+        "prefix": "left",
+        "generate_from": "",
+        "values": ["0%", "50%", "100%"],
+        "names": ["0", "50", "100"],
+        "responsive": true,
+        "generate_utility": false
+    },
+    "--ita-tX": {
+        "prefix": "t",
+        "generate_from": "",
+        "values": [
+            "-50%",
+            "50%",
+            "-100%",
+            "100%"
+        ],
+        "names": [
+            "tX-50",
+            "tX50",
+            "tX-100",
+            "tX100"
+        ],
+        "responsive": true,
+        "generate_utility": false
+    },
+    "--ita-tY": {
+        "prefix": "t",
+        "generate_from": "",
+        "values": [
+            "-50%",
+            "50%",
+            "-100%",
+            "100%"
+        ],
+        "names": [
+            "tY-50",
+            "tY50",
+            "tY-100",
+            "tY100"
+        ],
+        "responsive": true,
+        "generate_utility": false
+    },
+    "transform": {
+        "prefix": "t",
+        "generate_from": "",
+        "values": [
+            "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
+            "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
+            "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
+            "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
+            "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
+            "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
+            "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
+            "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))"
+        ],
+        "names": [
+            "tX-50",
+            "tX50",
+            "tX-100",
+            "tX100",
+            "tY-50",
+            "tY50",
+            "tY-100",
+            "tY100"
+        ],
+        "responsive": true,
+        "generate_utility": false
+    },
+
     "--ita-gap": {
         "prefix": "gap",
         "generate_from": "spacings",
