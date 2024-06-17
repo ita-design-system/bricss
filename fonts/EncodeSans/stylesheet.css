@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'Encode Sans';
+    src: url('EncodeSans-Regular.woff2') format('woff2'),
+        url('EncodeSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Encode Sans';
+    src: url('EncodeSans-Medium.woff2') format('woff2'),
+        url('EncodeSans-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Encode Sans';
+    src: url('EncodeSans-SemiBold.woff2') format('woff2'),
+        url('EncodeSans-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Encode Sans';
+    src: url('EncodeSans-Bold.woff2') format('woff2'),
+        url('EncodeSans-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Encode Sans';
+    src: url('EncodeSans-Light.woff2') format('woff2'),
+        url('EncodeSans-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Encode Sans';
+    src: url('EncodeSans-ExtraBold.woff2') format('woff2'),
+        url('EncodeSans-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
