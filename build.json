@@ -203,6 +203,40 @@
         "responsive": true,
         "generate_utility": false
     },
+    "--twelves": {
+        "prefix": "w",
+        "generate_from": "",
+        "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+        ],
+        "names": [
+            "1t",
+            "2t",
+            "3t",
+            "4t",
+            "5t",
+            "6t",
+            "7t",
+            "8t",
+            "9t",
+            "10t",
+            "11t",
+            "12t"
+        ],
+        "responsive": true,
+        "generate_utility": false
+    },
     "max-width": {
         "prefix": "maxw",
         "generate_from": "",
@@ -429,6 +463,22 @@
         "responsive": false,
         "generate_utility": false
     },
+    "word-break": {
+        "prefix": "wb",
+        "generate_from": "",
+        "values": ["break-word", "break-all"],
+        "names": [],
+        "responsive": false,
+        "generate_utility": false
+    },
+    "text-transform": {
+        "prefix": "tt",
+        "generate_from": "",
+        "values": ["uppercase", "lowercase"],
+        "names": [],
+        "responsive": false,
+        "generate_utility": false
+    },
 
 
     "background-color": {
@@ -535,38 +585,68 @@
         "responsive": false,
         "generate_utility": false
     },
-    "--twelves": {
-        "prefix": "w",
+    "background-size": {
+        "prefix": "bsize",
         "generate_from": "",
-        "values": [
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"
-        ],
-        "names": [
-            "1t",
-            "2t",
-            "3t",
-            "4t",
-            "5t",
-            "6t",
-            "7t",
-            "8t",
-            "9t",
-            "10t",
-            "11t",
-            "12t"
-        ],
-        "responsive": true,
+        "values": ["cover", "contain"],
+        "names": [],
+        "responsive": false,
+        "generate_utility": false
+    },
+    "background-position": {
+        "prefix": "bpos",
+        "generate_from": "",
+        "values": ["center"],
+        "names": [],
+        "responsive": false,
+        "generate_utility": false
+    },
+    "background-repeat": {
+        "prefix": "brep",
+        "generate_from": "",
+        "values": ["no-repeat", "repeat-x", "repeat-y"],
+        "names": [],
+        "responsive": false,
+        "generate_utility": false
+    },
+    "cursor": {
+        "prefix": "cur",
+        "generate_from": "",
+        "values": ["pointer"],
+        "names": [],
+        "responsive": false,
+        "generate_utility": false
+    },
+    "opacity": {
+        "prefix": "opa",
+        "generate_from": "",
+        "values": ["0", "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9"],
+        "names": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+        "responsive": false,
+        "generate_utility": false
+    },
+    "list-style": {
+        "prefix": "ls",
+        "generate_from": "",
+        "values": ["none"],
+        "names": [],
+        "responsive": false,
+        "generate_utility": false
+    },
+    "pointer-events": {
+        "prefix": "pe",
+        "generate_from": "",
+        "values": ["none"],
+        "names": [],
+        "responsive": false,
+        "generate_utility": false
+    },
+    "-webkit-appearance": {
+        "prefix": "appearance",
+        "generate_from": "",
+        "values": ["none"],
+        "names": [],
+        "responsive": false,
         "generate_utility": false
     }
 }

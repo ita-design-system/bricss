@@ -12,9 +12,9 @@
         }
     </style>
     <style id="foo"></style>
-    <link rel="stylesheet" href="width-twelves.css">
-    <link rel="stylesheet" href="fonts.css">
-    <link rel="stylesheet" href="extras.css">
+    <link rel="stylesheet" href="ds__fonts.css">
+    <link rel="stylesheet" href="ds__extras.css">
+    <link rel="stylesheet" href="ds__width-twelves.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 <body>
@@ -22,45 +22,54 @@
         <h2>Exemple</h2>
         <ul class="
             d-flex gap-2 fwrap-wrap
-            p-0">
+            p-0
+            ls-none">
             <li class="
                 p-3 w-6t
                 bc-blue-100">
-                <div class="d-flex fwrap-wrap gap-1">
-                    <div class="w-6t bc-blue-300 t-tX50 t-tY50">foo</div>
-                    <div class="w-6t bc-blue-200">foo</div>
-                    <div class="w-4t bc-blue-200">foo</div>
-                    <div class="w-3t bc-blue-200">foo</div>
-                    <div class="
+                <ul class="
+                    d-flex fwrap-wrap gap-1
+                    m-0 p-0
+                    ls-none">
+                    <li class="
+                        t-tX50 t-tY50
+                        w-6t
+                        bc-blue-300 opa-3 cur-pointer">
+                        foo
+                    </li>
+                    <li class="w-6t bc-blue-200">foo</li>
+                    <li class="w-4t bc-blue-200">foo</li>
+                    <li class="w-3t bc-blue-200">foo</li>
+                    <li class="
                         order--1
                         w-5t
                         ff-lead-700 fs-10
                         bc-green-200
                         __ellipsis-2">
                         Sit sed et amet eos invidunt, ipsum eos voluptua justo et kasd ut et lorem et, sanctus sed sed justo.
-                    </div>
-                    <div class="
+                    </li>
+                    <li class="
                         w-6t
                         ff-lead-300 fs-8
                         bc-green-300
                         __ellipsis-3">
                         Sit sed et amet eos invidunt, ipsum eos voluptua justo et kasd ut et lorem et, sanctus sed sed justo.
-                    </div>
-                    <div class="
+                    </li>
+                    <li class="
                         w-6t
                         ff-lead-300 fs-3
                         bc-green-300
                         __ellipsis-1">
                         Sit sed et amet eos invidunt, ipsum eos voluptua justo et kasd ut et lorem et, sanctus sed sed justo.
-                    </div>
-                    <div class="
+                    </li>
+                    <li class="
                         w-6t
                         ff-lead-300 fs-5
                         bc-green-300
                         __ellipsis-2">
                         Sit sed et amet eos invidunt, ipsum eos voluptua justo et kasd ut et lorem et, sanctus sed sed justo.
-                    </div>
-                </div>
+                    </li>
+                </ul>
             </li>
             <li class="w-6t bc-blue-100 p-3">foo</li>
             <li class="w-3t bc-blue-100 p-3">foo</li>
