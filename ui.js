@@ -5,7 +5,7 @@ const ui = {
             navigator.clipboard.writeText(textToCopy).then(
                 function() {
                   /* clipboard successfully set */
-                  ds.notifications.add('copied to clipboard', {skin: 'green'});
+                  ui.notifications.add('copied to clipboard', {skin: 'green'});
                 }
             )
         } else {
@@ -22,7 +22,7 @@ const ui = {
             document.execCommand("copy");
             // Remove it from the body
             document.body.removeChild(aux);
-            ds.notifications.add('copied to clipboard', {skin: 'green'});
+            ui.notifications.add('copied to clipboard', {skin: 'green'});
         }
     },
     notifications: {
@@ -35,27 +35,23 @@ const ui = {
             base: function({id, message, duration, skin}) {
                 return `
                     <aside class="
-                        d-flex m-main-space-between
-                        c-pos m-fixed m-z-6 m-top-0 m-right-0
-                        c-dim m-mt-6 m-mr-6
-                        c-skin m-bc-grey-light-100 m-brad-3 m-bs-1"
+                        d-flex jc-space-between
+                        pos-fixed z-6 top-0 right-0
+                        mt-6 mr-6
+                        ff-lead-500
+                        bc-${skin}-100 c-${skin}-800"
                         id="${id}">
-                        <div class="
-                            c-dis m-flex
-                            c-dim m-p-3">
-                            <div class="c-dim m-pl-2 c-skin m-bc-${skin}-500 m-brad-3"></div>
+                        <div class="d-flex p-3">
+                            <div class="pl-2 bc-${skin}-500"></div>
                         </div>
-                        <div class="
-                            c-dis m-flex m-cross-center
-                            c-dim m-maxw-2 m-p-4
-                            c-txt m-fs-4">
+                        <div class="d-flex ai-center p-4 fs-4">
                             ${message}
                         </div>
                         <button class="
-                            c-dis m-flex m-cross-center
-                            c-dim m-p-3
-                            c-txt m-fs-7
-                            c-skin m-c-green-700 m-bc-0 m-b-0"
+                            d-flex ai-center
+                            p-3
+                            fs-7
+                            c-green-700 bc-0 b-0"
                             onclick="this.closest('aside').remove();">
                             <span class="icon-x"></span>
                         </button>

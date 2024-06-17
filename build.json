@@ -14,8 +14,18 @@
     "align-items": {
         "prefix": "ai",
         "generate_from": "",
-        "values": ["baseline", "center", "flex-start", "flex-end"],
-        "names": [],
+        "values": [
+            "baseline",
+            "center",
+            "flex-start",
+            "flex-end"
+        ],
+        "names": [
+            "baseline",
+            "center",
+            "start",
+            "end"
+        ],
         "responsive": true,
         "generate_utility": false
     },
@@ -26,10 +36,16 @@
             "center",
             "space-between",
             "space-around",
+            "flex-start",
+            "flex-end"
+        ],
+        "names": [
+            "center",
+            "space-between",
+            "space-around",
             "start",
             "end"
         ],
-        "names": [],
         "responsive": true,
         "generate_utility": false
     },
@@ -495,6 +511,14 @@
         "values": [],
         "names": [],
         "responsive": false,
+        "generate_utility": false
+    },
+    "border": {
+        "prefix": "b",
+        "generate_from": "",
+        "values": ["none"],
+        "names": ["0"],
+        "responsive": true,
         "generate_utility": false
     },
     "border-width": {
