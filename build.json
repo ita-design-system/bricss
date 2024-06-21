@@ -1,676 +1,753 @@
 {
-    "display": {
-        "prefix": "d",
-        "generate_from": "",
-        "values": [
-            "flex",
-            "inline-flex",
-            "none"
-        ],
-        "names": [],
-        "responsive": true,
-        "generate_utility": true
+    "settings": {
+        "separator": "-",
+        "responsiveSeparator": "--",
+        "utilitiesPrefix": "u",
+        "cssVariablesPrefix": "ita"
     },
-    "align-items": {
-        "prefix": "ai",
-        "generate_from": "",
-        "values": [
-            "baseline",
-            "center",
-            "flex-start",
-            "flex-end"
-        ],
-        "names": [
-            "baseline",
-            "center",
-            "start",
-            "end"
-        ],
-        "responsive": true,
-        "generate_utility": false
+    "tokens": {
+        "colors": {
+            "blue-100": "#eaf3ff",
+            "blue-200": "#abcbf5",
+            "blue-300": "#80b1ef",
+            "blue-400": "#5697ea",
+            "blue-500": "#2C7DE5",
+            "blue-600": "#1863c2",
+            "blue-700": "#124a92",
+            "blue-800": "#0c3161",
+            "blue-900": "#061931",
+            "green-100": "#e4f1dd",
+            "green-200": "#c9e3bb",
+            "green-300": "#aed69a",
+            "green-400": "#93c878",
+            "green-500": "#78ba56",
+            "green-600": "#5e9b3f",
+            "green-700": "#47742f",
+            "green-800": "#2f4d20",
+            "green-900": "#182710"
+        },
+        "screenSizes": {
+            "xs": ["0px", "600px"],
+            "sm": ["600px", "960px"],
+            "md": ["960px", "1200px"],
+            "lg": ["1200px", "1440px"],
+            "xl": ["1440px", "infinite"]
+        },
+        "fontFamilies": {
+            "lead-300": "'EncodeSans Light', sans-serif",
+            "lead-500": "'EncodeSans Medium', sans-serif",
+            "lead-600": "'EncodeSans SemiBold', sans-serif",
+            "lead-700": "'EncodeSans Bold', sans-serif",
+            "mono": "Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace"
+        },
+        "fontSizes": {
+            "1": "8px",
+            "2": "10px",
+            "3": "12px",
+            "4": "14px",
+            "5": "16px",
+            "6": "18px",
+            "7": "20px",
+            "8": "24px",
+            "9": "28px",
+            "10": "32px",
+            "11": "36px",
+            "12": "42px",
+            "13": "48px",
+            "14": "54px",
+            "15": "60px"
+        },
+        "spacings": {
+            "1": "4px",
+            "2": "8px",
+            "3": "12px",
+            "4": "16px",
+            "5": "20px",
+            "6": "24px",
+            "7": "32px",
+            "8": "40px",
+            "9": "48px",
+            "10": "56px",
+            "11": "64px",
+            "12": "80px",
+            "13": "96px",
+            "14": "112px"
+        }
     },
-    "justify-content": {
-        "prefix": "jc",
-        "generate_from": "",
-        "values": [
-            "center",
-            "space-between",
-            "space-around",
-            "flex-start",
-            "flex-end"
-        ],
-        "names": [
-            "center",
-            "space-between",
-            "space-around",
-            "start",
-            "end"
-        ],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "flex-direction": {
-        "prefix": "fd",
-        "generate_from": "",
-        "values": ["column"],
-        "names": [],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "flex-wrap": {
-        "prefix": "fwrap",
-        "generate_from": "",
-        "values": ["wrap"],
-        "names": [],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "order": {
-        "prefix": "order",
-        "generate_from": "",
-        "values": ["-1"],
-        "names": [],
-        "responsive": true,
-        "generate_utility": false
-    },
+    "properties": {
+        "display": {
+            "prefix": "d",
+            "generate_from": "",
+            "values": [
+                "flex",
+                "inline-flex",
+                "none"
+            ],
+            "names": [],
+            "responsive": true,
+            "generate_utility": true
+        },
+        "align-items": {
+            "prefix": "ai",
+            "generate_from": "",
+            "values": [
+                "baseline",
+                "center",
+                "flex-start",
+                "flex-end"
+            ],
+            "names": [
+                "baseline",
+                "center",
+                "start",
+                "end"
+            ],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "justify-content": {
+            "prefix": "jc",
+            "generate_from": "",
+            "values": [
+                "center",
+                "space-between",
+                "space-around",
+                "flex-start",
+                "flex-end"
+            ],
+            "names": [
+                "center",
+                "space-between",
+                "space-around",
+                "start",
+                "end"
+            ],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "flex-direction": {
+            "prefix": "fd",
+            "generate_from": "",
+            "values": ["column"],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "flex-wrap": {
+            "prefix": "fwrap",
+            "generate_from": "",
+            "values": ["wrap"],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "order": {
+            "prefix": "order",
+            "generate_from": "",
+            "values": ["-1"],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        },
 
 
-    "position": {
-        "prefix": "pos",
-        "generate_from": "",
-        "values": ["relative", "absolute", "fixed", "sticky"],
-        "names": [],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "top": {
-        "prefix": "top",
-        "generate_from": "",
-        "values": ["0%", "50%", "100%"],
-        "names": ["0", "50", "100"],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "right": {
-        "prefix": "right",
-        "generate_from": "",
-        "values": ["0%", "50%", "100%"],
-        "names": ["0", "50", "100"],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "bottom": {
-        "prefix": "bottom",
-        "generate_from": "",
-        "values": ["0%", "50%", "100%"],
-        "names": ["0", "50", "100"],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "left": {
-        "prefix": "left",
-        "generate_from": "",
-        "values": ["0%", "50%", "100%"],
-        "names": ["0", "50", "100"],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "z-index": {
-        "prefix": "z",
-        "generate_from": "",
-        "values": ["100", "200", "300", "400", "500", "600", "700", "800", "900", "1000"],
-        "names": [],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "--ita-tX": {
-        "prefix": "t",
-        "generate_from": "",
-        "values": [
-            "-50%",
-            "50%",
-            "-100%",
-            "100%"
-        ],
-        "names": [
-            "tX-50",
-            "tX50",
-            "tX-100",
-            "tX100"
-        ],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "--ita-tY": {
-        "prefix": "t",
-        "generate_from": "",
-        "values": [
-            "-50%",
-            "50%",
-            "-100%",
-            "100%"
-        ],
-        "names": [
-            "tY-50",
-            "tY50",
-            "tY-100",
-            "tY100"
-        ],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "transform": {
-        "prefix": "t",
-        "generate_from": "",
-        "values": [
-            "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
-            "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
-            "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
-            "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
-            "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
-            "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
-            "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
-            "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))"
-        ],
-        "names": [
-            "tX-50",
-            "tX50",
-            "tX-100",
-            "tX100",
-            "tY-50",
-            "tY50",
-            "tY-100",
-            "tY100"
-        ],
-        "responsive": true,
-        "generate_utility": false
-    },
+        "position": {
+            "prefix": "pos",
+            "generate_from": "",
+            "values": ["relative", "absolute", "fixed", "sticky"],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "top": {
+            "prefix": "top",
+            "generate_from": "",
+            "values": ["0%", "50%", "100%"],
+            "names": ["0", "50", "100"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "right": {
+            "prefix": "right",
+            "generate_from": "",
+            "values": ["0%", "50%", "100%"],
+            "names": ["0", "50", "100"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "bottom": {
+            "prefix": "bottom",
+            "generate_from": "",
+            "values": ["0%", "50%", "100%"],
+            "names": ["0", "50", "100"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "left": {
+            "prefix": "left",
+            "generate_from": "",
+            "values": ["0%", "50%", "100%"],
+            "names": ["0", "50", "100"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "z-index": {
+            "prefix": "z",
+            "generate_from": "",
+            "values": ["100", "200", "300", "400", "500", "600", "700", "800", "900", "1000"],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "--ita-tX": {
+            "prefix": "t",
+            "generate_from": "",
+            "values": [
+                "-50%",
+                "50%",
+                "-100%",
+                "100%"
+            ],
+            "names": [
+                "tX-50",
+                "tX50",
+                "tX-100",
+                "tX100"
+            ],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "--ita-tY": {
+            "prefix": "t",
+            "generate_from": "",
+            "values": [
+                "-50%",
+                "50%",
+                "-100%",
+                "100%"
+            ],
+            "names": [
+                "tY-50",
+                "tY50",
+                "tY-100",
+                "tY100"
+            ],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "transform": {
+            "prefix": "t",
+            "generate_from": "",
+            "values": [
+                "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
+                "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
+                "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
+                "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
+                "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
+                "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
+                "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
+                "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))"
+            ],
+            "names": [
+                "tX-50",
+                "tX50",
+                "tX-100",
+                "tX100",
+                "tY-50",
+                "tY50",
+                "tY-100",
+                "tY100"
+            ],
+            "responsive": true,
+            "generate_utility": false
+        },
 
 
-    "gap": {
-        "prefix": "gap",
-        "generate_from": "spacings",
-        "values": [],
-        "names": [],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "--ita-gap": {
-        "prefix": "gap",
-        "generate_from": "spacings",
-        "values": [],
-        "names": [],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "flex-grow": {
-        "prefix": "fg",
-        "generate_from": "",
-        "values": ["1"],
-        "names": [],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "width": {
-        "prefix": "w",
-        "generate_from": "",
-        "values": ["100%", "auto"],
-        "names": ["100", "auto"],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "--twelves": {
-        "prefix": "w",
-        "generate_from": "",
-        "values": [
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"
-        ],
-        "names": [
-            "1t",
-            "2t",
-            "3t",
-            "4t",
-            "5t",
-            "6t",
-            "7t",
-            "8t",
-            "9t",
-            "10t",
-            "11t",
-            "12t"
-        ],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "max-width": {
-        "prefix": "maxw",
-        "generate_from": "",
-        "values": ["100%", "100vw"],
-        "names": ["100", "100vw"],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "height": {
-        "prefix": "h",
-        "generate_from": "",
-        "values": ["100%", "auto", "100vh"],
-        "names": ["100", "auto", "100vh"],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "max-height": {
-        "prefix": "maxh",
-        "generate_from": "",
-        "values": ["100%", "100vh", "80vh", "50vh"],
-        "names": ["100", "100vh", "80vh", "50vh"],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "overflow": {
-        "prefix": "o",
-        "generate_from": "",
-        "values": ["auto", "hidden"],
-        "names": [],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "scroll-behavior": {
-        "prefix": "scrollb",
-        "generate_from": "",
-        "values": ["smooth"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "scroll-snap-align": {
-        "prefix": "scrollsa",
-        "generate_from": "",
-        "values": ["start", "center"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "scroll-snap-type": {
-        "prefix": "scrollst",
-        "generate_from": "",
-        "values": ["x mandatory", "y mandatory"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "padding": {
-        "prefix": "p",
-        "generate_from": "spacings",
-        "values": ["0px"],
-        "names": ["0"],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "padding-top": {
-        "prefix": "pt",
-        "generate_from": "spacings",
-        "values": ["0px"],
-        "names": ["0"],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "padding-right": {
-        "prefix": "pr",
-        "generate_from": "spacings",
-        "values": ["0px"],
-        "names": ["0"],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "padding-bottom": {
-        "prefix": "pb",
-        "generate_from": "spacings",
-        "values": ["0px"],
-        "names": ["0"],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "padding-left": {
-        "prefix": "pl",
-        "generate_from": "spacings",
-        "values": ["0px"],
-        "names": ["0"],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "margin": {
-        "prefix": "m",
-        "generate_from": "spacings",
-        "values": ["0px", "auto"],
-        "names": ["0", "auto"],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "margin-top": {
-        "prefix": "mt",
-        "generate_from": "spacings",
-        "values": ["0px"],
-        "names": ["0"],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "margin-right": {
-        "prefix": "mr",
-        "generate_from": "spacings",
-        "values": ["0px", "auto"],
-        "names": ["0", "auto"],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "margin-bottom": {
-        "prefix": "mb",
-        "generate_from": "spacings",
-        "values": ["0px"],
-        "names": ["0"],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "margin-left": {
-        "prefix": "ml",
-        "generate_from": "spacings",
-        "values": ["0px", "auto"],
-        "names": ["0", "auto"],
-        "responsive": true,
-        "generate_utility": false
-    },
+        "gap": {
+            "prefix": "gap",
+            "generate_from": "spacings",
+            "values": [],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "--ita-gap": {
+            "prefix": "gap",
+            "generate_from": "spacings",
+            "values": [],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "flex-grow": {
+            "prefix": "fg",
+            "generate_from": "",
+            "values": ["1"],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "width": {
+            "prefix": "w",
+            "generate_from": "",
+            "values": ["100%", "auto"],
+            "names": ["100", "auto"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "--twelves": {
+            "prefix": "w",
+            "generate_from": "",
+            "values": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12"
+            ],
+            "names": [
+                "1t",
+                "2t",
+                "3t",
+                "4t",
+                "5t",
+                "6t",
+                "7t",
+                "8t",
+                "9t",
+                "10t",
+                "11t",
+                "12t"
+            ],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "max-width": {
+            "prefix": "maxw",
+            "generate_from": "",
+            "values": ["100%", "100vw"],
+            "names": ["100", "100vw"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "height": {
+            "prefix": "h",
+            "generate_from": "",
+            "values": ["100%", "auto", "100vh"],
+            "names": ["100", "auto", "100vh"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "max-height": {
+            "prefix": "maxh",
+            "generate_from": "",
+            "values": ["100%", "100vh", "80vh", "50vh"],
+            "names": ["100", "100vh", "80vh", "50vh"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "overflow": {
+            "prefix": "o",
+            "generate_from": "",
+            "values": ["auto", "hidden"],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "scroll-behavior": {
+            "prefix": "scrollb",
+            "generate_from": "",
+            "values": ["smooth"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "scroll-snap-align": {
+            "prefix": "scrollsa",
+            "generate_from": "",
+            "values": ["start", "center"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "scroll-snap-type": {
+            "prefix": "scrollst",
+            "generate_from": "",
+            "values": ["x mandatory", "y mandatory"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "padding": {
+            "prefix": "p",
+            "generate_from": "spacings",
+            "values": ["0px"],
+            "names": ["0"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "padding-top": {
+            "prefix": "pt",
+            "generate_from": "spacings",
+            "values": ["0px"],
+            "names": ["0"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "padding-right": {
+            "prefix": "pr",
+            "generate_from": "spacings",
+            "values": ["0px"],
+            "names": ["0"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "padding-bottom": {
+            "prefix": "pb",
+            "generate_from": "spacings",
+            "values": ["0px"],
+            "names": ["0"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "padding-left": {
+            "prefix": "pl",
+            "generate_from": "spacings",
+            "values": ["0px"],
+            "names": ["0"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "margin": {
+            "prefix": "m",
+            "generate_from": "spacings",
+            "values": ["0px", "auto"],
+            "names": ["0", "auto"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "margin-top": {
+            "prefix": "mt",
+            "generate_from": "spacings",
+            "values": ["0px"],
+            "names": ["0"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "margin-right": {
+            "prefix": "mr",
+            "generate_from": "spacings",
+            "values": ["0px", "auto"],
+            "names": ["0", "auto"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "margin-bottom": {
+            "prefix": "mb",
+            "generate_from": "spacings",
+            "values": ["0px"],
+            "names": ["0"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "margin-left": {
+            "prefix": "ml",
+            "generate_from": "spacings",
+            "values": ["0px", "auto"],
+            "names": ["0", "auto"],
+            "responsive": true,
+            "generate_utility": false
+        },
 
 
-    "font-family": {
-        "prefix": "ff",
-        "generate_from": "fontFamilies",
-        "values": [],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "font-weight": {
-        "prefix": "fw",
-        "generate_from": "",
-        "values": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "font-size": {
-        "prefix": "fs",
-        "generate_from": "fontSizes",
-        "values": [],
-        "names": [],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "hyphens": {
-        "prefix": "hy",
-        "generate_from": "",
-        "values": ["auto", "manual", "none"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "text-align": {
-        "prefix": "ta",
-        "generate_from": "",
-        "values": ["left", "center", "right"],
-        "names": [],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "text-decoration": {
-        "prefix": "td",
-        "generate_from": "",
-        "values": ["none", "underline", "line-through"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "font-style": {
-        "prefix": "fstyle",
-        "generate_from": "",
-        "values": ["normal", "italic"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "white-space": {
-        "prefix": "ws",
-        "generate_from": "",
-        "values": ["nowrap"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "text-overflow": {
-        "prefix": "to",
-        "generate_from": "",
-        "values": ["ellipsis"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "line-height": {
-        "prefix": "lh",
-        "generate_from": "",
-        "values":   ["0em", "1em", "1.1em", "1.2em", "1.3em", "1.4em", "1.5em", "1.6em", "1.7em", "1.8em"],
-        "names":    ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "vertical-align": {
-        "prefix": "va",
-        "generate_from": "",
-        "values": ["top", "middle", "bottom", "super", "sub"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "word-break": {
-        "prefix": "wb",
-        "generate_from": "",
-        "values": ["break-word", "break-all"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "text-transform": {
-        "prefix": "tt",
-        "generate_from": "",
-        "values": ["uppercase", "lowercase"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
+        "font-family": {
+            "prefix": "ff",
+            "generate_from": "fontFamilies",
+            "values": [],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "font-weight": {
+            "prefix": "fw",
+            "generate_from": "",
+            "values": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "font-size": {
+            "prefix": "fs",
+            "generate_from": "fontSizes",
+            "values": [],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "hyphens": {
+            "prefix": "hy",
+            "generate_from": "",
+            "values": ["auto", "manual", "none"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "text-align": {
+            "prefix": "ta",
+            "generate_from": "",
+            "values": ["left", "center", "right"],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "text-decoration": {
+            "prefix": "td",
+            "generate_from": "",
+            "values": ["none", "underline", "line-through"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "font-style": {
+            "prefix": "fstyle",
+            "generate_from": "",
+            "values": ["normal", "italic"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "white-space": {
+            "prefix": "ws",
+            "generate_from": "",
+            "values": ["nowrap"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "text-overflow": {
+            "prefix": "to",
+            "generate_from": "",
+            "values": ["ellipsis"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "line-height": {
+            "prefix": "lh",
+            "generate_from": "",
+            "values":   ["0em", "1em", "1.1em", "1.2em", "1.3em", "1.4em", "1.5em", "1.6em", "1.7em", "1.8em"],
+            "names":    ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "vertical-align": {
+            "prefix": "va",
+            "generate_from": "",
+            "values": ["top", "middle", "bottom", "super", "sub"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "word-break": {
+            "prefix": "wb",
+            "generate_from": "",
+            "values": ["break-word", "break-all"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "text-transform": {
+            "prefix": "tt",
+            "generate_from": "",
+            "values": ["uppercase", "lowercase"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
 
 
-    "background-color": {
-        "prefix": "bc",
-        "generate_from": "colors",
-        "values": ["transparent"],
-        "names": ["0"],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "color": {
-        "prefix": "c",
-        "generate_from": "colors",
-        "values": [],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "border": {
-        "prefix": "b",
-        "generate_from": "",
-        "values": ["none"],
-        "names": ["0"],
-        "responsive": true,
-        "generate_utility": false
-    },
-    "border-width": {
-        "prefix": "bwidth",
-        "generate_from": "",
-        "values": ["1px", "2px", "3px"],
-        "names": ["1", "2", "3"],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "border-top-width": {
-        "prefix": "btwidth",
-        "generate_from": "",
-        "values": ["1px", "2px", "3px"],
-        "names": ["1", "2", "3"],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "border-right-width": {
-        "prefix": "brwidth",
-        "generate_from": "",
-        "values": ["1px", "2px", "3px"],
-        "names": ["1", "2", "3"],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "border-bottom-width": {
-        "prefix": "bbwidth",
-        "generate_from": "",
-        "values": ["1px", "2px", "3px"],
-        "names": ["1", "2", "3"],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "border-left-width": {
-        "prefix": "blwidth",
-        "generate_from": "",
-        "values": ["1px", "2px", "3px"],
-        "names": ["1", "2", "3"],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "border-style": {
-        "prefix": "bstyle",
-        "generate_from": "",
-        "values": ["solid", "dashed"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "border-top-style": {
-        "prefix": "btstyle",
-        "generate_from": "",
-        "values": ["solid", "dashed"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "border-right-style": {
-        "prefix": "brstyle",
-        "generate_from": "",
-        "values": ["solid", "dashed"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "border-bottom-style": {
-        "prefix": "bbstyle",
-        "generate_from": "",
-        "values": ["solid", "dashed"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "border-left-style": {
-        "prefix": "bbstyle",
-        "generate_from": "",
-        "values": ["solid", "dashed"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "border-color": {
-        "prefix": "bcolor",
-        "generate_from": "colors",
-        "values": [],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "background-size": {
-        "prefix": "bsize",
-        "generate_from": "",
-        "values": ["cover", "contain"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "background-position": {
-        "prefix": "bpos",
-        "generate_from": "",
-        "values": ["center"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "background-repeat": {
-        "prefix": "brep",
-        "generate_from": "",
-        "values": ["no-repeat", "repeat-x", "repeat-y"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "cursor": {
-        "prefix": "cur",
-        "generate_from": "",
-        "values": ["pointer"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "opacity": {
-        "prefix": "opa",
-        "generate_from": "",
-        "values": ["0", "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9"],
-        "names": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "list-style": {
-        "prefix": "ls",
-        "generate_from": "",
-        "values": ["none"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "pointer-events": {
-        "prefix": "pe",
-        "generate_from": "",
-        "values": ["none"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
-    },
-    "-webkit-appearance": {
-        "prefix": "appearance",
-        "generate_from": "",
-        "values": ["none"],
-        "names": [],
-        "responsive": false,
-        "generate_utility": false
+        "background-color": {
+            "prefix": "bc",
+            "generate_from": "colors",
+            "values": ["transparent"],
+            "names": ["0"],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "color": {
+            "prefix": "c",
+            "generate_from": "colors",
+            "values": [],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "border": {
+            "prefix": "b",
+            "generate_from": "",
+            "values": ["none"],
+            "names": ["0"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "border-width": {
+            "prefix": "bwidth",
+            "generate_from": "",
+            "values": ["1px", "2px", "3px"],
+            "names": ["1", "2", "3"],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "border-top-width": {
+            "prefix": "btwidth",
+            "generate_from": "",
+            "values": ["1px", "2px", "3px"],
+            "names": ["1", "2", "3"],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "border-right-width": {
+            "prefix": "brwidth",
+            "generate_from": "",
+            "values": ["1px", "2px", "3px"],
+            "names": ["1", "2", "3"],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "border-bottom-width": {
+            "prefix": "bbwidth",
+            "generate_from": "",
+            "values": ["1px", "2px", "3px"],
+            "names": ["1", "2", "3"],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "border-left-width": {
+            "prefix": "blwidth",
+            "generate_from": "",
+            "values": ["1px", "2px", "3px"],
+            "names": ["1", "2", "3"],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "border-style": {
+            "prefix": "bstyle",
+            "generate_from": "",
+            "values": ["solid", "dashed"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "border-top-style": {
+            "prefix": "btstyle",
+            "generate_from": "",
+            "values": ["solid", "dashed"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "border-right-style": {
+            "prefix": "brstyle",
+            "generate_from": "",
+            "values": ["solid", "dashed"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "border-bottom-style": {
+            "prefix": "bbstyle",
+            "generate_from": "",
+            "values": ["solid", "dashed"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "border-left-style": {
+            "prefix": "bbstyle",
+            "generate_from": "",
+            "values": ["solid", "dashed"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "border-color": {
+            "prefix": "bcolor",
+            "generate_from": "colors",
+            "values": [],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "background-size": {
+            "prefix": "bsize",
+            "generate_from": "",
+            "values": ["cover", "contain"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "background-position": {
+            "prefix": "bpos",
+            "generate_from": "",
+            "values": ["center"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "background-repeat": {
+            "prefix": "brep",
+            "generate_from": "",
+            "values": ["no-repeat", "repeat-x", "repeat-y"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "cursor": {
+            "prefix": "cur",
+            "generate_from": "",
+            "values": ["pointer"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "opacity": {
+            "prefix": "opa",
+            "generate_from": "",
+            "values": ["0", "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9"],
+            "names": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "list-style": {
+            "prefix": "ls",
+            "generate_from": "",
+            "values": ["none"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "pointer-events": {
+            "prefix": "pe",
+            "generate_from": "",
+            "values": ["none"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "-webkit-appearance": {
+            "prefix": "appearance",
+            "generate_from": "",
+            "values": ["none"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        }
     }
 }
