@@ -11,92 +11,12 @@
             box-sizing: border-box;
         }
     </style>
-    <style id="foo"></style>
-    <link rel="stylesheet" href="ds__fonts.css">
-    <link rel="stylesheet" href="ds__extras.css">
-    <link rel="stylesheet" href="ds__width-twelves.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 <body>
     <div>
         <h2>Exemple</h2>
-        <ul class="
-            d-flex gap-3 fwrap-wrap
-            p-0
-            ff-lead-300
-            ls-none">
-            <li class="
-                p-3 w-6t
-                bc-blue-100">
-                <ul class="
-                    d-flex fwrap-wrap gap-1
-                    m-0 p-0
-                    ls-none">
-                    <li class="w-6t bc-blue-200">foo</li>
-                    <li class="w-4t bc-blue-200">foo</li>
-                    <li class="w-3t bc-blue-200">foo</li>
-                    <li class="
-                        order--1
-                        w-5t
-                        ff-lead-700 fs-10
-                        bc-green-200
-                        __ellipsis-2">
-                        Sit sed et amet eos invidunt, ipsum eos voluptua justo et kasd ut et lorem et, sanctus sed sed justo.
-                    </li>
-                    <li class="
-                        w-6t
-                        ff-lead-300 fs-8
-                        bc-green-300
-                        __ellipsis-3">
-                        Sit sed et amet eos invidunt, ipsum eos voluptua justo et kasd ut et lorem et, sanctus sed sed justo.
-                    </li>
-                    <li class="
-                        w-6t
-                        ff-lead-500 fs-3
-                        bc-green-300
-                        __ellipsis-1">
-                        Sit sed et amet eos invidunt, ipsum eos voluptua justo et kasd ut et lorem et, sanctus sed sed justo.
-                    </li>
-                    <li class="
-                        w-6t
-                        ff-lead-600 fs-5
-                        bc-green-300
-                        __ellipsis-2">
-                        Sit sed et amet eos invidunt, ipsum eos voluptua justo et kasd ut et lorem et, sanctus sed sed justo.
-                    </li>
-                </ul>
-            </li>
-            <li class="
-                pos-relative
-                w-6t p-3
-                bc-blue-100">
-                foo
-                <div class="
-                    pos-absolute top-50 left-50 t-tX-50 t-tY-50
-                    p-3
-                    ff-lead-700 fs-11
-                    bc-blue-300 opa-3 cur-pointer">
-                    foo
-                </div>
-            </li>
-            <li class="
-                d-flex ai-center jc-start
-                w-3t p-3
-                bc-blue-100">
-                foo
-            </li>
-            <li class="w-4t">
-                <ul class="
-                    d-flex fd-column gap-3
-                    m-0 p-0 h-100
-                    ls-none">
-                    <li class="p-3 bc-blue-200">foo</li>
-                    <li class="p-3 bc-blue-200">foo</li>
-                    <li class="p-3 bc-blue-200">foo</li>
-                </ul>
-            </li>
-            <li class="w-5t bc-green-100" d-none="xs">foo</li>
-        </ul>
+        <div id="dsg__sandbox"></div>
     </div>
     <div>
         <h2>Documentation</h2>
@@ -104,7 +24,7 @@
             <li>
                 <details>
                     <summary>Tokens</summary>
-                    <ul id="doc__tokens">
+                    <ul id="dsg__doc__tokens">
                         <li>Colors</li>
                         <li>Screen sizes</li>
                         <li>Font families</li>
@@ -116,26 +36,26 @@
             <li>
                 <details open="">
                     <summary>Classes</summary>
-                    <ul id="doc__standard"></ul>
+                    <ul id="dsg__doc__standard"></ul>
                 </details>
             </li>
             <li>
                 <details open="">
                     <summary>Code</summary>
-                    <button type="button" onclick="ui.copyToClipboard(bar.innerText)">copy</button>
+                    <button type="button" onclick="ui.copyToClipboard(ds.elCodeCss.innerText)">copy</button>
                     <pre>
-                        <code id="bar"></code>
+                        <code id="dsg__code__css"></code>
                     </pre>
                 </details>
             </li>
         </ul>
     </div>
     
-    <script src="ds.js"></script>
+    <script src="dsg.js"></script>
     <script src="ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>
-        ds.getBuild('build.json');
+        dsg.getBuild('build.json');
     </script>
 
     <!-- and it's easy to individually load additional languages -->
