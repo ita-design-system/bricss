@@ -9,8 +9,9 @@ const dsg = {
                 .then(response => response.json())
                 .then(json => {
                     dsg.build = json;
-                    dsg.genDoc();
-                    dsg.genCode();
+                    dsg.genDocStandard();
+                    dsg.genDocTokens();
+                    dsg.genCodeCss();
                     console.log(dsg.build);
                 })
                 .catch(error => {
@@ -69,7 +70,7 @@ const dsg = {
         });
         return `\n:root {\n${markup}\n}\n`;
     },
-    genTokens: function() {
+    genDocTokens: function() {
         // let markup = '';
         // Object.keys(dsg.build.tokens).forEach(function(family) {
         //     Object.keys(dsg.build.tokens[family]).forEach(function(tokenName) {
@@ -78,7 +79,7 @@ const dsg = {
         // });
         // return `\n:root {\n${markup}\n}\n`;
     },
-    genCode: function() {
+    genCodeCss: function() {
         const responsiveCss = {};
         dsg.elCodeCss.innerHTML = dsg.genCssVariables();
         Object.keys(dsg.build.tokens.screenSizes).forEach(function(screenSize) {
@@ -260,7 +261,7 @@ const dsg = {
             `;
         }
     },
-    genDoc: function() {
+    genDocStandard: function() {
         dsg.elDocStandard.innerHTML = '';
         Object.keys(dsg.build.properties).forEach(function(property) {
             const propertyData = dsg.build.properties[property];
