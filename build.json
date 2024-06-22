@@ -640,9 +640,9 @@
         "border-style": {
             "prefix": "bstyle",
             "generate_from": "",
-            "values": ["solid", "dashed"],
+            "values": ["solid", "dashed", "none"],
             "names": [],
-            "responsive": false,
+            "responsive": true,
             "generate_utility": false
         },
         "border-top-style": {

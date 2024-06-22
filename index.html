@@ -16,7 +16,9 @@
 <body>
     <div>
         <h2>Exemple</h2>
-        <div id="dsg__sandbox"></div>
+        <div id="dsg__sandbox">
+            <iframe id="dsg__sandbox__iframe" src="sandbox.html"></iframe>
+        </div>
     </div>
     <div>
         <h2>Documentation</h2>
@@ -36,6 +38,11 @@
             <li>
                 <details open="">
                     <summary>Classes</summary>
+                    <label for="dsg__search__input">Recherche rapide</label>
+                    <input id="dsg__search__input"
+                        type="search"
+                        oninput="dsg.searchText(this.value)"
+                        autocomplete="off">
                     <ul id="dsg__doc__standard"></ul>
                 </details>
             </li>

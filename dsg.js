@@ -1,8 +1,10 @@
 const dsg = {
     elSandbox: document.querySelector('#dsg__sandbox'),
+    elSandboxIframe: document.querySelector('#dsg__sandbox__iframe'),
     elDocTokens: document.querySelector('#dsg__doc__tokens'),
     elDocStandard: document.querySelector('#dsg__doc__standard'),
     elCodeCss: document.querySelector('#dsg__code__css'),
+    elSearchInput: document.querySelector('#dsg__search__input'),
     getBuild: function(jsonUrl) {
         if (typeof jsonUrl == 'string') {
             fetch(`${jsonUrl}`)
@@ -19,6 +21,15 @@ const dsg = {
                     console.log('Build JSON load failed');
                 });
         }
+    },
+    searchText: function(query) {
+        dsg.elDocStandard.querySelectorAll('.dsg__doc__property_item').forEach(function(el) {
+            if (el.innerText.toLowerCase().indexOf(query.toLowerCase()) == -1) {
+                el.hidden = true;
+            } else {
+                el.hidden = false;
+            }
+        });
     },
     isATokenFamily: function(tokensFamily) {
         const tokensFamilies = Object.keys(dsg.build.tokens);
@@ -147,9 +158,15 @@ const dsg = {
                 content: responsiveCss[screenSize]
             });
         });
+        const elIncludedStyle = dsg.elSandboxIframe.contentWindow.document.head.querySelector('#dsg__included_style');
+        if (elIncludedStyle === null) {
+            const includedStyleMarkup = `<style id="dsg__included_style">${dsg.elCodeCss.innerHTML}</style>`;
+            dsg.elSandboxIframe.contentWindow.document.head.insertAdjacentHTML('beforeend', includedStyleMarkup);
+        } else {
+            elIncludedStyle.innerHTML = dsg.elCodeCss.innerHTML;
+        }
         dsg.elCodeCss.dataset.highlighted = '';
         hljs.highlightElement(dsg.elCodeCss);
-        
     },
     setResponsive: function(evt) {
         const selectedScreenSizesNames = [];
