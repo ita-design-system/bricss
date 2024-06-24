@@ -3,75 +3,92 @@
         "separator": "-",
         "responsiveSeparator": "--",
         "utilitiesPrefix": "u",
-        "cssVariablesPrefix": "ita"
+        "cssVariablesPrefix": "dsg"
     },
     "tokens": {
         "colors": {
-            "blue-100": "#eaf3ff",
-            "blue-200": "#abcbf5",
-            "blue-300": "#80b1ef",
-            "blue-400": "#5697ea",
-            "blue-500": "#2C7DE5",
-            "blue-600": "#1863c2",
-            "blue-700": "#124a92",
-            "blue-800": "#0c3161",
-            "blue-900": "#061931",
-            "green-100": "#e4f1dd",
-            "green-200": "#c9e3bb",
-            "green-300": "#aed69a",
-            "green-400": "#93c878",
-            "green-500": "#78ba56",
-            "green-600": "#5e9b3f",
-            "green-700": "#47742f",
-            "green-800": "#2f4d20",
-            "green-900": "#182710"
+            "primary-100": "#F1F4F4",
+            "primary-200": "#E3EAEA",
+            "primary-300": "#B9C1C2",
+            "primary-400": "#7E8485",
+            "primary-500": "#313435",
+            "primary-600": "#232A2D",
+            "primary-700": "#182026",
+            "primary-800": "#0F171E",
+            "primary-900": "#091019",
+
+            "success-100": "#ECFCD7",
+            "success-200": "#D4F9B1",
+            "success-300": "#B2EE87",
+            "success-400": "#90DE66",
+            "success-500": "#61C938",
+            "success-600": "#45AC28",
+            "success-700": "#2D901C",
+            "success-800": "#197411",
+            "success-900": "#0B600A",
+
+            "info-100": "#CAFDF4",
+            "info-200": "#96FBF2",
+            "info-300": "#61F3F2",
+            "info-400": "#39DBE7",
+            "info-500": "#00B8D8",
+            "info-600": "#008FB9",
+            "info-700": "#006C9B",
+            "info-800": "#004D7D",
+            "info-900": "#003867",
+
+            "warning-100": "#FCFACF",
+            "warning-200": "#FAF6A0",
+            "warning-300": "#F1EA6F",
+            "warning-400": "#E4DB4A",
+            "warning-500": "#D3C615",
+            "warning-600": "#B5A80F",
+            "warning-700": "#978C0A",
+            "warning-800": "#7A6F06",
+            "warning-900": "#655B04",
+            
+            "danger-100": "#FFECD3",
+            "danger-200": "#FFD3A8",
+            "danger-300": "#FFB57C",
+            "danger-400": "#FF975C",
+            "danger-500": "#FF6726",
+            "danger-600": "#DB481B",
+            "danger-700": "#B72E13",
+            "danger-800": "#93190C",
+            "danger-900": "#7A0A07"
         },
         "screenSizes": {
             "xs": ["0px", "600px"],
             "sm": ["600px", "960px"],
             "md": ["960px", "1200px"],
-            "lg": ["1200px", "1440px"],
-            "xl": ["1440px", "infinite"]
+            "lg": ["1200px", "infinite"]
         },
         "fontFamilies": {
-            "lead-300": "'Lexend Light', sans-serif",
-            "lead-500": "'Lexend Medium', sans-serif",
-            "lead-600": "'Lexend SemiBold', sans-serif",
-            "lead-700": "'Lexend Bold', sans-serif",
+            "lead-400": "'EncodeSans Regular', sans-serif",
+            "lead-700": "'EncodeSans Bold', sans-serif",
             "mono": "Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace"
         },
         "fontSizes": {
-            "1": "8px",
-            "2": "10px",
-            "3": "12px",
-            "4": "14px",
-            "5": "16px",
-            "6": "18px",
-            "7": "20px",
-            "8": "24px",
-            "9": "28px",
-            "10": "32px",
-            "11": "36px",
-            "12": "42px",
-            "13": "48px",
-            "14": "54px",
-            "15": "60px"
+            "1": "10px",
+            "2": "12px",
+            "3": "14px",
+            "4": "16px",
+            "5": "20px",
+            "6": "28px",
+            "7": "36px",
+            "8": "48px",
+            "9": "64px"
         },
         "spacings": {
             "1": "4px",
             "2": "8px",
             "3": "12px",
             "4": "16px",
-            "5": "20px",
-            "6": "24px",
-            "7": "32px",
-            "8": "40px",
-            "9": "48px",
-            "10": "56px",
-            "11": "64px",
-            "12": "80px",
-            "13": "96px",
-            "14": "112px"
+            "5": "24px",
+            "6": "32px",
+            "7": "48px",
+            "8": "64px",
+            "9": "96px"
         }
     },
     "properties": {
@@ -199,7 +216,7 @@
             "responsive": true,
             "generate_utility": false
         },
-        "--ita-tX": {
+        "--dsg-tX": {
             "prefix": "t",
             "generate_from": "",
             "values": [
@@ -217,7 +234,7 @@
             "responsive": true,
             "generate_utility": false
         },
-        "--ita-tY": {
+        "--dsg-tY": {
             "prefix": "t",
             "generate_from": "",
             "values": [
@@ -239,14 +256,14 @@
             "prefix": "t",
             "generate_from": "",
             "values": [
-                "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
-                "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
-                "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
-                "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
-                "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
-                "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
-                "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))",
-                "translateX(var(--ita-tX, 0)) translateY(var(--ita-tY, 0))"
+                "translateX(var(--dsg-tX, 0)) translateY(var(--dsg-tY, 0))",
+                "translateX(var(--dsg-tX, 0)) translateY(var(--dsg-tY, 0))",
+                "translateX(var(--dsg-tX, 0)) translateY(var(--dsg-tY, 0))",
+                "translateX(var(--dsg-tX, 0)) translateY(var(--dsg-tY, 0))",
+                "translateX(var(--dsg-tX, 0)) translateY(var(--dsg-tY, 0))",
+                "translateX(var(--dsg-tX, 0)) translateY(var(--dsg-tY, 0))",
+                "translateX(var(--dsg-tX, 0)) translateY(var(--dsg-tY, 0))",
+                "translateX(var(--dsg-tX, 0)) translateY(var(--dsg-tY, 0))"
             ],
             "names": [
                 "tX-50",
@@ -271,7 +288,7 @@
             "responsive": true,
             "generate_utility": false
         },
-        "--ita-gap": {
+        "--dsg-gap": {
             "prefix": "gap",
             "generate_from": "spacings",
             "values": [],

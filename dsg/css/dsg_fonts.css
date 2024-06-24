@@ -1,0 +1,23 @@
+@font-face {
+    font-family: "EncodeSans Regular";
+    src: url("../fonts/EncodeSans/EncodeSans-Regular.woff2") format("woff2"), url("../fonts/EncodeSans/EncodeSans-Regular.woff") format("woff");
+    font-style: normal;
+    font-display: swap;
+    font-weight: 500
+}
+@font-face {
+    font-family: "EncodeSans Bold";
+    src: url("../fonts/EncodeSans/EncodeSans-Bold.woff2") format("woff2"), url("../fonts/EncodeSans/EncodeSans-Bold.woff") format("woff");
+    font-style: normal;
+    font-display: swap;
+    font-weight: 700
+}
+
+
+/* WEIGHTS ADJUSTMENTS */
+.ff-lead-400 {
+    font-weight: 400;
+}
+.ff-lead-700 {
+    font-weight: 700;
+}

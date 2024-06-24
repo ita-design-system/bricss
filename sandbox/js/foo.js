@@ -1,0 +1,1 @@
+document.body.insertAdjacentHTML('afterbegin', '<h1>hello</h1>')
