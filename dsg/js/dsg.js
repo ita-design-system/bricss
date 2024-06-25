@@ -24,10 +24,12 @@ const dsg = {
     },
     searchText: function(query) {
         dsg.elDocStandard.querySelectorAll('.dsg__doc__property_item').forEach(function(el) {
-            if (el.innerText.toLowerCase().indexOf(query.toLowerCase()) == -1) {
-                el.hidden = true;
+            const elementContent = el.innerText.toLowerCase();
+            const queryContent = query.toLowerCase();
+            if (elementContent.indexOf(queryContent) == -1) {
+                el.style.display = 'none';
             } else {
-                el.hidden = false;
+                el.style.display = null;
             }
         });
     },
@@ -234,7 +236,12 @@ const dsg = {
         },
         docClassValueItem: function({className, value}) {
             return `
-                <li><code>${className}</code> ${value}</li>
+                <li class="d-flex jc-space-between gap-3 | fs-3">
+                    <code>${className}</code>
+                    <strong class="ff-mono | c-info-500">
+                        ${value}
+                    </strong>
+                </li>
             `;
         },
         docUtilityCheckboxItem: function({id, label}) {
@@ -261,9 +268,9 @@ const dsg = {
         },
         docPropertyItem: function({property, content, responsiveContent, utilityContent}) {
             return `
-                <li class="dsg__doc__property_item" data-property="${property}">
-                    <h4>${property}</h4>
-                    <ul class="dsg__doc__property_item__list">
+                <li class="dsg__doc__property_item | d-flex fd-column" data-property="${property}">
+                    <h4 class="m-0 | ff-mono">${property}</h4>
+                    <ul class="dsg__doc__property_item__list | d-flex fd-column gap-1 | m-0 p-0">
                         ${content}
                     </ul>
                     <fieldset class="dsg__doc__property_item__responsive_content">
