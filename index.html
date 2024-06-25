@@ -21,9 +21,9 @@
     <link rel="stylesheet" href="dsg/css/highlight-js-themes/atom-one-dark.min.css">
 </head>
 <body class="m-0 | bc-primary-700 c-primary-200">
-    <header class="d-flex ai-center gap-8 | pos-sticky top-0 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500">
+    <header class="d-flex ai-center gap-8 | pl-9 | pos-sticky top-0 z-1 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500">
         <h1 class="d-flex | m-0 | ff-lead-700 tt-uppercase fs-4">
-            <a href="#" class="p-3 | td-none | c-primary-100">Design System</a>
+            <a href="#" class="pt-3 pb-3 | td-none | c-primary-100">Design System</a>
         </h1>
         <nav id="dsg__nav" class="d-flex ai-center gap-8 | m-0 p-0">
             <a href="#tokens">Tokens</a>
@@ -34,16 +34,22 @@
     </header>
 
     <main>
-        <section class="minh-100vh">
-            <h2>CSS classes</h2>
+        <section class="d-flex ai-start gap-9 | pl-9 pr-9 minh-100vh">
+            <header class="d-flex fd-column gap-6 | pos-sticky top-0 | pt-9">
+                <span class="ff-mono fs-9 c-secondary-500">{}</span>
+                <h2 class="m-0 | ff-lead-700 fs-8">CSS classes</h2>
+                <p class="m-0">Description Stet ut ea et dolores consetetur diam et sed lorem eos. Sit gubergren nonumy amet dolor et et labore et.</p>
+            </header>
             <div class="d-flex fd-column">
-                <label for="dsg__search__input">Quick search</label>
-                <input id="dsg__search__input"
-                    type="search"
-                    oninput="dsg.searchText(this.value)"
-                    autocomplete="off">
+                <div class="d-flex fd-column | pos-sticky top-0 pt-7">
+                    <label for="dsg__search__input">Quick search</label>
+                    <input id="dsg__search__input"
+                        type="search"
+                        oninput="dsg.searchText(this.value)"
+                        autocomplete="off">
+                </div>
+                <ul id="dsg__doc__standard" class="d-flex fwrap-wrap gap-9 | m-0 p-0 | ls-none"></ul>
             </div>
-            <ul id="dsg__doc__standard" class="d-flex fwrap-wrap gap-9 | m-0 p-0 | ls-none"></ul>
         </section>
 
         <section id="tokens"
