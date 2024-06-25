@@ -232,15 +232,29 @@ const dsg = {
     },
     templates: {
         docClassValueResponsiveItem: function({classes, attribute, value}) {
-            return `<li><code>${classes}</code><br><code>${attribute}</code> <br>${value}</li>`;
+            return `
+                <li class="d-flex jc-space-between gap-5 | mb-3">
+                    <div class="d-flex fd-column gap-1">
+                        <span class="d-flex fd-column">
+                            <span class="ff-lead-400 fs-1 tt-uppercase | c-secondary-700">CSS Classes</span>
+                            <code class="ff-mono fs-3 | c-secondary-500">${classes}</code>
+                        </span>
+                        <span class="d-flex fd-column">
+                            <span class="ff-lead-400 fs-1 tt-uppercase | c-tertiary-700">Attribute</span>
+                            <code class="ff-mono fs-3 | c-tertiary-300">${attribute}</code>
+                        </span>
+                    </div>
+                    <span class="d-flex fd-column ai-end">
+                        <span class="ff-lead-400 fs-1 tt-uppercase | c-tertiary-700">Value</span>
+                        <code class="ff-mono fs-3 | c-tertiary-500">${value}</code>
+                    </span>
+                </li>`;
         },
         docClassValueItem: function({className, value}) {
             return `
-                <li class="d-flex jc-space-between gap-3 | fs-3">
-                    <code>${className}</code>
-                    <strong class="ff-mono | c-info-500">
-                        ${value}
-                    </strong>
+                <li class="d-flex jc-space-between gap-5 | fs-3">
+                    <code class="c-quaternary-500">${className}</code>
+                    <strong class="ff-mono | c-tertiary-500">${value}</strong>
                 </li>
             `;
         },
@@ -261,24 +275,43 @@ const dsg = {
                     <input type="checkbox"
                         id="${id}"
                         value="${screenSize}"
-                        onchange="dsg.setResponsive(event)">
-                    <label for="${id}">${screenSize}</label>
+                        onchange="dsg.setResponsive(event)"
+                        class="pos-absolute | opa-0 | __checkbox_ui">
+                    <label for="${id}" class="d-flex ai-center gap-3">
+                        <span class="p-2 | bc-primary-100 bwidth-1 bstyle-solid bcolor-primary-800 brad-1 | __checkbox_ui"></span>
+                        ${screenSize}
+                    </label>
                 </div>
             `;
         },
         docPropertyItem: function({property, content, responsiveContent, utilityContent}) {
             return `
-                <li class="dsg__doc__property_item | d-flex fd-column" data-property="${property}">
-                    <h4 class="m-0 | ff-mono">${property}</h4>
+                <li class="dsg__doc__property_item | d-flex fd-column gap-3 fg-1" data-property="${property}">
+                    <h4 class="d-flex fd-column gap-3 | m-0">
+                        <span class="d-flex fd-column">
+                            <span class="ff-lead-400 fs-1 tt-uppercase | c-secondary-700">Property</span>
+                            <span class="ff-mono fs-5 | c-secondary-500">${property}</span>
+                        </span>
+                        <span class="d-flex fd-column">
+                            <span class="ff-lead-400 fs-1 tt-uppercase | c-quaternary-800">Prefix</span>
+                            <span class="ff-mono fs-5 | c-quaternary-500">
+                                ${dsg.build.properties[property].prefix}${dsg.build.settings.separator}
+                            </span>
+                        </span>
+                    </h4>
                     <ul class="dsg__doc__property_item__list | d-flex fd-column gap-1 | m-0 p-0">
+                        <li class="d-flex jc-space-between gap-3 | fs-1 tt-uppercase">
+                            <span class="c-quaternary-800">CSS Class</span>
+                            <span class="c-tertiary-700">Value</span>
+                        </li>
                         ${content}
                     </ul>
-                    <fieldset class="dsg__doc__property_item__responsive_content">
-                        <legend>Responsive</legend>
+                    <fieldset class="dsg__doc__property_item__responsive_content | bwidth-1 bstyle-solid bcolor-primary-500 brad-2">
+                        <legend class="fs-2 | c-primary-300">Responsive</legend>
                         ${responsiveContent}
                     </fieldset>
-                    <fieldset class="dsg__doc__property_item__utility_content">
-                        <legend>Utitity</legend>
+                    <fieldset class="dsg__doc__property_item__utility_content | bwidth-1 bstyle-solid bcolor-primary-500 brad-2">
+                        <legend class="fs-2 | c-primary-300">Utitity</legend>
                         ${utilityContent}
                     </fieldset>
                 </li>
@@ -288,50 +321,52 @@ const dsg = {
     genDocStandard: function() {
         dsg.elDocStandard.innerHTML = '';
         Object.keys(dsg.build.properties).forEach(function(property) {
-            const propertyData = dsg.build.properties[property];
-            const tokensKeysAndValues = dsg.genFrom(propertyData.generate_from);
-            let classesValuesMarkup = '';
-            let responsiveMarkup = '';
-            let utilityMarkup = '';
-            // Generate from custom values
-            propertyData.values.forEach(function(value, index) {
-                let name = value;
-                if (typeof propertyData.names[index] == 'string') name = propertyData.names[index];
-                // Generate from values
-                classesValuesMarkup += dsg.templates.docClassValueItem({
-                    className: propertyData.prefix +  dsg.build.settings.separator + name,
-                    value: value
-                })
-            });
-            // Generate from tokens
-            tokensKeysAndValues.forEach(function(token) {
-                classesValuesMarkup += dsg.templates.docClassValueItem({
-                    className: propertyData.prefix +  dsg.build.settings.separator + token.name,
-                    value: token.value
-                })
-            });
-            // Responsive
-            if (propertyData.responsive) {
-                Object.keys(dsg.build.tokens.screenSizes).forEach(function(screenSize, index) {
-                    responsiveMarkup += dsg.templates.docScreenSizeCheckboxItem({
-                        id: `dsg__doc__standard__${property}_${screenSize}`,
-                        screenSize: screenSize
+            if (property.indexOf('--') == -1) {
+                const propertyData = dsg.build.properties[property];
+                const tokensKeysAndValues = dsg.genFrom(propertyData.generate_from);
+                let classesValuesMarkup = '';
+                let responsiveMarkup = '';
+                let utilityMarkup = '';
+                // Generate from custom values
+                propertyData.values.forEach(function(value, index) {
+                    let name = value;
+                    if (typeof propertyData.names[index] == 'string') name = propertyData.names[index];
+                    // Generate from values
+                    classesValuesMarkup += dsg.templates.docClassValueItem({
+                        className: propertyData.prefix +  dsg.build.settings.separator + name,
+                        value: value
+                    })
+                });
+                // Generate from tokens
+                tokensKeysAndValues.forEach(function(token) {
+                    classesValuesMarkup += dsg.templates.docClassValueItem({
+                        className: propertyData.prefix +  dsg.build.settings.separator + token.name,
+                        value: token.value
+                    })
+                });
+                // Responsive
+                if (propertyData.responsive) {
+                    Object.keys(dsg.build.tokens.screenSizes).forEach(function(screenSize, index) {
+                        responsiveMarkup += dsg.templates.docScreenSizeCheckboxItem({
+                            id: `dsg__doc__standard__${property}_${screenSize}`,
+                            screenSize: screenSize
+                        });
                     });
+                }
+                // Utility
+                if (propertyData.generate_utility) {
+                    utilityMarkup = dsg.templates.docUtilityCheckboxItem({
+                        id: `dsg__doc__utility__${property}`,
+                        label: `Apply`
+                    });
+                }
+                dsg.elDocStandard.innerHTML += dsg.templates.docPropertyItem({
+                    property: property,
+                    content: classesValuesMarkup,
+                    responsiveContent: responsiveMarkup,
+                    utilityContent: utilityMarkup
                 });
             }
-            // Utility
-            if (propertyData.generate_utility) {
-                utilityMarkup = dsg.templates.docUtilityCheckboxItem({
-                    id: `dsg__doc__utility__${property}`,
-                    label: `Apply`
-                });
-            }
-            dsg.elDocStandard.innerHTML += dsg.templates.docPropertyItem({
-                property: property,
-                content: classesValuesMarkup,
-                responsiveContent: responsiveMarkup,
-                utilityContent: utilityMarkup
-            });
         })
     }
 }

@@ -14,7 +14,7 @@
     --wtw-fraction: var(--twelves, -);
     --wtw-total-amount-of-fractions: 12;
     --wtw-item-default-width: calc(100% * var(--wtw-fraction) / var(--wtw-total-amount-of-fractions));
-    --wtw-item-offset: calc(var(--wtw-fraction) * var(--ita-gap, 0px) * ((var(--wtw-total-amount-of-fractions) / var(--wtw-fraction)) - 1) / var(--wtw-total-amount-of-fractions));
+    --wtw-item-offset: calc(var(--wtw-fraction) * var(--dsg-gap, 0px) * ((var(--wtw-total-amount-of-fractions) / var(--wtw-fraction)) - 1) / var(--wtw-total-amount-of-fractions));
     width: calc(var(--wtw-item-default-width) - var(--wtw-item-offset));
     box-sizing: border-box;
 }

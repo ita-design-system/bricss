@@ -16,46 +16,36 @@
             "primary-700": "#182026",
             "primary-800": "#0F171E",
             "primary-900": "#091019",
-
-            "success-100": "#ECFCD7",
-            "success-200": "#D4F9B1",
-            "success-300": "#B2EE87",
-            "success-400": "#90DE66",
-            "success-500": "#61C938",
-            "success-600": "#45AC28",
-            "success-700": "#2D901C",
-            "success-800": "#197411",
-            "success-900": "#0B600A",
-
-            "info-100": "#CAFDF4",
-            "info-200": "#96FBF2",
-            "info-300": "#61F3F2",
-            "info-400": "#39DBE7",
-            "info-500": "#00B8D8",
-            "info-600": "#008FB9",
-            "info-700": "#006C9B",
-            "info-800": "#004D7D",
-            "info-900": "#003867",
-
-            "warning-100": "#FCFACF",
-            "warning-200": "#FAF6A0",
-            "warning-300": "#F1EA6F",
-            "warning-400": "#E4DB4A",
-            "warning-500": "#D3C615",
-            "warning-600": "#B5A80F",
-            "warning-700": "#978C0A",
-            "warning-800": "#7A6F06",
-            "warning-900": "#655B04",
             
-            "danger-100": "#FFECD3",
-            "danger-200": "#FFD3A8",
-            "danger-300": "#FFB57C",
-            "danger-400": "#FF975C",
-            "danger-500": "#FF6726",
-            "danger-600": "#DB481B",
-            "danger-700": "#B72E13",
-            "danger-800": "#93190C",
-            "danger-900": "#7A0A07"
+            "secondary-100": "#FFCCED",
+            "secondary-200": "#FF99E4",
+            "secondary-300": "#FF66E4",
+            "secondary-400": "#FF3FEE",
+            "secondary-500": "#F0F",
+            "secondary-600": "#C800DB",
+            "secondary-700": "#9700B7",
+            "secondary-800": "#6D0093",
+            "secondary-900": "#4F007A",
+
+            "tertiary-100": "#CCFFFA",
+            "tertiary-200": "#99FFFD",
+            "tertiary-300": "#66F6FF",
+            "tertiary-400": "#3FE6FF",
+            "tertiary-500": "#00CBFF",
+            "tertiary-600": "#009EDB",
+            "tertiary-700": "#0076B7",
+            "tertiary-800": "#005493",
+            "tertiary-900": "#003D7A",
+
+            "quaternary-100": "#FFFBCD",
+            "quaternary-200": "#FFF59B",
+            "quaternary-300": "#FFEE69",
+            "quaternary-400": "#FFE843",
+            "quaternary-500": "#FFDD05",
+            "quaternary-600": "#DBBA03",
+            "quaternary-700": "#B79902",
+            "quaternary-800": "#937901",
+            "quaternary-900": "#7A6200"
         },
         "screenSizes": {
             "xs": ["0px", "600px"],
@@ -665,7 +655,7 @@
         "border-top-style": {
             "prefix": "btstyle",
             "generate_from": "",
-            "values": ["solid", "dashed"],
+            "values": ["solid", "dashed", "none"],
             "names": [],
             "responsive": false,
             "generate_utility": false
@@ -673,7 +663,7 @@
         "border-right-style": {
             "prefix": "brstyle",
             "generate_from": "",
-            "values": ["solid", "dashed"],
+            "values": ["solid", "dashed", "none"],
             "names": [],
             "responsive": false,
             "generate_utility": false
@@ -681,7 +671,7 @@
         "border-bottom-style": {
             "prefix": "bbstyle",
             "generate_from": "",
-            "values": ["solid", "dashed"],
+            "values": ["solid", "dashed", "none"],
             "names": [],
             "responsive": false,
             "generate_utility": false
@@ -689,7 +679,7 @@
         "border-left-style": {
             "prefix": "bbstyle",
             "generate_from": "",
-            "values": ["solid", "dashed"],
+            "values": ["solid", "dashed", "none"],
             "names": [],
             "responsive": false,
             "generate_utility": false
@@ -699,6 +689,14 @@
             "generate_from": "colors",
             "values": [],
             "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "border-radius": {
+            "prefix": "brad",
+            "generate_from": "",
+            "values": ["3px", "6px", "12px", "100px"],
+            "names": ["1", "2", "3", "4"],
             "responsive": false,
             "generate_utility": false
         },
