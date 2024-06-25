@@ -620,6 +620,38 @@
             "responsive": true,
             "generate_utility": false
         },
+        "border-top": {
+            "prefix": "bt",
+            "generate_from": "",
+            "values": ["none"],
+            "names": ["0"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "border-right": {
+            "prefix": "br",
+            "generate_from": "",
+            "values": ["none"],
+            "names": ["0"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "border-bottom": {
+            "prefix": "bb",
+            "generate_from": "",
+            "values": ["none"],
+            "names": ["0"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "border-left": {
+            "prefix": "bl",
+            "generate_from": "",
+            "values": ["none"],
+            "names": ["0"],
+            "responsive": true,
+            "generate_utility": false
+        },
         "border-width": {
             "prefix": "bwidth",
             "generate_from": "",
@@ -631,32 +663,32 @@
         "border-top-width": {
             "prefix": "btwidth",
             "generate_from": "",
-            "values": ["1px", "2px", "3px"],
-            "names": ["1", "2", "3"],
+            "values": ["0px", "1px", "2px", "3px"],
+            "names": ["0", "1", "2", "3"],
             "responsive": false,
             "generate_utility": false
         },
         "border-right-width": {
             "prefix": "brwidth",
             "generate_from": "",
-            "values": ["1px", "2px", "3px"],
-            "names": ["1", "2", "3"],
+            "values": ["0px", "1px", "2px", "3px"],
+            "names": ["0", "1", "2", "3"],
             "responsive": false,
             "generate_utility": false
         },
         "border-bottom-width": {
             "prefix": "bbwidth",
             "generate_from": "",
-            "values": ["1px", "2px", "3px"],
-            "names": ["1", "2", "3"],
+            "values": ["0px", "1px", "2px", "3px"],
+            "names": ["0", "1", "2", "3"],
             "responsive": false,
             "generate_utility": false
         },
         "border-left-width": {
             "prefix": "blwidth",
             "generate_from": "",
-            "values": ["1px", "2px", "3px"],
-            "names": ["1", "2", "3"],
+            "values": ["0px", "1px", "2px", "3px"],
+            "names": ["0", "1", "2", "3"],
             "responsive": false,
             "generate_utility": false
         },
@@ -711,8 +743,40 @@
         "border-radius": {
             "prefix": "brad",
             "generate_from": "",
-            "values": ["3px", "6px", "12px", "100px"],
-            "names": ["1", "2", "3", "4"],
+            "values": ["0px", "3px", "6px", "12px", "100px"],
+            "names": ["0", "1", "2", "3", "4"],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "border-top-left-radius": {
+            "prefix": "bradtl",
+            "generate_from": "",
+            "values": ["0px", "3px", "6px", "12px", "100px"],
+            "names": ["0", "1", "2", "3", "4"],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "border-top-right-radius": {
+            "prefix": "bradtr",
+            "generate_from": "",
+            "values": ["0px", "3px", "6px", "12px", "100px"],
+            "names": ["0", "1", "2", "3", "4"],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "border-bottom-right-radius": {
+            "prefix": "bradbr",
+            "generate_from": "",
+            "values": ["0px", "3px", "6px", "12px", "100px"],
+            "names": ["0", "1", "2", "3", "4"],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "border-bottom-left-radius": {
+            "prefix": "bradbl",
+            "generate_from": "",
+            "values": ["0px", "3px", "6px", "12px", "100px"],
+            "names": ["0", "1", "2", "3", "4"],
             "responsive": false,
             "generate_utility": false
         },

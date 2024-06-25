@@ -25,9 +25,11 @@ const dsg = {
         }
     },
     scrollToHash: function() {
-        const elTarget = document.querySelector(location.hash);
-        if (elTarget !== null) {
-            elTarget.scrollIntoView({behavior: 'smooth'});
+        if (location.hash != '') {
+            const elTarget = document.querySelector(location.hash);
+            if (elTarget !== null) {
+                elTarget.scrollIntoView({behavior: 'smooth'});
+            }
         }
     },
     searchText: function(query) {

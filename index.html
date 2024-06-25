@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="dsg/css/dsg_checkboxes.css">
     <link rel="stylesheet" href="dsg/css/highlight-js-themes/atom-one-dark.min.css">
 </head>
-<body class="m-0 | bc-primary-700 c-primary-200">
+<body class="m-0 | ff-lead-400 | bc-primary-700 c-primary-200">
     <header class="d-flex ai-center gap-8 | pl-9 | pos-sticky top-0 z-1 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500">
         <h1 class="d-flex | m-0 | ff-lead-700 tt-uppercase fs-4">
             <a href="#" class="pt-3 pb-3 | td-none | c-primary-100">Design System</a>
@@ -40,13 +40,19 @@
                 <h2 class="m-0 | ff-lead-700 fs-8">CSS classes</h2>
                 <p class="m-0">Description Stet ut ea et dolores consetetur diam et sed lorem eos. Sit gubergren nonumy amet dolor et et labore et.</p>
             </header>
-            <div class="d-flex fd-column">
-                <div class="d-flex fd-column | pos-sticky top-0 pt-7">
-                    <label for="dsg__search__input">Quick search</label>
-                    <input id="dsg__search__input"
-                        type="search"
-                        oninput="dsg.searchText(this.value)"
-                        autocomplete="off">
+            <div class="d-flex fd-column gap-6">
+                <div class="d-flex jc-space-between | pos-sticky top-0 | pt-8 pb-3 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500">
+                    <div></div>
+                    <div class="d-flex fd-column">
+                        <label for="dsg__search__input" class="d-flex pl-3 | fs-2 | c-tertiary-500 blwidth-3 blstyle-solid bcolor-tertiary-500 bradtl-3">
+                            <span class="t-tY-50">Quick search</span>
+                        </label>
+                        <input id="dsg__search__input"
+                            type="search"
+                            class="ff-lead-400 | p-2 | brad-0 bc-primary-200 c-primary-900 b-0 blwidth-3 blstyle-solid bcolor-tertiary-500"
+                            oninput="dsg.searchText(this.value)"
+                            autocomplete="off">
+                    </div>
                 </div>
                 <ul id="dsg__doc__standard" class="d-flex fwrap-wrap gap-9 | m-0 p-0 | ls-none"></ul>
             </div>
