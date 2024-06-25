@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design System Name</title>
+    <title>Design System</title>
     <style>
         * {
             box-sizing: border-box;
@@ -14,50 +14,74 @@
     <link rel="stylesheet" href="dsg/css/dsg_fonts.css">
     <link rel="stylesheet" href="dsg/css/dsg_core.css">
     <link rel="stylesheet" href="dsg/css/dsg_html5.css">
+    <link rel="stylesheet" href="dsg/css/dsg_navbar.css">
     <link rel="stylesheet" href="dsg/css/dsg_width-twelves.css">
     <link rel="stylesheet" href="dsg/css/dsg_ellipsis.css">
     <link rel="stylesheet" href="dsg/css/dsg_checkboxes.css">
     <link rel="stylesheet" href="dsg/css/highlight-js-themes/atom-one-dark.min.css">
 </head>
-<body class="bc-primary-700 c-primary-200">
-    <header class="d-flex ai-center jc-space-between">
-        <h1 class="m-0 | ff-lead-700 tt-uppercase fs-4">Design System Name</h1>
-        <nav>
-            <menu class="d-flex | m-0 p-0 | ls-none">
-                <li>Classes</li>
-                <li>Tokens</li>
-                <li>CSS <button type="button" onclick="ui.copyToClipboard(dsg.elCodeCss.innerText)">copy</button></li>
-                <li>Sandbox</li>
-            </menu>
+<body class="m-0 | bc-primary-700 c-primary-200">
+    <header class="d-flex ai-center gap-8 | pos-sticky top-0 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500">
+        <h1 class="d-flex | m-0 | ff-lead-700 tt-uppercase fs-4">
+            <a href="#" class="p-3 | td-none | c-primary-100">Design System</a>
+        </h1>
+        <nav id="dsg__nav" class="d-flex ai-center gap-8 | m-0 p-0">
+            <a href="#tokens">Tokens</a>
+            <a href="#css">CSS</a>
+            <a href="#sandbox">Sandbox</a>
+            <button type="button" onclick="ui.copyToClipboard(dsg.elCodeCss.innerText)">copy CSS</button>
         </nav>
     </header>
-    <label for="dsg__search__input">Recherche rapide</label>
-    <input id="dsg__search__input"
-        type="search"
-        oninput="dsg.searchText(this.value)"
-        autocomplete="off">
-    <ul id="dsg__doc__standard" class="d-flex fwrap-wrap gap-9 | m-0 p-0 | ls-none"></ul>
 
-    <ul id="dsg__doc__tokens">
-        <li>Colors</li>
-        <li>Screen sizes</li>
-        <li>Font families</li>
-        <li>Font sizes</li>
-        <li>Spacings</li>
-    </ul>
-    
-    <div id="dsg__sandbox">
-        <iframe id="dsg__sandbox__iframe" src="sandbox/index.html" class="b-0"></iframe>
-    </div>
-    
-    
-    <pre>
-        <code id="dsg__code__css"></code>
-    </pre>
+    <main>
+        <section class="minh-100vh">
+            <h2>CSS classes</h2>
+            <div class="d-flex fd-column">
+                <label for="dsg__search__input">Quick search</label>
+                <input id="dsg__search__input"
+                    type="search"
+                    oninput="dsg.searchText(this.value)"
+                    autocomplete="off">
+            </div>
+            <ul id="dsg__doc__standard" class="d-flex fwrap-wrap gap-9 | m-0 p-0 | ls-none"></ul>
+        </section>
+
+        <section id="tokens"
+            class="minh-100vh scrollmt-7"
+            c-scrollspy="tokens">
+            <h2>Tokens</h2>
+            <ul id="dsg__doc__tokens">
+                <li>Colors</li>
+                <li>Screen sizes</li>
+                <li>Font families</li>
+                <li>Font sizes</li>
+                <li>Spacings</li>
+            </ul>
+        </section>
+
+        <section id="css"
+            class="minh-100vh scrollmt-7"
+            c-scrollspy="css">
+            <h2>CSS</h2>
+            <pre class="maxh-50vh o-auto">
+                <code id="dsg__code__css"></code>
+            </pre>
+        </section>
+
+        <section id="sandbox"
+            class="minh-100vh scrollmt-7"
+            c-scrollspy="sandbox">
+            <h2>Sandbox</h2>
+            <div id="dsg__sandbox">
+                <iframe id="dsg__sandbox__iframe" src="sandbox/index.html" class="b-0"></iframe>
+            </div>
+        </section>
+    </main>
     
     <script src="dsg/js/dsg.js"></script>
     <script src="dsg/js/ui.js"></script>
     <script src="dsg/js/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ita-design-system/c-scrollspy.js/ui/js/c-scrollspy.min.js"></script>
     <script>
         dsg.getBuild('dsg.json');
     </script>

@@ -14,12 +14,20 @@ const dsg = {
                     dsg.genDocStandard();
                     dsg.genDocTokens();
                     dsg.genCodeCss();
+                    dsg.includeCssInSandbox();
+                    dsg.scrollToHash();
                     console.log(dsg.build);
                 })
                 .catch(error => {
                     // Handle the error
                     console.log('Build JSON load failed');
                 });
+        }
+    },
+    scrollToHash: function() {
+        const elTarget = document.querySelector(location.hash);
+        if (elTarget !== null) {
+            elTarget.scrollIntoView({behavior: 'smooth'});
         }
     },
     searchText: function(query) {
@@ -93,82 +101,89 @@ const dsg = {
         // return `\n:root {\n${markup}\n}\n`;
     },
     genCodeCss: function() {
-        const responsiveCss = {};
-        dsg.elCodeCss.innerHTML = dsg.genCssVariables();
-        Object.keys(dsg.build.tokens.screenSizes).forEach(function(screenSize) {
-            responsiveCss[screenSize] = '';
-        });
-        Object.keys(dsg.build.properties).forEach(function(property) {
-            const propertyData = dsg.build.properties[property];
-            const tokensKeysAndValues = dsg.genFrom(propertyData.generate_from);
-            // console.log(tokens_keys_and_values)
-            // Generate from custom values
-            propertyData.values.forEach(function(value, index) {
-                let name = value;
-                if (typeof propertyData.names[index] == 'string') name = propertyData.names[index];
-                // Basic
-                dsg.elCodeCss.innerHTML += dsg.genCssProperty({
-                    prefix: propertyData.prefix,
-                    property: property,
-                    name: name,
-                    value: value,
-                    utility: propertyData.generate_utility
-                });
-                // Responsive
-                if (propertyData.responsive) {
-                    Object.keys(dsg.build.tokens.screenSizes).forEach(function(screenSize) {
-                        responsiveCss[screenSize] += dsg.genCssPropertyForScreenSize({
-                            screenSize: screenSize,
-                            prefix: propertyData.prefix,
-                            property: property,
-                            name: name,
-                            value: value,
-                            utility: propertyData.generate_utility
-                        });
+        if (dsg.elCodeCss !== null) {
+            const responsiveCss = {};
+            dsg.elCodeCss.innerHTML = dsg.genCssVariables();
+            Object.keys(dsg.build.tokens.screenSizes).forEach(function(screenSize) {
+                responsiveCss[screenSize] = '';
+            });
+            Object.keys(dsg.build.properties).forEach(function(property) {
+                const propertyData = dsg.build.properties[property];
+                const tokensKeysAndValues = dsg.genFrom(propertyData.generate_from);
+                // console.log(tokens_keys_and_values)
+                // Generate from custom values
+                propertyData.values.forEach(function(value, index) {
+                    let name = value;
+                    if (typeof propertyData.names[index] == 'string') name = propertyData.names[index];
+                    // Basic
+                    dsg.elCodeCss.innerHTML += dsg.genCssProperty({
+                        prefix: propertyData.prefix,
+                        property: property,
+                        name: name,
+                        value: value,
+                        utility: propertyData.generate_utility
                     });
-                }
-            });
-
-            // Generate from tokens
-            tokensKeysAndValues.forEach(function(token) {
-                dsg.elCodeCss.innerHTML += dsg.genCssProperty({
-                    prefix: propertyData.prefix,
-                    property: property,
-                    name: token.name,
-                    value: `var(--${dsg.build.settings.cssVariablesPrefix}-${propertyData.generate_from}-${token.name}, ${token.value})`,
-                    utility: propertyData.generate_utility
-                });
-
-                // Responsive from tokens
-                if (propertyData.responsive) {
-                    Object.keys(dsg.build.tokens.screenSizes).forEach(function(screenSize) {
-                        responsiveCss[screenSize] += dsg.genCssPropertyForScreenSize({
-                            screenSize: screenSize,
-                            prefix: propertyData.prefix,
-                            property: property,
-                            name: token.name,
-                            value: `var(--${dsg.build.settings.cssVariablesPrefix}-${propertyData.generate_from}-${token.name}, ${token.value})`,
-                            utility: propertyData.generate_utility
+                    // Responsive
+                    if (propertyData.responsive) {
+                        Object.keys(dsg.build.tokens.screenSizes).forEach(function(screenSize) {
+                            responsiveCss[screenSize] += dsg.genCssPropertyForScreenSize({
+                                screenSize: screenSize,
+                                prefix: propertyData.prefix,
+                                property: property,
+                                name: name,
+                                value: value,
+                                utility: propertyData.generate_utility
+                            });
                         });
+                    }
+                });
+    
+                // Generate from tokens
+                tokensKeysAndValues.forEach(function(token) {
+                    dsg.elCodeCss.innerHTML += dsg.genCssProperty({
+                        prefix: propertyData.prefix,
+                        property: property,
+                        name: token.name,
+                        value: `var(--${dsg.build.settings.cssVariablesPrefix}-${propertyData.generate_from}-${token.name}, ${token.value})`,
+                        utility: propertyData.generate_utility
                     });
-                }
+    
+                    // Responsive from tokens
+                    if (propertyData.responsive) {
+                        Object.keys(dsg.build.tokens.screenSizes).forEach(function(screenSize) {
+                            responsiveCss[screenSize] += dsg.genCssPropertyForScreenSize({
+                                screenSize: screenSize,
+                                prefix: propertyData.prefix,
+                                property: property,
+                                name: token.name,
+                                value: `var(--${dsg.build.settings.cssVariablesPrefix}-${propertyData.generate_from}-${token.name}, ${token.value})`,
+                                utility: propertyData.generate_utility
+                            });
+                        });
+                    }
+                });
             });
-        });
-        Object.keys(responsiveCss).forEach(function(screenSize) {
-            dsg.elCodeCss.innerHTML += dsg.genCssMediaForScreenSize({
-                screenSize: screenSize,
-                content: responsiveCss[screenSize]
+            Object.keys(responsiveCss).forEach(function(screenSize) {
+                dsg.elCodeCss.innerHTML += dsg.genCssMediaForScreenSize({
+                    screenSize: screenSize,
+                    content: responsiveCss[screenSize]
+                });
             });
-        });
-        const elIncludedStyle = dsg.elSandboxIframe.contentWindow.document.head.querySelector('#dsg__included_style');
-        if (elIncludedStyle === null) {
-            const includedStyleMarkup = `<style id="dsg__included_style">${dsg.elCodeCss.innerHTML}</style>`;
-            dsg.elSandboxIframe.contentWindow.document.head.insertAdjacentHTML('beforeend', includedStyleMarkup);
-        } else {
-            elIncludedStyle.innerHTML = dsg.elCodeCss.innerHTML;
+            dsg._newestCssCode = dsg.elCodeCss.innerHTML;
+            dsg.elCodeCss.dataset.highlighted = '';
+            hljs.highlightElement(dsg.elCodeCss);
         }
-        dsg.elCodeCss.dataset.highlighted = '';
-        hljs.highlightElement(dsg.elCodeCss);
+    },
+    includeCssInSandbox: function() {
+        if (dsg.elSandboxIframe !== null) {
+            const elIncludedStyle = dsg.elSandboxIframe.contentWindow.document.head.querySelector('#dsg__included_style');
+            if (elIncludedStyle === null) {
+                const includedStyleMarkup = `<style id="dsg__included_style">${dsg._newestCssCode}</style>`;
+                dsg.elSandboxIframe.contentWindow.document.head.insertAdjacentHTML('beforeend', includedStyleMarkup);
+            } else {
+                elIncludedStyle.innerHTML = dsg._newestCssCode;
+            }
+        }
     },
     setResponsive: function(evt) {
         const selectedScreenSizesNames = [];
@@ -319,54 +334,56 @@ const dsg = {
         }
     },
     genDocStandard: function() {
-        dsg.elDocStandard.innerHTML = '';
-        Object.keys(dsg.build.properties).forEach(function(property) {
-            if (property.indexOf('--') == -1) {
-                const propertyData = dsg.build.properties[property];
-                const tokensKeysAndValues = dsg.genFrom(propertyData.generate_from);
-                let classesValuesMarkup = '';
-                let responsiveMarkup = '';
-                let utilityMarkup = '';
-                // Generate from custom values
-                propertyData.values.forEach(function(value, index) {
-                    let name = value;
-                    if (typeof propertyData.names[index] == 'string') name = propertyData.names[index];
-                    // Generate from values
-                    classesValuesMarkup += dsg.templates.docClassValueItem({
-                        className: propertyData.prefix +  dsg.build.settings.separator + name,
-                        value: value
-                    })
-                });
-                // Generate from tokens
-                tokensKeysAndValues.forEach(function(token) {
-                    classesValuesMarkup += dsg.templates.docClassValueItem({
-                        className: propertyData.prefix +  dsg.build.settings.separator + token.name,
-                        value: token.value
-                    })
-                });
-                // Responsive
-                if (propertyData.responsive) {
-                    Object.keys(dsg.build.tokens.screenSizes).forEach(function(screenSize, index) {
-                        responsiveMarkup += dsg.templates.docScreenSizeCheckboxItem({
-                            id: `dsg__doc__standard__${property}_${screenSize}`,
-                            screenSize: screenSize
+        if (dsg.elDocStandard !== null) {
+            dsg.elDocStandard.innerHTML = '';
+            Object.keys(dsg.build.properties).forEach(function(property) {
+                if (property.indexOf('--') == -1) {
+                    const propertyData = dsg.build.properties[property];
+                    const tokensKeysAndValues = dsg.genFrom(propertyData.generate_from);
+                    let classesValuesMarkup = '';
+                    let responsiveMarkup = '';
+                    let utilityMarkup = '';
+                    // Generate from custom values
+                    propertyData.values.forEach(function(value, index) {
+                        let name = value;
+                        if (typeof propertyData.names[index] == 'string') name = propertyData.names[index];
+                        // Generate from values
+                        classesValuesMarkup += dsg.templates.docClassValueItem({
+                            className: propertyData.prefix +  dsg.build.settings.separator + name,
+                            value: value
+                        })
+                    });
+                    // Generate from tokens
+                    tokensKeysAndValues.forEach(function(token) {
+                        classesValuesMarkup += dsg.templates.docClassValueItem({
+                            className: propertyData.prefix +  dsg.build.settings.separator + token.name,
+                            value: token.value
+                        })
+                    });
+                    // Responsive
+                    if (propertyData.responsive) {
+                        Object.keys(dsg.build.tokens.screenSizes).forEach(function(screenSize, index) {
+                            responsiveMarkup += dsg.templates.docScreenSizeCheckboxItem({
+                                id: `dsg__doc__standard__${property}_${screenSize}`,
+                                screenSize: screenSize
+                            });
                         });
+                    }
+                    // Utility
+                    if (propertyData.generate_utility) {
+                        utilityMarkup = dsg.templates.docUtilityCheckboxItem({
+                            id: `dsg__doc__utility__${property}`,
+                            label: `Apply`
+                        });
+                    }
+                    dsg.elDocStandard.innerHTML += dsg.templates.docPropertyItem({
+                        property: property,
+                        content: classesValuesMarkup,
+                        responsiveContent: responsiveMarkup,
+                        utilityContent: utilityMarkup
                     });
                 }
-                // Utility
-                if (propertyData.generate_utility) {
-                    utilityMarkup = dsg.templates.docUtilityCheckboxItem({
-                        id: `dsg__doc__utility__${property}`,
-                        label: `Apply`
-                    });
-                }
-                dsg.elDocStandard.innerHTML += dsg.templates.docPropertyItem({
-                    property: property,
-                    content: classesValuesMarkup,
-                    responsiveContent: responsiveMarkup,
-                    utilityContent: utilityMarkup
-                });
-            }
-        })
+            })
+        }
     }
 }

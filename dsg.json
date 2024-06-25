@@ -360,10 +360,26 @@
             "responsive": true,
             "generate_utility": false
         },
+        "min-height": {
+            "prefix": "minh",
+            "generate_from": "",
+            "values": ["100vh"],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        },
         "overflow": {
             "prefix": "o",
             "generate_from": "",
             "values": ["auto", "hidden"],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "scroll-margin-top": {
+            "prefix": "scrollmt",
+            "generate_from": "spacings",
+            "values": [],
             "names": [],
             "responsive": true,
             "generate_utility": false
@@ -677,7 +693,7 @@
             "generate_utility": false
         },
         "border-left-style": {
-            "prefix": "bbstyle",
+            "prefix": "blstyle",
             "generate_from": "",
             "values": ["solid", "dashed", "none"],
             "names": [],

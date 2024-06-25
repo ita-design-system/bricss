@@ -1,3 +1,6 @@
 body {
     font-family: var(--dsg-fontFamilies-lead-400);
 }
+a {
+    color: var(--dsg-colors-tertiary-500)
+}
