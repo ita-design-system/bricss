@@ -62,9 +62,9 @@ const dsg = {
         return array;
     },
     genCssMediaForScreenSize: function({screenSize, content}) {
-        let highMarkup = ` and (max-width: ${dsg.build.tokens.screenSizes[screenSize][1]})`;
-        const lowMarkup = `(min-width: ${dsg.build.tokens.screenSizes[screenSize][0]})`;
-        const high =  dsg.build.tokens.screenSizes[screenSize][1];
+        let highMarkup = ` and (max-width: ${dsg.build.settings.screenSizes[screenSize][1]})`;
+        const lowMarkup = `(min-width: ${dsg.build.settings.screenSizes[screenSize][0]})`;
+        const high =  dsg.build.settings.screenSizes[screenSize][1];
         if (high == 'infinite' || high == '') highMarkup = '';
         return `\n\n/*START @media ${screenSize}*/\n@media ${lowMarkup}${highMarkup} {\n${content}\n}\n/*END @media ${screenSize}*/\n`;
     },
@@ -106,7 +106,7 @@ const dsg = {
         if (dsg.elCodeCss !== null) {
             const responsiveCss = {};
             dsg.elCodeCss.innerHTML = dsg.genCssVariables();
-            Object.keys(dsg.build.tokens.screenSizes).forEach(function(screenSize) {
+            Object.keys(dsg.build.settings.screenSizes).forEach(function(screenSize) {
                 responsiveCss[screenSize] = '';
             });
             Object.keys(dsg.build.properties).forEach(function(property) {
@@ -127,7 +127,7 @@ const dsg = {
                     });
                     // Responsive
                     if (propertyData.responsive) {
-                        Object.keys(dsg.build.tokens.screenSizes).forEach(function(screenSize) {
+                        Object.keys(dsg.build.settings.screenSizes).forEach(function(screenSize) {
                             responsiveCss[screenSize] += dsg.genCssPropertyForScreenSize({
                                 screenSize: screenSize,
                                 prefix: propertyData.prefix,
@@ -152,7 +152,7 @@ const dsg = {
     
                     // Responsive from tokens
                     if (propertyData.responsive) {
-                        Object.keys(dsg.build.tokens.screenSizes).forEach(function(screenSize) {
+                        Object.keys(dsg.build.settings.screenSizes).forEach(function(screenSize) {
                             responsiveCss[screenSize] += dsg.genCssPropertyForScreenSize({
                                 screenSize: screenSize,
                                 prefix: propertyData.prefix,
@@ -377,7 +377,7 @@ const dsg = {
                         })
                     });
                     // Responsive
-                    Object.keys(dsg.build.tokens.screenSizes).forEach(function(screenSize, index) {
+                    Object.keys(dsg.build.settings.screenSizes).forEach(function(screenSize, index) {
                         responsiveMarkup += dsg.templates.docScreenSizeCheckboxItem({
                             id: `dsg__doc__standard__${property}_${screenSize}`,
                             screenSize: screenSize,
