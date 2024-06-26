@@ -263,7 +263,7 @@ const dsg = {
                     </div>
                     <span class="d-flex fd-column ai-end">
                         <span class="ff-lead-400 fs-1 tt-uppercase | c-tertiary-700">Value</span>
-                        <code class="ff-mono fs-3 | c-tertiary-500">${value}</code>
+                        <code class="ff-mono fs-3 ta-right | c-tertiary-500">${value}</code>
                     </span>
                 </li>`;
         },
@@ -271,30 +271,34 @@ const dsg = {
             return `
                 <li class="d-flex jc-space-between gap-5 | fs-3">
                     <code class="c-quaternary-500">${className}</code>
-                    <strong class="ff-mono | c-tertiary-500">${value}</strong>
+                    <strong class="ff-mono ta-right | c-tertiary-500">${value}</strong>
                 </li>
             `;
         },
-        docUtilityCheckboxItem: function({id, label}) {
+        docUtilityCheckboxItem: function({id, label, disabled}) {
             return `
                 <div>
                     <input type="checkbox"
                         id="${id}"
                         value=""
-                        onchange="dsg.setResponsive(event)">
-                    <label for="${id}">${label}</label>
+                        onchange="dsg.setResponsive(event)"
+                        class="pos-absolute | opa-0 | __checkbox_ui" ${disabled ? 'disabled="disabled"' : ''}>
+                    <label for="${id}" class="d-flex ai-center gap-3 | fs-2">
+                        <span class="p-2 | bc-primary-100 bwidth-1 bstyle-solid bcolor-primary-800 brad-1 | __checkbox_ui"></span>
+                        ${label}
+                    </label>
                 </div>
             `;
         },
-        docScreenSizeCheckboxItem: function({id, screenSize}) {
+        docScreenSizeCheckboxItem: function({id, screenSize, disabled}) {
             return `
                 <div>
                     <input type="checkbox"
                         id="${id}"
                         value="${screenSize}"
                         onchange="dsg.setResponsive(event)"
-                        class="pos-absolute | opa-0 | __checkbox_ui">
-                    <label for="${id}" class="d-flex ai-center gap-3">
+                        class="pos-absolute | opa-0 | __checkbox_ui" ${disabled ? 'disabled="disabled"' : ''}>
+                    <label for="${id}" class="d-flex ai-center gap-3 | fs-2">
                         <span class="p-2 | bc-primary-100 bwidth-1 bstyle-solid bcolor-primary-800 brad-1 | __checkbox_ui"></span>
                         ${screenSize}
                     </label>
@@ -303,11 +307,15 @@ const dsg = {
         },
         docPropertyItem: function({property, content, responsiveContent, utilityContent}) {
             return `
-                <li class="dsg__doc__property_item | d-flex fd-column gap-3 fg-1" data-property="${property}">
-                    <h4 class="d-flex fd-column gap-3 | m-0">
+                <li class="dsg__doc__property_item | d-flex jc-space-between fwrap-wrap gap-6"
+                    data-property="${property}">
+                    <h4 class="d-flex fd-column gap-3 fg-1 | m-0 | brwidth-1 brstyle-solid bcolor-secondary-900">
                         <span class="d-flex fd-column">
                             <span class="ff-lead-400 fs-1 tt-uppercase | c-secondary-700">Property</span>
-                            <span class="ff-mono fs-5 | c-secondary-500">${property}</span>
+                            <span class="d-flex ai-center gap-6 | ff-mono fs-5 | c-secondary-500">
+                                ${property}
+                                <span class="fg-1 | ta-right | bbwidth-1 bbstyle-solid bcolor-secondary-900"></span>
+                            </span>
                         </span>
                         <span class="d-flex fd-column">
                             <span class="ff-lead-400 fs-1 tt-uppercase | c-quaternary-800">Prefix</span>
@@ -316,21 +324,27 @@ const dsg = {
                             </span>
                         </span>
                     </h4>
-                    <ul class="dsg__doc__property_item__list | d-flex fd-column gap-1 | m-0 p-0">
-                        <li class="d-flex jc-space-between gap-3 | fs-1 tt-uppercase">
-                            <span class="c-quaternary-800">CSS Class</span>
-                            <span class="c-tertiary-700">Value</span>
-                        </li>
-                        ${content}
-                    </ul>
-                    <fieldset class="dsg__doc__property_item__responsive_content | bwidth-1 bstyle-solid bcolor-primary-500 brad-2">
-                        <legend class="fs-2 | c-primary-300">Responsive</legend>
-                        ${responsiveContent}
-                    </fieldset>
-                    <fieldset class="dsg__doc__property_item__utility_content | bwidth-1 bstyle-solid bcolor-primary-500 brad-2">
-                        <legend class="fs-2 | c-primary-300">Utitity</legend>
-                        ${utilityContent}
-                    </fieldset>
+                    <div class="d-flex gap-6" fd-column="xs,sm" w-100="xs">
+                        <ul class="dsg__doc__property_item__list | d-flex fd-column gap-1 | m-0 p-0"
+                            minw-20em="sm,md,lg"
+                            maxw-20em="sm,md,lg">
+                            <li class="d-flex jc-space-between gap-3 | fs-1 tt-uppercase">
+                                <span class="c-quaternary-800">CSS Class</span>
+                                <span class="c-tertiary-700">Value</span>
+                            </li>
+                            ${content}
+                        </ul>
+                        <div class="d-flex gap-1">
+                            <fieldset class="dsg__doc__property_item__responsive_content | d-flex fd-column gap-1 | bwidth-1 bstyle-solid bcolor-primary-500 brad-2">
+                                <legend class="fs-2 | c-primary-300">Responsive</legend>
+                                ${responsiveContent}
+                            </fieldset>
+                            <fieldset class="dsg__doc__property_item__utility_content | d-flex fd-column gap-1 | bwidth-1 bstyle-solid bcolor-primary-500 brad-2">
+                                <legend class="fs-2 | c-primary-300">Utitity</legend>
+                                ${utilityContent}
+                            </fieldset>
+                        </div>
+                    </div>
                 </li>
             `;
         }
@@ -363,21 +377,19 @@ const dsg = {
                         })
                     });
                     // Responsive
-                    if (propertyData.responsive) {
-                        Object.keys(dsg.build.tokens.screenSizes).forEach(function(screenSize, index) {
-                            responsiveMarkup += dsg.templates.docScreenSizeCheckboxItem({
-                                id: `dsg__doc__standard__${property}_${screenSize}`,
-                                screenSize: screenSize
-                            });
+                    Object.keys(dsg.build.tokens.screenSizes).forEach(function(screenSize, index) {
+                        responsiveMarkup += dsg.templates.docScreenSizeCheckboxItem({
+                            id: `dsg__doc__standard__${property}_${screenSize}`,
+                            screenSize: screenSize,
+                            disabled: propertyData.responsive ? false : true
                         });
-                    }
+                    });
                     // Utility
-                    if (propertyData.generate_utility) {
-                        utilityMarkup = dsg.templates.docUtilityCheckboxItem({
-                            id: `dsg__doc__utility__${property}`,
-                            label: `Apply`
-                        });
-                    }
+                    utilityMarkup = dsg.templates.docUtilityCheckboxItem({
+                        id: `dsg__doc__utility__${property}`,
+                        label: `Apply`,
+                        disabled: propertyData.generate_utility ? false : true
+                    });
                     dsg.elDocStandard.innerHTML += dsg.templates.docPropertyItem({
                         property: property,
                         content: classesValuesMarkup,

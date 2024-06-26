@@ -21,40 +21,59 @@
     <link rel="stylesheet" href="dsg/css/highlight-js-themes/atom-one-dark.min.css">
 </head>
 <body class="m-0 | ff-lead-400 | bc-primary-700 c-primary-200">
-    <header class="d-flex ai-center gap-8 | pl-9 | pos-sticky top-0 z-1 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500">
+    <header class="d-flex ai-center gap-8 | pl-9 o-auto | pos-sticky top-0 z-1 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500"
+        pl-5="xs,sm,md"
+        pr-5="xs,sm,md">
         <h1 class="d-flex | m-0 | ff-lead-700 tt-uppercase fs-4">
-            <a href="#" class="pt-3 pb-3 | td-none | c-primary-100">Design System</a>
+            <a href="#" class="pt-3 pb-3 | td-none ws-nowrap | c-primary-100">Design System</a>
         </h1>
         <nav id="dsg__nav" class="d-flex ai-center gap-8 | m-0 p-0">
+            <a href="#doc">Classes</a>
             <a href="#tokens">Tokens</a>
             <a href="#css">CSS</a>
             <a href="#sandbox">Sandbox</a>
-            <button type="button" onclick="ui.copyToClipboard(dsg.elCodeCss.innerText)">copy CSS</button>
         </nav>
     </header>
 
     <main>
-        <section class="d-flex ai-start gap-9 | pl-9 pr-9 minh-100vh">
-            <header class="d-flex fd-column gap-6 | pos-sticky top-0 | pt-9">
+        <section id="doc"
+            class="
+            d-flex ai-start gap-9
+            pl-9 pr-9 minh-100vh"
+            fd-column="xs,sm"
+            gap-5="xs,sm"
+            pl-5="xs,sm,md"
+            pr-5="xs,sm,md"
+            c-scrollspy="doc">
+            <header class="
+                d-flex fd-column gap-6
+                top-0
+                pt-9"
+                pos-sticky="md,lg"
+                pt-5="xs,sm"
+                minw-20em="lg"
+                maxw-20em="lg">
                 <span class="ff-mono fs-9 c-secondary-500">{}</span>
                 <h2 class="m-0 | ff-lead-700 fs-8">CSS classes</h2>
-                <p class="m-0">Description Stet ut ea et dolores consetetur diam et sed lorem eos. Sit gubergren nonumy amet dolor et et labore et.</p>
+                <p class="m-0">Each CSS property has its own prefix with its associated names and values. Responsive CSS classes and utilities are available if applicable.</p>
             </header>
-            <div class="d-flex fd-column gap-6">
+
+            <div class="d-flex fd-column gap-6 | w-100">
                 <div class="d-flex jc-space-between | pos-sticky top-0 | pt-8 pb-3 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500">
-                    <div></div>
-                    <div class="d-flex fd-column">
-                        <label for="dsg__search__input" class="d-flex pl-3 | fs-2 | c-tertiary-500 blwidth-3 blstyle-solid bcolor-tertiary-500 bradtl-3">
-                            <span class="t-tY-50">Quick search</span>
+                    <!-- Search -->
+                    <div class="d-flex fd-column | bwidth-3 bstyle-solid bcolor-primary-400 btstyle-none brstyle-none bradbr-3 bradtl-3">
+                        <label for="dsg__search__input_2" class="d-flex pl-2 | fs-2 | bc-primary-200 c-primary-900 bradtl-2">
+                            Quick search
                         </label>
-                        <input id="dsg__search__input"
+                        <input id="dsg__search__input_2"
                             type="search"
-                            class="ff-lead-400 | p-2 | brad-0 bc-primary-200 c-primary-900 b-0 blwidth-3 blstyle-solid bcolor-tertiary-500"
+                            class="ff-lead-400 | p-2 | brad-0 bc-primary-200 c-primary-900 b-0 bradbr-2"
                             oninput="dsg.searchText(this.value)"
                             autocomplete="off">
                     </div>
                 </div>
-                <ul id="dsg__doc__standard" class="d-flex fwrap-wrap gap-9 | m-0 p-0 | ls-none"></ul>
+                <!-- Classes list -->
+                <ul id="dsg__doc__standard" class="d-flex fd-column gap-8 | m-0 p-0 | ls-none"></ul>
             </div>
         </section>
 
@@ -75,6 +94,7 @@
             class="minh-100vh scrollmt-7"
             c-scrollspy="css">
             <h2>CSS</h2>
+            <button type="button" onclick="ui.copyToClipboard(dsg.elCodeCss.innerText)">copy CSS</button>
             <pre class="maxh-50vh o-auto">
                 <code id="dsg__code__css"></code>
             </pre>

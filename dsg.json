@@ -339,8 +339,16 @@
         "max-width": {
             "prefix": "maxw",
             "generate_from": "",
-            "values": ["100%", "100vw"],
-            "names": ["100", "100vw"],
+            "values": ["100%", "100vw", "20em"],
+            "names": ["100", "100vw", "20em"],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "min-width": {
+            "prefix": "minw",
+            "generate_from": "",
+            "values": ["20em"],
+            "names": [],
             "responsive": true,
             "generate_utility": false
         },

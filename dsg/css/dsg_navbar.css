@@ -6,7 +6,10 @@
     font-weight: 700;
     color: var(--dsg-colors-primary-100);
     text-decoration: none;
+    padding: var(--dsg-spacings-3) 0;
+    border-bottom: 3px solid transparent;
 }
 #dsg__nav a.active {
-    color: var(--dsg-colors-primary-300);
+    color: var(--dsg-colors-tertiary-500);
+    border-bottom-color: var(--dsg-colors-tertiary-500);
 }
