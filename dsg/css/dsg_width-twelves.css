@@ -18,3 +18,87 @@
     width: calc(var(--wtw-item-default-width) - var(--wtw-item-offset));
     box-sizing: border-box;
 }
+@media (min-width: 0px) and (max-width: 600px) {
+    [w-1t*="xs"],
+    [w-2t*="xs"],
+    [w-3t*="xs"],
+    [w-4t*="xs"],
+    [w-5t*="xs"],
+    [w-6t*="xs"],
+    [w-7t*="xs"],
+    [w-8t*="xs"],
+    [w-9t*="xs"],
+    [w-10t*="xs"],
+    [w-11t*="xs"],
+    [w-12t*="xs"] {
+        --wtw-fraction: var(--twelves, -);
+        --wtw-total-amount-of-fractions: 12;
+        --wtw-item-default-width: calc(100% * var(--wtw-fraction) / var(--wtw-total-amount-of-fractions));
+        --wtw-item-offset: calc(var(--wtw-fraction) * var(--dsg-gap, 0px) * ((var(--wtw-total-amount-of-fractions) / var(--wtw-fraction)) - 1) / var(--wtw-total-amount-of-fractions));
+        width: calc(var(--wtw-item-default-width) - var(--wtw-item-offset));
+        box-sizing: border-box;
+    }
+}
+@media (min-width: 600px) and (max-width: 960px) {
+    [w-1t*="sm"],
+    [w-2t*="sm"],
+    [w-3t*="sm"],
+    [w-4t*="sm"],
+    [w-5t*="sm"],
+    [w-6t*="sm"],
+    [w-7t*="sm"],
+    [w-8t*="sm"],
+    [w-9t*="sm"],
+    [w-10t*="sm"],
+    [w-11t*="sm"],
+    [w-12t*="sm"] {
+        --wtw-fraction: var(--twelves, -);
+        --wtw-total-amount-of-fractions: 12;
+        --wtw-item-default-width: calc(100% * var(--wtw-fraction) / var(--wtw-total-amount-of-fractions));
+        --wtw-item-offset: calc(var(--wtw-fraction) * var(--dsg-gap, 0px) * ((var(--wtw-total-amount-of-fractions) / var(--wtw-fraction)) - 1) / var(--wtw-total-amount-of-fractions));
+        width: calc(var(--wtw-item-default-width) - var(--wtw-item-offset));
+        box-sizing: border-box;
+    }
+}
+@media (min-width: 960px) and (max-width: 1200px) {
+    [w-1t*="md"],
+    [w-2t*="md"],
+    [w-3t*="md"],
+    [w-4t*="md"],
+    [w-5t*="md"],
+    [w-6t*="md"],
+    [w-7t*="md"],
+    [w-8t*="md"],
+    [w-9t*="md"],
+    [w-10t*="md"],
+    [w-11t*="md"],
+    [w-12t*="md"] {
+        --wtw-fraction: var(--twelves, -);
+        --wtw-total-amount-of-fractions: 12;
+        --wtw-item-default-width: calc(100% * var(--wtw-fraction) / var(--wtw-total-amount-of-fractions));
+        --wtw-item-offset: calc(var(--wtw-fraction) * var(--dsg-gap, 0px) * ((var(--wtw-total-amount-of-fractions) / var(--wtw-fraction)) - 1) / var(--wtw-total-amount-of-fractions));
+        width: calc(var(--wtw-item-default-width) - var(--wtw-item-offset));
+        box-sizing: border-box;
+    }
+}
+@media (min-width: 1200px) {
+    [w-1t*="lg"],
+    [w-2t*="lg"],
+    [w-3t*="lg"],
+    [w-4t*="lg"],
+    [w-5t*="lg"],
+    [w-6t*="lg"],
+    [w-7t*="lg"],
+    [w-8t*="lg"],
+    [w-9t*="lg"],
+    [w-10t*="lg"],
+    [w-11t*="lg"],
+    [w-12t*="lg"] {
+        --wtw-fraction: var(--twelves, -);
+        --wtw-total-amount-of-fractions: 12;
+        --wtw-item-default-width: calc(100% * var(--wtw-fraction) / var(--wtw-total-amount-of-fractions));
+        --wtw-item-offset: calc(var(--wtw-fraction) * var(--dsg-gap, 0px) * ((var(--wtw-total-amount-of-fractions) / var(--wtw-fraction)) - 1) / var(--wtw-total-amount-of-fractions));
+        width: calc(var(--wtw-item-default-width) - var(--wtw-item-offset));
+        box-sizing: border-box;
+    }
+}
