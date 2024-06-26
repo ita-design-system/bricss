@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="dsg/css/highlight-js-themes/atom-one-dark.min.css">
 </head>
 <body class="m-0 | ff-lead-400 | bc-primary-700 c-primary-200">
-    <header class="d-flex ai-center gap-8 | pl-9 o-auto | pos-sticky top-0 z-1 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500"
+    <header class="d-flex ai-center gap-8 | pl-9 o-auto | pos-sticky top-0 z-2 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500"
         pl-5="xs,sm,md"
         pr-5="xs,sm,md">
         <h1 class="d-flex | m-0 | ff-lead-700 tt-uppercase fs-4">
@@ -78,16 +78,28 @@
         </section>
 
         <section id="tokens"
-            class="minh-100vh scrollmt-7"
+            class="
+            d-flex ai-start gap-9
+            pl-9 pr-9 minh-100vh scrollmt-7"
+            fd-column="xs,sm"
+            gap-5="xs,sm"
+            pl-5="xs,sm,md"
+            pr-5="xs,sm,md"
             c-scrollspy="tokens">
-            <h2>Tokens</h2>
-            <ul id="dsg__doc__tokens">
-                <li>Colors</li>
-                <li>Screen sizes</li>
-                <li>Font families</li>
-                <li>Font sizes</li>
-                <li>Spacings</li>
-            </ul>
+            <header class="
+                d-flex fd-column gap-6
+                top-0
+                pt-9"
+                pos-sticky="md,lg"
+                pt-5="xs,sm"
+                minw-20em="lg"
+                maxw-20em="lg">
+                <span class="ff-mono fs-9 c-tertiary-500">[]</span>
+                <h2 class="m-0 | ff-lead-700 fs-8">Tokens</h2>
+                <p class="m-0">List of tokens.</p>
+                <menu id="dsg__doc__tokens__list" class="d-flex fd-column gap-1 | m-0 p-0 | ls-none"></menu>
+            </header>
+            <ul id="dsg__doc__tokens" class="d-flex fwrap-wrap gap-6 | w-100 m-0 p-0 | ls-none"></ul>
         </section>
 
         <section id="css"
@@ -115,7 +127,7 @@
     <script src="dsg/js/highlight.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/ita-design-system/c-scrollspy.js/ui/js/c-scrollspy.min.js"></script>
     <script>
-        dsg.getBuild('dsg.json');
+        dsg.getBuild('build.json');
     </script>
 </body>
 

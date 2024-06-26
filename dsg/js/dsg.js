@@ -5,6 +5,7 @@ const dsg = {
     elDocStandard: document.querySelector('#dsg__doc__standard'),
     elCodeCss: document.querySelector('#dsg__code__css'),
     elSearchInput: document.querySelector('#dsg__search__input'),
+    elTokensList: document.querySelector('#dsg__doc__tokens__list'),
     getBuild: function(jsonUrl) {
         if (typeof jsonUrl == 'string') {
             fetch(`${jsonUrl}`)
@@ -94,13 +95,35 @@ const dsg = {
         return `\n:root {\n${markup}\n}\n`;
     },
     genDocTokens: function() {
-        // let markup = '';
-        // Object.keys(dsg.build.tokens).forEach(function(family) {
-        //     Object.keys(dsg.build.tokens[family]).forEach(function(tokenName) {
-        //         markup += `\n  --${dsg.build.settings.cssVariablesPrefix}-${family}-${tokenName}: ${dsg.build.tokens[family][tokenName]};`;
-        //     });
-        // });
-        // return `\n:root {\n${markup}\n}\n`;
+        if (dsg.elDocTokens !== null && dsg.elTokensList !== null) {
+            let markup = '';
+            let markupList = '';
+            Object.keys(dsg.build.tokens).forEach(function(family) {
+                // Tokens list
+                markupList += dsg.templates.docTokensListItem(family);
+
+                // Token family content
+                let templateName = 'docToken';
+                let tokenFamilyMarkup = '';
+                const customTemplate = dsg.build.settings.tokenTemplateMap[family];
+                if (customTemplate !== undefined) {
+                    templateName = customTemplate;
+                }
+                Object.keys(dsg.build.tokens[family]).forEach(function(name) {
+                    tokenFamilyMarkup += dsg.templates[templateName]({
+                        family: family,
+                        name: name,
+                        value: dsg.build.tokens[family][name]
+                    });
+                });
+                markup += dsg.templates.docTokenFamily({
+                    family: family,
+                    content: tokenFamilyMarkup
+                }) 
+            });
+            dsg.elDocTokens.innerHTML = markup;
+            dsg.elTokensList.innerHTML = markupList;
+        }
     },
     genCodeCss: function() {
         if (dsg.elCodeCss !== null) {
@@ -248,6 +271,58 @@ const dsg = {
         elPropertyList.innerHTML = markup;
     },
     templates: {
+        docTokensListItem: function(family) {
+            return `<li><a href="#tokens-${family}">${family}</a></li>`;
+        },
+        docTokenFamily: function({family, content}) {
+            return `
+                <li class="d-flex fd-column gap-6 | scrollmt-7" id="tokens-${family}">
+                    <h3 class="pos-sticky z-1 | m-0 pt-3 pb-3 | ff-lead-700 fs-5 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500" style="top: 45px">${family}</h3>
+                    <ul class="d-flex gap-6 fwrap-wrap | m-0 p-0 | ls-none">${content}</ul>
+                </li>`;
+        },
+        docToken: function({name, value}) {
+            return `<li>${name} : ${value}</li>`;
+        },
+        docTokenColor: function({name, value}) {
+            return `
+                <li class="d-flex fd-column gap-2 | w-100">
+                    <div class="pt-9" style="background-color: ${value}"></div>
+                    <dl class="d-flex gap-3 | ff-mono">
+                        <dt class="">${name}</dt>
+                        <dd class="m-0 | c-tertiary-500">${value}</dd>
+                    </dl>
+                </li>`;
+        },
+        docTokenFontFamilies: function({name, value}) {
+            return `
+                <li class="p-6 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2" w-4t="lg">
+                    <dl class="d-flex fd-column gap-3 | ff-mono">
+                        <dt class="">${name}</dt>
+                        <dd class="m-0 | c-tertiary-500">${value}</dd>
+                    </dl>
+                </li>`;
+        },
+        docTokenFontSizes: function({name, value}) {
+            return `
+                <li class="d-flex ai-center jc-center | pos-relative | p-9 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2" style="aspect-ratio: 1">
+                    <div class="pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-primary-300" style="font-size:${value}">Aa</div>
+                    <dl class="d-flex ai-center jc-space-between fd-column | pos-absolute top-0 left-0 | p-3 w-100 h-100 | ff-mono ta-center">
+                        <dt class="">${name}</dt>
+                        <dd class="m-0 | c-tertiary-500">${value}</dd>
+                    </dl>
+                </li>`;
+        },
+        docTokenSpacings: function({name, value}) {
+            return `
+                <li class="d-flex ai-end jc-center gap-1 | pos-relative | pt-9 pb-9 pl-5 pr-5 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                    <div class="bwidth-1 bstyle-solid bcolor-secondary-500" style="height:${value}"></div>
+                    <dl class="d-flex ai-center jc-space-between fd-column | pos-absolute top-0 left-0 | p-3 w-100 h-100 | ff-mono ta-center">
+                        <dt class="">${name}</dt>
+                        <dd class="m-0 | c-tertiary-500">${value}</dd>
+                    </dl>
+                </li>`;
+        },
         docClassValueResponsiveItem: function({classes, attribute, value}) {
             return `
                 <li class="d-flex jc-space-between gap-5 | mb-3">
