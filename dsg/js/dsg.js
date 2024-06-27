@@ -1,11 +1,11 @@
 const dsg = {
-    elSandbox: document.querySelector('#dsg__sandbox'),
     elSandboxIframe: document.querySelector('#dsg__sandbox__iframe'),
     elDocTokens: document.querySelector('#dsg__doc__tokens'),
     elDocStandard: document.querySelector('#dsg__doc__standard'),
     elCodeCss: document.querySelector('#dsg__code__css'),
     elSearchInput: document.querySelector('#dsg__search__input'),
     elTokensList: document.querySelector('#dsg__doc__tokens__list'),
+    elFileDownload: document.querySelector('#dsg__doc__css__file_download'),
     getBuild: function(jsonUrl) {
         if (typeof jsonUrl == 'string') {
             fetch(`${jsonUrl}`)
@@ -15,6 +15,7 @@ const dsg = {
                     dsg.genDocStandard();
                     dsg.genDocTokens();
                     dsg.genCodeCss();
+                    dsg.genDownload();
                     dsg.includeCssInSandbox();
                     dsg.scrollToHash();
                     console.log(dsg.build);
@@ -42,6 +43,7 @@ const dsg = {
             } else {
                 el.style.display = null;
             }
+            if (window.scrollY > 100) window.scroll({top:0})
         });
     },
     isATokenFamily: function(tokensFamily) {
@@ -49,6 +51,17 @@ const dsg = {
         let response = false;
         if (tokensFamilies.indexOf(tokensFamily) > -1) response = true;
         return response;
+    },
+    genDownload: function() {
+        if (dsg.elFileSize !== null) {
+            const blob = new Blob([dsg._newestCssCode], { type: 'text/css' });
+            const fileSizeInKB = Math.ceil(blob.size / 1024);
+            const fileUrl = URL.createObjectURL(blob);
+            dsg.elFileDownload.innerHTML = dsg.templates.downloadButton({
+                url: fileUrl,
+                content: `Download <span class="ff-lead-400">${fileSizeInKB}KB</span>`
+            });
+        }
     },
     genFrom: function(tokensFamily) {
         const array = [];
@@ -92,7 +105,7 @@ const dsg = {
                 markup += `\n  --${dsg.build.settings.cssVariablesPrefix}-${family}-${tokenName}: ${dsg.build.tokens[family][tokenName]};`;
             });
         });
-        return `\n:root {\n${markup}\n}\n`;
+        return `\n:root {\n  /* Design System CSS variables start with --${dsg.build.settings.cssVariablesPrefix}- */${markup}\n}\n`;
     },
     genDocTokens: function() {
         if (dsg.elDocTokens !== null && dsg.elTokensList !== null) {
@@ -271,6 +284,18 @@ const dsg = {
         elPropertyList.innerHTML = markup;
     },
     templates: {
+        downloadButton: function({url, content}) {
+            return `
+                <a  href="${url}"
+                    class="
+                    d-flex gap-2
+                    pl-3 pr-3 pt-2 pb-2
+                    ff-lead-700 tt-uppercase fs-2 td-none
+                    bwidth-1 bstyle-solid bcolor-tertiary-500 bc-primary-700 c-tertiary-500 brad-1"
+                    download>
+                    ${content}
+                </a>`;
+        },
         docTokensListItem: function(family) {
             return `<li><a href="#tokens-${family}">${family}</a></li>`;
         },
