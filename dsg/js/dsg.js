@@ -351,7 +351,7 @@ const dsg = {
         docClassValueResponsiveItem: function({classes, attribute, value}) {
             return `
                 <li class="d-flex jc-space-between gap-5 | mb-3">
-                    <div class="d-flex fd-column gap-1">
+                    <div class="d-flex fd-column gap-1 | w-6t">
                         <span class="d-flex fd-column">
                             <span class="ff-lead-400 fs-1 tt-uppercase | c-secondary-700">CSS Classes</span>
                             <code class="ff-mono fs-3 | c-secondary-500">${classes}</code>
@@ -361,7 +361,7 @@ const dsg = {
                             <code class="ff-mono fs-3 | c-tertiary-300">${attribute}</code>
                         </span>
                     </div>
-                    <span class="d-flex fd-column ai-end">
+                    <span class="d-flex fd-column ai-end | w-6t">
                         <span class="ff-lead-400 fs-1 tt-uppercase | c-tertiary-700">Value</span>
                         <code class="ff-mono fs-3 ta-right | c-tertiary-500">${value}</code>
                     </span>
@@ -371,7 +371,7 @@ const dsg = {
             return `
                 <li class="d-flex jc-space-between gap-5 | fs-3">
                     <code class="c-quaternary-500">${className}</code>
-                    <strong class="ff-mono ta-right | c-tertiary-500">${value}</strong>
+                    <strong class="w-6t | ff-mono ta-right | c-tertiary-500">${value}</strong>
                 </li>
             `;
         },

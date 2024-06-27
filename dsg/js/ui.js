@@ -5,7 +5,7 @@ const ui = {
             navigator.clipboard.writeText(textToCopy).then(
                 function() {
                   /* clipboard successfully set */
-                  ui.notifications.add('copied to clipboard', {skin: 'green'});
+                  ui.notifications.add('Copied to clipboard');
                 }
             )
         } else {
@@ -22,38 +22,39 @@ const ui = {
             document.execCommand("copy");
             // Remove it from the body
             document.body.removeChild(aux);
-            ui.notifications.add('copied to clipboard', {skin: 'green'});
+            ui.notifications.add('Copied to clipboard');
         }
     },
     notifications: {
         defaults: {
             template: 'base',
             duration: 3,
-            skin: 'blue'
+            skin: 'primary'
         },
         templates: {
             base: function({id, message, duration, skin}) {
                 return `
                     <aside class="
                         d-flex jc-space-between
-                        pos-fixed z-6 top-0 right-0
+                        pos-fixed z-2 top-0 right-0
                         mt-6 mr-6
-                        ff-lead-500
-                        bc-${skin}-100 c-${skin}-800"
+                        ff-lead-400
+                        bc-${skin}-100 c-${skin}-800 brad-2"
                         id="${id}">
-                        <div class="d-flex p-3">
-                            <div class="pl-2 bc-${skin}-500"></div>
+                        <div class="d-flex p-2">
+                            <div class="pl-1 bc-${skin}-500 brad-3"></div>
                         </div>
-                        <div class="d-flex ai-center p-4 fs-4">
+                        <div class="d-flex ai-center p-3 fs-3">
                             ${message}
                         </div>
                         <button class="
                             d-flex ai-center
-                            p-3
-                            fs-7
-                            c-green-700 bc-0 b-0"
+                            pt-2 pb-2 pl-3 pr-3
+                            ff-lead-400 fs-2 tt-uppercase
+                            blwidth-1 blstyle-solid bcolor-primary-700 c-${skin}-700 bc-${skin}-200 b-0 bradtr-2 bradbr-2
+                            cur-pointer"
                             onclick="this.closest('aside').remove();">
-                            <span class="icon-x"></span>
+                            Close
                         </button>
                         <style>
                             @keyframes ${id} {

@@ -59,17 +59,17 @@
             </header>
 
             <div class="d-flex fd-column gap-6 | w-100">
-                <div class="d-flex jc-space-between | pos-sticky top-0 | pt-8 pb-3 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500">
+                <div class="d-flex jc-end | pos-sticky top-0 | pt-8 pb-3 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500">
                     <!-- Search -->
-                    <div class="d-flex fd-column | bc-primary-200 blwidth-3 blstyle-solid bcolor-primary-400">
-                        <label for="dsg__search__input" class="d-flex pl-2 | fs-2 | c-primary-900">
+                    <div class="d-flex fd-column">
+                        <label for="dsg__search__input" class="d-flex | pb-1 pl-2 | fs-2 | bc-primary-300 c-primary-900 bradtl-1 bradtr-1">
                             Quick search
                         </label>
                         <input id="dsg__search__input"
                             type="search"
-                            class="ff-lead-400 | p-2 | brad-0 bc-primary-200 c-primary-900 b-0"
                             oninput="dsg.searchText(this.value)"
-                            autocomplete="off">
+                            autocomplete="off"
+                            class="ff-lead-400 fs-3 | p-2 | brad-0 bc-primary-200 c-primary-900 b-0 bradbl-1 bradbr-1">
                     </div>
                 </div>
                 <!-- Classes list -->
