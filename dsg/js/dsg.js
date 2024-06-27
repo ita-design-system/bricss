@@ -1,5 +1,5 @@
 const dsg = {
-    elSandboxIframe: document.querySelector('#dsg__sandbox__iframe'),
+    elsSandboxes: document.querySelectorAll('.dsg__sandbox__iframe'),
     elDocTokens: document.querySelector('#dsg__doc__tokens'),
     elDocStandard: document.querySelector('#dsg__doc__standard'),
     elCodeCss: document.querySelector('#dsg__code__css'),
@@ -16,7 +16,7 @@ const dsg = {
                     dsg.genDocTokens();
                     dsg.genCodeCss();
                     dsg.genDownload();
-                    dsg.includeCssInSandbox();
+                    dsg.includeCssInSandboxes();
                     dsg.scrollToHash();
                     console.log(dsg.build);
                 })
@@ -212,16 +212,16 @@ const dsg = {
             hljs.highlightElement(dsg.elCodeCss);
         }
     },
-    includeCssInSandbox: function() {
-        if (dsg.elSandboxIframe !== null) {
-            const elIncludedStyle = dsg.elSandboxIframe.contentWindow.document.head.querySelector('#dsg__included_style');
+    includeCssInSandboxes: function() {
+        dsg.elsSandboxes.forEach(function(elSandbox) {
+            const elIncludedStyle = elSandbox.contentWindow.document.head.querySelector('#dsg__included_style');
             if (elIncludedStyle === null) {
                 const includedStyleMarkup = `<style id="dsg__included_style">${dsg._newestCssCode}</style>`;
-                dsg.elSandboxIframe.contentWindow.document.head.insertAdjacentHTML('beforeend', includedStyleMarkup);
+                elSandbox.contentWindow.document.head.insertAdjacentHTML('beforeend', includedStyleMarkup);
             } else {
                 elIncludedStyle.innerHTML = dsg._newestCssCode;
             }
-        }
+        });
     },
     setResponsive: function(evt) {
         const selectedScreenSizesNames = [];
@@ -313,7 +313,7 @@ const dsg = {
             return `
                 <li class="d-flex fd-column gap-2 | w-100">
                     <div class="pt-9" style="background-color: ${value}"></div>
-                    <dl class="d-flex gap-3 | ff-mono">
+                    <dl class="d-flex gap-3 | m-0 | ff-mono">
                         <dt class="">${name}</dt>
                         <dd class="m-0 | c-tertiary-500">${value}</dd>
                     </dl>
@@ -322,7 +322,7 @@ const dsg = {
         docTokenFontFamilies: function({name, value}) {
             return `
                 <li class="p-6 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2" w-4t="lg">
-                    <dl class="d-flex fd-column gap-3 | ff-mono">
+                    <dl class="d-flex fd-column gap-3 | m-0 | ff-mono">
                         <dt class="">${name}</dt>
                         <dd class="m-0 | c-tertiary-500">${value}</dd>
                     </dl>
@@ -332,7 +332,7 @@ const dsg = {
             return `
                 <li class="d-flex ai-center jc-center | pos-relative | p-9 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2" style="aspect-ratio: 1">
                     <div class="pos-absolute top-50 left-50 t-tY-50 t-tX-50 | c-primary-300" style="font-size:${value}">Aa</div>
-                    <dl class="d-flex ai-center jc-space-between fd-column | pos-absolute top-0 left-0 | p-3 w-100 h-100 | ff-mono ta-center">
+                    <dl class="d-flex ai-center jc-space-between fd-column | pos-absolute top-0 left-0 | m-0 p-3 w-100 h-100 | ff-mono ta-center">
                         <dt class="">${name}</dt>
                         <dd class="m-0 | c-tertiary-500">${value}</dd>
                     </dl>
@@ -342,7 +342,7 @@ const dsg = {
             return `
                 <li class="d-flex ai-end jc-center gap-1 | pos-relative | pt-9 pb-9 pl-5 pr-5 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
                     <div class="bwidth-1 bstyle-solid bcolor-secondary-500" style="height:${value}"></div>
-                    <dl class="d-flex ai-center jc-space-between fd-column | pos-absolute top-0 left-0 | p-3 w-100 h-100 | ff-mono ta-center">
+                    <dl class="d-flex ai-center jc-space-between fd-column | pos-absolute top-0 left-0 | m-0 p-3 w-100 h-100 | ff-mono ta-center">
                         <dt class="">${name}</dt>
                         <dd class="m-0 | c-tertiary-500">${value}</dd>
                     </dl>

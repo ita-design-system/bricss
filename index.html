@@ -31,7 +31,7 @@
             <a href="#doc">Classes</a>
             <a href="#tokens">Tokens</a>
             <a href="#css">CSS</a>
-            <a href="#sandbox">Sandbox</a>
+            <a href="#sandboxes">Sandboxes</a>
         </nav>
     </header>
 
@@ -141,23 +141,50 @@
                 </pre>
             </div>
         </section>
-
-        <section id="sandbox"
+        
+        <section id="sandboxes"
             class="
-            d-flex
-            pl-9 pr-9 mb-9 scrollmt-7"
+            d-flex fwrap-wrap gap-9
+            pl-9 pr-9 mb-9 scrollmt-9"
             fd-column="xs,sm"
             gap-5="xs,sm"
             pl-5="xs,sm,md"
             pr-5="xs,sm,md"
-            c-scrollspy="sandbox">
-            <div class="pos-relative | w-100 h-100vh maxh-80vh" style="background: white;">
-                <iframe id="dsg__sandbox__iframe"
-                    src="sandbox/index.html"
-                    class="pos-absolute | top-0 left-0 | w-100 h-100 | b-0"></iframe>
+            c-scrollspy="sandboxes">
+            <header class="d-flex fd-column gap-3 | w-100" pt-5="xs,sm">
+                <span class="ff-mono fs-9">&lt;/&gt;</span>
+                <h2 class="m-0 | ff-lead-700 fs-8">Sandboxes</h2>
+                <p class="m-0">Overviews for the current CSS included into multiple iframes of <code>sandbox/index.html</code> for desktop, mobile and tablet.</p>
+            </header>
+            <!-- Mobile -->
+            <div class="d-flex fd-column gap-2" d-none="xs,sm">
+                <h3 class="m-0 | ff-lead-400 fs-4 | c-primary-400">Mobile overview 360 x 760 px</h3>
+                <iframe src="sandbox/index.html"
+                        class="dsg__sandbox__iframe | b-0"
+                        width="360"
+                        height="760"
+                        style="background: white;"></iframe>
+            </div>
+            <!-- Tablet -->
+            <div class="d-flex fd-column gap-2" d-none="xs,sm">
+                <h3 class="m-0 | ff-lead-400 fs-4 | c-primary-400">Tablet overview 810 x 1080 px</h3>
+                <iframe src="sandbox/index.html"
+                        class="dsg__sandbox__iframe | b-0"
+                        width="810"
+                        height="1080"
+                        style="background: white;"></iframe>
+            </div>
+            <!-- Desktop -->
+            <div class="d-flex fd-column gap-2 | w-100">
+                <h3 class="m-0 | ff-lead-400 fs-4 | c-primary-400">Desktop overview</h3>
+                <iframe src="sandbox/index.html"
+                        class="dsg__sandbox__iframe | w-100 h-100vh maxh-80vh | b-0"
+                        style="background: white;"></iframe>
             </div>
         </section>
     </main>
+
+    <footer class=""></footer>
     
     <script src="dsg/js/dsg.js"></script>
     <script src="dsg/js/ui.js"></script>
