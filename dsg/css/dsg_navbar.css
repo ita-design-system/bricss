@@ -1,7 +1,7 @@
 
 #dsg__nav a {
     text-transform: uppercase;
-    font-size: var(--dsg-fontSizes-2);
+    font-size: var(--dsg-fontSizes-3);
     font-family: var(--dsg-fontFamilies-lead-700);
     font-weight: 700;
     color: var(--dsg-colors-primary-300);

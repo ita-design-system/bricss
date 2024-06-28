@@ -1,0 +1,45 @@
+
+@keyframes foo {
+    0% {
+        transform: translateY(-50%) rotateY(0deg);
+    }
+    100% {
+        transform: translateY(-50%) rotateY(180deg);
+    }
+}
+.__animation_1 {
+    perspective: 200px;
+    transform-style: preserve-3d;
+}
+.__animation_1::before {
+    will-change: transform;
+    content: '[';
+    display: flex;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 48%;
+    left: -0.5em;
+    width: calc(50% + 0.5em);
+    color: var(--dsg-colors-secondary-500);
+    transform-origin: 100% 50%;
+    font-size: var(--dsg-fontSizes-5);
+}
+.__animation_1::after {
+    will-change: transform;
+    content: ']';
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 48%;
+    right: -0.5em;
+    width: calc(50% + 0.5em);
+    color: var(--dsg-colors-secondary-500);
+    transform-origin: 0% 50%;
+    font-size: var(--dsg-fontSizes-5);
+}
+
+.__animation_1:hover::before,
+.__animation_1:hover::after {
+    animation: foo 0.5s ease-in-out 0s 1;
+}
