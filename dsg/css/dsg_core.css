@@ -1,6 +1,6 @@
 
 :root {
-
+  /* Design System CSS variables start with --dsg- */
   --dsg-colors-primary-100: #F1F4F4;
   --dsg-colors-primary-200: #E3EAEA;
   --dsg-colors-primary-300: #B9C1C2;
@@ -37,10 +37,6 @@
   --dsg-colors-quaternary-700: #B79902;
   --dsg-colors-quaternary-800: #937901;
   --dsg-colors-quaternary-900: #7A6200;
-  --dsg-screenSizes-xs: 0px,600px;
-  --dsg-screenSizes-sm: 600px,960px;
-  --dsg-screenSizes-md: 960px,1200px;
-  --dsg-screenSizes-lg: 1200px,infinite;
   --dsg-fontFamilies-lead-400: 'EncodeSans Regular', sans-serif;
   --dsg-fontFamilies-lead-700: 'EncodeSans Bold', sans-serif;
   --dsg-fontFamilies-mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
@@ -112,7 +108,7 @@
 .fd-column {
   flex-direction: column;
 }
-.fwrap-wrap {
+.fw-wrap {
   flex-wrap: wrap;
 }
 .order--1 {
@@ -742,31 +738,31 @@
 .ff-mono {
   font-family: var(--dsg-fontFamilies-mono, Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace);
 }
-.fw-100 {
+.fwei-100 {
   font-weight: 100;
 }
-.fw-200 {
+.fwei-200 {
   font-weight: 200;
 }
-.fw-300 {
+.fwei-300 {
   font-weight: 300;
 }
-.fw-400 {
+.fwei-400 {
   font-weight: 400;
 }
-.fw-500 {
+.fwei-500 {
   font-weight: 500;
 }
-.fw-600 {
+.fwei-600 {
   font-weight: 600;
 }
-.fw-700 {
+.fwei-700 {
   font-weight: 700;
 }
-.fw-800 {
+.fwei-800 {
   font-weight: 800;
 }
-.fw-900 {
+.fwei-900 {
   font-weight: 900;
 }
 .fs-1 {
@@ -1539,8 +1535,8 @@
 [fd-column*="xs"] {
   flex-direction: column;
 }
-.fwrap-wrap--xs,
-[fwrap-wrap*="xs"] {
+.fw-wrap--xs,
+[fw-wrap*="xs"] {
   flex-wrap: wrap;
 }
 .order--1--xs,
@@ -2498,8 +2494,8 @@
 [fd-column*="sm"] {
   flex-direction: column;
 }
-.fwrap-wrap--sm,
-[fwrap-wrap*="sm"] {
+.fw-wrap--sm,
+[fw-wrap*="sm"] {
   flex-wrap: wrap;
 }
 .order--1--sm,
@@ -3457,8 +3453,8 @@
 [fd-column*="md"] {
   flex-direction: column;
 }
-.fwrap-wrap--md,
-[fwrap-wrap*="md"] {
+.fw-wrap--md,
+[fw-wrap*="md"] {
   flex-wrap: wrap;
 }
 .order--1--md,
@@ -4416,8 +4412,8 @@
 [fd-column*="lg"] {
   flex-direction: column;
 }
-.fwrap-wrap--lg,
-[fwrap-wrap*="lg"] {
+.fw-wrap--lg,
+[fw-wrap*="lg"] {
   flex-wrap: wrap;
 }
 .order--1--lg,

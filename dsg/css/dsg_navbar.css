@@ -6,7 +6,7 @@
     font-weight: 700;
     color: var(--dsg-colors-primary-300);
     text-decoration: none;
-    padding: var(--dsg-spacings-3) 0;
+    padding: var(--dsg-spacings-4) 0;
     border-bottom: 3px solid transparent;
 }
 #dsg__nav a.active {

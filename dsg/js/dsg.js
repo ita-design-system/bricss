@@ -59,7 +59,7 @@ const dsg = {
             const fileUrl = URL.createObjectURL(blob);
             dsg.elFileDownload.innerHTML = dsg.templates.downloadButton({
                 url: fileUrl,
-                content: `Download <span class="ff-lead-400">${fileSizeInKB}KB</span>`
+                content: `Download <span class="ff-lead-400">${fileSizeInKB}KB <span class="fs-1">(uncompressed)</span></span>`
             });
         }
     },
@@ -302,12 +302,18 @@ const dsg = {
         docTokenFamily: function({family, content}) {
             return `
                 <li class="d-flex fd-column gap-6 | scrollmt-7" id="tokens-${family}">
-                    <h3 class="pos-sticky z-1 | m-0 pt-3 pb-3 | ff-lead-700 fs-5 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500" style="top: 45px">${family}</h3>
-                    <ul class="d-flex gap-6 fwrap-wrap | m-0 p-0 | ls-none">${content}</ul>
+                    <h3 class="pos-sticky z-1 | m-0 pt-3 pb-3 | ff-lead-700 fs-5 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500" style="top: 53px">${family}</h3>
+                    <ul class="d-flex gap-6 fw-wrap | m-0 p-0 | ls-none">${content}</ul>
                 </li>`;
         },
         docToken: function({name, value}) {
-            return `<li>${name} : ${value}</li>`;
+            return `
+                <li class="d-flex ai-center jc-center | pos-relative | p-9 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2" style="aspect-ratio: 1">
+                    <dl class="d-flex ai-center jc-space-between fd-column | pos-absolute top-0 left-0 | m-0 p-3 w-100 h-100 | ff-mono ta-center">
+                        <dt class="">${name}</dt>
+                        <dd class="m-0 | c-tertiary-500">${value}</dd>
+                    </dl>
+                </li>`;
         },
         docTokenColor: function({name, value}) {
             return `
@@ -407,13 +413,26 @@ const dsg = {
         },
         docPropertyItem: function({property, content, responsiveContent, utilityContent}) {
             return `
-                <li class="dsg__doc__property_item | d-flex jc-space-between fwrap-wrap gap-6"
+                <li class="dsg__doc__property_item | d-flex jc-space-between fw-wrap gap-6"
                     data-property="${property}">
                     <h4 class="d-flex fd-column gap-3 fg-1 | m-0 | brwidth-1 brstyle-solid bcolor-secondary-900">
                         <span class="d-flex fd-column">
                             <span class="ff-lead-400 fs-1 tt-uppercase | c-secondary-700">Property</span>
-                            <span class="d-flex ai-center gap-6 | ff-mono fs-5 | c-secondary-500">
-                                ${property}
+                            <span class="d-flex ai-center gap-3 | ff-mono fs-5 | c-secondary-500">
+                                <span class="d-flex ai-center gap-3">
+                                    ${property}
+                                    <a  href="https://developer.mozilla.org/en-US/docs/Web/CSS/${property}"
+                                        target="_blank"
+                                        class="d-flex ai-center | fs-1 | c-secondary-600"
+                                        title="Learn more about ${property} on Mozilla Developer Network">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                                        </svg>
+                                    </a>
+                                </span>
                                 <span class="fg-1 | ta-right | bbwidth-1 bbstyle-solid bcolor-secondary-900"></span>
                             </span>
                         </span>
@@ -424,8 +443,8 @@ const dsg = {
                             </span>
                         </span>
                     </h4>
-                    <div class="d-flex gap-6" fd-column="xs,sm" w-100="xs">
-                        <ul class="dsg__doc__property_item__list | d-flex fd-column gap-1 | m-0 p-0"
+                    <div class="d-flex gap-6 fw-wrap" fd-column="xs,sm" w-100="xs">
+                        <ul class="dsg__doc__property_item__list | d-flex fd-column gap-2 | m-0 p-0"
                             minw-20em="sm,md,lg"
                             maxw-20em="sm,md,lg">
                             <li class="d-flex jc-space-between gap-3 | fs-1 tt-uppercase">
@@ -434,7 +453,7 @@ const dsg = {
                             </li>
                             ${content}
                         </ul>
-                        <div class="d-flex gap-1">
+                        <div class="d-flex gap-1 fw-wrap">
                             <fieldset class="dsg__doc__property_item__responsive_content | d-flex fd-column gap-1 | bwidth-1 bstyle-solid bcolor-primary-500 brad-2">
                                 <legend class="fs-2 | c-primary-300">Responsive</legend>
                                 ${responsiveContent}

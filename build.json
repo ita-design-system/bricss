@@ -140,7 +140,7 @@
             "generate_utility": false
         },
         "flex-wrap": {
-            "prefix": "fwrap",
+            "prefix": "fw",
             "generate_from": "",
             "values": ["wrap"],
             "names": [],
@@ -482,7 +482,7 @@
             "generate_utility": false
         },
         "font-weight": {
-            "prefix": "fw",
+            "prefix": "fwei",
             "generate_from": "",
             "values": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
             "names": [],

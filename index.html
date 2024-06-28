@@ -26,7 +26,7 @@
         pl-5="xs,sm,md"
         pr-5="xs,sm,md">
         <h1 class="d-flex | m-0 | ff-lead-700 tt-uppercase fs-4">
-            <a href="/" class="pt-3 pb-3 | td-none ws-nowrap | c-primary-100">Design System</a>
+            <a href="/" class="pt-4 pb-4 | td-none ws-nowrap | c-primary-100">Design System</a>
         </h1>
         <nav id="dsg__nav" class="d-flex ai-center gap-8 | m-0 p-0">
             <a href="#doc">Classes</a>
@@ -45,15 +45,15 @@
             gap-5="xs,sm"
             pl-5="xs,sm,md"
             pr-5="xs,sm,md"
-            c-scrollspy="doc">
+            c-scrollspy="dsg_menu">
             <header class="
                 d-flex fd-column gap-6
                 top-0
                 pt-9"
                 pos-sticky="md,lg"
                 pt-5="xs,sm"
-                minw-20em="lg"
-                maxw-20em="lg">
+                minw-20em="md,lg"
+                maxw-20em="md,lg">
                 <span class="ff-mono fs-9 c-quaternary-500">&lt;/&gt;</span>
                 <h2 class="m-0 | ff-lead-700 fs-8">CSS classes</h2>
                 <p class="m-0 | lh-7">Each CSS property has its own prefix with its associated names and values. Responsive CSS classes and utilities are available if applicable.</p>
@@ -96,21 +96,21 @@
             gap-5="xs,sm"
             pl-5="xs,sm,md"
             pr-5="xs,sm,md"
-            c-scrollspy="tokens">
+            c-scrollspy="dsg_menu">
             <header class="
                 d-flex fd-column gap-6
                 top-0
                 pt-9"
                 pos-sticky="md,lg"
                 pt-5="xs,sm"
-                minw-20em="lg"
-                maxw-20em="lg">
+                minw-20em="md,lg"
+                maxw-20em="md,lg">
                 <span class="ff-mono fs-9 c-tertiary-500">[]</span>
                 <h2 class="m-0 | ff-lead-700 fs-8">Tokens</h2>
                 <p class="m-0 | lh-7">List of tokens.</p>
                 <menu id="dsg__doc__tokens__list" class="d-flex fd-column gap-1 | m-0 p-0 | ls-none"></menu>
             </header>
-            <ul id="dsg__doc__tokens" class="d-flex fwrap-wrap gap-6 | w-100 m-0 p-0 | ls-none">
+            <ul id="dsg__doc__tokens" class="d-flex fw-wrap gap-6 | w-100 m-0 p-0 | ls-none">
                 <li class="d-flex ai-center jc-center | pos-relative | p-9 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2"
                     style="aspect-ratio: 1">
                     <div class="dsg__loader | d-flex | pos-absolute top-50 left-50 t-tX-50 t-tY-50"></div>
@@ -134,15 +134,15 @@
             gap-5="xs,sm"
             pl-5="xs,sm,md"
             pr-5="xs,sm,md"
-            c-scrollspy="css">
+            c-scrollspy="dsg_menu">
             <header class="
                 d-flex fd-column gap-6
                 top-0
                 pt-9"
                 pos-sticky="md,lg"
                 pt-5="xs,sm"
-                minw-20em="lg"
-                maxw-20em="lg">
+                minw-20em="md,lg"
+                maxw-20em="md,lg">
                 <span class="ff-mono fs-9 c-secondary-500">{}</span>
                 <h2 class="m-0 | ff-lead-700 fs-8">CSS</h2>
                 <p class="m-0 | lh-7">CSS code to use.</p>
@@ -170,13 +170,13 @@
         
         <section id="sandboxes"
             class="
-            d-flex fwrap-wrap gap-9
+            d-flex fw-wrap gap-9
             pl-9 pr-9 mb-9 scrollmt-9"
             fd-column="xs,sm"
             gap-5="xs,sm"
             pl-5="xs,sm,md"
             pr-5="xs,sm,md"
-            c-scrollspy="sandboxes">
+            c-scrollspy="dsg_menu">
             <header class="d-flex fd-column gap-3 | w-100" pt-5="xs,sm">
                 <span class="ff-mono fs-9">&lt;/&gt;</span>
                 <h2 class="m-0 | ff-lead-700 fs-8">Sandboxes</h2>
@@ -215,9 +215,11 @@
     <script src="dsg/js/dsg.js"></script>
     <script src="dsg/js/ui.js"></script>
     <script src="dsg/js/highlight.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/ita-design-system/c-scrollspy.js/ui/js/c-scrollspy.min.js"></script>
+    <script src="dsg/js/c-scrollspy.min.js"></script>
+    <script src="dsg/js/c-scrollspy-callbacks.js"></script>
     <script>
-        dsg.getBuild('build.json');
+        history.scrollRestoration = 'manual';
+        dsg.getBuild('dsg.json');
     </script>
 </body>
 
