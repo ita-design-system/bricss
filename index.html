@@ -13,11 +13,12 @@
     </style>
     <link rel="stylesheet" href="dsg/css/dsg_fonts.css">
     <link rel="stylesheet" href="dsg/css/dsg_core.css">
+    <link rel="stylesheet" href="dsg/css/dsg_loader.css">
     <link rel="stylesheet" href="dsg/css/dsg_html5.css">
     <link rel="stylesheet" href="dsg/css/dsg_navbar.css">
     <link rel="stylesheet" href="dsg/css/dsg_width-twelves.css">
     <link rel="stylesheet" href="dsg/css/dsg_ellipsis.css">
-    <link rel="stylesheet" href="dsg/css/dsg_checkboxes.css">
+    <link rel="stylesheet" href="dsg/css/dsg_forms.css">
     <link rel="stylesheet" href="dsg/css/monokai-sublime-customized.css">
 </head>
 <body class="m-0 | ff-lead-400 | bc-primary-700 c-primary-200">
@@ -25,7 +26,7 @@
         pl-5="xs,sm,md"
         pr-5="xs,sm,md">
         <h1 class="d-flex | m-0 | ff-lead-700 tt-uppercase fs-4">
-            <a href="#" class="pt-3 pb-3 | td-none ws-nowrap | c-primary-100">Design System</a>
+            <a href="/" class="pt-3 pb-3 | td-none ws-nowrap | c-primary-100">Design System</a>
         </h1>
         <nav id="dsg__nav" class="d-flex ai-center gap-8 | m-0 p-0">
             <a href="#doc">Classes</a>
@@ -62,18 +63,28 @@
                 <div class="d-flex jc-end | pos-sticky top-0 | pt-8 pb-3 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500">
                     <!-- Search -->
                     <div class="d-flex fd-column">
-                        <label for="dsg__search__input" class="d-flex | pb-1 pl-2 | fs-2 | bc-primary-300 c-primary-900 bradtl-1 bradtr-1">
+                        <label for="dsg__search__input" class="d-flex | pb-1 pl-2 | fs-2 | c-primary-300 blwidth-1 blstyle-solid bbwidth-1 bbstyle-solid bcolor-primary-400">
                             Quick search
                         </label>
                         <input id="dsg__search__input"
                             type="search"
                             oninput="dsg.searchText(this.value)"
                             autocomplete="off"
-                            class="ff-lead-400 fs-3 | p-2 | brad-0 bc-primary-200 c-primary-900 b-0 bradbl-1 bradbr-1">
+                            class="ff-lead-400 fs-3 | p-2 | bc-primary-200 c-primary-700 b-0 brad-0 bradbl-1 bradbr-1 btwidth-1 btstyle-solid bcolor-primary-900">
                     </div>
                 </div>
                 <!-- Classes list -->
-                <ul id="dsg__doc__standard" class="d-flex fd-column gap-8 | m-0 p-0 | ls-none"></ul>
+                <ul id="dsg__doc__standard" class="d-flex fd-column gap-8 | m-0 p-0 | ls-none">
+                    <li class="d-flex ai-center jc-center | pos-relative | p-9 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                        <div class="dsg__loader | d-flex | pos-absolute top-50 left-50 t-tX-50 t-tY-50"></div>
+                    </li>
+                    <li class="d-flex ai-center jc-center | pos-relative | p-9 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                        <div class="dsg__loader | d-flex | pos-absolute top-50 left-50 t-tX-50 t-tY-50"></div>
+                    </li>
+                    <li class="d-flex ai-center jc-center | pos-relative | p-9 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                        <div class="dsg__loader | d-flex | pos-absolute top-50 left-50 t-tX-50 t-tY-50"></div>
+                    </li>
+                </ul>
             </div>
         </section>
 
@@ -99,7 +110,20 @@
                 <p class="m-0 | lh-7">List of tokens.</p>
                 <menu id="dsg__doc__tokens__list" class="d-flex fd-column gap-1 | m-0 p-0 | ls-none"></menu>
             </header>
-            <ul id="dsg__doc__tokens" class="d-flex fwrap-wrap gap-6 | w-100 m-0 p-0 | ls-none"></ul>
+            <ul id="dsg__doc__tokens" class="d-flex fwrap-wrap gap-6 | w-100 m-0 p-0 | ls-none">
+                <li class="d-flex ai-center jc-center | pos-relative | p-9 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2"
+                    style="aspect-ratio: 1">
+                    <div class="dsg__loader | d-flex | pos-absolute top-50 left-50 t-tX-50 t-tY-50"></div>
+                </li>
+                <li class="d-flex ai-center jc-center | pos-relative | p-9 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2"
+                    style="aspect-ratio: 1">
+                    <div class="dsg__loader | d-flex | pos-absolute top-50 left-50 t-tX-50 t-tY-50"></div>
+                </li>
+                <li class="d-flex ai-center jc-center | pos-relative | p-9 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2"
+                    style="aspect-ratio: 1">
+                    <div class="dsg__loader | d-flex | pos-absolute top-50 left-50 t-tX-50 t-tY-50"></div>
+                </li>
+            </ul>
         </section>
 
         <section id="css"
@@ -136,8 +160,10 @@
                     </button>
                     <div id="dsg__doc__css__file_download"></div>
                 </div>
-                <pre class="d-flex | pos-relative | maxh-80vh o-auto w-100 h-100vh m-0" maxh-50vh="xs">
-                    <code id="dsg__code__css" class="pos-absolute top-0 left-0 | w-100 h-100 p-0"></code>
+                <pre class="d-flex | pos-relative | maxh-80vh o-auto w-100 h-100vh m-0 | bc-primary-600" maxh-50vh="xs">
+                    <code id="dsg__code__css" class="pos-absolute top-0 left-0 | w-100 h-100 p-0">
+                        <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0"></div>
+                    </code>
                 </pre>
             </div>
         </section>

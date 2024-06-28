@@ -1,0 +1,20 @@
+@keyframes loader {
+    100% { rotate: 360deg }
+}
+.dsg__loader::after {
+    content: '';
+    display: flex;
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-style: solid;
+    border-top-color: transparent;
+    border-right-color: var(--dsg-colors-secondary-500);
+    border-bottom-color: var(--dsg-colors-secondary-500);
+    border-left-color: var(--dsg-colors-secondary-500);
+    animation: loader 1s linear 0s infinite;
+}

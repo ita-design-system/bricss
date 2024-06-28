@@ -1,3 +1,18 @@
+/* Inputs */
+input {
+    caret-color: var(--dsg-colors-secondary-500);
+    transition: border-radius 300ms, box-shadow 300ms;
+}
+input[type="text"]:focus,
+input[type="search"]:focus {
+    outline: none;
+    box-shadow: 0px 0px 10px 10px var(--dsg-colors-primary-900);
+    background-color: var(--dsg-colors-primary-100);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+/* Checkboxes UI */
 .__checkbox_ui:checked ~ label .__checkbox_ui {
     background: center / var(--dsg-fontSizes-3) no-repeat var(--dsg-colors-tertiary-500) url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2Ij48cGF0aCBkPSJNMTA2LjY2NiAxNjEuODM1bDk4LjA0OC05OC4wNTkgMTUuMDkzIDE1LjA4M0wxMDYuNjY2IDE5MmwtNjcuODgzLTY3Ljg4MyAxNS4wODMtMTUuMDgzIDUyLjggNTIuOHoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=');
     border-color: var(--dsg-colors-tertiary-500);
@@ -9,3 +24,4 @@
 .__checkbox_ui:disabled ~ label {
     color: var(--dsg-colors-primary-400);
 }
+
