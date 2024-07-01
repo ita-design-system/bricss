@@ -13,7 +13,8 @@
         "tokenTemplateMap": {
             "colors": "docTokenColor",
             "fontFamilies": "docTokenFontFamilies",
-            "fontSizes": "docTokenFontSizes"
+            "fontSizes": "docTokenFontSizes",
+            "spacings": "docTokenSpacings"
         }
     },
     "tokens": {

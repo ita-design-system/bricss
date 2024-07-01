@@ -5,7 +5,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design System</title>
+    <title>briCSS</title>
+
+    <meta itemprop="name" content="briCSS">
+    <meta name="description" itemprop="description" content="A customizable low-level CSS framework">
+    <meta name="application-name" content="briCSS">
+    <meta name="author" content="{{ author }}">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="canonical" href="/">
+
+    <meta name="msapplication-TileColor" content="#182026">
+    <meta name="theme-color" content="#182026">
+
+    <!-- Microsoft -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- <meta name="msapplication-starturl" content="{{ app.request.uri }}"> -->
+    <meta name="msapplication-tooltip" content="briCSS">
+    <meta name="msapplication-TileColor" content="#182026">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <!-- <meta property="og:url" content="{{ app.request.uri }}"> -->
+    <meta property="og:title" content="briCSS">
+    <meta property="og:description" content="A customizable low-level CSS framework">
+    <meta property="og:image" content="/open-graph-image.png">
+
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="briCSS">
+    <meta name="twitter:description" content="A customizable low-level CSS framework">
+    <!-- <meta name="twitter:url" content="{{ app.request.uri }}"> -->
+    <meta name="twitter:image" content="/open-graph-image.png">
+
+    <!-- iOS -->
+    <meta name="apple-mobile-web-app-title" content="briCSS">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#182026">
+
+    <!-- Android -->
+    <meta name="theme-color" content="#182026">
+    <meta name="color-scheme" content="dark">
+    <meta name="mobile-web-app-capable" content="yes">
+
     <style>
         * {
             box-sizing: border-box;
@@ -26,8 +68,10 @@
     <header class="d-flex ai-center gap-9 | pl-9 o-auto | pos-sticky top-0 z-2 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500"
         pl-5="xs,sm,md"
         pr-5="xs,sm,md">
-        <h1 class="d-flex | m-0 | ff-lead-700 tt-uppercase fs-4">
-            <a href="/" class="d-flex | pos-relative | pt-4 pb-4 | td-none ws-nowrap | c-primary-100 bbwidth-3 bbstyle-solid bcolor-primary-700 | __animation_1">Design System</a>
+        <h1 class="d-flex | m-0">
+            <a href="/" class="d-flex | pos-relative | pt-4 pb-4 | ff-lead-700 fs-4 td-none ws-nowrap | c-primary-100 | __animation_1">
+                <span class="ff-lead-400">BRi</span>CSS
+            </a>
         </h1>
         <nav id="dsg__nav" class="d-flex ai-center gap-8 | m-0 p-0">
             <a href="#doc">Classes</a>
@@ -108,7 +152,7 @@
                 maxw-20em="md,lg">
                 <span class="ff-mono fs-9 c-tertiary-500">[]</span>
                 <h2 class="m-0 | ff-lead-700 fs-8">Tokens</h2>
-                <p class="m-0 | lh-7">List of tokens.</p>
+                <p class="m-0 | lh-7">Tokens are simple reusable key/values families. Here is the list.</p>
                 <menu id="dsg__doc__tokens__list" class="d-flex fd-column gap-1 | m-0 p-0 | ls-none"></menu>
             </header>
             <ul id="dsg__doc__tokens" class="d-flex fw-wrap gap-6 | w-100 m-0 p-0 | ls-none">
@@ -179,34 +223,37 @@
             pr-5="xs,sm,md"
             c-scrollspy="dsg_menu">
             <header class="d-flex fd-column gap-3 | w-100" pt-5="xs,sm">
-                <span class="ff-mono fs-9">&lt;/&gt;</span>
+                <span class="ff-mono fs-9 | c-quaternary-500">&lt;/&gt;</span>
                 <h2 class="m-0 | ff-lead-700 fs-8">Sandboxes</h2>
                 <p class="m-0 | lh-7">Overviews for the current CSS included into multiple iframes of <code>sandbox/index.html</code> for desktop, mobile and tablet.</p>
             </header>
             <!-- Mobile -->
-            <div class="d-flex fd-column gap-2" d-none="xs,sm">
+            <div class="d-flex fd-column gap-2 | " d-none="xs,sm">
                 <h3 class="m-0 | ff-lead-400 fs-4 | c-primary-400">Mobile overview 360 x 760 px</h3>
-                <iframe src="sandbox/index.html"
-                        class="dsg__sandbox__iframe | b-0"
-                        width="360"
-                        height="760"
-                        style="background: white;"></iframe>
+                <div class="pos-relative">
+                    <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0 | bc-primary-600"></div>
+                    <iframe class="dsg__sandbox__iframe | pos-relative | b-0"
+                            width="360"
+                            height="760"></iframe>
+                </div>
             </div>
             <!-- Tablet -->
-            <div class="d-flex fd-column gap-2" d-none="xs,sm">
+            <div class="d-flex fd-column gap-2 | pos-relative" d-none="xs,sm">
                 <h3 class="m-0 | ff-lead-400 fs-4 | c-primary-400">Tablet overview 810 x 1080 px</h3>
-                <iframe src="sandbox/index.html"
-                        class="dsg__sandbox__iframe | b-0"
-                        width="810"
-                        height="1080"
-                        style="background: white;"></iframe>
+                <div class="pos-relative">
+                    <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0 | bc-primary-600"></div>
+                    <iframe class="dsg__sandbox__iframe | pos-relative | b-0"
+                            width="810"
+                            height="1080"></iframe>
+                </div>
             </div>
             <!-- Desktop -->
-            <div class="d-flex fd-column gap-2 | w-100">
+            <div class="d-flex fd-column gap-2 | pos-relative | w-100">
                 <h3 class="m-0 | ff-lead-400 fs-4 | c-primary-400">Desktop overview</h3>
-                <iframe src="sandbox/index.html"
-                        class="dsg__sandbox__iframe | w-100 h-100vh maxh-80vh | b-0"
-                        style="background: white;"></iframe>
+                <div class="pos-relative">
+                    <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0 | bc-primary-600"></div>
+                    <iframe class="dsg__sandbox__iframe | pos-relative | w-100 h-100vh maxh-80vh | b-0"></iframe>
+                </div>
             </div>
         </section>
     </main>

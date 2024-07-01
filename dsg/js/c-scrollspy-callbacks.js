@@ -25,7 +25,7 @@ cScrollspyCallbacks.dsg_menu = {
                 let origin_class_attribute = el_anchor.dataset.classOrigin || '';
                 // If no active class is set, apply 'active' as default
                 if (active_class_attribute === undefined) {
-                    active_class_attribute = 'active';
+                    active_class_attribute = 'active | __animation_2';
                 } else {
                     // Custom class detected, save once origin class attribute
                     if (el_anchor.dataset.classOrigin === undefined) {
@@ -37,7 +37,15 @@ cScrollspyCallbacks.dsg_menu = {
                     // Apply active class on this anchor
                     el_anchor.setAttribute('class', active_class_attribute);
                     history.replaceState({}, '', '#' + id_intersection);
-                    document.title = 'Design System | ' + anchors_ids_optional_titles[id_intersection];
+                    document.title = 'BRiCSS | ' + anchors_ids_optional_titles[id_intersection];
+                    if (id_intersection == 'sandboxes') {
+                        dsg.elsSandboxes.forEach(function(el) {
+                            if (el.src == '') {
+                                el.src = "sandbox/index.html",
+                                el.style.background = 'white';
+                            }
+                        })
+                    }
                 } else {
                     // Revert class on this anchor
                     el_anchor.setAttribute('class', origin_class_attribute);

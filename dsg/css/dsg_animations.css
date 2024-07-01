@@ -7,31 +7,34 @@
         transform: translateY(-50%) rotateY(180deg);
     }
 }
-.__animation_1 {
+.__animation_1,
+.__animation_2 {
     perspective: 200px;
     transform-style: preserve-3d;
 }
-.__animation_1::before {
+.__animation_1::before,
+.__animation_2::before {
     will-change: transform;
-    content: '[';
+    content: '{';
     display: flex;
     position: absolute;
     transform: translateY(-50%);
-    top: 48%;
+    top: 47%;
     left: -0.5em;
     width: calc(50% + 0.5em);
     color: var(--dsg-colors-secondary-500);
     transform-origin: 100% 50%;
     font-size: var(--dsg-fontSizes-5);
 }
-.__animation_1::after {
+.__animation_1::after,
+.__animation_2::after {
     will-change: transform;
-    content: ']';
+    content: '}';
     display: flex;
     justify-content: flex-end;
     position: absolute;
     transform: translateY(-50%);
-    top: 48%;
+    top: 47%;
     right: -0.5em;
     width: calc(50% + 0.5em);
     color: var(--dsg-colors-secondary-500);
@@ -41,5 +44,18 @@
 
 .__animation_1:hover::before,
 .__animation_1:hover::after {
+    animation: foo 0.5s ease-in-out 0s 1;
+}
+
+.__animation_2::before {
+    content: '{';
+}
+.__animation_2::after {
+    content: '}';
+}
+.__animation_2::before,
+.__animation_2::after {
+    top: 46%;
+    color: var(--dsg-colors-primary-100);
     animation: foo 0.5s ease-in-out 0s 1;
 }
