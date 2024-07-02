@@ -231,28 +231,28 @@
             <div class="d-flex fd-column gap-2 | " d-none="xs,sm">
                 <h3 class="m-0 | ff-lead-400 fs-4 | c-primary-400">Mobile overview 360 x 760 px</h3>
                 <div class="pos-relative">
-                    <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0 | bc-primary-600"></div>
                     <iframe class="dsg__sandbox__iframe | pos-relative | b-0"
                             width="360"
                             height="760"></iframe>
+                    <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0 | bc-primary-600"></div>
                 </div>
             </div>
             <!-- Tablet -->
             <div class="d-flex fd-column gap-2 | pos-relative" d-none="xs,sm">
                 <h3 class="m-0 | ff-lead-400 fs-4 | c-primary-400">Tablet overview 810 x 1080 px</h3>
                 <div class="pos-relative">
-                    <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0 | bc-primary-600"></div>
                     <iframe class="dsg__sandbox__iframe | pos-relative | b-0"
                             width="810"
                             height="1080"></iframe>
+                    <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0 | bc-primary-600"></div>
                 </div>
             </div>
             <!-- Desktop -->
             <div class="d-flex fd-column gap-2 | pos-relative | w-100">
                 <h3 class="m-0 | ff-lead-400 fs-4 | c-primary-400">Desktop overview</h3>
                 <div class="pos-relative">
-                    <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0 | bc-primary-600"></div>
                     <iframe class="dsg__sandbox__iframe | pos-relative | w-100 h-100vh maxh-80vh | b-0"></iframe>
+                    <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0 | bc-primary-600"></div>
                 </div>
             </div>
         </section>
@@ -266,8 +266,7 @@
     <script src="./dsg/js/c-scrollspy.min.js"></script>
     <script src="./dsg/js/c-scrollspy-callbacks.js"></script>
     <script>
-        history.scrollRestoration = 'manual';
-        dsg.getBuild('dsg.json');
+        dsg.getBuild('build.json');
     </script>
 </body>
 

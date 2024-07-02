@@ -25,7 +25,7 @@ cScrollspyCallbacks.dsg_menu = {
                 let origin_class_attribute = el_anchor.dataset.classOrigin || '';
                 // If no active class is set, apply 'active' as default
                 if (active_class_attribute === undefined) {
-                    active_class_attribute = 'active | __animation_2';
+                    active_class_attribute = 'active __animation_2';
                 } else {
                     // Custom class detected, save once origin class attribute
                     if (el_anchor.dataset.classOrigin === undefined) {
@@ -39,10 +39,21 @@ cScrollspyCallbacks.dsg_menu = {
                     history.replaceState({}, '', '#' + id_intersection);
                     document.title = 'BRiCSS | ' + anchors_ids_optional_titles[id_intersection];
                     if (id_intersection == 'sandboxes') {
-                        dsg.elsSandboxes.forEach(function(el) {
-                            if (el.src == '') {
-                                el.src = "sandbox/index.html",
-                                el.style.background = 'white';
+                        dsg.elsSandboxes.forEach(function(elSandbox) {
+                            if (elSandbox.src == '') {
+                                elSandbox.addEventListener('load', function() {
+                                    const elIncludedStyle = elSandbox.contentWindow.document.head.querySelector('#dsg__included_style');
+                                    if (elIncludedStyle === null) {
+                                        const includedStyleMarkup = `<style id="dsg__included_style">${dsg._newestCssCode}</style>`;
+                                        elSandbox.contentWindow.document.head.insertAdjacentHTML('beforeend', includedStyleMarkup);
+                                    } else {
+                                        elIncludedStyle.innerHTML = dsg._newestCssCode;
+                                    }
+                                });
+
+                                elSandbox.src = "sandbox/index.html",
+                                elSandbox.style.background = 'white';
+                                elSandbox.parentElement.querySelector('.dsg__loader').remove();
                             }
                         })
                     }

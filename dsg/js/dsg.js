@@ -19,6 +19,7 @@ const dsg = {
                     dsg.includeCssInSandboxes();
                     dsg.scrollToHash();
                     console.log(dsg.build);
+                    cScrollspy.update();
                 })
                 .catch(error => {
                     // Handle the error
@@ -30,7 +31,7 @@ const dsg = {
         if (location.hash != '') {
             const elTarget = document.querySelector(location.hash);
             if (elTarget !== null) {
-                elTarget.scrollIntoView({behavior: 'smooth'});
+                elTarget.scrollIntoView();
             }
         }
     },
