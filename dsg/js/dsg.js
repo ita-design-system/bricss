@@ -18,14 +18,13 @@ const dsg = {
                     dsg.genCodeCss();
                     dsg.genBlob();
                     dsg.genDownload();
-                    dsg.includeCssInSandboxes();
                     dsg.scrollToHash();
                     console.log(dsg.build);
                     cScrollspy.update();
                 })
                 .catch(error => {
                     // Handle the error
-                    console.log('Build JSON load failed');
+                    console.log('Build JSON load failed', error);
                 });
         }
     },
@@ -46,7 +45,7 @@ const dsg = {
             } else {
                 el.style.display = null;
             }
-            if (window.scrollY > 100) window.scroll({top:0})
+            dsg.elDocStandard.scrollIntoView();
         });
     },
     isATokenFamily: function(tokensFamily) {
@@ -219,17 +218,6 @@ const dsg = {
             dsg.elCodeCss.dataset.highlighted = '';
             hljs.highlightElement(dsg.elCodeCss);
         }
-    },
-    includeCssInSandboxes: function() {
-        dsg.elsSandboxes.forEach(function(elSandbox) {
-            const elIncludedStyle = elSandbox.contentWindow.document.head.querySelector('#dsg__included_style');
-            if (elIncludedStyle === null) {
-                const includedStyleMarkup = `<style id="dsg__included_style">${dsg._newestCssCode}</style>`;
-                elSandbox.contentWindow.document.head.insertAdjacentHTML('beforeend', includedStyleMarkup);
-            } else {
-                elIncludedStyle.innerHTML = dsg._newestCssCode;
-            }
-        });
     },
     setResponsive: function(evt) {
         const selectedScreenSizesNames = [];

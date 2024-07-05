@@ -44,14 +44,14 @@ cScrollspyCallbacks.dsg_menu = {
                                 elSandbox.addEventListener('load', function() {
                                     const elIncludedStyle = elSandbox.contentWindow.document.head.querySelector('#dsg__included_style');
                                     if (elIncludedStyle === null) {
-                                        const includedStyleMarkup = `<style id="dsg__included_style">${dsg._newestCssCode}</style>`;
+                                        const includedStyleMarkup = `<link rel="stylesheet" id="dsg__included_style" href="${window.parent.dsgCssFile.url}"/>`;
                                         elSandbox.contentWindow.document.head.insertAdjacentHTML('beforeend', includedStyleMarkup);
                                     } else {
-                                        elIncludedStyle.innerHTML = dsg._newestCssCode;
+                                        elIncludedStyle.href = window.parent.dsgCssFile.url;
                                     }
                                 });
 
-                                elSandbox.src = "sandbox/index.html",
+                                elSandbox.src = "sandbox/index.html?" + ui.generateRandomId();
                                 elSandbox.style.background = 'white';
                                 elSandbox.parentElement.querySelector('.dsg__loader').remove();
                             }

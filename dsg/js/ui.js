@@ -1,4 +1,14 @@
 const ui = {
+    generateRandomId: function(length) {
+        const charactersList = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let id = '';
+        if (typeof length != 'number') length = 8;
+        for (let index = 0; index < length; index++) {
+            const randomIndex = Math.floor(Math.random() * charactersList.length);
+            id += charactersList[randomIndex];
+        }
+        return id;
+    },
 
     copyToClipboard: function(textToCopy) {
         if (navigator.clipboard !== undefined) {
