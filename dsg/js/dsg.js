@@ -5,7 +5,8 @@ const dsg = {
     elCodeCss: document.querySelector('#dsg__code__css'),
     elSearchInput: document.querySelector('#dsg__search__input'),
     elTokensList: document.querySelector('#dsg__doc__tokens__list'),
-    elFileDownload: document.querySelector('#dsg__doc__css__file_download'),
+    elDownloadLink: document.querySelector('#dsg__doc__download_link'),
+    elFileSize: document.querySelector('#dsg__doc__download_link__file_size'),
     getBuild: function(jsonUrl) {
         if (typeof jsonUrl == 'string') {
             fetch(`${jsonUrl}`)
@@ -15,6 +16,7 @@ const dsg = {
                     dsg.genDocStandard();
                     dsg.genDocTokens();
                     dsg.genCodeCss();
+                    dsg.genBlob();
                     dsg.genDownload();
                     dsg.includeCssInSandboxes();
                     dsg.scrollToHash();
@@ -53,15 +55,20 @@ const dsg = {
         if (tokensFamilies.indexOf(tokensFamily) > -1) response = true;
         return response;
     },
+    genBlob: function() {
+        const blob = new Blob([dsg._newestCssCode], { type: 'text/css' });
+        const fileUrl = URL.createObjectURL(blob);
+        window.dsgCssFile = {
+            url: fileUrl,
+            size: Math.ceil(blob.size / 1024)
+        }
+    },
     genDownload: function() {
-        if (dsg.elFileSize !== null) {
-            const blob = new Blob([dsg._newestCssCode], { type: 'text/css' });
-            const fileSizeInKB = Math.ceil(blob.size / 1024);
-            const fileUrl = URL.createObjectURL(blob);
-            dsg.elFileDownload.innerHTML = dsg.templates.downloadButton({
-                url: fileUrl,
-                content: `Download <span class="ff-lead-400">${fileSizeInKB}KB <span class="fs-1">(uncompressed)</span></span>`
-            });
+        if (typeof window.dsgCssFile == 'object') {
+            dsg.elFileSize.innerHTML = `${window.dsgCssFile.size}KB`;
+            dsg.elDownloadLink.href = window.dsgCssFile.url;
+            dsg.elDownloadLink.classList.remove('opa-5', 'pe-none');
+            dsg.elDownloadLink.title = `Download CSS file ${window.dsgCssFile.size}KB uncompressed`;
         }
     },
     genFrom: function(tokensFamily) {
@@ -285,18 +292,6 @@ const dsg = {
         elPropertyList.innerHTML = markup;
     },
     templates: {
-        downloadButton: function({url, content}) {
-            return `
-                <a  href="${url}"
-                    class="
-                    d-flex gap-2
-                    pl-3 pr-3 pt-2 pb-2
-                    ff-lead-700 tt-uppercase fs-2 td-none
-                    bwidth-1 bstyle-solid bcolor-tertiary-500 bc-primary-700 c-tertiary-500 brad-1"
-                    download>
-                    ${content}
-                </a>`;
-        },
         docTokensListItem: function(family) {
             return `<li><a href="#tokens-${family}">${family}</a></li>`;
         },

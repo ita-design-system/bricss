@@ -65,7 +65,7 @@
     <link rel="stylesheet" href="./dsg/css/monokai-sublime-customized.css">
 </head>
 <body class="m-0 | ff-lead-400 | bc-primary-700 c-primary-200">
-    <header class="d-flex ai-center gap-9 | pl-9 o-auto | pos-sticky top-0 z-2 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500"
+    <header class="d-flex ai-center gap-9 | pl-9 pr-9 o-auto | pos-sticky top-0 z-2 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500"
         pl-5="xs,sm,md"
         pr-5="xs,sm,md">
         <h1 class="d-flex | m-0">
@@ -73,15 +73,85 @@
                 <span class="ff-lead-400">BRi</span>CSS
             </a>
         </h1>
-        <nav id="dsg__nav" class="d-flex ai-center gap-8 | m-0 p-0">
-            <a href="#doc">Classes</a>
-            <a href="#tokens">Tokens</a>
-            <a href="#css">CSS</a>
-            <a href="#sandboxes">Sandboxes</a>
+        <nav class="d-flex jc-space-between ai-center gap-8 fg-1 | m-0 p-0">
+            <div id="dsg__nav" class="d-flex ai-center gap-8">
+                <a href="#sandboxes">Sandboxes</a>
+                <a href="#doc">Classes</a>
+                <a href="#tokens">Tokens</a>
+                <a href="#css">CSS</a>
+            </div>
+            <div class="d-flex ai-center gap-3">
+                <button type="button"
+                    class="
+                    d-flex gap-2
+                    pl-3 pr-3 pt-2 pb-2
+                    ff-lead-700 tt-uppercase fs-2 td-none
+                    bwidth-1 bstyle-solid bcolor-tertiary-500 bc-primary-700 c-tertiary-500 brad-1
+                    cur-pointer"
+                    title="Copy CSS to clipboard"
+                    onclick="ui.copyToClipboard(dsg.elCodeCss.innerText)">
+                    Copy CSS
+                </button>
+                <a  id="dsg__doc__download_link"
+                    href="#!"
+                    class="
+                    d-flex gap-2
+                    pl-3 pr-3 pt-2 pb-2
+                    ff-lead-700 tt-uppercase fs-2 td-none
+                    bwidth-1 bstyle-solid bcolor-tertiary-500 bc-tertiary-500 c-primary-700 brad-1 opa-5 pe-none"
+                    download>
+                    Download <span id="dsg__doc__download_link__file_size" class="ff-lead-400">-</span>
+                </a>
+            </div>
         </nav>
     </header>
 
     <main class="d-flex fd-column gap-9">
+        
+        <section id="sandboxes"
+            class="
+            d-flex fw-wrap gap-9
+            pl-9 pr-9 mb-9 scrollmt-9"
+            fd-column="xs,sm"
+            gap-5="xs,sm"
+            pl-5="xs,sm,md"
+            pr-5="xs,sm,md"
+            c-scrollspy="dsg_menu">
+            <header class="d-flex fd-column gap-3 | w-100" pt-5="xs,sm">
+                <span class="ff-mono fs-9 | c-quaternary-500">&lt;/&gt;</span>
+                <h2 class="m-0 | ff-lead-700 fs-8">Sandboxes</h2>
+                <p class="m-0 | lh-7">Overviews for the current CSS included into multiple iframes of <code>sandbox/index.html</code> for desktop, mobile and tablet.</p>
+            </header>
+            <!-- Mobile -->
+            <div class="d-flex fd-column gap-2" d-none="xs,sm">
+                <h3 class="m-0 | ff-lead-400 fs-4 | c-primary-400">Mobile overview 360 x 760 px</h3>
+                <div class="pos-relative">
+                    <iframe class="dsg__sandbox__iframe | pos-relative | b-0"
+                            width="360"
+                            height="760"></iframe>
+                    <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0 | bc-primary-600"></div>
+                </div>
+            </div>
+            <!-- Tablet -->
+            <div class="d-flex fd-column gap-2" d-none="xs,sm">
+                <h3 class="m-0 | ff-lead-400 fs-4 | c-primary-400">Tablet overview 810 x 1080 px</h3>
+                <div class="pos-relative">
+                    <iframe class="dsg__sandbox__iframe | pos-relative | b-0"
+                            width="810"
+                            height="1080"></iframe>
+                    <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0 | bc-primary-600"></div>
+                </div>
+            </div>
+            <!-- Desktop -->
+            <div class="d-flex fd-column gap-2 | w-100">
+                <h3 class="m-0 | ff-lead-400 fs-4 | c-primary-400">Desktop overview</h3>
+                <div class="pos-relative">
+                    <iframe class="dsg__sandbox__iframe | pos-relative | w-100 h-100vh maxh-80vh | b-0"></iframe>
+                    <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0 | bc-primary-600"></div>
+                </div>
+            </div>
+        </section>
+
         <section id="doc"
             class="
             d-flex ai-start gap-9
@@ -193,67 +263,11 @@
                 <p class="m-0 | lh-7">CSS code to use.</p>
             </header>
             <div class="d-flex fd-column ai-start gap-3 | w-100 m-0 p-0">
-                <div class="d-flex ai-center gap-3">
-                    <button type="button"
-                        class="
-                        pl-3 pr-3 pt-2 pb-2
-                        ff-lead-700 tt-uppercase fs-2
-                        bwidth-1 bstyle-solid bcolor-tertiary-500 bc-tertiary-500 c-primary-700 brad-1
-                        cur-pointer"
-                        onclick="ui.copyToClipboard(dsg.elCodeCss.innerText)">
-                        Copy
-                    </button>
-                    <div id="dsg__doc__css__file_download"></div>
-                </div>
                 <pre class="d-flex | pos-relative | maxh-80vh o-auto w-100 h-100vh m-0 | bc-primary-600" maxh-50vh="xs">
                     <code id="dsg__code__css" class="pos-absolute top-0 left-0 | w-100 h-100 p-0">
                         <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0"></div>
                     </code>
                 </pre>
-            </div>
-        </section>
-        
-        <section id="sandboxes"
-            class="
-            d-flex fw-wrap gap-9
-            pl-9 pr-9 mb-9 scrollmt-9"
-            fd-column="xs,sm"
-            gap-5="xs,sm"
-            pl-5="xs,sm,md"
-            pr-5="xs,sm,md"
-            c-scrollspy="dsg_menu">
-            <header class="d-flex fd-column gap-3 | w-100" pt-5="xs,sm">
-                <span class="ff-mono fs-9 | c-quaternary-500">&lt;/&gt;</span>
-                <h2 class="m-0 | ff-lead-700 fs-8">Sandboxes</h2>
-                <p class="m-0 | lh-7">Overviews for the current CSS included into multiple iframes of <code>sandbox/index.html</code> for desktop, mobile and tablet.</p>
-            </header>
-            <!-- Mobile -->
-            <div class="d-flex fd-column gap-2" d-none="xs,sm">
-                <h3 class="m-0 | ff-lead-400 fs-4 | c-primary-400">Mobile overview 360 x 760 px</h3>
-                <div class="pos-relative">
-                    <iframe class="dsg__sandbox__iframe | pos-relative | b-0"
-                            width="360"
-                            height="760"></iframe>
-                    <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0 | bc-primary-600"></div>
-                </div>
-            </div>
-            <!-- Tablet -->
-            <div class="d-flex fd-column gap-2" d-none="xs,sm">
-                <h3 class="m-0 | ff-lead-400 fs-4 | c-primary-400">Tablet overview 810 x 1080 px</h3>
-                <div class="pos-relative">
-                    <iframe class="dsg__sandbox__iframe | pos-relative | b-0"
-                            width="810"
-                            height="1080"></iframe>
-                    <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0 | bc-primary-600"></div>
-                </div>
-            </div>
-            <!-- Desktop -->
-            <div class="d-flex fd-column gap-2 | w-100">
-                <h3 class="m-0 | ff-lead-400 fs-4 | c-primary-400">Desktop overview</h3>
-                <div class="pos-relative">
-                    <iframe class="dsg__sandbox__iframe | pos-relative | w-100 h-100vh maxh-80vh | b-0"></iframe>
-                    <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0 | bc-primary-600"></div>
-                </div>
             </div>
         </section>
     </main>
