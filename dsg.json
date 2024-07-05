@@ -393,7 +393,7 @@
         "scroll-margin-top": {
             "prefix": "scrollmt",
             "generate_from": "spacings",
-            "values": [],
+            "values": ["150px"],
             "names": [],
             "responsive": true,
             "generate_utility": false

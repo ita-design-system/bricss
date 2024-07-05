@@ -378,6 +378,9 @@
 .o-hidden {
   overflow: hidden;
 }
+.scrollmt-150px {
+  scroll-margin-top: 150px;
+}
 .scrollmt-1 {
   scroll-margin-top: var(--dsg-spacings-1, 4px);
 }
@@ -1895,6 +1898,10 @@
 [o-hidden*="xs"] {
   overflow: hidden;
 }
+.scrollmt-150px--xs,
+[scrollmt-150px*="xs"] {
+  scroll-margin-top: 150px;
+}
 .scrollmt-1--xs,
 [scrollmt-1*="xs"] {
   scroll-margin-top: var(--dsg-spacings-1, 4px);
@@ -2853,6 +2860,10 @@
 .o-hidden--sm,
 [o-hidden*="sm"] {
   overflow: hidden;
+}
+.scrollmt-150px--sm,
+[scrollmt-150px*="sm"] {
+  scroll-margin-top: 150px;
 }
 .scrollmt-1--sm,
 [scrollmt-1*="sm"] {
@@ -3813,6 +3824,10 @@
 [o-hidden*="md"] {
   overflow: hidden;
 }
+.scrollmt-150px--md,
+[scrollmt-150px*="md"] {
+  scroll-margin-top: 150px;
+}
 .scrollmt-1--md,
 [scrollmt-1*="md"] {
   scroll-margin-top: var(--dsg-spacings-1, 4px);
@@ -4771,6 +4786,10 @@
 .o-hidden--lg,
 [o-hidden*="lg"] {
   overflow: hidden;
+}
+.scrollmt-150px--lg,
+[scrollmt-150px*="lg"] {
+  scroll-margin-top: 150px;
 }
 .scrollmt-1--lg,
 [scrollmt-1*="lg"] {
