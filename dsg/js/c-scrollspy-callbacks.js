@@ -38,25 +38,6 @@ cScrollspyCallbacks.dsg_menu = {
                     el_anchor.setAttribute('class', active_class_attribute);
                     history.replaceState({}, '', '#' + id_intersection);
                     document.title = 'BRiCSS | ' + anchors_ids_optional_titles[id_intersection];
-                    if (id_intersection == 'sandboxes') {
-                        dsg.elsSandboxes.forEach(function(elSandbox) {
-                            if (elSandbox.src == '') {
-                                elSandbox.addEventListener('load', function() {
-                                    const elIncludedStyle = elSandbox.contentWindow.document.head.querySelector('#dsg__included_style');
-                                    if (elIncludedStyle === null) {
-                                        const includedStyleMarkup = `<link rel="stylesheet" id="dsg__included_style" href="${window.parent.dsgCssFile.url}"/>`;
-                                        elSandbox.contentWindow.document.head.insertAdjacentHTML('beforeend', includedStyleMarkup);
-                                    } else {
-                                        elIncludedStyle.href = window.parent.dsgCssFile.url;
-                                    }
-                                });
-
-                                elSandbox.src = "sandbox/index.html?" + ui.generateRandomId();
-                                elSandbox.style.background = 'white';
-                                elSandbox.parentElement.querySelector('.dsg__loader').remove();
-                            }
-                        })
-                    }
                 } else {
                     // Revert class on this anchor
                     el_anchor.setAttribute('class', origin_class_attribute);

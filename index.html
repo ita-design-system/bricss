@@ -90,7 +90,7 @@
                     cur-pointer"
                     title="Copy CSS to clipboard"
                     onclick="ui.copyToClipboard(dsg.elCodeCss.innerText)">
-                    Copy CSS
+                    Copy
                 </button>
                 <a  id="dsg__doc__download_link"
                     href="#!"
@@ -123,30 +123,36 @@
                 <p class="m-0 | lh-7">Overviews for the current CSS included into multiple iframes of <code>sandbox/index.html</code> for desktop, mobile and tablet.</p>
             </header> -->
             <!-- Desktop -->
-            <div class="d-flex fd-column gap-2 | w-100">
+            <div class="d-flex ai-start fd-column gap-2 | w-100">
                 <h3 class="m-0 | ff-lead-400 fs-4 | c-primary-400">Desktop overview if of <code>sandbox/index.html</code></h3>
-                <div class="pos-relative">
-                    <iframe class="dsg__sandbox__iframe | pos-relative | w-100 h-100vh maxh-80vh | b-0"></iframe>
+                <div class="pos-relative | w-100">
+                    <iframe src="sandbox/index.html"
+                            class="dsg__sandbox__iframe | pos-relative z-1 | w-100 h-100vh maxh-80vh | b-0"
+                            loading="lazy"></iframe>
                     <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0 | bc-primary-600"></div>
                 </div>
             </div>
             <!-- Mobile -->
-            <div class="d-flex fd-column gap-2" d-none="xs,sm">
+            <div class="d-flex ai-start fd-column gap-2" d-none="xs,sm">
                 <h3 class="m-0 | ff-lead-400 fs-4 | c-primary-400">Mobile overview 360 x 760 px of <code>sandbox/index.html</code></h3>
                 <div class="pos-relative">
-                    <iframe class="dsg__sandbox__iframe | pos-relative | b-0"
+                    <iframe src="sandbox/index.html"
+                            class="dsg__sandbox__iframe | pos-relative z-1 | b-0"
                             width="360"
-                            height="760"></iframe>
+                            height="760"
+                            loading="lazy"></iframe>
                     <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0 | bc-primary-600"></div>
                 </div>
             </div>
             <!-- Tablet -->
-            <div class="d-flex fd-column gap-2" d-none="xs,sm">
+            <div class="d-flex ai-start fd-column gap-2" d-none="xs,sm">
                 <h3 class="m-0 | ff-lead-400 fs-4 | c-primary-400">Tablet overview 810 x 1080 px of <code>sandbox/index.html</code></h3>
                 <div class="pos-relative">
-                    <iframe class="dsg__sandbox__iframe | pos-relative | b-0"
+                    <iframe src="sandbox/index.html"
+                            class="dsg__sandbox__iframe | pos-relative z-1 | b-0"
                             width="810"
-                            height="1080"></iframe>
+                            height="1080"
+                            loading="lazy"></iframe>
                     <div class="dsg__loader | d-flex ai-center jc-center | pos-absolute top-0 left-0 | w-100 h-100 p-0 | bc-primary-600"></div>
                 </div>
             </div>
