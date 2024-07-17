@@ -1,4 +1,4 @@
-const ui = {
+window.ui = {
     generateRandomId: function(length) {
         const charactersList = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let id = '';
@@ -113,5 +113,62 @@ const ui = {
             const n_markup = this.templates[n_tpl]({message: message, id: n_id, duration: n_duration, skin: n_skin});
             document.body.insertAdjacentHTML('beforeend', n_markup);
         }
+    },
+
+    localStorageAvailable: function() {
+        let storage;
+        try {
+            storage = window['localStorage'];
+            const x = "__storage_test__";
+            storage.setItem(x, x);
+            storage.removeItem(x);
+            return true;
+        } catch (e) {
+            return (
+                e instanceof DOMException &&
+                // everything except Firefox
+                (e.code === 22 ||
+                    // Firefox
+                    e.code === 1014 ||
+                    // test name field too, because code might not be present
+                    // everything except Firefox
+                    e.name === "QuotaExceededError" ||
+                    // Firefox
+                    e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
+                // acknowledge QuotaExceededError only if there's something already stored
+                storage &&
+                storage.length !== 0
+            );
+        }
+    },
+    // Get local storage data from identifier
+    getLocalStorage: function(identifier) {
+        if (typeof identifier == 'string') {
+            return JSON.parse(localStorage.getItem(identifier));
+        }
+    },
+    // Store on localStorage
+    saveLocalStorage: function({identifier, backup}) {
+        if (window.ui.localStorageAvailable()
+            && typeof identifier == 'string'
+            && typeof backup == 'object') {
+            localStorage.setItem(identifier, JSON.stringify(backup));
+        }
+    },
+    // Clear localStorage
+    clearLocalStorage: function(identifier) {
+        if (window.ui.localStorageAvailable()) {
+            localStorage.removeItem(identifier);
+        }
+    },
+    restoreSandboxUrls: function() {
+        const startUrlData = ui.getLocalStorage('sandboxStartUrl');
+        if (startUrlData !== null) {
+            document.querySelectorAll('#sandboxes iframe').forEach(function(el) {
+                el.src = startUrlData.url;
+            })
+        }
     }
 }
+ui.restoreSandboxUrls();
+
