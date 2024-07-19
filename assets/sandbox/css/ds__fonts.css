@@ -1,27 +1,27 @@
 @font-face {
     font-family: "Lexend Light";
-    src: url("../fonts/Lexend/Lexend-Light.woff2") format("woff2"), url("../fonts/Lexend/Lexend-Light.woff") format("woff");
+    src: url("../fonts/lexend/Lexend-Light.woff2") format("woff2"), url("../fonts/lexend/Lexend-Light.woff") format("woff");
     font-style: normal;
     font-display: swap;
     font-weight: 300
 }
 @font-face {
     font-family: "Lexend Medium";
-    src: url("../fonts/Lexend/Lexend-Medium.woff2") format("woff2"), url("../fonts/Lexend/Lexend-Medium.woff") format("woff");
+    src: url("../fonts/lexend/Lexend-Medium.woff2") format("woff2"), url("../fonts/lexend/Lexend-Medium.woff") format("woff");
     font-style: normal;
     font-display: swap;
     font-weight: 500
 }
 @font-face {
     font-family: "Lexend SemiBold";
-    src: url("../fonts/Lexend/Lexend-SemiBold.woff2") format("woff2"), url("../fonts/Lexend/Lexend-SemiBold.woff") format("woff");
+    src: url("../fonts/lexend/Lexend-SemiBold.woff2") format("woff2"), url("../fonts/lexend/Lexend-SemiBold.woff") format("woff");
     font-style: normal;
     font-display: swap;
     font-weight: 600
 }
 @font-face {
     font-family: "Lexend Bold";
-    src: url("../fonts/Lexend/Lexend-Bold.woff2") format("woff2"), url("../fonts/Lexend/Lexend-Bold.woff") format("woff");
+    src: url("../fonts/lexend/Lexend-Bold.woff2") format("woff2"), url("../fonts/lexend/Lexend-Bold.woff") format("woff");
     font-style: normal;
     font-display: swap;
     font-weight: 700
