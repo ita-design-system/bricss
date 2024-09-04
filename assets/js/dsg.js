@@ -359,9 +359,10 @@ const dsg = {
         },
         docClassValueItem: function({className, value}) {
             return `
-                <li class="d-flex jc-space-between gap-5 | fs-3">
+                <li class="d-flex ai-center jc-space-between gap-5 | fs-3">
                     <code class="c-quaternary-500">${className}</code>
-                    <strong class="w-6t | ff-mono ta-right | c-tertiary-500">${value}</strong>
+                    <hr class="fg-1 | m-0 bb-0 bl-0 br-0 btwidth-1 btstyle-solid bcolor-primary-600">
+                    <strong class="ff-mono ta-right ws-nowrap | c-tertiary-500">${value}</strong>
                 </li>
             `;
         },
@@ -397,9 +398,9 @@ const dsg = {
         },
         docPropertyItem: function({property, content, responsiveContent, utilityContent}) {
             return `
-                <li class="dsg__doc__property_item | d-flex jc-space-between fw-wrap gap-6"
+                <li class="dsg__doc__property_item | d-flex jc-space-between fd-column gap-6 | pt-6 pb-6 | bbwidth-1 bbstyle-solid bcolor-primary-600"
                     data-property="${property}">
-                    <h4 class="d-flex fd-column gap-3 fg-1 | m-0 | brwidth-1 brstyle-solid bcolor-secondary-900">
+                    <h4 class="d-flex fd-column gap-3 fg-1 | m-0">
                         <span class="d-flex fd-column">
                             <span class="ff-lead-400 fs-1 tt-uppercase | c-secondary-700">Property</span>
                             <span class="d-flex ai-center gap-3 | ff-mono fs-5 | c-secondary-500">
@@ -417,7 +418,6 @@ const dsg = {
                                         </svg>
                                     </a>
                                 </span>
-                                <span class="fg-1 | ta-right | bbwidth-1 bbstyle-solid bcolor-secondary-900"></span>
                             </span>
                         </span>
                         <span class="d-flex fd-column">
@@ -427,10 +427,8 @@ const dsg = {
                             </span>
                         </span>
                     </h4>
-                    <div class="d-flex gap-6 fw-wrap" fd-column="xs,sm" w-100="xs">
-                        <ul class="dsg__doc__property_item__list | d-flex fd-column gap-2 | m-0 p-0"
-                            minw-20em="sm,md,lg"
-                            maxw-20em="sm,md,lg">
+                    <div class="d-flex gap-6 fw-wrap jc-space-between" fd-column="xs,sm">
+                        <ul class="dsg__doc__property_item__list | d-flex fd-column gap-2 fg-1 | m-0 p-0">
                             <li class="d-flex jc-space-between gap-3 | fs-1 tt-uppercase">
                                 <span class="c-quaternary-800">CSS Class</span>
                                 <span class="c-tertiary-700">Value</span>
