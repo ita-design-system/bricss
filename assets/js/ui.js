@@ -10,12 +10,13 @@ window.ui = {
         return id;
     },
 
-    copyToClipboard: function(textToCopy) {
+    copyToClipboard: function(textToCopy, displayCopiedTextToNotif = false) {
+        const notifText = displayCopiedTextToNotif ? `<div class="d-flex fd-column"><code class="fs-1">${textToCopy}</code><span>was copied to clipboard</span></div>` : `Copied to clipboard` ;
         if (navigator.clipboard !== undefined) {
             navigator.clipboard.writeText(textToCopy).then(
                 function() {
                   /* clipboard successfully set */
-                  ui.notifications.add('Copied to clipboard');
+                  ui.notifications.add(notifText);
                 }
             )
         } else {
@@ -32,7 +33,7 @@ window.ui = {
             document.execCommand("copy");
             // Remove it from the body
             document.body.removeChild(aux);
-            ui.notifications.add('Copied to clipboard');
+            ui.notifications.add(notifText);
         }
     },
     notifications: {

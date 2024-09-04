@@ -344,11 +344,19 @@ const dsg = {
                     <div class="d-flex fd-column gap-1 | w-6t">
                         <span class="d-flex fd-column">
                             <span class="ff-lead-400 fs-1 tt-uppercase | c-secondary-700">CSS Classes</span>
-                            <code class="ff-mono fs-3 | c-secondary-500">${classes}</code>
+                            <code class="ff-mono fs-3 | c-secondary-500 c-secondary-200:hover | cur-pointer"
+                                title="Click to copy \n${classes} \nto clipboard"
+                                onclick="ui.copyToClipboard(this.innerText, true)">
+                                ${classes}
+                            </code>
                         </span>
                         <span class="d-flex fd-column">
                             <span class="ff-lead-400 fs-1 tt-uppercase | c-tertiary-700">Attribute</span>
-                            <code class="ff-mono fs-3 | c-tertiary-300">${attribute}</code>
+                            <code class="ff-mono fs-3 | c-tertiary-300 c-tertiary-200:hover | cur-pointer"
+                                title="Click to copy \n${attribute.replaceAll('"', '&quot;')} \nto clipboard"
+                                onclick="ui.copyToClipboard(this.innerText, true)">
+                                ${attribute}
+                            </code>
                         </span>
                     </div>
                     <span class="d-flex fd-column ai-end | w-6t">
@@ -360,7 +368,11 @@ const dsg = {
         docClassValueItem: function({className, value}) {
             return `
                 <li class="d-flex ai-center jc-space-between gap-5 | fs-3">
-                    <code class="c-quaternary-500">${className}</code>
+                    <code class="c-quaternary-500 c-quaternary-200:hover | cur-pointer"
+                        title="Click to copy \n${className} \nto clipboard"
+                        onclick="ui.copyToClipboard(this.innerText, true)">
+                        ${className}
+                    </code>
                     <hr class="fg-1 | m-0 bb-0 bl-0 br-0 btwidth-1 btstyle-solid bcolor-primary-600">
                     <strong class="ff-mono ta-right ws-nowrap | c-tertiary-500">${value}</strong>
                 </li>
