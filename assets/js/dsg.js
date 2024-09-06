@@ -403,54 +403,58 @@ const dsg = {
         },
         docPropertyItem: function({property, content, responsiveContent, utilityContent}) {
             return `
-                <li class="dsg__doc__property_item | d-flex fd-column gap-6 | p-6 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2"
+                <li class="dsg__doc__property_item | w-6t | p-6 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2"
+                    w-6t="lg"
+                    w-12t="xs,sm,md"
                     data-property="${property}">
-                    <div class="d-flex jc-space-between">
-                        <h4 class="d-flex fd-column gap-3 fg-1 | m-0">
-                            <span class="d-flex fd-column">
-                                <span class="ff-lead-400 fs-1 tt-uppercase | c-secondary-700">Property</span>
-                                <span class="d-flex ai-center gap-3 | ff-mono fs-5 | c-secondary-500">
-                                    <span class="d-flex ai-center gap-3">
-                                        ${property}
-                                        <a  href="https://developer.mozilla.org/en-US/docs/Web/CSS/${property}"
-                                            target="_blank"
-                                            class="d-flex ai-center | fs-1 | c-secondary-600"
-                                            title="Learn more about ${property} on Mozilla Developer Network">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
-                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                                <polyline points="15 3 21 3 21 9"></polyline>
-                                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                                            </svg>
-                                        </a>
+                    <div class="d-flex fd-column gap-6">
+                        <div class="d-flex jc-space-between">
+                            <h4 class="d-flex fd-column gap-3 fg-1 | m-0">
+                                <span class="d-flex fd-column">
+                                    <span class="ff-lead-400 fs-1 tt-uppercase | c-secondary-700">Property</span>
+                                    <span class="d-flex ai-center gap-3 | ff-mono fs-5 | c-secondary-500">
+                                        <span class="d-flex ai-center gap-3">
+                                            ${property}
+                                            <a  href="https://developer.mozilla.org/en-US/docs/Web/CSS/${property}"
+                                                target="_blank"
+                                                class="d-flex ai-center | fs-1 | c-secondary-600"
+                                                title="Learn more about ${property} on Mozilla Developer Network">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+                                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                                </svg>
+                                            </a>
+                                        </span>
                                     </span>
                                 </span>
-                            </span>
-                            <span class="d-flex fd-column">
-                                <span class="ff-lead-400 fs-1 tt-uppercase | c-quaternary-800">Prefix</span>
-                                <span class="ff-mono fs-5 | c-quaternary-500">
-                                    ${dsg.build.properties[property].prefix}${dsg.build.settings.separator}
+                                <span class="d-flex fd-column">
+                                    <span class="ff-lead-400 fs-1 tt-uppercase | c-quaternary-800">Prefix</span>
+                                    <span class="ff-mono fs-5 | c-quaternary-500">
+                                        ${dsg.build.properties[property].prefix}${dsg.build.settings.separator}
+                                    </span>
                                 </span>
-                            </span>
-                        </h4>
-                        <div class="d-flex gap-1 fw-wrap jc-end">
-                            <fieldset class="dsg__doc__property_item__responsive_content | d-flex fd-column gap-1 | bwidth-1 bstyle-solid bcolor-primary-500 brad-2">
-                                <legend class="fs-2 | c-primary-300">Responsive</legend>
-                                ${responsiveContent}
-                            </fieldset>
-                            <fieldset class="dsg__doc__property_item__utility_content | d-flex fd-column gap-1 | bwidth-1 bstyle-solid bcolor-primary-500 brad-2">
-                                <legend class="fs-2 | c-primary-300">Utitity</legend>
-                                ${utilityContent}
-                            </fieldset>
+                            </h4>
+                            <div class="d-flex gap-1 fw-wrap jc-end">
+                                <fieldset class="dsg__doc__property_item__responsive_content | d-flex fd-column gap-1 | bwidth-1 bstyle-solid bcolor-primary-500 brad-2">
+                                    <legend class="fs-2 | c-primary-300">Responsive</legend>
+                                    ${responsiveContent}
+                                </fieldset>
+                                <fieldset class="dsg__doc__property_item__utility_content | d-flex fd-column gap-1 | bwidth-1 bstyle-solid bcolor-primary-500 brad-2">
+                                    <legend class="fs-2 | c-primary-300">Utitity</legend>
+                                    ${utilityContent}
+                                </fieldset>
+                            </div>
                         </div>
+                        <ul class="dsg__doc__property_item__list | d-flex fd-column gap-2 fg-1 | m-0 p-0">
+                            <li class="d-flex jc-space-between gap-3 | fs-1 tt-uppercase">
+                                <span class="c-quaternary-800">CSS Class</span>
+                                <span class="c-tertiary-700">Value</span>
+                            </li>
+                            ${content}
+                        </ul>
                     </div>
-                    <ul class="dsg__doc__property_item__list | d-flex fd-column gap-2 fg-1 | m-0 p-0">
-                        <li class="d-flex jc-space-between gap-3 | fs-1 tt-uppercase">
-                            <span class="c-quaternary-800">CSS Class</span>
-                            <span class="c-tertiary-700">Value</span>
-                        </li>
-                        ${content}
-                    </ul>
                 </li>
             `;
         }
