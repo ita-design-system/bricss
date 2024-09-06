@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BRiCSS</title>
+    <title>CSS Classes | BRiCSS</title>
 
-    <meta itemprop="name" content="BRiCSS">
-    <meta name="description" itemprop="description" content="A simple and customizable low-level CSS framework">
-    <meta name="application-name" content="BRiCSS">
+    <meta itemprop="name" content="CSS Classes | BRiCSS">
+    <meta name="description" itemprop="description" content="List of all available CSS classes">
+    <meta name="application-name" content="CSS Classes | BRiCSS">
     <meta name="author" content="01ivier 3lanc">
     <link rel="icon" type="image/png" href="./favicon.png">
     <link rel="canonical" href="./">
@@ -20,21 +20,21 @@
     <!-- Microsoft -->
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="msapplication-starturl" content="./">
-    <meta name="msapplication-tooltip" content="BRiCSS">
+    <meta name="msapplication-tooltip" content="CSS Classes | BRiCSS">
     <meta name="msapplication-TileColor" content="#182026">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="./">
-    <meta property="og:title" content="BRiCSS">
-    <meta property="og:description" content="A simple and customizable low-level CSS framework">
+    <meta property="og:title" content="CSS Classes | BRiCSS">
+    <meta property="og:description" content="List of all available CSS classes">
     <meta property="og:image" content="https://cdn.jsdelivr.net/gh/ita-design-system/bricss@main/dsg/medias/bricss-og-image.png">
 
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="BRiCSS">
-    <meta name="twitter:description" content="A simple and customizable low-level CSS framework">
+    <meta name="twitter:title" content="CSS Classes | BRiCSS">
+    <meta name="twitter:description" content="List of all available CSS classes">
     <meta name="twitter:url" content="./">
     <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ita-design-system/bricss@main/dsg/medias/bricss-og-image.png">
 
@@ -75,7 +75,7 @@
         </h1>
         <nav class="d-flex jc-space-between ai-center gap-8 fg-1 | m-0 p-0">
             <div id="dsg__nav" class="d-flex ai-center gap-8">
-                <a href="/classes.html">Classes</a>
+                <a href="/classes.html" class="active __animation_2">Classes</a>
                 <a href="/tokens.html">Tokens</a>
             </div>
             <div class="d-flex ai-center gap-3">
@@ -104,16 +104,57 @@
         </nav>
     </header>
 
-    <main>
-        <header class="d-flex fd-column gap-5 | pos-fixed bottom-0 left-0 | p-9">
-            <h1 class="d-flex ai-center | m-0 | fs-7" fs-8="xs">
-                <span class="c-secondary-500">{</span>
-                <span class="ff-lead-400">BRi</span>
-                <span class="ff-lead-700">CSS</span>
-                <span class="c-secondary-500">}</span>
-            </h1>
-            <p class="ff-lead-400 fs-5 | m-0 | lh-6" fs-6="xs">A simple and customizable low-level CSS framework</p>
-        </header>
+    <main class="d-flex fd-column gap-9">
+
+        <section id="doc"
+            class="
+            d-flex ai-start gap-9
+            pl-9 pr-9 mb-9 minh-100vh"
+            fd-column="xs,sm"
+            gap-5="xs,sm"
+            pl-5="xs,sm,md"
+            pr-5="xs,sm,md">
+            <header class="
+                d-flex fd-column gap-6
+                top-0
+                pt-9"
+                pos-sticky="md,lg"
+                pt-5="xs,sm"
+                maxw-20em="md,lg">
+                <span class="ff-mono fs-9 c-quaternary-500">&lt;/&gt;</span>
+                <h2 class="m-0 | ff-lead-700 fs-8">CSS classes</h2>
+                <p class="m-0 | ff-lead-700 fs-5">Generated from <code>build.json</code></p>
+                <p class="m-0 | c-primary-300 lh-7">Each CSS property has its own prefix with its associated names and values. Responsive CSS classes and utilities are available if applicable.</p>
+            </header>
+
+            <div class="d-flex fd-column gap-6 | w-100">
+                <div class="d-flex jc-end | pos-sticky top-0 | pt-8 pb-3 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500">
+                    <!-- Search -->
+                    <div class="d-flex fd-column">
+                        <label for="dsg__search__input" class="d-flex | pb-1 pl-2 | fs-2 | c-primary-300 blwidth-1 blstyle-solid bbwidth-1 bbstyle-solid bcolor-primary-400">
+                            Quick search
+                        </label>
+                        <input id="dsg__search__input"
+                            type="search"
+                            oninput="dsg.searchText(this.value)"
+                            autocomplete="off"
+                            class="ff-lead-400 fs-3 | p-2 | bc-primary-200 c-primary-700 b-0 brad-0 bradbl-1 bradbr-1 btwidth-1 btstyle-solid bcolor-primary-900">
+                    </div>
+                </div>
+                <!-- Classes list -->
+                <ul id="dsg__doc__standard" class="d-flex fd-column gap-6 | m-0 p-0 scrollmt-150px | ls-none">
+                    <li class="d-flex ai-center jc-center | pos-relative | p-9 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                        <div class="dsg__loader | d-flex | pos-absolute top-50 left-50 t-tX-50 t-tY-50"></div>
+                    </li>
+                    <li class="d-flex ai-center jc-center | pos-relative | p-9 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                        <div class="dsg__loader | d-flex | pos-absolute top-50 left-50 t-tX-50 t-tY-50"></div>
+                    </li>
+                    <li class="d-flex ai-center jc-center | pos-relative | p-9 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                        <div class="dsg__loader | d-flex | pos-absolute top-50 left-50 t-tX-50 t-tY-50"></div>
+                    </li>
+                </ul>
+            </div>
+        </section>
     </main>
 
     <footer class=""></footer>

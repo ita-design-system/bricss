@@ -1,9 +1,6 @@
 const dsg = {
-    elsSandboxes: document.querySelectorAll('.dsg__sandbox__iframe'),
     elDocTokens: document.querySelector('#dsg__doc__tokens'),
     elDocStandard: document.querySelector('#dsg__doc__standard'),
-    elCodeCss: document.querySelector('#dsg__code__css'),
-    elSearchInput: document.querySelector('#dsg__search__input'),
     elTokensList: document.querySelector('#dsg__doc__tokens__list'),
     elDownloadLink: document.querySelector('#dsg__doc__download_link'),
     elFileSize: document.querySelector('#dsg__doc__download_link__file_size'),
@@ -20,7 +17,7 @@ const dsg = {
                     dsg.genDownload();
                     dsg.scrollToHash();
                     console.log(dsg.build);
-                    cScrollspy.update();
+                    // cScrollspy.update();
                 })
                 .catch(error => {
                     // Handle the error
@@ -55,7 +52,7 @@ const dsg = {
         return response;
     },
     genBlob: function() {
-        const blob = new Blob([dsg._newestCssCode], { type: 'text/css' });
+        const blob = new Blob([dsg._generatedCSS], { type: 'text/css' });
         const fileUrl = URL.createObjectURL(blob);
         window.dsgCssFile = {
             url: fileUrl,
@@ -146,78 +143,73 @@ const dsg = {
         }
     },
     genCodeCss: function() {
-        if (dsg.elCodeCss !== null) {
-            const responsiveCss = {};
-            dsg.elCodeCss.innerHTML = dsg.genCssVariables();
-            Object.keys(dsg.build.settings.screenSizes).forEach(function(screenSize) {
-                responsiveCss[screenSize] = '';
-            });
-            Object.keys(dsg.build.properties).forEach(function(property) {
-                const propertyData = dsg.build.properties[property];
-                const tokensKeysAndValues = dsg.genFrom(propertyData.generate_from);
-                // console.log(tokens_keys_and_values)
-                // Generate from custom values
-                propertyData.values.forEach(function(value, index) {
-                    let name = value;
-                    if (typeof propertyData.names[index] == 'string') name = propertyData.names[index];
-                    // Basic
-                    dsg.elCodeCss.innerHTML += dsg.genCssProperty({
-                        prefix: propertyData.prefix,
-                        property: property,
-                        name: name,
-                        value: value,
-                        utility: propertyData.generate_utility
-                    });
-                    // Responsive
-                    if (propertyData.responsive) {
-                        Object.keys(dsg.build.settings.screenSizes).forEach(function(screenSize) {
-                            responsiveCss[screenSize] += dsg.genCssPropertyForScreenSize({
-                                screenSize: screenSize,
-                                prefix: propertyData.prefix,
-                                property: property,
-                                name: name,
-                                value: value,
-                                utility: propertyData.generate_utility
-                            });
+        const responsiveCss = {};
+        dsg._generatedCSS = dsg.genCssVariables();
+        Object.keys(dsg.build.settings.screenSizes).forEach(function(screenSize) {
+            responsiveCss[screenSize] = '';
+        });
+        Object.keys(dsg.build.properties).forEach(function(property) {
+            const propertyData = dsg.build.properties[property];
+            const tokensKeysAndValues = dsg.genFrom(propertyData.generate_from);
+            // console.log(tokens_keys_and_values)
+            // Generate from custom values
+            propertyData.values.forEach(function(value, index) {
+                let name = value;
+                if (typeof propertyData.names[index] == 'string') name = propertyData.names[index];
+                // Basic
+                dsg._generatedCSS += dsg.genCssProperty({
+                    prefix: propertyData.prefix,
+                    property: property,
+                    name: name,
+                    value: value,
+                    utility: propertyData.generate_utility
+                });
+                // Responsive
+                if (propertyData.responsive) {
+                    Object.keys(dsg.build.settings.screenSizes).forEach(function(screenSize) {
+                        responsiveCss[screenSize] += dsg.genCssPropertyForScreenSize({
+                            screenSize: screenSize,
+                            prefix: propertyData.prefix,
+                            property: property,
+                            name: name,
+                            value: value,
+                            utility: propertyData.generate_utility
                         });
-                    }
-                });
-    
-                // Generate from tokens
-                tokensKeysAndValues.forEach(function(token) {
-                    dsg.elCodeCss.innerHTML += dsg.genCssProperty({
-                        prefix: propertyData.prefix,
-                        property: property,
-                        name: token.name,
-                        value: `var(--${dsg.build.settings.cssVariablesPrefix}-${propertyData.generate_from}-${token.name}, ${token.value})`,
-                        utility: propertyData.generate_utility
                     });
-    
-                    // Responsive from tokens
-                    if (propertyData.responsive) {
-                        Object.keys(dsg.build.settings.screenSizes).forEach(function(screenSize) {
-                            responsiveCss[screenSize] += dsg.genCssPropertyForScreenSize({
-                                screenSize: screenSize,
-                                prefix: propertyData.prefix,
-                                property: property,
-                                name: token.name,
-                                value: `var(--${dsg.build.settings.cssVariablesPrefix}-${propertyData.generate_from}-${token.name}, ${token.value})`,
-                                utility: propertyData.generate_utility
-                            });
+                }
+            });
+
+            // Generate from tokens
+            tokensKeysAndValues.forEach(function(token) {
+                dsg._generatedCSS += dsg.genCssProperty({
+                    prefix: propertyData.prefix,
+                    property: property,
+                    name: token.name,
+                    value: `var(--${dsg.build.settings.cssVariablesPrefix}-${propertyData.generate_from}-${token.name}, ${token.value})`,
+                    utility: propertyData.generate_utility
+                });
+
+                // Responsive from tokens
+                if (propertyData.responsive) {
+                    Object.keys(dsg.build.settings.screenSizes).forEach(function(screenSize) {
+                        responsiveCss[screenSize] += dsg.genCssPropertyForScreenSize({
+                            screenSize: screenSize,
+                            prefix: propertyData.prefix,
+                            property: property,
+                            name: token.name,
+                            value: `var(--${dsg.build.settings.cssVariablesPrefix}-${propertyData.generate_from}-${token.name}, ${token.value})`,
+                            utility: propertyData.generate_utility
                         });
-                    }
-                });
+                    });
+                }
             });
-            Object.keys(responsiveCss).forEach(function(screenSize) {
-                dsg.elCodeCss.innerHTML += dsg.genCssMediaForScreenSize({
-                    screenSize: screenSize,
-                    content: responsiveCss[screenSize]
-                });
+        });
+        Object.keys(responsiveCss).forEach(function(screenSize) {
+            dsg._generatedCSS += dsg.genCssMediaForScreenSize({
+                screenSize: screenSize,
+                content: responsiveCss[screenSize]
             });
-            dsg._newestCssCode = dsg.elCodeCss.innerHTML;
-            dsg.elCodeCss.dataset.highlighted = '';
-            hljs.highlightElement(dsg.elCodeCss);
-        }
+        });
     },
     setResponsive: function(evt) {
         const selectedScreenSizesNames = [];
@@ -340,8 +332,8 @@ const dsg = {
         },
         docClassValueResponsiveItem: function({classes, attribute, value}) {
             return `
-                <li class="d-flex jc-space-between gap-5 | mb-3">
-                    <div class="d-flex fd-column gap-1 | w-6t">
+                <li class="d-flex jc-space-between ai-center gap-5 | mb-3">
+                    <div class="d-flex fd-column gap-1">
                         <span class="d-flex fd-column">
                             <span class="ff-lead-400 fs-1 tt-uppercase | c-secondary-700">CSS Classes</span>
                             <code class="ff-mono fs-3 | c-secondary-500 c-secondary-200:hover | cur-pointer"
@@ -359,7 +351,8 @@ const dsg = {
                             </code>
                         </span>
                     </div>
-                    <span class="d-flex fd-column ai-end | w-6t">
+                    <hr class="fg-1 | m-0 bb-0 bl-0 br-0 btwidth-1 btstyle-solid bcolor-primary-500">
+                    <span class="d-flex fd-column ai-end">
                         <span class="ff-lead-400 fs-1 tt-uppercase | c-tertiary-700">Value</span>
                         <code class="ff-mono fs-3 ta-right | c-tertiary-500">${value}</code>
                     </span>
@@ -368,13 +361,13 @@ const dsg = {
         docClassValueItem: function({className, value}) {
             return `
                 <li class="d-flex ai-center jc-space-between gap-5 | fs-3">
-                    <code class="c-quaternary-500 c-quaternary-200:hover | cur-pointer"
+                    <code class="ws-nowrap | c-quaternary-500 c-quaternary-200:hover | cur-pointer"
                         title="Click to copy \n${className} \nto clipboard"
                         onclick="ui.copyToClipboard(this.innerText, true)">
                         ${className}
                     </code>
-                    <hr class="fg-1 | m-0 bb-0 bl-0 br-0 btwidth-1 btstyle-solid bcolor-primary-600">
-                    <strong class="ff-mono ta-right ws-nowrap | c-tertiary-500">${value}</strong>
+                    <hr class="fg-1 | m-0 bb-0 bl-0 br-0 btwidth-1 btstyle-solid bcolor-primary-500">
+                    <strong class="o-auto | ff-mono ta-right ws-nowrap | c-tertiary-500">${value}</strong>
                 </li>
             `;
         },
@@ -410,44 +403,37 @@ const dsg = {
         },
         docPropertyItem: function({property, content, responsiveContent, utilityContent}) {
             return `
-                <li class="dsg__doc__property_item | d-flex jc-space-between fd-column gap-6 | pt-6 pb-6 | bbwidth-1 bbstyle-solid bcolor-primary-600"
+                <li class="dsg__doc__property_item | d-flex fd-column gap-6 | p-6 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2"
                     data-property="${property}">
-                    <h4 class="d-flex fd-column gap-3 fg-1 | m-0">
-                        <span class="d-flex fd-column">
-                            <span class="ff-lead-400 fs-1 tt-uppercase | c-secondary-700">Property</span>
-                            <span class="d-flex ai-center gap-3 | ff-mono fs-5 | c-secondary-500">
-                                <span class="d-flex ai-center gap-3">
-                                    ${property}
-                                    <a  href="https://developer.mozilla.org/en-US/docs/Web/CSS/${property}"
-                                        target="_blank"
-                                        class="d-flex ai-center | fs-1 | c-secondary-600"
-                                        title="Learn more about ${property} on Mozilla Developer Network">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
-                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                            <polyline points="15 3 21 3 21 9"></polyline>
-                                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                                        </svg>
-                                    </a>
+                    <div class="d-flex jc-space-between">
+                        <h4 class="d-flex fd-column gap-3 fg-1 | m-0">
+                            <span class="d-flex fd-column">
+                                <span class="ff-lead-400 fs-1 tt-uppercase | c-secondary-700">Property</span>
+                                <span class="d-flex ai-center gap-3 | ff-mono fs-5 | c-secondary-500">
+                                    <span class="d-flex ai-center gap-3">
+                                        ${property}
+                                        <a  href="https://developer.mozilla.org/en-US/docs/Web/CSS/${property}"
+                                            target="_blank"
+                                            class="d-flex ai-center | fs-1 | c-secondary-600"
+                                            title="Learn more about ${property} on Mozilla Developer Network">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                                <polyline points="15 3 21 3 21 9"></polyline>
+                                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                                            </svg>
+                                        </a>
+                                    </span>
                                 </span>
                             </span>
-                        </span>
-                        <span class="d-flex fd-column">
-                            <span class="ff-lead-400 fs-1 tt-uppercase | c-quaternary-800">Prefix</span>
-                            <span class="ff-mono fs-5 | c-quaternary-500">
-                                ${dsg.build.properties[property].prefix}${dsg.build.settings.separator}
+                            <span class="d-flex fd-column">
+                                <span class="ff-lead-400 fs-1 tt-uppercase | c-quaternary-800">Prefix</span>
+                                <span class="ff-mono fs-5 | c-quaternary-500">
+                                    ${dsg.build.properties[property].prefix}${dsg.build.settings.separator}
+                                </span>
                             </span>
-                        </span>
-                    </h4>
-                    <div class="d-flex gap-6 fw-wrap jc-space-between" fd-column="xs,sm">
-                        <ul class="dsg__doc__property_item__list | d-flex fd-column gap-2 fg-1 | m-0 p-0">
-                            <li class="d-flex jc-space-between gap-3 | fs-1 tt-uppercase">
-                                <span class="c-quaternary-800">CSS Class</span>
-                                <span class="c-tertiary-700">Value</span>
-                            </li>
-                            ${content}
-                        </ul>
-                        <div class="d-flex gap-1 fw-wrap">
+                        </h4>
+                        <div class="d-flex gap-1 fw-wrap jc-end">
                             <fieldset class="dsg__doc__property_item__responsive_content | d-flex fd-column gap-1 | bwidth-1 bstyle-solid bcolor-primary-500 brad-2">
                                 <legend class="fs-2 | c-primary-300">Responsive</legend>
                                 ${responsiveContent}
@@ -458,6 +444,13 @@ const dsg = {
                             </fieldset>
                         </div>
                     </div>
+                    <ul class="dsg__doc__property_item__list | d-flex fd-column gap-2 fg-1 | m-0 p-0">
+                        <li class="d-flex jc-space-between gap-3 | fs-1 tt-uppercase">
+                            <span class="c-quaternary-800">CSS Class</span>
+                            <span class="c-tertiary-700">Value</span>
+                        </li>
+                        ${content}
+                    </ul>
                 </li>
             `;
         }

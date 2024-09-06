@@ -50,18 +50,18 @@ window.ui = {
                         pos-fixed z-2 top-0 right-0
                         mt-6 mr-6
                         ff-lead-400
-                        bc-${skin}-100 c-${skin}-800 brad-2"
+                        bc-${skin}-100 c-${skin}-800 brad-2 bs-1"
                         id="${id}">
                         <div class="d-flex p-2">
                             <div class="pl-1 bc-${skin}-500 brad-3"></div>
                         </div>
-                        <div class="d-flex ai-center p-3 fs-3">
+                        <div class="d-flex ai-center p-3 fs-2">
                             ${message}
                         </div>
                         <button class="
                             d-flex ai-center
                             pt-2 pb-2 pl-3 pr-3
-                            ff-lead-400 fs-2 tt-uppercase
+                            ff-lead-400 fs-1 tt-uppercase
                             blwidth-1 blstyle-solid bcolor-primary-700 c-${skin}-700 bc-${skin}-200 b-0 bradtr-2 bradbr-2
                             cur-pointer"
                             onclick="this.closest('aside').remove();">
