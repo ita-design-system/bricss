@@ -1437,6 +1437,9 @@
 .cur-pointer {
   cursor: pointer;
 }
+.cur-help {
+  cursor: help;
+}
 .opa-0 {
   opacity: 0;
 }

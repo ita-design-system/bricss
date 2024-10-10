@@ -829,7 +829,7 @@
         "cursor": {
             "prefix": "cur",
             "generate_from": "",
-            "values": ["pointer"],
+            "values": ["pointer", "help"],
             "names": [],
             "responsive": false,
             "generate_utility": false
