@@ -8,7 +8,7 @@
     <title>BRiCSS</title>
 
     <meta itemprop="name" content="BRiCSS">
-    <meta name="description" itemprop="description" content="A simple and customizable low-level CSS framework">
+    <meta name="description" itemprop="description" content="A simple and customizable low-level CSS library">
     <meta name="application-name" content="BRiCSS">
     <meta name="author" content="01ivier 3lanc">
     <link rel="icon" type="image/png" href="./favicon.png">
@@ -27,14 +27,14 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="./">
     <meta property="og:title" content="BRiCSS">
-    <meta property="og:description" content="A simple and customizable low-level CSS framework">
+    <meta property="og:description" content="A simple and customizable low-level CSS library">
     <meta property="og:image" content="https://cdn.jsdelivr.net/gh/ita-design-system/bricss@main/dsg/medias/bricss-og-image.png">
 
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="BRiCSS">
-    <meta name="twitter:description" content="A simple and customizable low-level CSS framework">
+    <meta name="twitter:description" content="A simple and customizable low-level CSS library">
     <meta name="twitter:url" content="./">
     <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ita-design-system/bricss@main/dsg/medias/bricss-og-image.png">
 
@@ -87,7 +87,7 @@
                     bwidth-1 bstyle-solid bcolor-tertiary-500 bc-primary-700 c-tertiary-500 brad-1
                     cur-pointer"
                     title="Copy CSS to clipboard"
-                    onclick="ui.copyToClipboard(dsg._generatedCSS)">
+                    onclick="ui.copyToClipboard(bricss._generatedCSS)">
                     Copy
                 </button>
                 <a  id="dsg__doc__download_link"
@@ -112,16 +112,42 @@
                 <span class="ff-lead-700">CSS</span>
                 <span class="c-secondary-500">}</span>
             </h1>
-            <p class="ff-lead-400 fs-5 | m-0 | lh-6" fs-6="xs">A simple and customizable low-level CSS framework</p>
+            <p class="ff-lead-400 fs-5 | m-0 | lh-6" fs-6="xs">A simple and customizable low-level CSS library</p>
         </header>
+        
+        <!-- <code class="pl-9 pr-9 fs-5 c-primary-300">
+            &lt;header class=&quot;<span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">flex</span>
+            <span class="c-secondary-400">fd</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">column</span>
+            <span class="c-secondary-400">gap</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">5</span>
+            <span class="c-secondary-400">pos</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">fixed</span>
+            <span class="c-secondary-400">bottom</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">0</span>
+            <span class="c-secondary-400">left</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">0</span>
+            <span class="c-secondary-400">p</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">9</span>&quot;&gt;
+        </code>
+        <ul class="d-flex fd-column gap-2 | maxw-70ch m-auto mt-0 mb-0 m-auto p-0 | ls-none">
+            <li class="d-flex ai-center gap-2">
+                <span class="bc-secondary-400" style="aspect-ratio: 1; width: 1em"></span>
+                CSS property abbreviation
+            </li>
+            <li class="d-flex ai-center gap-2">
+                <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 1em"></span>
+                Common separator
+            </li>
+            <li class="d-flex ai-center gap-2">
+                <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 1em"></span>
+                Value name
+            </li>
+        </ul> -->
+        
+        
     </main>
 
     <footer class=""></footer>
     
-    <script src="./assets/js/dsg.js"></script>
+    <script src="./assets/js/bricss.js"></script>
     <script src="./assets/js/ui.js"></script>
     <script>
-        dsg.getBuild('build.json');
+        bricss.getBuild('build.json');
     </script>
 </body>
 

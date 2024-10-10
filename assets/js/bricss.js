@@ -1,4 +1,4 @@
-const dsg = {
+const bricss = {
     elDocTokens: document.querySelector('#dsg__doc__tokens'),
     elDocStandard: document.querySelector('#dsg__doc__standard'),
     elTokensList: document.querySelector('#dsg__doc__tokens__list'),
@@ -9,14 +9,14 @@ const dsg = {
             fetch(`${jsonUrl}`)
                 .then(response => response.json())
                 .then(json => {
-                    dsg.build = json;
-                    dsg.genDocStandard();
-                    dsg.genDocTokens();
-                    dsg.genCodeCss();
-                    dsg.genBlob();
-                    dsg.genDownload();
-                    dsg.scrollToHash();
-                    console.log(dsg.build);
+                    bricss.build = json;
+                    bricss.genDocStandard();
+                    bricss.genDocTokens();
+                    bricss.genCodeCss();
+                    bricss.genBlob();
+                    bricss.genDownload();
+                    bricss.scrollToHash();
+                    console.log(bricss.build);
                     // cScrollspy.update();
                 })
                 .catch(error => {
@@ -34,7 +34,7 @@ const dsg = {
         }
     },
     searchText: function(query) {
-        dsg.elDocStandard.querySelectorAll('.dsg__doc__property_item').forEach(function(el) {
+        bricss.elDocStandard.querySelectorAll('.dsg__doc__property_item').forEach(function(el) {
             const elementContent = el.innerText.toLowerCase();
             const queryContent = query.toLowerCase();
             if (elementContent.indexOf(queryContent) == -1) {
@@ -42,17 +42,17 @@ const dsg = {
             } else {
                 el.style.display = null;
             }
-            dsg.elDocStandard.scrollIntoView();
+            bricss.elDocStandard.scrollIntoView();
         });
     },
     isATokenFamily: function(tokensFamily) {
-        const tokensFamilies = Object.keys(dsg.build.tokens);
+        const tokensFamilies = Object.keys(bricss.build.tokens);
         let response = false;
         if (tokensFamilies.indexOf(tokensFamily) > -1) response = true;
         return response;
     },
     genBlob: function() {
-        const blob = new Blob([dsg._generatedCSS], { type: 'text/css' });
+        const blob = new Blob([bricss._generatedCSS], { type: 'text/css' });
         const fileUrl = URL.createObjectURL(blob);
         window.dsgCssFile = {
             url: fileUrl,
@@ -61,103 +61,103 @@ const dsg = {
     },
     genDownload: function() {
         if (typeof window.dsgCssFile == 'object') {
-            dsg.elFileSize.innerHTML = `${window.dsgCssFile.size}KB`;
-            dsg.elDownloadLink.href = window.dsgCssFile.url;
-            dsg.elDownloadLink.classList.remove('opa-5', 'pe-none');
-            dsg.elDownloadLink.title = `Download CSS file ${window.dsgCssFile.size}KB uncompressed`;
+            bricss.elFileSize.innerHTML = `${window.dsgCssFile.size}KB`;
+            bricss.elDownloadLink.href = window.dsgCssFile.url;
+            bricss.elDownloadLink.classList.remove('opa-5', 'pe-none');
+            bricss.elDownloadLink.title = `Download CSS file ${window.dsgCssFile.size}KB uncompressed`;
         }
     },
     genFrom: function(tokensFamily) {
         const array = [];
-        if (dsg.isATokenFamily(tokensFamily)) {
-            Object.keys(dsg.build.tokens[tokensFamily]).forEach(function(tokenName) {
+        if (bricss.isATokenFamily(tokensFamily)) {
+            Object.keys(bricss.build.tokens[tokensFamily]).forEach(function(tokenName) {
                 array.push({
                     name: tokenName,
-                    value:  dsg.build.tokens[tokensFamily][tokenName]
+                    value:  bricss.build.tokens[tokensFamily][tokenName]
                 });
             });
         }
         return array;
     },
     genCssMediaForScreenSize: function({screenSize, content}) {
-        let highMarkup = ` and (max-width: ${dsg.build.settings.screenSizes[screenSize][1]})`;
-        const lowMarkup = `(min-width: ${dsg.build.settings.screenSizes[screenSize][0]})`;
-        const high =  dsg.build.settings.screenSizes[screenSize][1];
+        let highMarkup = ` and (max-width: ${bricss.build.settings.screenSizes[screenSize][1]})`;
+        const lowMarkup = `(min-width: ${bricss.build.settings.screenSizes[screenSize][0]})`;
+        const high =  bricss.build.settings.screenSizes[screenSize][1];
         if (high == 'infinite' || high == '') highMarkup = '';
         return `\n\n/*START @media ${screenSize}*/\n@media ${lowMarkup}${highMarkup} {\n${content}\n}\n/*END @media ${screenSize}*/\n`;
     },
     genCssPropertyForScreenSize: function({screenSize, prefix, name, property, value, utility}) {
-        const separator = prefix == '' ? '' :  dsg.build.settings.separator;
-        let markup = `\n.${prefix}${separator}${name}${dsg.build.settings.responsiveSeparator}${screenSize},\n[${prefix}${separator}${name}*="${screenSize}"] {\n  ${property}: ${value};\n}`;
+        const separator = prefix == '' ? '' :  bricss.build.settings.separator;
+        let markup = `\n.${prefix}${separator}${name}${bricss.build.settings.responsiveSeparator}${screenSize},\n[${prefix}${separator}${name}*="${screenSize}"] {\n  ${property}: ${value};\n}`;
         if (utility) {
-            markup += `\n.${dsg.build.settings.utilitiesPrefix}${dsg.build.settings.separator}${prefix}${separator}${name}${dsg.build.settings.responsiveSeparator}${screenSize},\n[${dsg.build.settings.utilitiesPrefix}${dsg.build.settings.separator}${prefix}${separator}${name}*="${screenSize}"] {\n  ${property}: ${value} !important;\n}`;
+            markup += `\n.${bricss.build.settings.utilitiesPrefix}${bricss.build.settings.separator}${prefix}${separator}${name}${bricss.build.settings.responsiveSeparator}${screenSize},\n[${bricss.build.settings.utilitiesPrefix}${bricss.build.settings.separator}${prefix}${separator}${name}*="${screenSize}"] {\n  ${property}: ${value} !important;\n}`;
         }
         return markup;
     },
     genCssProperty: function({prefix, name, property, value, utility}) {
-        const separator = prefix == '' ? '' :  dsg.build.settings.separator;
+        const separator = prefix == '' ? '' :  bricss.build.settings.separator;
         let markup = `\n.${prefix}${separator}${name} {\n  ${property}: ${value};\n}`;
         if (utility) {
-            markup += `\n.${dsg.build.settings.utilitiesPrefix}${dsg.build.settings.separator}${prefix}${separator}${name} {\n  ${property}: ${value} !important;\n}`;
+            markup += `\n.${bricss.build.settings.utilitiesPrefix}${bricss.build.settings.separator}${prefix}${separator}${name} {\n  ${property}: ${value} !important;\n}`;
         }
         return markup;
     },
     genCssVariables: function() {
         let markup = '';
-        Object.keys(dsg.build.tokens).forEach(function(family) {
-            Object.keys(dsg.build.tokens[family]).forEach(function(tokenName) {
-                markup += `\n  --${dsg.build.settings.cssVariablesPrefix}-${family}-${tokenName}: ${dsg.build.tokens[family][tokenName]};`;
+        Object.keys(bricss.build.tokens).forEach(function(family) {
+            Object.keys(bricss.build.tokens[family]).forEach(function(tokenName) {
+                markup += `\n  --${bricss.build.settings.cssVariablesPrefix}-${family}-${tokenName}: ${bricss.build.tokens[family][tokenName]};`;
             });
         });
-        return `\n:root {\n  /* Design System CSS variables start with --${dsg.build.settings.cssVariablesPrefix}- */${markup}\n}\n`;
+        return `\n:root {\n  /* Design System CSS variables start with --${bricss.build.settings.cssVariablesPrefix}- */${markup}\n}\n`;
     },
     genDocTokens: function() {
-        if (dsg.elDocTokens !== null && dsg.elTokensList !== null) {
+        if (bricss.elDocTokens !== null && bricss.elTokensList !== null) {
             let markup = '';
             let markupList = '';
-            Object.keys(dsg.build.tokens).forEach(function(family) {
+            Object.keys(bricss.build.tokens).forEach(function(family) {
                 // Tokens list
-                markupList += dsg.templates.docTokensListItem(family);
+                markupList += bricss.templates.docTokensListItem(family);
 
                 // Token family content
                 let templateName = 'docToken';
                 let tokenFamilyMarkup = '';
-                const customTemplate = dsg.build.settings.tokenTemplateMap[family];
+                const customTemplate = bricss.build.settings.tokenTemplateMap[family];
                 if (customTemplate !== undefined) {
                     templateName = customTemplate;
                 }
-                Object.keys(dsg.build.tokens[family]).forEach(function(name) {
-                    tokenFamilyMarkup += dsg.templates[templateName]({
+                Object.keys(bricss.build.tokens[family]).forEach(function(name) {
+                    tokenFamilyMarkup += bricss.templates[templateName]({
                         family: family,
                         name: name,
-                        value: dsg.build.tokens[family][name]
+                        value: bricss.build.tokens[family][name]
                     });
                 });
-                markup += dsg.templates.docTokenFamily({
+                markup += bricss.templates.docTokenFamily({
                     family: family,
                     content: tokenFamilyMarkup
                 }) 
             });
-            dsg.elDocTokens.innerHTML = markup;
-            dsg.elTokensList.innerHTML = markupList;
+            bricss.elDocTokens.innerHTML = markup;
+            bricss.elTokensList.innerHTML = markupList;
         }
     },
     genCodeCss: function() {
         const responsiveCss = {};
-        dsg._generatedCSS = dsg.genCssVariables();
-        Object.keys(dsg.build.settings.screenSizes).forEach(function(screenSize) {
+        bricss._generatedCSS = bricss.genCssVariables();
+        Object.keys(bricss.build.settings.screenSizes).forEach(function(screenSize) {
             responsiveCss[screenSize] = '';
         });
-        Object.keys(dsg.build.properties).forEach(function(property) {
-            const propertyData = dsg.build.properties[property];
-            const tokensKeysAndValues = dsg.genFrom(propertyData.generate_from);
+        Object.keys(bricss.build.properties).forEach(function(property) {
+            const propertyData = bricss.build.properties[property];
+            const tokensKeysAndValues = bricss.genFrom(propertyData.generate_from);
             // console.log(tokens_keys_and_values)
             // Generate from custom values
             propertyData.values.forEach(function(value, index) {
                 let name = value;
                 if (typeof propertyData.names[index] == 'string') name = propertyData.names[index];
                 // Basic
-                dsg._generatedCSS += dsg.genCssProperty({
+                bricss._generatedCSS += bricss.genCssProperty({
                     prefix: propertyData.prefix,
                     property: property,
                     name: name,
@@ -166,8 +166,8 @@ const dsg = {
                 });
                 // Responsive
                 if (propertyData.responsive) {
-                    Object.keys(dsg.build.settings.screenSizes).forEach(function(screenSize) {
-                        responsiveCss[screenSize] += dsg.genCssPropertyForScreenSize({
+                    Object.keys(bricss.build.settings.screenSizes).forEach(function(screenSize) {
+                        responsiveCss[screenSize] += bricss.genCssPropertyForScreenSize({
                             screenSize: screenSize,
                             prefix: propertyData.prefix,
                             property: property,
@@ -181,23 +181,23 @@ const dsg = {
 
             // Generate from tokens
             tokensKeysAndValues.forEach(function(token) {
-                dsg._generatedCSS += dsg.genCssProperty({
+                bricss._generatedCSS += bricss.genCssProperty({
                     prefix: propertyData.prefix,
                     property: property,
                     name: token.name,
-                    value: `var(--${dsg.build.settings.cssVariablesPrefix}-${propertyData.generate_from}-${token.name}, ${token.value})`,
+                    value: `var(--${bricss.build.settings.cssVariablesPrefix}-${propertyData.generate_from}-${token.name}, ${token.value})`,
                     utility: propertyData.generate_utility
                 });
 
                 // Responsive from tokens
                 if (propertyData.responsive) {
-                    Object.keys(dsg.build.settings.screenSizes).forEach(function(screenSize) {
-                        responsiveCss[screenSize] += dsg.genCssPropertyForScreenSize({
+                    Object.keys(bricss.build.settings.screenSizes).forEach(function(screenSize) {
+                        responsiveCss[screenSize] += bricss.genCssPropertyForScreenSize({
                             screenSize: screenSize,
                             prefix: propertyData.prefix,
                             property: property,
                             name: token.name,
-                            value: `var(--${dsg.build.settings.cssVariablesPrefix}-${propertyData.generate_from}-${token.name}, ${token.value})`,
+                            value: `var(--${bricss.build.settings.cssVariablesPrefix}-${propertyData.generate_from}-${token.name}, ${token.value})`,
                             utility: propertyData.generate_utility
                         });
                     });
@@ -205,7 +205,7 @@ const dsg = {
             });
         });
         Object.keys(responsiveCss).forEach(function(screenSize) {
-            dsg._generatedCSS += dsg.genCssMediaForScreenSize({
+            bricss._generatedCSS += bricss.genCssMediaForScreenSize({
                 screenSize: screenSize,
                 content: responsiveCss[screenSize]
             });
@@ -224,7 +224,7 @@ const dsg = {
                 utilityChecked = true;
             }
         }
-        const propertyData = dsg.build.properties[property];
+        const propertyData = bricss.build.properties[property];
         const propertyAllNamesAndValues = [];
         let markup = '';
         elFieldsetResponsive.querySelectorAll('input:checked').forEach(function(el) {
@@ -237,33 +237,33 @@ const dsg = {
             propertyAllNamesAndValues.push({name, value});
         });
         // Get from token if specified
-        const tokensKeysAndValues = dsg.genFrom(propertyData.generate_from);
+        const tokensKeysAndValues = bricss.genFrom(propertyData.generate_from);
         tokensKeysAndValues.forEach(function(token) {
             propertyAllNamesAndValues.push(token);
         });
         
         propertyAllNamesAndValues.forEach(function(data) {
-            let base = `${propertyData.prefix}${dsg.build.settings.separator}${data.name}`;
+            let base = `${propertyData.prefix}${bricss.build.settings.separator}${data.name}`;
             let value = data.value;
             if (utilityChecked) {
-                base = `${dsg.build.settings.utilitiesPrefix}${dsg.build.settings.separator}${base}`;
+                base = `${bricss.build.settings.utilitiesPrefix}${bricss.build.settings.separator}${base}`;
                 value += ' !important';
             }
             if (selectedScreenSizesNames.length > 0) {
                 const responsiveAttribute = `${base}="${selectedScreenSizesNames.toString()}"`;
                 let responsiveCssClasses = '';
                 selectedScreenSizesNames.forEach(function(screenSize) {
-                    responsiveCssClasses += ` ${base}${dsg.build.settings.responsiveSeparator}${screenSize}`;
+                    responsiveCssClasses += ` ${base}${bricss.build.settings.responsiveSeparator}${screenSize}`;
                 });
                 // Generate responsive markup
-                markup += dsg.templates.docClassValueResponsiveItem({
+                markup += bricss.templates.docClassValueResponsiveItem({
                     classes: responsiveCssClasses,
                     attribute: responsiveAttribute,
                     value: value
                 });
             } else {
                 // Generate standard markup
-                markup += dsg.templates.docClassValueItem({
+                markup += bricss.templates.docClassValueItem({
                     className: base,
                     value: value
                 });
@@ -377,7 +377,7 @@ const dsg = {
                     <input type="checkbox"
                         id="${id}"
                         value=""
-                        onchange="dsg.setResponsive(event)"
+                        onchange="bricss.setResponsive(event)"
                         class="pos-absolute | opa-0 | __checkbox_ui" ${disabled ? 'disabled="disabled"' : ''}>
                     <label for="${id}" class="d-flex ai-center gap-3 | fs-2">
                         <span class="p-2 | bc-primary-100 bwidth-1 bstyle-solid bcolor-primary-800 brad-1 | __checkbox_ui"></span>
@@ -392,7 +392,7 @@ const dsg = {
                     <input type="checkbox"
                         id="${id}"
                         value="${screenSize}"
-                        onchange="dsg.setResponsive(event)"
+                        onchange="bricss.setResponsive(event)"
                         class="pos-absolute | opa-0 | __checkbox_ui" ${disabled ? 'disabled="disabled"' : ''}>
                     <label for="${id}" class="d-flex ai-center gap-3 | fs-2">
                         <span class="p-2 | bc-primary-100 bwidth-1 bstyle-solid bcolor-primary-800 brad-1 | __checkbox_ui"></span>
@@ -403,7 +403,7 @@ const dsg = {
         },
         docPropertyItem: function({property, content, responsiveContent, utilityContent}) {
             return `
-                <li class="dsg__doc__property_item | w-6t | p-6 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2"
+                <li class="dsg__doc__property_item | p-6 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2"
                     w-6t="lg"
                     w-12t="xs,sm,md"
                     data-property="${property}">
@@ -432,7 +432,7 @@ const dsg = {
                                 <span class="d-flex fd-column">
                                     <span class="ff-lead-400 fs-1 tt-uppercase | c-quaternary-800">Prefix</span>
                                     <span class="ff-mono fs-5 | c-quaternary-500">
-                                        ${dsg.build.properties[property].prefix}${dsg.build.settings.separator}
+                                        ${bricss.build.properties[property].prefix}${bricss.build.settings.separator}
                                     </span>
                                 </span>
                             </h4>
@@ -460,12 +460,12 @@ const dsg = {
         }
     },
     genDocStandard: function() {
-        if (dsg.elDocStandard !== null) {
-            dsg.elDocStandard.innerHTML = '';
-            Object.keys(dsg.build.properties).forEach(function(property) {
+        if (bricss.elDocStandard !== null) {
+            bricss.elDocStandard.innerHTML = '';
+            Object.keys(bricss.build.properties).forEach(function(property) {
                 if (property.indexOf('--') == -1) {
-                    const propertyData = dsg.build.properties[property];
-                    const tokensKeysAndValues = dsg.genFrom(propertyData.generate_from);
+                    const propertyData = bricss.build.properties[property];
+                    const tokensKeysAndValues = bricss.genFrom(propertyData.generate_from);
                     let classesValuesMarkup = '';
                     let responsiveMarkup = '';
                     let utilityMarkup = '';
@@ -474,33 +474,33 @@ const dsg = {
                         let name = value;
                         if (typeof propertyData.names[index] == 'string') name = propertyData.names[index];
                         // Generate from values
-                        classesValuesMarkup += dsg.templates.docClassValueItem({
-                            className: propertyData.prefix +  dsg.build.settings.separator + name,
+                        classesValuesMarkup += bricss.templates.docClassValueItem({
+                            className: propertyData.prefix +  bricss.build.settings.separator + name,
                             value: value
                         })
                     });
                     // Generate from tokens
                     tokensKeysAndValues.forEach(function(token) {
-                        classesValuesMarkup += dsg.templates.docClassValueItem({
-                            className: propertyData.prefix +  dsg.build.settings.separator + token.name,
+                        classesValuesMarkup += bricss.templates.docClassValueItem({
+                            className: propertyData.prefix +  bricss.build.settings.separator + token.name,
                             value: token.value
                         })
                     });
                     // Responsive
-                    Object.keys(dsg.build.settings.screenSizes).forEach(function(screenSize, index) {
-                        responsiveMarkup += dsg.templates.docScreenSizeCheckboxItem({
+                    Object.keys(bricss.build.settings.screenSizes).forEach(function(screenSize, index) {
+                        responsiveMarkup += bricss.templates.docScreenSizeCheckboxItem({
                             id: `dsg__doc__standard__${property}_${screenSize}`,
                             screenSize: screenSize,
                             disabled: propertyData.responsive ? false : true
                         });
                     });
                     // Utility
-                    utilityMarkup = dsg.templates.docUtilityCheckboxItem({
+                    utilityMarkup = bricss.templates.docUtilityCheckboxItem({
                         id: `dsg__doc__utility__${property}`,
                         label: `Apply`,
                         disabled: propertyData.generate_utility ? false : true
                     });
-                    dsg.elDocStandard.innerHTML += dsg.templates.docPropertyItem({
+                    bricss.elDocStandard.innerHTML += bricss.templates.docPropertyItem({
                         property: property,
                         content: classesValuesMarkup,
                         responsiveContent: responsiveMarkup,

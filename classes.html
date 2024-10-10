@@ -87,7 +87,7 @@
                     bwidth-1 bstyle-solid bcolor-tertiary-500 bc-primary-700 c-tertiary-500 brad-1
                     cur-pointer"
                     title="Copy CSS to clipboard"
-                    onclick="ui.copyToClipboard(dsg._generatedCSS)">
+                    onclick="ui.copyToClipboard(bricss._generatedCSS)">
                     Copy
                 </button>
                 <a  id="dsg__doc__download_link"
@@ -123,7 +123,7 @@
                 maxw-20em="md,lg">
                 <span class="ff-mono fs-9 c-quaternary-500">&lt;/&gt;</span>
                 <h2 class="m-0 | ff-lead-700 fs-8">CSS classes</h2>
-                <p class="m-0 | ff-lead-700 fs-5">Generated from <code>dsg.json</code></p>
+                <p class="m-0 | ff-lead-700 fs-5">Generated from <code>build.json</code></p>
                 <p class="m-0 | c-primary-300 lh-7">Each CSS property has its own prefix with its associated names and values. Responsive CSS classes and utilities are available if applicable.</p>
             </header>
 
@@ -136,7 +136,7 @@
                         </label>
                         <input id="dsg__search__input"
                             type="search"
-                            oninput="dsg.searchText(this.value)"
+                            oninput="bricss.searchText(this.value)"
                             autocomplete="off"
                             class="ff-lead-400 fs-3 | p-2 | bc-primary-200 c-primary-700 b-0 brad-0 bradbl-1 bradbr-1 btwidth-1 btstyle-solid bcolor-primary-900">
                     </div>
@@ -178,10 +178,10 @@
 
     <footer class=""></footer>
     
-    <script src="./assets/js/dsg.js"></script>
+    <script src="./assets/js/bricss.js"></script>
     <script src="./assets/js/ui.js"></script>
     <script>
-        dsg.getBuild('build.json');
+        bricss.getBuild('build.json');
     </script>
 </body>
 
