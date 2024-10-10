@@ -345,8 +345,8 @@
         "max-width": {
             "prefix": "maxw",
             "generate_from": "",
-            "values": ["100%", "100vw", "20em"],
-            "names": ["100", "100vw", "20em"],
+            "values": ["100%", "100vw", "20em", "70ch"],
+            "names": ["100", "100vw", "20em", "70ch"],
             "responsive": true,
             "generate_utility": false
         },
