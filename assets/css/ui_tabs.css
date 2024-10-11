@@ -1,0 +1,37 @@
+[class*="ui_tabs__"] {
+    & ~ * {
+        [data-panel] {
+            display: none;
+        }
+    }
+}
+[class*="ui_tabs__examples_a"] {
+    &:has(input[value="a1"]:checked) {
+        & ~ * {
+            [data-panel="a1"] {
+                display: inherit;
+            }
+        }
+    }
+    &:has(input[value="a2"]:checked) {
+        & ~ * {
+            [data-panel="a2"] {
+                display: inherit;
+            }
+        }
+    }
+    &:has(input[value="aa1"]:checked) {
+        & ~ * {
+            [data-panel="aa1"] {
+                display: inherit;
+            }
+        }
+    }
+    &:has(input[value="aa2"]:checked) {
+        & ~ * {
+            [data-panel="aa2"] {
+                display: inherit;
+            }
+        }
+    }
+}

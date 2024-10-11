@@ -11,7 +11,7 @@ const bricss = {
                 .then(json => {
                     bricss.build = json;
                     bricss.genDocStandard();
-                    bricss.genDocTokens();
+                    // bricss.genDocTokens();
                     bricss.genCodeCss();
                     bricss.genBlob();
                     bricss.genDownload();

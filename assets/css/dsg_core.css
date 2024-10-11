@@ -300,6 +300,9 @@
 .w-auto {
   width: auto;
 }
+.w-300px {
+  width: 300px;
+}
 .w-1t {
   --twelves: 1;
 }
@@ -1481,7 +1484,7 @@
 }
 
 /*START @media xs*/
-@media (min-width: 0px) and (max-width: 600px) {
+@media (min-width: 0px) and (max-width: 599px) {
 
 .d-flex--xs,
 [d-flex*="xs"] {
@@ -1802,6 +1805,10 @@
 .w-auto--xs,
 [w-auto*="xs"] {
   width: auto;
+}
+.w-300px--xs,
+[w-300px*="xs"] {
+  width: 300px;
 }
 .w-1t--xs,
 [w-1t*="xs"] {
@@ -2448,7 +2455,7 @@
 
 
 /*START @media sm*/
-@media (min-width: 600px) and (max-width: 960px) {
+@media (min-width: 600px) and (max-width: 959px) {
 
 .d-flex--sm,
 [d-flex*="sm"] {
@@ -2769,6 +2776,10 @@
 .w-auto--sm,
 [w-auto*="sm"] {
   width: auto;
+}
+.w-300px--sm,
+[w-300px*="sm"] {
+  width: 300px;
 }
 .w-1t--sm,
 [w-1t*="sm"] {
@@ -3415,7 +3426,7 @@
 
 
 /*START @media md*/
-@media (min-width: 960px) and (max-width: 1200px) {
+@media (min-width: 960px) and (max-width: 1199px) {
 
 .d-flex--md,
 [d-flex*="md"] {
@@ -3736,6 +3747,10 @@
 .w-auto--md,
 [w-auto*="md"] {
   width: auto;
+}
+.w-300px--md,
+[w-300px*="md"] {
+  width: 300px;
 }
 .w-1t--md,
 [w-1t*="md"] {
@@ -4703,6 +4718,10 @@
 .w-auto--lg,
 [w-auto*="lg"] {
   width: auto;
+}
+.w-300px--lg,
+[w-300px*="lg"] {
+  width: 300px;
 }
 .w-1t--lg,
 [w-1t*="lg"] {

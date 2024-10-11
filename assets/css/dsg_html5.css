@@ -2,5 +2,11 @@ body {
     font-family: var(--dsg-fontFamilies-lead-400);
 }
 a {
-    color: var(--dsg-colors-tertiary-500)
+    color: var(--dsg-colors-tertiary-500);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+    text-decoration-color: var(--dsg-colors-tertiary-700);
+}
+a:hover {
+    text-decoration-color: var(--dsg-colors-tertiary-500);
 }
