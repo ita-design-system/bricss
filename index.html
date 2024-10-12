@@ -185,7 +185,7 @@
                 </li>
                 <li><p class="m-0 | c-primary-400">JSON</p>
                     <menu class="d-flex fd-column | w-100 maxw-20em m-0 p-0 | ls-none">
-                        <li><a href="#2">Settings</a></li>
+                        <li><a href="#json-settings">Settings</a></li>
                         <li><a href="#2">Tokens</a></li>
                         <li><a href="#2">Properties</a></li>
                     </menu>
@@ -309,7 +309,7 @@
                     </div>
                 </article>
                 
-                <article id="changing-css-property-prefix" class="d-flex fd-column gap-7 | scrollmt-9">
+                <article id="changing-css-property-prefix" class="d-flex ai-start fd-column gap-7 | scrollmt-9">
                     <header class="d-flex fd-column gap-3">
                         <h2 class="m-0 | ff-lead-700 fs-6">Changing CSS property prefix</h2>
                         <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">Simple consequence of a custom CSS property prefix change.</p>
@@ -409,7 +409,7 @@
                     </div>
                 </article>
                 
-                <article id="adding-important-keyword-utility" class="d-flex fd-column gap-7 | scrollmt-9">
+                <article id="adding-important-keyword-utility" class="d-flex ai-start fd-column gap-7 | scrollmt-9">
                     <header class="d-flex fd-column gap-3">
                         <h2 class="m-0 | ff-lead-700 fs-6">Adding <code class="c-secondary-500">!important</code> keyword utility</h2>
                         <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">
@@ -526,7 +526,7 @@
                     </div>
                 </article>
                 
-                <article id="custom-value-names" class="d-flex fd-column gap-7 | scrollmt-9">
+                <article id="custom-value-names" class="d-flex ai-start fd-column gap-7 | scrollmt-9">
                     <header class="d-flex fd-column gap-3">
                         <h2 class="m-0 | ff-lead-700 fs-6">Custom value names</h2>
                         <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">Value names are optional. By default, values are displayed as names. You can add custom names. If no custom name is set for, value is used as name.</p>
@@ -632,7 +632,7 @@
                     </div>
                 </article>
                 
-                <article id="adding-responsive" class="d-flex fd-column gap-7 | scrollmt-9">
+                <article id="adding-responsive" class="d-flex ai-start fd-column gap-7 | scrollmt-9">
                     <header class="d-flex fd-column gap-3">
                         <h2 class="m-0 | ff-lead-700 fs-6">Adding responsive</h2>
                         <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">Now we set up 3 screen sizes named "xs, "sm" and "lg" into <code>settings.screenSizes</code>.</p>
@@ -812,7 +812,7 @@
                     </div>
                 </article>
                 
-                <article id="adding-responsive-selectively" class="d-flex fd-column gap-7 | scrollmt-9">
+                <article id="adding-responsive-selectively" class="d-flex ai-start fd-column gap-7 | scrollmt-9">
                     <header class="d-flex fd-column gap-3">
                         <h2 class="m-0 | ff-lead-700 fs-6">Adding responsive selectively</h2>
                         <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">
@@ -1023,7 +1023,7 @@
                     </div>
                 </article>
                 
-                <article id="responsive-utility" class="d-flex fd-column gap-7 | scrollmt-9">
+                <article id="responsive-utility" class="d-flex ai-start fd-column gap-7 | scrollmt-9">
                     <header class="d-flex fd-column gap-3">
                         <h2 class="m-0 | ff-lead-700 fs-6">Responsive utility</h2>
                         <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">
@@ -1246,7 +1246,7 @@
                     </div>
                 </article>
 
-                <article id="with-tokens" class="d-flex fd-column gap-7 | scrollmt-9">
+                <article id="with-tokens" class="d-flex ai-start fd-column gap-7 | scrollmt-9">
                     <header class="d-flex fd-column gap-3">
                         <h2 class="m-0 | ff-lead-700 fs-6">With tokens</h2>
                         <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">
@@ -1373,7 +1373,7 @@
                     </div>
                 </article>
 
-                <article id="with-tokens-other-names-and-values" class="d-flex fd-column gap-7 | scrollmt-9">
+                <article id="with-tokens-other-names-and-values" class="d-flex ai-start fd-column gap-7 | scrollmt-9">
                     <header class="d-flex fd-column gap-3">
                         <h2 class="m-0 | ff-lead-700 fs-6">With tokens + other names and values</h2>
                         <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">
@@ -1517,6 +1517,52 @@
                                 </code>
                             </pre>
                         </div>
+                    </div>
+                </article>
+
+                <article id="json-settings" class="d-flex ai-start fd-column gap-7 | scrollmt-9">
+                    <header class="d-flex fd-column gap-3">
+                        <h2 class="m-0 | ff-lead-700 fs-6">JSON Settings</h2>
+                        <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">
+                            JSON settings explained one by one.
+                        </p>
+                    </header>
+                    <div class="d-flex gap-9">
+                        <pre class="m-0">
+                            <code class="language-json">{
+    "settings": {
+        "separator": "-",
+        "responsiveSeparator": "--",
+        "utilitiesPrefix": "u",
+        "cssVariablesPrefix": "bri",
+        "screenSizes": {
+            "xs": ["0px", "599px"],
+            "sm": ["600px", "959px"],
+            "md": ["960px", "1199px"],
+            "lg": ["1200px", "infinite"]
+        }
+    }
+}
+                            </code>
+                        </pre>
+                        <dl>
+                            <dt class="ff-mono | c-tertiary-500">separator</dt>
+                            <dd><em><code class="c-primary-300">String</code></em> A single or few characters to split names, values utility prefixes.</dd>
+                            <dt class="ff-mono | c-tertiary-500">responsiveSeparator</dt>
+                            <dd><em><code class="c-primary-300">String</code></em> A single or few characters dedicated to split screen sizes names from other expressions.</dd>
+                            <dt class="ff-mono | c-tertiary-500">utilitiesPrefix</dt>
+                            <dd><em><code class="c-primary-300">String</code></em> A single or few characters dedicated to utilities (!important keyword).</dd>
+                            <dt class="ff-mono | c-tertiary-500">cssVariablesPrefix</dt>
+                            <dd><em><code class="c-primary-300">String</code></em> A single or few characters used for tokens CSS variables.</dd>
+                            <dt class="ff-mono | c-tertiary-500">screenSizes</dt>
+                            <dd><em><code class="c-primary-300">Object</code></em> Defines screen sizes. Object keys are screen sizes names.</dd>
+                            <dt class="ff-mono | c-tertiary-500">screenSizes[NAME]</dt>
+                            <dd>
+                                <em><code class="c-primary-300">Array</code></em> Contains 2 strings entries: lower screen size limit, higher screen size limit.
+                                For example <code>["960px", "1199px"]</code>. 
+                                For unlimited higher screen size limit, just set "infinite" as follows: <code>["960px", "infinite"]</code>. 
+                            </dd>
+                        </dl>
                     </div>
                 </article>
             </main>

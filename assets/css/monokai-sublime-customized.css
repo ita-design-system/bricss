@@ -81,7 +81,7 @@ code.hljs {
 .hljs-template-variable,
 .hljs-type,
 .hljs-variable {
-    color: var(--dsg-colors-quaternary-500);
+    color: var(--dsg-colors-secondary-400);
 }
 
 .hljs-comment,
