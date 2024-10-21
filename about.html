@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRiCSS | A simple and customizable low-level CSS library generator</title>
+
+    <meta itemprop="name" content="BRiCSS">
+    <meta name="description" itemprop="description" content="A simple and customizable low-level CSS library generator">
+    <meta name="application-name" content="BRiCSS">
+    <meta name="author" content="01ivier 3lanc">
+    <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="canonical" href="./">
+
+    <meta name="msapplication-TileColor" content="#182026">
+    <meta name="theme-color" content="#182026">
+
+    <!-- Microsoft -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="msapplication-starturl" content="./">
+    <meta name="msapplication-tooltip" content="BRiCSS">
+    <meta name="msapplication-TileColor" content="#182026">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="./">
+    <meta property="og:title" content="BRiCSS">
+    <meta property="og:description" content="A simple and customizable low-level CSS library generator">
+    <meta property="og:image" content="https://cdn.jsdelivr.net/gh/ita-design-system/bricss@main/dsg/medias/bricss-og-image.png">
+
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BRiCSS">
+    <meta name="twitter:description" content="A simple and customizable low-level CSS library generator">
+    <meta name="twitter:url" content="./">
+    <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ita-design-system/bricss@main/dsg/medias/bricss-og-image.png">
+
+    <!-- iOS -->
+    <meta name="apple-mobile-web-app-title" content="BRiCSS">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#182026">
+
+    <!-- Android -->
+    <meta name="theme-color" content="#182026">
+    <meta name="color-scheme" content="dark">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" href="./assets/css/dsg_fonts.css">
+    <link rel="stylesheet" href="./assets/css/dsg_core.css">
+    <link rel="stylesheet" href="./assets/css/dsg_loader.css">
+    <link rel="stylesheet" href="./assets/css/dsg_html5.css">
+    <link rel="stylesheet" href="./assets/css/dsg_width-twelves.css">
+    <link rel="stylesheet" href="./assets/css/dsg_ellipsis.css">
+    <link rel="stylesheet" href="./assets/css/dsg_forms.css">
+    <link rel="stylesheet" href="./assets/css/dsg_animations.css">
+    <link rel="stylesheet" href="./assets/css/dsg_colors.css">
+    <link rel="stylesheet" href="./assets/css/monokai-sublime-customized.css">
+</head>
+<body class="m-0 | ff-lead-400 | bc-primary-700 c-primary-200">
+    <header class="d-flex | o-auto | pos-sticky top-0 z-2 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500"
+        gap-9="lg"
+        pl-9="lg"
+        pr-9="lg"
+        pr-5="xs,sm,md">
+        <button type="button"
+            id="dsg__toc_menu_btn"
+            class="d-flex | pos-sticky left-0 z-1 | p-5 fs-1 ff-lead-400 tt-uppercase | bc-primary-700 b-0"
+            d-none="lg"
+            c-toggle="toc"
+            data-dismiss="true"
+            style="perspective: 5em; transform-style: preserve-3d;">
+            <span class="d-flex fd-column gap-1 __animation_3"
+                c-toggle-name="toc"
+                data-opened-state-class="d-none">
+                <span class="pl-5 bbwidth-1 bbstyle-solid bcolor-primary-100"></span>
+                <span class="pl-5 bbwidth-1 bbstyle-solid bcolor-primary-100"></span>
+                <span class="pl-5 bbwidth-1 bbstyle-solid bcolor-primary-100"></span>
+            </span>
+            <span class="d-none"
+                c-toggle-name="toc"
+                data-opened-state-class="d-flex fd-column gap-1 __animation_3">
+                <span class="pl-5 bbwidth-1 bbstyle-solid bcolor-primary-100" style="transform: translateY(6px) rotate(45deg)"></span>
+                <span class="pl-5 bbwidth-1 bbstyle-solid bcolor-primary-100" style="transform: translateY(1px) rotate(-45deg)"></span>
+                <span class="opa-0"></span>
+            </span>
+        </button>
+        <h1 class="d-flex | pos-relative | m-0 pl-3 pr-3">
+            <a href="./" class="d-flex ai-center | pos-relative | ff-lead-700 fs-4 td-none ws-nowrap | c-primary-100 | __animation_1">
+                <span class="ff-lead-700 c-primary-700" style="text-shadow: 0px 0px 1px white, 0px 0px 1px white;">BRi</span>CSS
+            </a>
+        </h1>
+        <nav class="d-flex jc-end ai-center gap-5 fg-1 | bc-primary-700">
+            <a  href="#gh-link"
+                class="d-flex | fs-2 td-none"
+                target="_blank"
+                title="Open on Github on a new tab">
+                <img    src="./assets/medias/github-mark-white.svg"
+                        alt="Github"
+                        height="28">
+            </a>
+            <a  href="https://github.com/ita-design-system/bricss/archive/refs/heads/main.zip"
+                class="
+                d-flex gap-2
+                pl-3 pr-3 pt-2 pb-2 mt-3 mb-3
+                ff-lead-700 tt-uppercase fs-2 td-none
+                bwidth-1 bstyle-solid bcolor-tertiary-500 bc-tertiary-500 c-primary-700 brad-1"
+                title="Download the latest version .zip"
+                mt-3="lg"
+                mb-3="lg"
+                download>
+                Download
+            </a>
+        </nav>
+    </header>
+    
+    <div class="d-flex fd-column">
+        <header class="d-flex fd-column gap-5 | w-100 pl-9 pr-9 pt-9"
+            pl-5="xs,sm,md"
+            pr-5="xs,sm,md">
+            <h1 class="d-flex ai-center | m-0 | fs-9">
+                <span class="ff-lead-400 | c-secondary-500">{</span>
+                <span class="ff-lead-700 c-primary-700" style="text-shadow: 0px 0px 1px white, 0px 0px 1px white, 0px 0px 1px white, 0px 0px 1px white;">BRi</span>
+                <span class="ff-lead-700">CSS</span>
+                <span class="ff-lead-400 | c-secondary-500">}</span>
+            </h1>
+            <p class="ff-lead-400 fs-6 | m-0 | lh-6" fs-6="xs">A simple and customizable low-level CSS library generator</p>
+        </header>
+
+        <div class="d-flex ai-start"
+            fd-column="xs,sm,md"
+            gap-9="lg"
+            pl-9="lg"
+            pl-5="xs,sm,md"
+            pr-5="xs,sm,md">
+            
+            <menu id="dsg__toc_menu_ctn"
+                class="d-flex gap-6 d-none--xs d-none--sm d-none--md | top-0 z-1 | w-100 m-0 pl-0 o-auto | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500 ls-none"
+                fd-column="lg"
+                pos-fixed="xs,sm,md"
+                pos-sticky="lg"
+                top-0="xs,sm,md"
+                left-0="xs,sm,md"
+                mt-7="xs,sm,md"
+                pt-9="lg"
+                pb-9="lg"
+                maxw-20em="lg"
+                bb-0="lg"
+                c-toggle-name="toc"
+                data-opened-state-class="d-flex gap-6 | top-0 z-1 | w-100 m-0 pl-0 o-auto | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500 ls-none"
+                style="max-height: calc(100vh - 60px);">
+                <li w-100="xs,sm,md">
+                    <p class="m-0 | fs-3 tt-uppercase | c-primary-400" pl-5="xs,sm,md" pt-5="xs,sm,md" pb-2="xs,sm,md" fs-1="xs,sm,md">Installation</p>
+                    <menu class="d-flex | m-0 p-0 w-100 o-auto | ls-none | MENU"
+                        gap-6="xs,sm,md"
+                        fd-column="lg"
+                        pl-5="xs,sm,md"
+                        pr-5="xs,sm,md"
+                        pb-5="xs,sm,md"
+                        fs-3="lg"
+                        fs-2="xs,sm,md">
+                        <li><a href="#general-principles">General principles</a></li>
+                        <li><a href="#requirements">Requirements</a></li>
+                        <li><a href="#get-started">Get started</a></li>
+                    </menu>
+                </li>
+                <li w-100="xs,sm,md">
+                    <p class="m-0 | fs-3 tt-uppercase | c-primary-400" pl-5="xs,sm,md" pt-5="xs,sm,md" pb-2="xs,sm,md" fs-1="xs,sm,md">Usage</p>
+                    <menu class="d-flex | m-0 p-0 w-100 o-auto | ls-none | MENU"
+                        gap-6="xs,sm,md"
+                        fd-column="lg"
+                        pl-5="xs,sm,md"
+                        pr-5="xs,sm,md"
+                        pb-5="xs,sm,md"
+                        fs-3="lg"
+                        fs-2="xs,sm,md">
+                        <li><a href="#single-property">Single property</a></li>
+                        <li><a href="#changing-css-property-prefix">Changing CSS property prefix</a></li>
+                        <li><a href="#adding-important-keyword-utility">Adding !important keyword utility</a></li>
+                        <li><a href="#custom-value-names">Custom value names</a></li>
+                        <li><a href="#adding-responsive">Adding responsive</a></li>
+                        <li><a href="#adding-responsive-selectively">Adding responsive selectively</a></li>
+                        <li><a href="#responsive-utility">Responsive utility</a></li>
+                        <li><a href="#with-tokens">With tokens</a></li>
+                        <li><a href="#with-tokens-other-names-and-values">With tokens + other names and values</a></li>
+                    </menu>
+                </li>
+                <li w-100="xs,sm,md">
+                    <p class="m-0 | fs-3 tt-uppercase | c-primary-400" pl-5="xs,sm,md" pt-5="xs,sm,md" pb-2="xs,sm,md" fs-1="xs,sm,md">JSON</p>
+                    <menu class="d-flex | m-0 p-0 w-100 o-auto | ls-none | MENU"
+                        gap-6="xs,sm,md"
+                        fd-column="lg"
+                        pl-5="xs,sm,md"
+                        pr-5="xs,sm,md"
+                        pb-5="xs,sm,md"
+                        fs-3="lg"
+                        fs-2="xs,sm,md">
+                        <li><a href="#json-settings">Settings</a></li>
+                        <li><a href="#json-tokens">Tokens</a></li>
+                        <li><a href="#json-properties">Properties</a></li>
+                    </menu>
+                </li>
+            </menu>
+
+            <main class="d-flex fd-column gap-9" w-100="xs,sm" pr-9="lg">
+                <article id="general-principles"
+                    c-scrollspy="anchors"
+                    class="d-flex fd-column gap-5 | pt-9 scrollmt-96px">
+                    <h2 class="m-0 | ff-lead-700 fs-6">General principles</h2>
+                    <ul class="d-flex gap-5 fw-wrap | m-0 p-0 | ls-none">
+                        <li class="d-flex fd-column fg-1 | p-5 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                            <h3 class="m-0 pl-4 | fs-5 ff-lead-700 | blwidth-1 blstyle-solid bcolor-secondary-500">Simple responsive naming convention</h3>
+                            <p class="d-flex | m-0 pt-2 maxw-30ch | pos-relative | pl-6 | fs-4 lh-6 | c-primary-300">
+                                <span class="d-flex | pos-absolute top-0 left-0 | p-4 | __icon-arrow-down-curved-right"></span>
+                                BRiCSS is a simple low-level CSS abstraction and a naming convention based on abbreviations of class names and attributes.
+                            </p>
+                        </li>
+                        <li class="d-flex fd-column fg-1 | p-5 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                            <h3 class="m-0 pl-4 | fs-5 ff-lead-700 | blwidth-1 blstyle-solid bcolor-secondary-500">Responsive on-demand</h3>
+                            <p class="d-flex | m-0 pt-2 maxw-30ch | pos-relative | pl-6 | fs-4 lh-6 | c-primary-300">
+                                <span class="d-flex | pos-absolute top-0 left-0 | p-4 | __icon-arrow-down-curved-right"></span>
+                                Optimized CSS output file size thanks to selective responsive CSS properties you really use.
+                            </p>
+                        </li>
+                        <li class="d-flex fd-column fg-1 | p-5 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                            <h3 class="m-0 pl-4 | fs-5 ff-lead-700 | blwidth-1 blstyle-solid bcolor-secondary-500">Auto doc</h3>
+                            <p class="d-flex | m-0 pt-2 maxw-30ch | pos-relative | pl-6 | fs-4 lh-6 | c-primary-300">
+                                <span class="d-flex | pos-absolute top-0 left-0 | p-4 | __icon-arrow-down-curved-right"></span>
+                                Documentation of CSS output is automatically generated.
+                            </p>
+                        </li>
+                        <li class="d-flex fd-column fg-1 | p-5 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                            <h3 class="m-0 pl-4 | fs-5 ff-lead-700 | blwidth-1 blstyle-solid bcolor-secondary-500">Low-engineered</h3>
+                            <p class="d-flex | m-0 pt-2 maxw-30ch | pos-relative | pl-6 | fs-4 lh-6 | c-primary-300">
+                                <span class="d-flex | pos-absolute top-0 left-0 | p-4 | __icon-arrow-down-curved-right"></span>
+                                Only a browser is required.
+                            </p>
+                        </li>
+                        <li class="d-flex fd-column fg-1 | p-5 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                            <h3 class="m-0 pl-4 | fs-5 ff-lead-700 | blwidth-1 blstyle-solid bcolor-secondary-500">JSON based</h3>
+                            <p class="d-flex | m-0 pt-2 maxw-30ch | pos-relative | pl-6 | fs-4 lh-6 | c-primary-300">
+                                <span class="d-flex | pos-absolute top-0 left-0 | p-4 | __icon-arrow-down-curved-right"></span>
+                                BRiCSS is a JSON file base solution to generate a tailored CSS file library.
+                            </p>
+                        </li>
+                        <li class="d-flex fd-column fg-1 | p-5 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                            <h3 class="m-0 pl-4 | fs-5 ff-lead-700 | blwidth-1 blstyle-solid bcolor-secondary-500">Offline</h3>
+                            <p class="d-flex | m-0 pt-2 maxw-30ch | pos-relative | pl-6 | fs-4 lh-6 | c-primary-300">
+                                <span class="d-flex | pos-absolute top-0 left-0 | p-4 | __icon-arrow-down-curved-right"></span>
+                                Works even with no Internet connection.
+                            </p>
+                        </li>
+                        <li class="d-flex fd-column fg-1 | p-5 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                            <h3 class="m-0 pl-4 | fs-5 ff-lead-700 | blwidth-1 blstyle-solid bcolor-secondary-500">Design Systems friendly</h3>
+                            <p class="d-flex | m-0 pt-2 maxw-30ch | pos-relative | pl-6 | fs-4 lh-6 | c-primary-300">
+                                <span class="d-flex | pos-absolute top-0 left-0 | p-4 | __icon-arrow-down-curved-right"></span>
+                                Integrates seamlessly into a Design System.
+                            </p>
+                        </li>
+                        <li class="d-flex fd-column fg-1 | p-5 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                            <h3 class="m-0 pl-4 | fs-5 ff-lead-700 | blwidth-1 blstyle-solid bcolor-secondary-500">Instant file size</h3>
+                            <p class="d-flex | m-0 pt-2 maxw-30ch | pos-relative | pl-6 | fs-4 lh-6 | c-primary-300">
+                                <span class="d-flex | pos-absolute top-0 left-0 | p-4 | __icon-arrow-down-curved-right"></span>
+                                Instantly observe the file size impact of your settings.
+                            </p>
+                        </li>
+                        <li class="d-flex fd-column fg-1 | p-5 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                            <h3 class="m-0 pl-4 | fs-5 ff-lead-700 | blwidth-1 blstyle-solid bcolor-secondary-500">Copy or download</h3>
+                            <p class="d-flex | m-0 pt-2 maxw-30ch | pos-relative | pl-6 | fs-4 lh-6 | c-primary-300">
+                                <span class="d-flex | pos-absolute top-0 left-0 | p-4 | __icon-arrow-down-curved-right"></span>
+                                Just refresh your browser to get the latest version of your custom CSS library.
+                            </p>
+                        </li>
+                    </ul>
+                </article>
+                
+                <article id="requirements"
+                    c-scrollspy="anchors"
+                    class="d-flex fd-column gap-5 | pt-9 scrollmt-96px">
+                    <h2 class="m-0 | ff-lead-700 fs-6">Requirements</h2>
+                    <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">A text editor, a web server and a browser.</p>
+                </article>
+
+                <article id="get-started"
+                    c-scrollspy="anchors"
+                    class="d-flex fd-column gap-5 | pt-9 scrollmt-96px">
+                    <h2 class="m-0 | ff-lead-700 fs-6">Get started</h2>
+                    <ol class="d-flex gap-5 fw-wrap | m-0 p-0 | ls-none">
+                        <li class="d-flex fd-column gap-2 fg-1 | p-5 pl-7 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                            <h3 class="pos-relative | m-0 | ff-lead-700 ff-lead-700">
+                                <span class="pos-absolute left-0 t-tX-100 | pr-2 | c-secondary-500">1.</span> 
+                                Download
+                            </h3>
+                            <p class="m-0 maxw-30ch | fs-4 lh-6 | c-primary-300">
+                                <a href="#" download>Download</a> or 
+                                <a href="#">clone</a> the starter project and unpack to any web server.
+                            </p>
+                        </li>
+                        <li class="d-flex fd-column gap-2 fg-1 | p-5 pl-7 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                            <h3 class="pos-relative | m-0 | ff-lead-700 ff-lead-700">
+                                <span class="pos-absolute left-0 t-tX-100 | pr-2 | c-secondary-500">2.</span> 
+                                Edit
+                            </h3>
+                            <p class="m-0 maxw-30ch | fs-4 lh-6 | c-primary-300">
+                                Edit build.json file to fit your needs.
+                            </p>
+                        </li>
+                        <li class="d-flex fd-column gap-2 fg-1 | p-5 pl-7 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                            <h3 class="pos-relative | m-0 | ff-lead-700 ff-lead-700">
+                                <span class="pos-absolute left-0 t-tX-100 | pr-2 | c-secondary-500">3.</span> 
+                                Use it!
+                            </h3>
+                            <p class="m-0 maxw-30ch | fs-4 lh-6 | c-primary-300">
+                                Copy or download your CSS.
+                            </p>
+                        </li>
+                    </ol>
+                </article>
+
+                <article id="single-property"
+                    c-scrollspy="anchors"
+                    class="d-flex fd-column ai-start gap-7"
+                    scrollmt-96px="lg"
+                    scrollmt-200px="xs,sm,md">
+                    <header class="d-flex fd-column gap-3">
+                        <h2 class="m-0 | ff-lead-700 fs-6">Single property</h2>
+                        <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">Here is the most basic JSON with non-responsive settings and a single property involved (display).</p>
+                    </header>
+                    <div class="d-flex fw-wrap gap-4-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">dis</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">flex</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ display flex</p>
+                        </div>
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">dis</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">inline-flex</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ display inline-flex</p>
+                        </div>
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">dis</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">none</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ display none</p>
+                        </div>
+                        <div class="w-100">
+                            <details class="d-flex fd-column" open="">
+                                <summary class="ff-lead-400 fs-3 | c-primary-300">Legend</summary>
+                                <ul class="d-flex fw-wrap gap-4-8 | mt-4 mb-0 p-0 | ls-none">
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-secondary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-secondary-400">properties.display.prefix</code>
+                                            CSS property abbreviation
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-tertiary-400">settings.separator</code>
+                                            Common separator
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-quaternary-400">properties.display.name</code>
+                                            Value name
+                                        </div>
+                                    </li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+                    <div class="d-flex" gap-9="md,lg" fd-column="xs,sm">
+                        <div w-100="xs,sm">
+                            <p class="m-0">Related JSON settings</p>
+                            <pre class="m-0">
+                                <code class="language-json">{
+    "settings": {
+        "separator": "-",
+        "responsiveSeparator": "--",
+        "utilitiesPrefix": "u",
+        "cssVariablesPrefix": "bri",
+        "screenSizes": {}
+    },
+    "tokens": {},
+    "properties": {
+        "display": {
+            "prefix": "dis",
+            "generate_from": "",
+            "values": [
+                "flex",
+                "inline-flex",
+                "none"
+            ],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        }
+    }
+}
+                                </code>
+                            </pre>
+                        </div>
+                        <div w-100="xs,sm">
+                            <p class="m-0">Generated CSS</p>
+                            <pre class="m-0">
+                                <code class="language-css">.dis-flex {
+    display: flex;
+}
+.dis-inline-flex {
+    display: inline-flex;
+}
+.dis-none {
+    display: none;
+}
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                </article>
+                
+                <article id="changing-css-property-prefix"
+                    c-scrollspy="anchors"
+                    class="d-flex ai-start fd-column gap-7"
+                    scrollmt-96px="lg"
+                    scrollmt-200px="xs,sm,md">
+                    <header class="d-flex fd-column gap-3">
+                        <h2 class="m-0 | ff-lead-700 fs-6">Changing CSS property prefix</h2>
+                        <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">Simple consequence of a custom CSS property prefix change.</p>
+                    </header>
+                    <div class="d-flex fw-wrap gap-4-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">flex</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ display flex</p>
+                        </div>
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">inline-flex</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ display inline-flex</p>
+                        </div>
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">none</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ display none</p>
+                        </div>
+                        <div class="w-100">
+                            <details class="d-flex fd-column" open="">
+                                <summary class="ff-lead-400 fs-3 | c-primary-300">Legend</summary>
+                                <ul class="d-flex fw-wrap gap-4-8 | mt-4 mb-0 p-0 | ls-none">
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-secondary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-secondary-400">properties.display.prefix</code>
+                                            CSS property abbreviation
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-tertiary-400">settings.separator</code>
+                                            Common separator
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-quaternary-400">properties.display.name</code>
+                                            Value name
+                                        </div>
+                                    </li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+                    <div class="d-flex" gap-9="md,lg" fd-column="xs,sm">
+                        <div w-100="xs,sm">
+                            <p class="m-0">Related JSON settings</p>
+                            <pre class="m-0">
+                                <code class="language-json">{
+    "settings": {
+        "separator": "-",
+        "responsiveSeparator": "--",
+        "utilitiesPrefix": "u",
+        "cssVariablesPrefix": "bri",
+        "screenSizes": {}
+    },
+    "tokens": {},
+    "properties": {
+        "display": {
+            "prefix": "d",
+            "generate_from": "",
+            "values": [
+                "flex",
+                "inline-flex",
+                "none"
+            ],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        }
+    }
+}
+                                </code>
+                            </pre>
+                        </div>
+                        <div w-100="xs,sm">
+                            <p class="m-0">Generated CSS</p>
+                            <pre class="m-0">
+                                <code class="language-css">.d-flex {
+    display: flex;
+}
+.d-inline-flex {
+    display: inline-flex;
+}
+.d-none {
+    display: none;
+}
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                </article>
+                
+                <article id="adding-important-keyword-utility"
+                    c-scrollspy="anchors"
+                    class="d-flex ai-start fd-column gap-7"
+                    scrollmt-96px="lg"
+                    scrollmt-200px="xs,sm,md">
+                    <header class="d-flex fd-column gap-3">
+                        <h2 class="m-0 | ff-lead-700 fs-6">Adding <code class="c-secondary-500">!important</code> keyword utility</h2>
+                        <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">
+                            In addition of standard CSS classes, utility classes with
+                            <code class="c-secondary-500">!important</code> keyword
+                            may be added to the generation selectively for each CSS property just by setting
+                            <code>generate_utility</code> to <code>true</code> on the specified CSS property.
+                        </p>
+                    </header>
+                    <div class="d-flex fw-wrap gap-4-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">flex</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ standard display flex</p>
+                        </div>
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-primary-300">u</span><span class="c-tertiary-400">-</span><span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">flex</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ utility display flex with <code>!important</code> keyword applied</p>
+                        </div>
+                        <div class="w-100">
+                            <details class="d-flex fd-column" open="">
+                                <summary class="ff-lead-400 fs-3 | c-primary-300">Legend</summary>
+                                <ul class="d-flex fw-wrap gap-4-8 | p-0 mt-4 mb-0 | ls-none">
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-secondary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-secondary-400">properties.display.prefix</code>
+                                            CSS property abbreviation
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-tertiary-400">settings.separator</code>
+                                            Common separator
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-quaternary-400">properties.display.name</code>
+                                            Value name
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-primary-300" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-primary-300">settings.utilitiesPrefix</code>
+                                            Utility prefix
+                                        </div>
+                                    </li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+                    <div class="d-flex fw-wrap | w-100" gap-9="lg" gap-6="sm,md">
+                        <div w-100="xs,sm">
+                            <p class="m-0">Related JSON settings</p>
+                            <pre class="m-0">
+                                <code class="language-json">{
+    "settings": {
+        "separator": "-",
+        "responsiveSeparator": "--",
+        "utilitiesPrefix": "u",
+        "cssVariablesPrefix": "bri",
+        "screenSizes": {}
+    },
+    "tokens": {},
+    "properties": {
+        "display": {
+            "prefix": "d",
+            "generate_from": "",
+            "values": [
+                "flex",
+                "inline-flex",
+                "none"
+            ],
+            "names": [],
+            "responsive": false,
+            "generate_utility": true
+        }
+    }
+}
+                                </code>
+                            </pre>
+                        </div>
+                        <div w-100="xs,sm">
+                            <p class="m-0">Generated CSS</p>
+                            <pre class="m-0">
+                                <code class="language-css">.d-flex {
+    display: flex;
+}
+.u-d-flex {
+    display: flex !important;
+}
+.d-inline-flex {
+    display: inline-flex;
+}
+.u-d-inline-flex {
+    display: inline-flex !important;
+}
+.d-none {
+    display: none;
+}
+.u-d-none {
+    display: none !important;
+}
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                </article>
+                
+                <article id="custom-value-names"
+                    c-scrollspy="anchors"
+                    class="d-flex ai-start fd-column gap-7"
+                    scrollmt-96px="lg"
+                    scrollmt-200px="xs,sm,md">
+                    <header class="d-flex fd-column gap-3">
+                        <h2 class="m-0 | ff-lead-700 fs-6">Custom value names</h2>
+                        <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">Value names are optional. By default, values are displayed as names. You can add custom names. If no custom name is set for, value is used as name.</p>
+                    </header>
+                    <div class="d-flex fw-wrap gap-4-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">fx</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ display flex</p>
+                        </div>
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">ifx</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ display inline-flex</p>
+                        </div>
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">none</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ display none</p>
+                        </div>
+                        <div class="w-100">
+                            <details class="d-flex fd-column">
+                                <summary class="ff-lead-400 fs-3 | c-primary-300">Legend</summary>
+                                <ul class="d-flex fw-wrap gap-4-8 | mt-4 mb-0 p-0 | ls-none">
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-secondary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-secondary-400">properties.display.prefix</code>
+                                            CSS property abbreviation
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-tertiary-400">settings.separator</code>
+                                            Common separator
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-quaternary-400">properties.display.name</code>
+                                            Value name
+                                        </div>
+                                    </li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+                    <div class="d-flex fw-wrap | w-100" gap-9="lg" gap-6="sm,md">
+                        <div w-100="xs,sm">
+                            <p class="m-0">Related JSON settings</p>
+                            <p class="m-0 | ff-lead-700"><strong>Custom names must be ordered the same as values</strong></p>
+                            <pre class="m-0">
+                                <code class="language-json">{
+    "settings": {
+        "separator": "-",
+        "responsiveSeparator": "--",
+        "utilitiesPrefix": "u",
+        "cssVariablesPrefix": "bri",
+        "screenSizes": {}
+    },
+    "tokens": {},
+    "properties": {
+        "display": {
+            "prefix": "d",
+            "generate_from": "",
+            "values": [
+                "flex",
+                "inline-flex",
+                "none"
+            ],
+            "names": [
+                "fx",
+                "ifx"
+            ],
+            "responsive": false,
+            "generate_utility": false
+        }
+    }
+}
+                                </code>
+                            </pre>
+                        </div>
+                        <div w-100="xs,sm">
+                            <p class="m-0">Generated CSS</p>
+                            <pre class="m-0">
+                                <code class="language-css">.d-fx {
+    display: flex;
+}
+.d-ifx {
+    display: inline-flex;
+}
+.d-none {
+    display: none;
+}
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                </article>
+                
+                <article id="adding-responsive"
+                    c-scrollspy="anchors"
+                    class="d-flex ai-start fd-column gap-7"
+                    scrollmt-96px="lg"
+                    scrollmt-200px="xs,sm,md">
+                    <header class="d-flex fd-column gap-3">
+                        <h2 class="m-0 | ff-lead-700 fs-6">Adding responsive</h2>
+                        <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">Now we set up 3 screen sizes named "xs, "sm" and "lg" into <code>settings.screenSizes</code>.</p>
+                    </header>
+                    <div class="d-flex fw-wrap gap-4-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">flex</span><span class="c-tertiary-700">--</span><span class="c-quaternary-700">xs</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ display flex on xs screen sizes</p>
+                        </div>
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">inline-flex</span><span class="c-tertiary-700">--</span><span class="c-quaternary-700">sm</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ display inline-flex on sm screen sizes</p>
+                        </div>
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">none</span><span class="c-tertiary-700">--</span><span class="c-quaternary-700">xs</span> <span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">none</span><span class="c-tertiary-700">--</span><span class="c-quaternary-700">sm</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ display none on xs and sm screen sizes with class names</p>
+                        </div>
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                <span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">none</span>=&quot;<span class="c-quaternary-700">xs</span>,<span class="c-quaternary-700">sm</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ display none on xs and sm screen sizes with attribute</p>
+                        </div>
+                        <div class="w-100">
+                            <details class="d-flex fd-column" open="">
+                                <summary class="ff-lead-400 fs-3 | c-primary-300">Legend</summary>
+                                <ul class="d-flex fw-wrap gap-4-8 | mt-4 mb-0 p-0 | ls-none">
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-secondary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-secondary-400">properties.display.prefix</code>
+                                            CSS property abbreviation
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-tertiary-400">settings.separator</code>
+                                            Common separator
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-quaternary-400">properties.display.name</code>
+                                            Value name
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-tertiary-700" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-tertiary-700">settings.responsiveSeparator</code>
+                                            Responsive separator
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-quaternary-700" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-quaternary-700">settings.screenSizes</code>
+                                            Screen size name
+                                        </div>
+                                    </li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+                    <div class="d-flex fw-wrap | w-100" gap-9="lg" gap-6="sm,md">
+                        <div w-100="xs,sm">
+                            <p class="m-0">Related JSON settings</p>
+                            <pre class="m-0">
+                                <code class="language-json">{
+    "settings": {
+        "separator": "-",
+        "responsiveSeparator": "--",
+        "utilitiesPrefix": "u",
+        "cssVariablesPrefix": "bri",
+        "screenSizes": {
+            "xs": ["0px", "599px"],
+            "sm": ["600px", "959px"],
+            "lg": ["960px", "infinite"]
+        }
+    },
+    "tokens": {},
+    "properties": {
+        "display": {
+            "prefix": "d",
+            "generate_from": "",
+            "values": [
+                "flex",
+                "inline-flex",
+                "none"
+            ],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        }
+    }
+}
+                                </code>
+                            </pre>
+                        </div>
+                        <div w-100="xs,sm">
+                            <p class="m-0">Generated CSS</p>
+                            <pre class="m-0">
+                                <code class="language-css">.d-flex {
+    display: flex;
+}
+.d-inline-flex {
+    display: inline-flex;
+}
+.d-none {
+    display: none;
+}
+    
+/*START @media xs*/
+@media (min-width: 0px) and (max-width: 599px) {
+    
+    .d-flex--xs,
+    [d-flex*="xs"] {
+        display: flex;
+    }
+    .d-inline-flex--xs,
+    [d-inline-flex*="xs"] {
+        display: inline-flex;
+    }
+    .d-none--xs,
+    [d-none*="xs"] {
+        display: none;
+    }
+}
+/*END @media xs*/
+
+/*START @media sm*/
+@media (min-width: 600px) and (max-width: 959px) {
+    
+    .d-flex--sm,
+    [d-flex*="sm"] {
+        display: flex;
+    }
+    .d-inline-flex--sm,
+    [d-inline-flex*="sm"] {
+        display: inline-flex;
+    }
+    .d-none--sm,
+    [d-none*="sm"] {
+        display: none;
+    }
+}
+/*END @media sm*/
+
+/*START @media lg*/
+@media (min-width: 960px) {
+    
+    .d-flex--lg,
+    [d-flex*="lg"] {
+        display: flex;
+    }
+    .d-inline-flex--lg,
+    [d-inline-flex*="lg"] {
+        display: inline-flex;
+    }
+    .d-none--lg,
+    [d-none*="lg"] {
+        display: none;
+    }
+}
+/*END @media lg*/
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                </article>
+                
+                <article id="adding-responsive-selectively"
+                    c-scrollspy="anchors"
+                    class="d-flex ai-start fd-column gap-7"
+                    scrollmt-96px="lg"
+                    scrollmt-200px="xs,sm,md">
+                    <header class="d-flex fd-column gap-3">
+                        <h2 class="m-0 | ff-lead-700 fs-6">Adding responsive selectively</h2>
+                        <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">
+                            Responsive is selectively adjustable for each CSS property.
+                            For the following example, 3 screen sizes are set: "xs, "sm" and "lg" into <code>settings.screenSizes</code>.
+                            The CSS property <code>display</code> is responsive, <code>align-item</code> is not responsive
+                        </p>
+                    </header>
+                    <div class="d-flex fw-wrap gap-4-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">flex</span><span class="c-tertiary-700">--</span><span class="c-quaternary-700">xs</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ display flex on xs screen sizes</p>
+                        </div>
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">ai</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">center</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ align-items flex-center</p>
+                        </div>
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">none</span><span class="c-tertiary-700">--</span><span class="c-quaternary-700">xs</span> <span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">none</span><span class="c-tertiary-700">--</span><span class="c-quaternary-700">sm</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ display none on xs and sm screen sizes with class names</p>
+                        </div>
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                <span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">none</span>=&quot;<span class="c-quaternary-700">xs</span>,<span class="c-quaternary-700">sm</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ display none on xs and sm screen sizes with attribute</p>
+                        </div>
+                        <div class="w-100">
+                            <details class="d-flex fd-column" open="">
+                                <summary class="ff-lead-400 fs-3 | c-primary-300">Legend</summary>
+                                <ul class="d-flex fw-wrap gap-4-8 | mt-4 mb-0 p-0 | ls-none">
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-secondary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-secondary-400">properties[CSS_PROPERTY].prefix</code>
+                                            CSS property abbreviation
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-tertiary-400">settings.separator</code>
+                                            Common separator
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-quaternary-400">properties[CSS_PROPERTY].name</code>
+                                            Value name
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-tertiary-700" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-tertiary-700">settings.responsiveSeparator</code>
+                                            Responsive separator
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-quaternary-700" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-quaternary-700">settings.screenSizes</code>
+                                            Screen size name
+                                        </div>
+                                    </li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+                    <div class="d-flex fw-wrap | w-100" gap-9="lg" gap-6="sm,md">
+                        <div w-100="xs,sm">
+                            <p class="m-0">Related JSON settings</p>
+                            <pre class="m-0">
+                                <code class="language-json">{
+    "settings": {
+        "separator": "-",
+        "responsiveSeparator": "--",
+        "utilitiesPrefix": "u",
+        "cssVariablesPrefix": "bri",
+        "screenSizes": {
+            "xs": ["0px", "599px"],
+            "sm": ["600px", "959px"],
+            "lg": ["960px", "infinite"]
+        }
+    },
+    "tokens": {},
+    "properties": {
+        "display": {
+            "prefix": "d",
+            "generate_from": "",
+            "values": [
+                "flex",
+                "inline-flex",
+                "none"
+            ],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "align-items": {
+            "prefix": "ai",
+            "generate_from": "",
+            "values": [
+                "baseline",
+                "center",
+                "flex-start",
+                "flex-end"
+            ],
+            "names": [
+                "baseline",
+                "center",
+                "start",
+                "end"
+            ],
+            "responsive": false,
+            "generate_utility": false
+        }
+    }
+}
+                                </code>
+                            </pre>
+                        </div>
+                        <div w-100="xs,sm">
+                            <p class="m-0">Generated CSS</p>
+                            <pre class="m-0">
+                                <code class="language-css">.d-flex {
+    display: flex;
+}
+.d-inline-flex {
+    display: inline-flex;
+}
+.d-none {
+    display: none;
+}
+.ai-baseline {
+    align-items: baseline;
+}
+.ai-center {
+    align-items: center;
+}
+.ai-start {
+    align-items: flex-start;
+}
+.ai-end {
+    align-items: flex-end;
+}
+
+/*START @media xs*/
+@media (min-width: 0px) and (max-width: 599px) {
+    .d-flex--xs,
+    [d-flex*="xs"] {
+        display: flex;
+    }
+    .d-inline-flex--xs,
+    [d-inline-flex*="xs"] {
+        display: inline-flex;
+    }
+    .d-none--xs,
+    [d-none*="xs"] {
+        display: none;
+    }
+}
+/*END @media xs*/
+
+/*START @media sm*/
+@media (min-width: 600px) and (max-width: 959px) {
+    .d-flex--sm,
+    [d-flex*="sm"] {
+        display: flex;
+    }
+    .d-inline-flex--sm,
+    [d-inline-flex*="sm"] {
+        display: inline-flex;
+    }
+    .d-none--sm,
+    [d-none*="sm"] {
+        display: none;
+    }
+}
+/*END @media sm*/
+
+/*START @media lg*/
+@media (min-width: 960px) {
+    .d-flex--lg,
+    [d-flex*="lg"] {
+        display: flex;
+    }
+    .d-inline-flex--lg,
+    [d-inline-flex*="lg"] {
+        display: inline-flex;
+    }
+    .d-none--lg,
+    [d-none*="lg"] {
+        display: none;
+    }
+}
+/*END @media lg*/
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                </article>
+                
+                <article id="responsive-utility"
+                    c-scrollspy="anchors"
+                    class="d-flex ai-start fd-column gap-7"
+                    scrollmt-96px="lg"
+                    scrollmt-200px="xs,sm,md">
+                    <header class="d-flex fd-column gap-3">
+                        <h2 class="m-0 | ff-lead-700 fs-6">Responsive utility</h2>
+                        <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">
+                            Utility class names behave just like other standard responsive classes and responsive attributes.
+                            The <code class="c-secondary-500">!important</code>  keyword
+                            may be added to the responsive generation selectively for each CSS property just by setting
+                            <code>generate_utility</code> to <code>true</code> and <code>responsive</code> to <code>true</code>.
+                            The following example sets up 3 screen sizes named "xs, "sm" and "lg" into <code>settings.screenSizes</code>.
+                        </p>
+                    </header>
+                    <div class="d-flex fw-wrap gap-4-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-primary-300">u</span><span class="c-tertiary-400">-</span><span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">flex</span><span class="c-tertiary-700">--</span><span class="c-quaternary-700">xs</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ display flex with <code>!important</code> keyword applied on xs screen sizes</p>
+                        </div>
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                <span class="c-primary-300">u</span><span class="c-tertiary-400">-</span><span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">flex</span>=&quot;<span class="c-quaternary-700">xs</span>,<span class="c-quaternary-700">sm</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ display flex with <code>!important</code> keyword applied on both xs and sm screen sizes</p>
+                        </div>
+                        <div class="w-100">
+                            <details class="d-flex fd-column" open="">
+                                <summary class="ff-lead-400 fs-3 | c-primary-300">Legend</summary>
+                                <ul class="d-flex fw-wrap gap-4-8 | mt-4 mb-0 p-0 | ls-none">
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-primary-300" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-primary-300">settings.utilitiesPrefix</code>
+                                            Utility prefix
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-secondary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-secondary-400">properties.display.prefix</code>
+                                            CSS property abbreviation
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-tertiary-400">settings.separator</code>
+                                            Common separator
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-quaternary-400">properties.display.name</code>
+                                            Value name
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-tertiary-700" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-tertiary-700">settings.responsiveSeparator</code>
+                                            Responsive separator
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-quaternary-700" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-quaternary-700">settings.screenSizes</code>
+                                            Screen size name
+                                        </div>
+                                    </li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+                    <div class="d-flex fw-wrap | w-100" gap-9="lg" gap-6="sm,md">
+                        <div w-100="xs,sm">
+                            <p class="m-0">Related JSON settings</p>
+                            <pre class="m-0">
+                                <code class="language-json">{
+    "settings": {
+        "separator": "-",
+        "responsiveSeparator": "--",
+        "utilitiesPrefix": "u",
+        "cssVariablesPrefix": "bri",
+        "screenSizes": {
+            "xs": ["0px", "599px"],
+            "sm": ["600px", "959px"],
+            "lg": ["960px", "infinite"]
+        }
+    },
+    "tokens": {},
+    "properties": {
+        "display": {
+            "prefix": "d",
+            "generate_from": "",
+            "values": [
+                "flex",
+                "inline-flex",
+                "none"
+            ],
+            "names": [],
+            "responsive": true,
+            "generate_utility": true
+        }
+    }
+}
+                                </code>
+                            </pre>
+                        </div>
+                        <div w-100="xs,sm">
+                            <p class="m-0">Generated CSS</p>
+                            <pre class="m-0">
+                                <code class="language-css">.d-flex {
+    display: flex;
+}
+.u-d-flex {
+    display: flex !important;
+}
+.d-inline-flex {
+    display: inline-flex;
+}
+.u-d-inline-flex {
+    display: inline-flex !important;
+}
+.d-none {
+    display: none;
+}
+.u-d-none {
+    display: none !important;
+}
+
+/*START @media xs*/
+@media (min-width: 0px) and (max-width: 599px) {
+    .d-flex--xs,
+    [d-flex*="xs"] {
+        display: flex;
+    }
+    .u-d-flex--xs,
+    [u-d-flex*="xs"] {
+        display: flex !important;
+    }
+    .d-inline-flex--xs,
+    [d-inline-flex*="xs"] {
+        display: inline-flex;
+    }
+    .u-d-inline-flex--xs,
+    [u-d-inline-flex*="xs"] {
+        display: inline-flex !important;
+    }
+    .d-none--xs,
+    [d-none*="xs"] {
+        display: none;
+    }
+    .u-d-none--xs,
+    [u-d-none*="xs"] {
+        display: none !important;
+    }
+}
+/*END @media xs*/
+
+/*START @media sm*/
+@media (min-width: 600px) and (max-width: 959px) {
+    .d-flex--sm,
+    [d-flex*="sm"] {
+        display: flex;
+    }
+    .u-d-flex--sm,
+    [u-d-flex*="sm"] {
+        display: flex !important;
+    }
+    .d-inline-flex--sm,
+    [d-inline-flex*="sm"] {
+        display: inline-flex;
+    }
+    .u-d-inline-flex--sm,
+    [u-d-inline-flex*="sm"] {
+        display: inline-flex !important;
+    }
+    .d-none--sm,
+    [d-none*="sm"] {
+        display: none;
+    }
+    .u-d-none--sm,
+    [u-d-none*="sm"] {
+        display: none !important;
+    }
+}
+/*END @media sm*/
+
+/*START @media lg*/
+@media (min-width: 960px) {
+    .d-flex--lg,
+    [d-flex*="lg"] {
+        display: flex;
+    }
+    .u-d-flex--lg,
+    [u-d-flex*="lg"] {
+        display: flex !important;
+    }
+    .d-inline-flex--lg,
+    [d-inline-flex*="lg"] {
+        display: inline-flex;
+    }
+    .u-d-inline-flex--lg,
+    [u-d-inline-flex*="lg"] {
+        display: inline-flex !important;
+    }
+    .d-none--lg,
+    [d-none*="lg"] {
+        display: none;
+    }
+    .u-d-none--lg,
+    [u-d-none*="lg"] {
+        display: none !important;
+    }
+}
+/*END @media lg*/
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="with-tokens"
+                    c-scrollspy="anchors"
+                    class="d-flex ai-start fd-column gap-7"
+                    scrollmt-96px="lg"
+                    scrollmt-200px="xs,sm,md">
+                    <header class="d-flex fd-column gap-3">
+                        <h2 class="m-0 | ff-lead-700 fs-6">With tokens</h2>
+                        <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">
+                            Tokens are lists of names associated to values, organized by families and reusable.
+                            Tokens are optional and must be set into <code>tokens</code> object.
+                            Use tokens when the same set of names/values are applicable on mulitple CSS properties.
+                            Tokens avoid repeating same names and values on mulitple CSS properties.
+                        </p>
+                        <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">
+                            Every token is written as CSS variable always available. 
+                        </p>
+                    </header>
+                    <div class="d-flex fw-wrap gap-4-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">c</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">primary</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ color primary</p>
+                        </div>
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">bc</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">primary</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ background-color primary</p>
+                        </div>
+                        <div class="w-100">
+                            <details class="d-flex fd-column" open="">
+                                <summary class="ff-lead-400 fs-3 | c-primary-300">Legend</summary>
+                                <ul class="d-flex fw-wrap gap-4-8 | mt-4 mb-0 p-0 | ls-none">
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-secondary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-secondary-400">properties[CSS_PROPERTY].prefix</code>
+                                            CSS property abbreviation
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-tertiary-400">settings.separator</code>
+                                            Common separator
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-quaternary-400">tokens.colors.name</code>
+                                            Value name
+                                        </div>
+                                    </li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+                    <div class="d-flex fw-wrap | w-100" gap-9="lg" gap-6="sm,md">
+                        <div w-100="xs,sm">
+                            <p class="m-0">Related JSON settings</p>
+                            <pre class="m-0">
+                                <code class="language-json">{
+    "settings": {
+        "separator": "-",
+        "responsiveSeparator": "--",
+        "utilitiesPrefix": "u",
+        "cssVariablesPrefix": "bri",
+        "screenSizes": {}
+    },
+    "tokens": {
+        "colors": {
+            "primary": "red",
+            "secondary": "green",
+            "ternary": "blue"
+        }
+    },
+    "properties": {
+        "background-color": {
+            "prefix": "bc",
+            "generate_from": "colors",
+            "values": [],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "color": {
+            "prefix": "c",
+            "generate_from": "colors",
+            "values": [],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        }
+    }
+}
+                                </code>
+                            </pre>
+                        </div>
+                        <div w-100="xs,sm">
+                            <p class="m-0">Generated CSS</p>
+                            <pre class="m-0">
+                                <code class="language-css">:root {
+    /* CSS variables naming convention for demo only (not generated) */
+    --CSS_VARIABLES_PREFIX-TOKEN_FAMILY-TOKEN_NAME: TOKEN_VALUE;
+
+    /* Real results below */
+    /* Design System CSS variables start with --bri- */
+    --bri-colors-primary: red;
+    --bri-colors-secondary: green;
+    --bri-colors-ternary: blue;
+}
+
+.bc-primary {
+    background-color: var(--bri-colors-primary, red);
+}
+.bc-secondary {
+    background-color: var(--bri-colors-secondary, green);
+}
+.bc-ternary {
+    background-color: var(--bri-colors-ternary, blue);
+}
+.c-primary {
+    color: var(--bri-colors-primary, red);
+}
+.c-secondary {
+    color: var(--bri-colors-secondary, green);
+}
+.c-ternary {
+    color: var(--bri-colors-ternary, blue);
+}
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="with-tokens-other-names-and-values"
+                    c-scrollspy="anchors"
+                    class="d-flex ai-start fd-column gap-7"
+                    scrollmt-96px="lg"
+                    scrollmt-200px="xs,sm,md">
+                    <header class="d-flex fd-column gap-3">
+                        <h2 class="m-0 | ff-lead-700 fs-6">With tokens + other names and values</h2>
+                        <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">
+                            Tokens are additional through <code>tokens</code> object.
+                            It means that on each CSS property, you can set standard names and values in addition of tokens.
+                        </p>
+                    </header>
+                    <div class="d-flex fw-wrap gap-4-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">c</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">primary</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ color primary</p>
+                        </div>
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">c</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">foo</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ color foo</p>
+                        </div>
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">bc</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">primary</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ background-color primary</p>
+                        </div>
+                        <div class="d-flex fd-column">
+                            <code class="fs-5 c-primary-400">
+                                class=&quot;<span class="c-secondary-400">bc</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">deepskyblue</span>&quot;
+                            </code>
+                            <p class="m-0 | fs-3 | c-primary-300">⤷ background-color deepskyblue</p>
+                        </div>
+                        <div class="w-100">
+                            <details class="d-flex fd-column" open="">
+                                <summary class="ff-lead-400 fs-3 | c-primary-300">Legend</summary>
+                                <ul class="d-flex fw-wrap gap-4-8 | mt-4 mb-0 p-0 | ls-none">
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-secondary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-secondary-400">properties[CSS_PROPERTY].prefix</code>
+                                            CSS property abbreviation
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <code class="fs-2 c-tertiary-400">settings.separator</code>
+                                            Common separator
+                                        </div>
+                                    </li>
+                                    <li class="d-flex ai-center gap-2" w-300px="md,lg">
+                                        <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <div class="d-flex fd-column">
+                                            <div class="fs-2">
+                                                <code class="c-quaternary-400">tokens.colors.name</code>
+                                                or
+                                                <code class="c-quaternary-400">properties[CSS_PROPERTY].name</code>
+                                            </div>
+                                            
+                                            Value name
+                                        </div>
+                                    </li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+                    <div class="d-flex fw-wrap | w-100" gap-9="lg" gap-6="sm,md">
+                        <div w-100="xs,sm">
+                            <p class="m-0">Related JSON settings</p>
+                            <pre class="m-0">
+                                <code class="language-json">{
+    "settings": {
+        "separator": "-",
+        "responsiveSeparator": "--",
+        "utilitiesPrefix": "u",
+        "cssVariablesPrefix": "bri",
+        "screenSizes": {}
+    },
+    "tokens": {
+        "colors": {
+            "primary": "red",
+            "secondary": "green",
+            "ternary": "blue"
+        }
+    },
+    "properties": {
+        "background-color": {
+            "prefix": "bc",
+            "generate_from": "colors",
+            "values": ["deepskyblue"],
+            "names": [],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "color": {
+            "prefix": "c",
+            "generate_from": "colors",
+            "values": ["#123456"],
+            "names": ["foo"],
+            "responsive": false,
+            "generate_utility": false
+        }
+    }
+}
+                                </code>
+                            </pre>
+                        </div>
+                        <div w-100="xs,sm">
+                            <p class="m-0">Generated CSS</p>
+                            <pre class="m-0">
+                                <code class="language-css">:root {
+    /* CSS variables naming convention for demo only (not generated) */
+    --CSS_VARIABLES_PREFIX-TOKEN_FAMILY-TOKEN_NAME: TOKEN_VALUE;
+
+    /* Real results below */
+    /* Design System CSS variables start with --bri- */
+    --bri-colors-primary: red;
+    --bri-colors-secondary: green;
+    --bri-colors-ternary: blue;
+}
+.bc-deepskyblue {
+    background-color: deepskyblue;
+}
+.bc-primary {
+    background-color: var(--bri-colors-primary, red);
+}
+.bc-secondary {
+    background-color: var(--bri-colors-secondary, green);
+}
+.bc-ternary {
+    background-color: var(--bri-colors-ternary, blue);
+}
+.c-foo {
+    color: #123456;
+}
+.c-primary {
+    color: var(--bri-colors-primary, red);
+}
+.c-secondary {
+    color: var(--bri-colors-secondary, green);
+}
+.c-ternary {
+    color: var(--bri-colors-ternary, blue);
+}
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="json-settings"
+                    c-scrollspy="anchors"
+                    class="d-flex ai-start fd-column gap-7"
+                    scrollmt-96px="lg"
+                    scrollmt-200px="xs,sm,md">
+                    <header class="d-flex fd-column gap-3">
+                        <h2 class="m-0 | ff-lead-700 fs-6">JSON Settings</h2>
+                        <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">
+                            JSON settings explained one by one.
+                        </p>
+                    </header>
+                    <div class="d-flex fw-wrap | w-100" gap-9="lg" gap-6="sm,md">
+                        <pre class="m-0">
+                            <code class="language-json">{
+    "settings": {
+        "separator": "-",
+        "responsiveSeparator": "--",
+        "utilitiesPrefix": "u",
+        "cssVariablesPrefix": "bri",
+        "screenSizes": {
+            "xs": ["0px", "599px"],
+            "sm": ["600px", "959px"],
+            "md": ["960px", "1199px"],
+            "lg": ["1200px", "infinite"]
+        }
+    }
+}
+                            </code>
+                        </pre>
+                        <dl class="m-0">
+                            <dt class="ff-mono | c-tertiary-500">separator <em><code class="c-tertiary-600">String</code></em></dt>
+                            <dd class="ml-0 mb-6 mt-1 lh-6 maxw-70ch">A single or few characters to split names, values utility prefixes.</dd>
+
+                            <dt class="ff-mono | c-tertiary-500">responsiveSeparator <em><code class="c-tertiary-600">String</code></em></dt>
+                            <dd class="ml-0 mb-6 mt-1 lh-6 maxw-70ch">A single or few characters dedicated to split screen sizes names from other expressions.</dd>
+
+                            <dt class="ff-mono | c-tertiary-500">utilitiesPrefix <em><code class="c-tertiary-600">String</code></em></dt>
+                            <dd class="ml-0 mb-6 mt-1 lh-6 maxw-70ch">A single or few characters dedicated to utilities (!important keyword).</dd>
+                            
+                            <dt class="ff-mono | c-tertiary-500">cssVariablesPrefix <em><code class="c-tertiary-600">String</code></em></dt>
+                            <dd class="ml-0 mb-6 mt-1 lh-6 maxw-70ch">A single or few characters used for tokens CSS variables.</dd>
+                            
+                            <dt class="ff-mono | c-tertiary-500">screenSizes <em><code class="c-tertiary-600">Object</code></em></dt>
+                            <dd class="ml-0 mb-6 mt-1 lh-6 maxw-70ch">Defines screen sizes. Object keys are screen sizes names.</dd>
+                            
+                            <dt class="ff-mono | c-tertiary-500">screenSizes[NAME] <em><code class="c-tertiary-600">Array</code></em></dt>
+                            <dd class="ml-0 mb-6 mt-1 lh-6 maxw-70ch">
+                                Contains 2 strings entries: lower screen size limit, higher screen size limit both used into CSS media query.
+                                For example <code>["960px", "1199px"]</code>. 
+                                For unlimited higher screen size limit, just set "infinite" as follows: <code>["960px", "infinite"]</code>. 
+                            </dd>
+                        </dl>
+                    </div>
+                </article>
+
+                <article id="json-tokens"
+                    c-scrollspy="anchors"
+                    class="d-flex ai-start fd-column gap-7"
+                    scrollmt-96px="lg"
+                    scrollmt-200px="xs,sm,md">
+                    <header class="d-flex fd-column gap-3">
+                        <h2 class="m-0 | ff-lead-700 fs-6">JSON Tokens</h2>
+                        <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">
+                            Tokens are useful when multiple CSS properties contains the same set of names/values.
+                        </p>
+                        <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">
+                            Tokens are optional, leave empty if unused.
+                            Tokens are simple lists of names associated to values, organized by families and reusable.
+                        </p>
+                        <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">
+                            Each token is written as CSS variables always available.
+                        </p>
+                    </header>
+                    <div class="d-flex fw-wrap | w-100" gap-9="lg" gap-6="sm,md">
+                        <div>
+                            <p class="m-0">Related JSON tokens</p>
+                            <pre class="m-0">
+                                <code class="language-json">{
+    "tokens": {
+        "colors": {
+            "primary-100": "#F1F4F4",
+            "primary-200": "#E3EAEA",
+            "primary-300": "#B9C1C2",
+            "primary-400": "#7E8485",
+            "primary-500": "#313435",
+            "primary-600": "#232A2D",
+            "primary-700": "#182026",
+            "primary-800": "#0F171E",
+            "primary-900": "#091019"
+        },
+        "spacings": {
+            "1": "4px",
+            "2": "8px",
+            "3": "12px",
+            "4": "16px",
+            "5": "24px",
+            "6": "32px",
+            "7": "48px",
+            "8": "64px",
+            "9": "96px"
+        }
+    }
+}
+                                </code>
+                            </pre>
+                        </div>
+                        <div w-100="xs,sm">
+                            <p class="m-0">Generated CSS</p>
+                            <pre class="m-0">
+                                <code class="language-css">:root {
+    /* CSS variables naming convention for demo only (not generated) */
+    --CSS_VARIABLES_PREFIX-TOKEN_FAMILY-TOKEN_NAME: TOKEN_VALUE;
+
+    /* Real results */
+    --dsg-colors-primary-100: #F1F4F4;
+    --dsg-colors-primary-200: #E3EAEA;
+    --dsg-colors-primary-300: #B9C1C2;
+    --dsg-colors-primary-400: #7E8485;
+    --dsg-colors-primary-500: #313435;
+    --dsg-colors-primary-600: #232A2D;
+    --dsg-colors-primary-700: #182026;
+    --dsg-colors-primary-800: #0F171E;
+    --dsg-colors-primary-900: #091019;  
+    
+    --dsg-spacings-1: 4px;
+    --dsg-spacings-2: 8px;
+    --dsg-spacings-3: 12px;
+    --dsg-spacings-4: 16px;
+    --dsg-spacings-5: 24px;
+    --dsg-spacings-6: 32px;
+    --dsg-spacings-7: 48px;
+    --dsg-spacings-8: 64px;
+    --dsg-spacings-9: 96px;
+}
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="json-properties"
+                    c-scrollspy="anchors"
+                    class="d-flex ai-start fd-column gap-7"
+                    scrollmt-96px="lg"
+                    scrollmt-200px="xs,sm,md">
+                    <header class="d-flex fd-column gap-3">
+                        <h2 class="m-0 | ff-lead-700 fs-6">JSON Properties</h2>
+                        <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">
+                            JSON properties is the core of the library, <code>properties</code> is an object into which each key is a valid CSS property name.
+                            Here is the anatony of a CSS property item.
+                        </p>
+                    </header>
+                    <div class="d-flex fw-wrap | w-100" gap-9="lg" gap-6="sm,md">
+                        <div>
+                            <pre class="m-0">
+                                <code class="language-json">{
+    "properties": {
+        "display": {
+            "prefix": "d",
+            "generate_from": "",
+            "values": [
+                "flex",
+                "inline-flex",
+                "none"
+            ],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "align-items": {
+            "prefix": "ai",
+            "generate_from": "",
+            "values": [
+                "baseline",
+                "center",
+                "flex-start",
+                "flex-end"
+            ],
+            "names": [
+                "baseline",
+                "center",
+                "start",
+                "end"
+            ],
+            "responsive": true,
+            "generate_utility": false
+        }
+    }
+}
+                                </code>
+                            </pre>
+                        </div>
+                        <div>
+                            <dl class="m-0">
+                                <dt class="ff-mono | c-tertiary-500">prefix <em><code class="c-tertiary-600">String</code></em></dt>
+                                <dd class="ml-0 mb-6 mt-1 lh-6 maxw-70ch">A single or few characters that defines the abbreviation used for this CSS property.</dd>
+    
+                                <dt class="ff-mono | c-tertiary-500">generate_from <em><code class="c-tertiary-600">String</code></em></dt>
+                                <dd class="ml-0 mb-6 mt-1 lh-6 maxw-70ch">
+                                    Refers to a token family defined into <code>tokens</code> object.
+                                    <strong>Tokens class names are generated in addition of standard class names</strong>. 
+                                    If set and valid, the library generates all class names for this CSS property with their associated names to values.
+                                </dd>
+    
+                                <dt class="ff-mono | c-tertiary-500">values <em><code class="c-tertiary-600">Array</code></em></dt>
+                                <dd class="ml-0 mb-6 mt-1 lh-6 maxw-70ch">
+                                    List of valid CSS values you wish to use for your libray.
+                                    If no <code>properties[CSS_PROPERTY_NAME].name</code> is associated
+                                </dd>
+    
+                                <dt class="ff-mono | c-tertiary-500">names <em><code class="c-tertiary-600">Array</code></em></dt>
+                                <dd class="ml-0 mb-6 mt-1 lh-6 maxw-70ch">
+                                    <em>Optional</em>. By default, values are used as name.
+                                    If a name is set in <code>properties[CSS_PROPERTY_NAME].name</code>, the library uses that name for the secified value.
+                                    <strong>Custom names must be ordered the same as values</strong>
+                                </dd>
+    
+                                <dt class="ff-mono | c-tertiary-500">responsive <em><code class="c-tertiary-600">Boolean</code></em></dt>
+                                <dd class="ml-0 mb-6 mt-1 lh-6 maxw-70ch">
+                                    Defines whether or not the class name is responsive.
+                                    Setting choice to <code>true</code> may increase final file size significantly, make sure this CSS property really needs responsive.
+                                </dd>
+    
+                                <dt class="ff-mono | c-tertiary-500">generate_utility <em><code class="c-tertiary-600">Boolean</code></em></dt>
+                                <dd class="ml-0 mb-6 mt-1 lh-6 maxw-70ch">
+                                    <strong>Utility class names are generated additionally</strong>. Defines whether or not all class names of this CSS property are duplicated as utility,
+                                    that is class names prefixed with the <code>settings.utilitiesPrefix</code> prefix and
+                                    values added with the keyword <code class="c-secondary-500">!important</code>.
+                                    Setting choice to <code>true</code> may increase final file size significantly, make sure this CSS property really needs utilities class names.
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <footer class="d-flex jc-space-between ai-end gap-9 fw-wrap | w-100 p-9 | btwidth-1 btstyle-solid bcolor-primary-500"
+        pl-5="xs,sm,md"
+        pr-5="xs,sm,md">
+        <div class="d-flex fd-column gap-5">
+            <p class="d-flex ai-center | m-0 | fs-5">
+                <span class="c-secondary-500">{</span>
+                <span class="ff-lead-700 c-primary-700" style="text-shadow: 0px 0px 1px white, 0px 0px 1px white, 0px 0px 1px white, 0px 0px 1px white;">BRi</span>
+                <span class="ff-lead-700">CSS</span>
+                <span class="c-secondary-500">}</span>
+            </p>
+            <p class="ff-lead-400 fs-3 | m-0 | lh-6 | c-primary-300">A simple and customizable low-level CSS library generator</p>
+        </div>
+        <p class="m-0 | c-primary-300">
+            &copy;
+            <a  class="fs-2 td-none | c-primary-300"
+                href="https://github.com/ita-design-system"
+                target="_blank">
+                ITA Design System
+            </a>
+        </p>
+    </footer>
+    
+    <script src="./assets/js/ui.js"></script>
+    <script src="./assets/js/highlight.min.js"></script>
+    <script src="./assets/js/c-toggle.js"></script>
+    <script src="./assets/js/c-scrollspy.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>

@@ -294,7 +294,7 @@ const bricss = {
                 <li class="d-flex jc-space-between ai-center gap-5 | mb-3">
                     <div class="d-flex fd-column gap-1">
                         <span class="d-flex fd-column">
-                            <span class="ff-lead-400 fs-1 tt-uppercase | c-secondary-700">CSS Classes</span>
+                            <span class="ff-lead-400 fs-1 tt-uppercase | c-primary-300">CSS Classes</span>
                             <code class="ff-mono fs-3 | c-secondary-500 c-secondary-200:hover | cur-pointer"
                                 title="${bricss.messages.clickToCopyToClipboard.replace(`XXX`, classes)}"
                                 onclick="ui.copyToClipboard(this.innerText, true)">
@@ -302,7 +302,7 @@ const bricss = {
                             </code>
                         </span>
                         <span class="d-flex fd-column">
-                            <span class="ff-lead-400 fs-1 tt-uppercase | c-tertiary-700">Attribute</span>
+                            <span class="ff-lead-400 fs-1 tt-uppercase | c-primary-300">Attribute</span>
                             <code class="ff-mono fs-3 | c-tertiary-300 c-tertiary-200:hover | cur-pointer"
                                 title="${bricss.messages.clickToCopyToClipboard.replace(`XXX`, attribute.replaceAll(`"`, `&quot;`))}"
                                 onclick="ui.copyToClipboard(this.innerText, true)">
@@ -337,7 +337,7 @@ const bricss = {
                         id="${id}"
                         value=""
                         onchange="bricss.setResponsive(event)"
-                        class="pos-absolute | opa-0 | __checkbox_ui" ${disabled ? 'disabled="disabled"' : ''}>
+                        class="pos-absolute | opa-0 | __checkbox_ui" ${disabled ? `disabled="disabled"` : ``}>
                     <label for="${id}" class="d-flex ai-center gap-3 | fs-2">
                         <span class="p-2 | bc-primary-100 bwidth-1 bstyle-solid bcolor-primary-800 brad-1 | __checkbox_ui"></span>
                         ${label}
@@ -352,7 +352,7 @@ const bricss = {
                         id="${id}"
                         value="${screenSize}"
                         onchange="bricss.setResponsive(event)"
-                        class="pos-absolute | opa-0 | __checkbox_ui" ${disabled ? 'disabled="disabled"' : ''}>
+                        class="pos-absolute | opa-0 | __checkbox_ui" ${disabled ? `disabled="disabled"` : ``}>
                     <label for="${id}" class="d-flex ai-center gap-3 | fs-2">
                         <span class="p-2 | bc-primary-100 bwidth-1 bstyle-solid bcolor-primary-800 brad-1 | __checkbox_ui"></span>
                         ${screenSize}
@@ -369,7 +369,7 @@ const bricss = {
                         <div class="d-flex jc-space-between">
                             <h4 class="d-flex fd-column gap-3 fg-1 | m-0">
                                 <span class="d-flex fd-column">
-                                    <span class="ff-lead-400 fs-1 tt-uppercase | c-secondary-700">Property</span>
+                                    <span class="ff-lead-400 fs-1 tt-uppercase | c-primary-300">Property</span>
                                     <span class="d-flex ai-center gap-3 | ff-mono fs-5 | c-secondary-500">
                                         <span class="d-flex ai-center gap-3">
                                             ${property}
@@ -388,7 +388,7 @@ const bricss = {
                                     </span>
                                 </span>
                                 <span class="d-flex fd-column">
-                                    <span class="ff-lead-400 fs-1 tt-uppercase | c-quaternary-800">Prefix</span>
+                                    <span class="ff-lead-400 fs-1 tt-uppercase | c-primary-300">Prefix</span>
                                     <span class="ff-mono fs-5 | c-quaternary-500">
                                         ${bricss.build.properties[property].prefix}${bricss.build.settings.separator}
                                     </span>
@@ -407,8 +407,8 @@ const bricss = {
                         </div>
                         <ul class="dsg__doc__property_item__list | d-flex fd-column gap-2 fg-1 | m-0 p-0">
                             <li class="d-flex jc-space-between gap-3 | fs-1 tt-uppercase">
-                                <span class="c-quaternary-800">${bricss.messages.cssClass}</span>
-                                <span class="c-tertiary-700">${bricss.messages.value}</span>
+                                <span class="c-primary-300">${bricss.messages.cssClass}</span>
+                                <span class="c-primary-300">${bricss.messages.value}</span>
                             </li>
                             ${content}
                         </ul>
