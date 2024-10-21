@@ -169,8 +169,8 @@
         "top": {
             "prefix": "top",
             "generate_from": "",
-            "values": ["0%", "50%", "100%"],
-            "names": ["0", "50", "100"],
+            "values": ["0%", "50%", "100%", "42px"],
+            "names": ["0", "50", "100", "42px"],
             "responsive": true,
             "generate_utility": false
         },
@@ -273,8 +273,8 @@
         "gap": {
             "prefix": "gap",
             "generate_from": "spacings",
-            "values": [],
-            "names": [],
+            "values": ["var(--dsg-spacings-4) var(--dsg-spacings-8)"],
+            "names": ["4-8"],
             "responsive": true,
             "generate_utility": false
         },
@@ -339,8 +339,8 @@
         "max-width": {
             "prefix": "maxw",
             "generate_from": "",
-            "values": ["100%", "100vw", "20em", "70ch"],
-            "names": ["100", "100vw", "20em", "70ch"],
+            "values": ["100%", "100vw", "20em", "30ch", "70ch", "110ch"],
+            "names": ["100", "100vw", "20em", "30ch", "70ch", "110ch"],
             "responsive": true,
             "generate_utility": false
         },
@@ -386,8 +386,8 @@
         },
         "scroll-margin-top": {
             "prefix": "scrollmt",
-            "generate_from": "spacings",
-            "values": ["150px"],
+            "generate_from": "",
+            "values": ["96px", "150px", "200px"],
             "names": [],
             "responsive": true,
             "generate_utility": false
@@ -412,7 +412,7 @@
             "prefix": "scrollst",
             "generate_from": "",
             "values": ["x mandatory", "y mandatory"],
-            "names": [],
+            "names": ["x-mandatory", "y-mandatory"],
             "responsive": false,
             "generate_utility": false
         },
@@ -506,14 +506,6 @@
             "responsive": false,
             "generate_utility": false
         },
-        "font-weight": {
-            "prefix": "fwei",
-            "generate_from": "",
-            "values": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-            "names": [],
-            "responsive": false,
-            "generate_utility": false
-        },
         "font-size": {
             "prefix": "fs",
             "generate_from": "fontSizes",
@@ -543,7 +535,7 @@
             "generate_from": "",
             "values": ["none", "underline", "line-through"],
             "names": [],
-            "responsive": false,
+            "responsive": true,
             "generate_utility": false
         },
         "font-style": {
@@ -559,7 +551,7 @@
             "generate_from": "",
             "values": ["nowrap"],
             "names": [],
-            "responsive": false,
+            "responsive": true,
             "generate_utility": false
         },
         "text-overflow": {

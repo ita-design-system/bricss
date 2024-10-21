@@ -1,3 +1,13 @@
+html {
+    overscroll-behavior: contain;
+}
+html,
+.o-auto {
+    scrollbar-color: rgba(255, 0, 255, 0.6) transparent;
+}
+* {
+    box-sizing: border-box;
+}
 body {
     font-family: var(--dsg-fontFamilies-lead-400);
 }
@@ -6,7 +16,85 @@ a {
     text-decoration-thickness: 2px;
     text-underline-offset: 0.2em;
     text-decoration-color: var(--dsg-colors-tertiary-700);
+    transition: color 300ms, text-decoration-color 300ms;
 }
 a:hover {
     text-decoration-color: var(--dsg-colors-tertiary-500);
+}
+strong {
+    font-family: var(--dsg-fontFamilies-lead-700);
+}
+/* menu */
+.MENU {
+    &>li {
+        min-width: 10ch;
+    }
+    a {
+        display: flex;
+        font-family: var(--dsg-fontFamilies-lead-400);
+        padding: var(--dsg-spacings-1) 0;
+        transform-origin: left;
+        text-decoration-thickness: 1px;
+        transition: color 300ms, text-decoration-color 300ms;
+        /* ellipsis */
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        &.active {
+            color: var(--dsg-colors-tertiary-300);
+            text-decoration-color: var(--dsg-colors-tertiary-300);
+        }
+    }
+}
+#dsg__toc_menu_btn:disabled {
+    opacity: 0.3;
+}
+.__icon-arrow-down-curved-right {
+    &::before {
+        content: "";
+        border: 1px solid var(--dsg-colors-secondary-500);
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-top-color: transparent;
+        border-radius: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: translateY(-50%) rotate(-45deg);
+    }
+    &::after {
+        content: "";
+        border: 1px solid var(--dsg-colors-secondary-500);
+        border-left-color: transparent;
+        border-top-color: transparent;
+        border-radius: 1px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20%;
+        height: 20%;
+        transform: translateX(-50%) translateY(calc(-50% + 0.5px)) rotate(-45deg) ;
+    }
+}
+.__icon-close {
+    padding: 0.5em;
+    &::before,
+    &::after {
+        content: "";
+        background-color: currentColor;
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        width: 100%;
+        height: 1px;
+    }
+    &::before {
+        transform: rotateZ(45deg);
+    }
+    &::after {
+        transform: rotateZ(-45deg);
+    }
 }
