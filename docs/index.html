@@ -11,21 +11,20 @@
     <meta name="description" itemprop="description" content="A simple and customizable low-level CSS library generator">
     <meta name="application-name" content="BRiCSS">
     <meta name="author" content="01ivier 3lanc">
-    <link rel="icon" type="image/png" href="./favicon.png">
-    <link rel="canonical" href="./">
+    <link rel="icon" type="image/png" href="https://ita-design-system.github.io/bricss/favicon.png">
 
     <meta name="msapplication-TileColor" content="#182026">
     <meta name="theme-color" content="#182026">
 
     <!-- Microsoft -->
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="msapplication-starturl" content="./">
+    <meta name="msapplication-starturl" content="https://ita-design-system.github.io/bricss/">
     <meta name="msapplication-tooltip" content="BRiCSS">
     <meta name="msapplication-TileColor" content="#182026">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="./">
+    <meta property="og:url" content="https://ita-design-system.github.io/bricss/">
     <meta property="og:title" content="BRiCSS">
     <meta property="og:description" content="A simple and customizable low-level CSS library generator">
     <meta property="og:image" content="https://cdn.jsdelivr.net/gh/ita-design-system/bricss@main/dsg/medias/bricss-og-image.png">
@@ -35,7 +34,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="BRiCSS">
     <meta name="twitter:description" content="A simple and customizable low-level CSS library generator">
-    <meta name="twitter:url" content="./">
+    <meta name="twitter:url" content="https://ita-design-system.github.io/bricss/">
     <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/ita-design-system/bricss@main/dsg/medias/bricss-og-image.png">
 
     <!-- iOS -->
@@ -61,7 +60,7 @@
 </head>
 <body class="m-0 | ff-lead-400 | bc-primary-700 c-primary-200">
     <header class="d-flex | o-auto | pos-sticky top-0 z-2 | bc-primary-700 bbwidth-1 bbstyle-solid bcolor-primary-500"
-        gap-9="lg"
+        gap-7="lg"
         pl-9="lg"
         pr-9="lg"
         pr-5="xs,sm,md">
@@ -92,14 +91,17 @@
                 <span class="ff-lead-700 c-primary-700" style="text-shadow: 0px 0px 1px white, 0px 0px 1px white;">BRi</span>CSS
             </a>
         </h1>
-        <nav class="d-flex jc-end ai-center gap-5 fg-1 | bc-primary-700">
-            <a  href="#gh-link"
-                class="d-flex | fs-2 td-none"
+        <nav class="d-flex jc-end ai-center gap-5 fg-1">
+            <a  href="https://github.com/ita-design-system/bricss"
                 target="_blank"
-                title="Open on Github on a new tab">
-                <img    src="./assets/medias/github-mark-white.svg"
-                        alt="Github"
-                        height="28">
+                title="Open BRiCSS Github on a new tab"
+                class="d-flex ai-center gap- | fs-2 td-none ff-lead-700 tt-uppercase c-primary-100">
+                Github
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link" style="scale: 0.6;" stroke="var(--dsg-colors-secondary-500)">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
             </a>
             <a  href="https://github.com/ita-design-system/bricss/archive/refs/heads/main.zip"
                 class="
@@ -110,6 +112,7 @@
                 title="Download the latest version .zip"
                 mt-3="lg"
                 mb-3="lg"
+                d-none="xs"
                 download>
                 Download
             </a>
@@ -207,7 +210,7 @@
             <main class="d-flex fd-column gap-9" w-100="xs,sm" pr-9="lg">
                 <article id="general-principles"
                     c-scrollspy="anchors"
-                    class="d-flex fd-column gap-5 | pt-9 scrollmt-96px">
+                    class="d-flex fd-column gap-5 | pt-9 scrollmt-7" scrollmt-96px="xs,sm,md">
                     <h2 class="m-0 | ff-lead-700 fs-6">General principles</h2>
                     <ul class="d-flex gap-5 fw-wrap | m-0 p-0 | ls-none">
                         <li class="d-flex fd-column fg-1 | p-5 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
@@ -294,8 +297,10 @@
                                 Download
                             </h3>
                             <p class="m-0 maxw-30ch | fs-4 lh-6 | c-primary-300">
-                                <a href="#" download>Download</a> or 
-                                <a href="#">clone</a> the starter project and unpack to any web server.
+                                <a href="https://github.com/ita-design-system/bricss/archive/refs/heads/main.zip" download>Download</a>
+                                or 
+                                <a href="https://github.com/ita-design-system/bricss/" target="_blank">clone</a>
+                                the starter project and unpack to any web server.
                             </p>
                         </li>
                         <li class="d-flex fd-column gap-2 fg-1 | p-5 pl-7 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
@@ -313,7 +318,7 @@
                                 Use it!
                             </h3>
                             <p class="m-0 maxw-30ch | fs-4 lh-6 | c-primary-300">
-                                Copy or download your CSS.
+                                Refresh the documentation generated automatically and get a copy of your new CSS library.
                             </p>
                         </li>
                     </ol>
@@ -328,7 +333,7 @@
                         <h2 class="m-0 | ff-lead-700 fs-6">Single property</h2>
                         <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">Here is the most basic JSON with non-responsive settings and a single property involved (display).</p>
                     </header>
-                    <div class="d-flex fw-wrap gap-4-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                    <div class="d-flex fw-wrap gap-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
                         <div class="d-flex fd-column">
                             <code class="fs-5 c-primary-400">
                                 class=&quot;<span class="c-secondary-400">dis</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">flex</span>&quot;
@@ -352,21 +357,21 @@
                                 <summary class="ff-lead-400 fs-3 | c-primary-300">Legend</summary>
                                 <ul class="d-flex fw-wrap gap-4-8 | mt-4 mb-0 p-0 | ls-none">
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-secondary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-secondary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-secondary-400">properties.display.prefix</code>
                                             CSS property abbreviation
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-tertiary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-tertiary-400">settings.separator</code>
                                             Common separator
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-quaternary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-quaternary-400">properties.display.name</code>
                                             Value name
@@ -434,7 +439,7 @@
                         <h2 class="m-0 | ff-lead-700 fs-6">Changing CSS property prefix</h2>
                         <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">Simple consequence of a custom CSS property prefix change.</p>
                     </header>
-                    <div class="d-flex fw-wrap gap-4-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                    <div class="d-flex fw-wrap gap-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
                         <div class="d-flex fd-column">
                             <code class="fs-5 c-primary-400">
                                 class=&quot;<span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">flex</span>&quot;
@@ -458,21 +463,21 @@
                                 <summary class="ff-lead-400 fs-3 | c-primary-300">Legend</summary>
                                 <ul class="d-flex fw-wrap gap-4-8 | mt-4 mb-0 p-0 | ls-none">
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-secondary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-secondary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-secondary-400">properties.display.prefix</code>
                                             CSS property abbreviation
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-tertiary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-tertiary-400">settings.separator</code>
                                             Common separator
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-quaternary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-quaternary-400">properties.display.name</code>
                                             Value name
@@ -545,7 +550,7 @@
                             <code>generate_utility</code> to <code>true</code> on the specified CSS property.
                         </p>
                     </header>
-                    <div class="d-flex fw-wrap gap-4-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                    <div class="d-flex fw-wrap gap-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
                         <div class="d-flex fd-column">
                             <code class="fs-5 c-primary-400">
                                 class=&quot;<span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">flex</span>&quot;
@@ -563,28 +568,28 @@
                                 <summary class="ff-lead-400 fs-3 | c-primary-300">Legend</summary>
                                 <ul class="d-flex fw-wrap gap-4-8 | p-0 mt-4 mb-0 | ls-none">
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-secondary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-secondary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-secondary-400">properties.display.prefix</code>
                                             CSS property abbreviation
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-tertiary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-tertiary-400">settings.separator</code>
                                             Common separator
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-quaternary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-quaternary-400">properties.display.name</code>
                                             Value name
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-primary-300" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-primary-300"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-primary-300">settings.utilitiesPrefix</code>
                                             Utility prefix
@@ -661,7 +666,7 @@
                         <h2 class="m-0 | ff-lead-700 fs-6">Custom value names</h2>
                         <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">Value names are optional. By default, values are displayed as names. You can add custom names. If no custom name is set for, value is used as name.</p>
                     </header>
-                    <div class="d-flex fw-wrap gap-4-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                    <div class="d-flex fw-wrap gap-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
                         <div class="d-flex fd-column">
                             <code class="fs-5 c-primary-400">
                                 class=&quot;<span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">fx</span>&quot;
@@ -685,21 +690,21 @@
                                 <summary class="ff-lead-400 fs-3 | c-primary-300">Legend</summary>
                                 <ul class="d-flex fw-wrap gap-4-8 | mt-4 mb-0 p-0 | ls-none">
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-secondary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-secondary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-secondary-400">properties.display.prefix</code>
                                             CSS property abbreviation
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-tertiary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-tertiary-400">settings.separator</code>
                                             Common separator
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-quaternary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-quaternary-400">properties.display.name</code>
                                             Value name
@@ -771,7 +776,7 @@
                         <h2 class="m-0 | ff-lead-700 fs-6">Adding responsive</h2>
                         <p class="m-0 maxw-70ch | fs-5 lh-6 | c-primary-300">Now we set up 3 screen sizes named "xs, "sm" and "lg" into <code>settings.screenSizes</code>.</p>
                     </header>
-                    <div class="d-flex fw-wrap gap-4-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                    <div class="d-flex fw-wrap gap-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
                         <div class="d-flex fd-column">
                             <code class="fs-5 c-primary-400">
                                 class=&quot;<span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">flex</span><span class="c-tertiary-700">--</span><span class="c-quaternary-700">xs</span>&quot;
@@ -801,35 +806,35 @@
                                 <summary class="ff-lead-400 fs-3 | c-primary-300">Legend</summary>
                                 <ul class="d-flex fw-wrap gap-4-8 | mt-4 mb-0 p-0 | ls-none">
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-secondary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-secondary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-secondary-400">properties.display.prefix</code>
                                             CSS property abbreviation
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-tertiary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-tertiary-400">settings.separator</code>
                                             Common separator
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-quaternary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-quaternary-400">properties.display.name</code>
                                             Value name
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-tertiary-700" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-tertiary-700"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-tertiary-700">settings.responsiveSeparator</code>
                                             Responsive separator
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-quaternary-700" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-quaternary-700"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-quaternary-700">settings.screenSizes</code>
                                             Screen size name
@@ -959,7 +964,7 @@
                             The CSS property <code>display</code> is responsive, <code>align-item</code> is not responsive
                         </p>
                     </header>
-                    <div class="d-flex fw-wrap gap-4-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                    <div class="d-flex fw-wrap gap-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
                         <div class="d-flex fd-column">
                             <code class="fs-5 c-primary-400">
                                 class=&quot;<span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">flex</span><span class="c-tertiary-700">--</span><span class="c-quaternary-700">xs</span>&quot;
@@ -989,35 +994,35 @@
                                 <summary class="ff-lead-400 fs-3 | c-primary-300">Legend</summary>
                                 <ul class="d-flex fw-wrap gap-4-8 | mt-4 mb-0 p-0 | ls-none">
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-secondary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-secondary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-secondary-400">properties[CSS_PROPERTY].prefix</code>
                                             CSS property abbreviation
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-tertiary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-tertiary-400">settings.separator</code>
                                             Common separator
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-quaternary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-quaternary-400">properties[CSS_PROPERTY].name</code>
                                             Value name
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-tertiary-700" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-tertiary-700"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-tertiary-700">settings.responsiveSeparator</code>
                                             Responsive separator
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-quaternary-700" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-quaternary-700"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-quaternary-700">settings.screenSizes</code>
                                             Screen size name
@@ -1176,7 +1181,7 @@
                             The following example sets up 3 screen sizes named "xs, "sm" and "lg" into <code>settings.screenSizes</code>.
                         </p>
                     </header>
-                    <div class="d-flex fw-wrap gap-4-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                    <div class="d-flex fw-wrap gap-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
                         <div class="d-flex fd-column">
                             <code class="fs-5 c-primary-400">
                                 class=&quot;<span class="c-primary-300">u</span><span class="c-tertiary-400">-</span><span class="c-secondary-400">d</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">flex</span><span class="c-tertiary-700">--</span><span class="c-quaternary-700">xs</span>&quot;
@@ -1194,42 +1199,42 @@
                                 <summary class="ff-lead-400 fs-3 | c-primary-300">Legend</summary>
                                 <ul class="d-flex fw-wrap gap-4-8 | mt-4 mb-0 p-0 | ls-none">
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-primary-300" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-primary-300"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-primary-300">settings.utilitiesPrefix</code>
                                             Utility prefix
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-secondary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-secondary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-secondary-400">properties.display.prefix</code>
                                             CSS property abbreviation
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-tertiary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-tertiary-400">settings.separator</code>
                                             Common separator
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-quaternary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-quaternary-400">properties.display.name</code>
                                             Value name
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-tertiary-700" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-tertiary-700"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-tertiary-700">settings.responsiveSeparator</code>
                                             Responsive separator
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-quaternary-700" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-quaternary-700"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-quaternary-700">settings.screenSizes</code>
                                             Screen size name
@@ -1405,7 +1410,7 @@
                             Every token is written as CSS variable always available. 
                         </p>
                     </header>
-                    <div class="d-flex fw-wrap gap-4-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                    <div class="d-flex fw-wrap gap-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
                         <div class="d-flex fd-column">
                             <code class="fs-5 c-primary-400">
                                 class=&quot;<span class="c-secondary-400">c</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">primary</span>&quot;
@@ -1423,21 +1428,21 @@
                                 <summary class="ff-lead-400 fs-3 | c-primary-300">Legend</summary>
                                 <ul class="d-flex fw-wrap gap-4-8 | mt-4 mb-0 p-0 | ls-none">
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-secondary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-secondary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-secondary-400">properties[CSS_PROPERTY].prefix</code>
                                             CSS property abbreviation
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-tertiary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-tertiary-400">settings.separator</code>
                                             Common separator
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-quaternary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-quaternary-400">tokens.colors.name</code>
                                             Value name
@@ -1538,7 +1543,7 @@
                             It means that on each CSS property, you can set standard names and values in addition of tokens.
                         </p>
                     </header>
-                    <div class="d-flex fw-wrap gap-4-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                    <div class="d-flex fw-wrap gap-8 | p-6 maxw-110ch | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
                         <div class="d-flex fd-column">
                             <code class="fs-5 c-primary-400">
                                 class=&quot;<span class="c-secondary-400">c</span><span class="c-tertiary-400">-</span><span class="c-quaternary-400">primary</span>&quot;
@@ -1568,21 +1573,21 @@
                                 <summary class="ff-lead-400 fs-3 | c-primary-300">Legend</summary>
                                 <ul class="d-flex fw-wrap gap-4-8 | mt-4 mb-0 p-0 | ls-none">
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-secondary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-secondary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-secondary-400">properties[CSS_PROPERTY].prefix</code>
                                             CSS property abbreviation
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-tertiary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-tertiary-400"></span>
                                         <div class="d-flex fd-column">
                                             <code class="fs-2 c-tertiary-400">settings.separator</code>
                                             Common separator
                                         </div>
                                     </li>
                                     <li class="d-flex ai-center gap-2" w-300px="md,lg">
-                                        <span class="bc-quaternary-400" style="aspect-ratio: 1; width: 2em"></span>
+                                        <span class="ar-1 pl-6 pt-6 | bc-quaternary-400"></span>
                                         <div class="d-flex fd-column">
                                             <div class="fs-2">
                                                 <code class="c-quaternary-400">tokens.colors.name</code>
@@ -1693,7 +1698,7 @@
                         </p>
                     </header>
                     <div class="d-flex fw-wrap | w-100" gap-9="lg" gap-6="sm,md">
-                        <pre class="m-0">
+                        <pre class="m-0 w-100">
                             <code class="language-json">{
     "settings": {
         "separator": "-",
@@ -1945,6 +1950,7 @@
     <script src="./assets/js/highlight.min.js"></script>
     <script src="./assets/js/c-toggle.js"></script>
     <script src="./assets/js/c-scrollspy.js"></script>
+    <script src="./assets/js/gototop.js"></script>
 
     <script>hljs.highlightAll();</script>
 </body>

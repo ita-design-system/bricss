@@ -347,7 +347,7 @@
         "min-width": {
             "prefix": "minw",
             "generate_from": "",
-            "values": ["20em"],
+            "values": ["20em", "2em"],
             "names": [],
             "responsive": true,
             "generate_utility": false
@@ -372,6 +372,14 @@
             "prefix": "minh",
             "generate_from": "",
             "values": ["100vh"],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "aspect-ratio": {
+            "prefix": "ar",
+            "generate_from": "",
+            "values": ["1"],
             "names": [],
             "responsive": true,
             "generate_utility": false

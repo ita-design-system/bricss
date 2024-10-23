@@ -293,22 +293,24 @@ const bricss = {
             return `
                 <li class="d-flex jc-space-between ai-center gap-5 | mb-3">
                     <div class="d-flex fd-column gap-1">
-                        <span class="d-flex fd-column">
+                        <div class="d-flex fd-column c-secondary-500">
                             <span class="ff-lead-400 fs-1 tt-uppercase | c-primary-300">CSS Classes</span>
-                            <code class="ff-mono fs-3 | c-secondary-500 c-secondary-200:hover | cur-pointer"
+                            <code class="d-flex ai-center gap-1 | ff-mono fs-3 | c-secondary-500 c-secondary-200:hover | cur-pointer"
                                 title="${bricss.messages.clickToCopyToClipboard.replace(`XXX`, classes)}"
                                 onclick="ui.copyToClipboard(this.innerText, true)">
                                 ${classes}
+                                <svg style="height: 1em" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                             </code>
-                        </span>
-                        <span class="d-flex fd-column">
+                        </div>
+                        <div class="d-flex fd-column">
                             <span class="ff-lead-400 fs-1 tt-uppercase | c-primary-300">Attribute</span>
-                            <code class="ff-mono fs-3 | c-tertiary-300 c-tertiary-200:hover | cur-pointer"
+                            <code class="d-flex ai-center gap-1 | ff-mono fs-3 | c-tertiary-300 c-tertiary-200:hover | cur-pointer"
                                 title="${bricss.messages.clickToCopyToClipboard.replace(`XXX`, attribute.replaceAll(`"`, `&quot;`))}"
                                 onclick="ui.copyToClipboard(this.innerText, true)">
                                 ${attribute}
+                                <svg style="height: 1em" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                             </code>
-                        </span>
+                        </div>
                     </div>
                     <hr class="fg-1 | m-0 bb-0 bl-0 br-0 btwidth-1 btstyle-solid bcolor-primary-500">
                     <span class="d-flex fd-column ai-end">
@@ -320,10 +322,11 @@ const bricss = {
         docClassValueItem: function({className, value}) {
             return `
                 <li class="d-flex ai-center jc-space-between gap-5 | fs-3">
-                    <code class="ws-nowrap | c-quaternary-500 c-quaternary-200:hover | cur-pointer"
+                    <code class="d-flex ai-center gap-1 | ws-nowrap | c-quaternary-500 c-quaternary-200:hover | cur-pointer"
                         title="${bricss.messages.clickToCopyToClipboard.replace(`XXX`, className)}"
                         onclick="ui.copyToClipboard(this.innerText, true)">
                         ${className}
+                        <svg style="height: 1em" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                     </code>
                     <hr class="fg-1 | m-0 bb-0 bl-0 br-0 btwidth-1 btstyle-solid bcolor-primary-500">
                     <strong class="o-auto | ff-mono ta-right ws-nowrap | c-tertiary-500">${value}</strong>
@@ -363,7 +366,7 @@ const bricss = {
         docPropertyItem: function({property, content, responsiveContent, utilityContent}) {
             return `
                 <li class="dsg__doc__property_item | fg-1 | p-6 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2"
-                    w-100="xs"
+                    w-100="xs,sm"
                     data-property="${property}">
                     <div class="d-flex fd-column gap-6">
                         <div class="d-flex jc-space-between">
