@@ -17,6 +17,7 @@ const goToTop = {
             goToTop.elBtn.innerText = "↑";
             goToTop.elBtn.title = "Go to top";
             goToTop.elBtn.setAttribute('onclick', 'goToTop.now()');
+            goToTop.elBtn.style.display = 'none';
             document.body.appendChild(goToTop.elBtn);
             window.addEventListener('scroll', goToTop.run);
         }

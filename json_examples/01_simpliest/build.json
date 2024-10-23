@@ -1,0 +1,78 @@
+{
+    "settings": {
+        "separator": "-",
+        "responsiveSeparator": "--",
+        "utilitiesPrefix": "u",
+        "cssVariablesPrefix": "foo",
+        "screenSizes": {}
+    },
+    "tokens": {},
+    "properties": {
+        "display": {
+            "prefix": "d",
+            "generate_from": "",
+            "values": [
+                "flex",
+                "inline-flex",
+                "none"
+            ],
+            "names": [],
+            "responsive": true,
+            "generate_utility": true
+        },
+        "align-items": {
+            "prefix": "ai",
+            "generate_from": "",
+            "values": [
+                "baseline",
+                "center",
+                "flex-start",
+                "flex-end"
+            ],
+            "names": [
+                "baseline",
+                "center",
+                "start",
+                "end"
+            ],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "justify-content": {
+            "prefix": "jc",
+            "generate_from": "",
+            "values": [
+                "center",
+                "space-between",
+                "space-around",
+                "flex-start",
+                "flex-end"
+            ],
+            "names": [
+                "center",
+                "space-between",
+                "space-around",
+                "start",
+                "end"
+            ],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "flex-direction": {
+            "prefix": "fd",
+            "generate_from": "",
+            "values": ["column"],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        },
+        "flex-wrap": {
+            "prefix": "fw",
+            "generate_from": "",
+            "values": ["wrap"],
+            "names": [],
+            "responsive": true,
+            "generate_utility": false
+        }
+    }
+}
