@@ -4,12 +4,16 @@
         "responsiveSeparator": "--",
         "utilitiesPrefix": "u",
         "cssVariablesPrefix": "foo",
-        "screenSizes": {}
+        "screenSizes": {
+            "xs": ["0px", "599px"],
+            "sm": ["600px", "959px"],
+            "lg": ["960px", "infinite"]
+        }
     },
     "tokens": {},
     "properties": {
         "display": {
-            "prefix": "dis",
+            "prefix": "d",
             "generate_from": "",
             "values": [
                 "flex",
@@ -17,8 +21,8 @@
                 "none"
             ],
             "names": [],
-            "responsive": false,
-            "generate_utility": false
+            "responsive": true,
+            "generate_utility": true
         }
     }
 }

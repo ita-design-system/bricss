@@ -115,7 +115,8 @@
             <form class="d-flex ai-center | pos-relative"
                 w-100="xs,sm"
                 autocomplete="off"
-                onsubmit="event.preventDefault()">
+                onsubmit="event.preventDefault()"
+                disabled>
                 <input type="search"
                     id="dsg__search__input"
                     class="ff-lead-400 fs-3 | p-2 pr-8 | bc-primary-200 c-primary-700 b-0 brad-2"
@@ -152,7 +153,8 @@
         <nav class="d-flex ai-center | bc-primary-700"
             gap-5="md,lg"
             gap-3="xs,sm">
-            <button type="button"
+            <button id="dsg__doc__copy_css_btn"
+                type="button"
                 class="
                 d-flex gap-2
                 pl-3 pr-3 pt-2 pb-2
@@ -160,7 +162,8 @@
                 bwidth-1 bstyle-solid bcolor-tertiary-500 bc-primary-700 c-tertiary-500 brad-1
                 cur-pointer"
                 title="Copy CSS content to clipboard"
-                onclick="ui.copyToClipboard(bricss._generatedCSS, null, 'CSS content was copied to clipboard')">
+                onclick="ui.copyToClipboard(bricss._generatedCSS, null, 'CSS content was copied to clipboard')"
+                disabled>
                 Copy
             </button>
             <a  id="dsg__doc__download_link"
@@ -251,9 +254,6 @@
     </footer>
 
     <script src="./docs/assets/js/bricss.js"></script>
-    <script>
-        bricss.getBuild('build.json');
-    </script>
     <script src="./docs/assets/js/ui.js"></script>
     <script src="./docs/assets/js/c-toggle.js"></script>
     <script src="./docs/assets/js/gototop.js"></script>

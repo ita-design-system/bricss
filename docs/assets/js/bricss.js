@@ -1,5 +1,6 @@
 const bricss = {
     elDocStandard: document.querySelector('#dsg__doc__standard'),
+    elCopyCssBtn: document.querySelector('#dsg__doc__copy_css_btn'),
     elDownloadLink: document.querySelector('#dsg__doc__download_link'),
     elFileSize: document.querySelector('#dsg__doc__download_link__file_size'),
     elSearchInput: document.querySelector('#dsg__search__input'),
@@ -16,26 +17,7 @@ const bricss = {
         cssClass: `CSS class`,
         value: `Value`,
         reset: `Reset`,
-        examples: {
-            title: `XXX seems to be empty, but...`,
-            description: `You may get inspiration from these examples:`,
-            loadBtnTitle: `Load example`,
-            loadBtnText: `Load`,
-            warning: `This CSS library was loaded from <strong>“XXX”</strong> JSON example, just reload this page to reset.`,
-            list: [
-                {
-                    title: `Simpliest`,
-                    description: `No responsive, no tokens, just few properties`,
-                    jsonUrl: `./json_examples/01_simpliest/build.json`
-                },
-                {
-                    title: `BRiCSS website`,
-                    description: `The full JSON used for BRiCSS website and current generator.`,
-                    jsonUrl: `./json_examples/10_bricss_website/build.json`
-                }
-            ]
-            
-        }
+        openJsonInANewTab: `Open JSON file in a new tab`
     },
     getBuild: function(jsonUrl, callback) {
         if (typeof jsonUrl == 'string') {
@@ -43,11 +25,21 @@ const bricss = {
                 .then(response => response.json())
                 .then(json => {
                     bricss.build = json;
-                    bricss.genDocStandard();
-                    bricss.genCodeCss();
-                    bricss.genBlob();
-                    bricss.genDownload();
-                    bricss.searchText();
+                    if (Object.keys(bricss.build.properties).length === 0) {
+                        bricss.getExamples('./json_examples/list.json');
+                        bricss.elCopyCssBtn.disabled = true;
+                        bricss.elSearchInput.disabled = true;
+                        bricss.elDownloadLink.classList.add('opa-5', 'pe-none');
+                    } else {
+                        bricss.genDocStandard();
+                        bricss.genCodeCss();
+                        bricss.genBlob();
+                        bricss.genDownload();
+                        bricss.searchText();
+                        bricss.elCopyCssBtn.disabled = false;
+                        bricss.elSearchInput.disabled = false;
+                        bricss.elDownloadLink.classList.remove('opa-5', 'pe-none');
+                    }
                     // console.log(bricss.build);
                     if (typeof callback == 'function') callback();
                 })
@@ -55,6 +47,21 @@ const bricss = {
                     // Handle the error
                     console.log(error);
                     alert(`${bricss.messages.buildFailed.replace(`XXX`, jsonUrl)}`);
+                });
+        }
+    },
+    getExamples: function(examplesJsonUrl) {
+        if (typeof examplesJsonUrl == 'string') {
+            fetch(`${examplesJsonUrl}`)
+                .then(response => response.json())
+                .then(json => {
+                    bricss.messages.examples = json;
+                    bricss.genDocExamples();
+                })
+                .catch(error => {
+                    // Handle the error
+                    console.log(error);
+                    alert(`Bad JSON examples URL`);
                 });
         }
     },
@@ -314,16 +321,28 @@ const bricss = {
         if (typeof examplesListIndex == 'string') {
             const exampleData = bricss.messages.examples.list[examplesListIndex];
             if (typeof exampleData == 'object') {
+                // Example warning
                 bricss._markupExampleWarningItem = bricss.templates.docExampleWarningItem({
                     content: bricss.messages.examples.warning.replace(`XXX`, exampleData.title)
                 });
-                // console.log(bricss._markupExampleWarningItem)
-                bricss.getBuild(exampleData.jsonUrl, bricss._insertExampleWaringItem)
+                bricss.getBuild(exampleData.jsonUrl, bricss._insertExampleDoc);
             }
         }
     },
-    _insertExampleWaringItem: function() {
+    _insertExampleDoc: function() {
         if (typeof bricss._markupExampleWarningItem == 'string') bricss.elDocStandard.insertAdjacentHTML('afterbegin', bricss._markupExampleWarningItem);
+        let examplesChoicesMarkup = '';
+        bricss.messages.examples.list.forEach(function(example, index) {
+            examplesChoicesMarkup += bricss.templates.docExampleItem({
+                title: example.title,
+                description: example.description,
+                examplesListIndex: index
+            })
+        });
+        bricss.elDocStandard.innerHTML += `
+            <li class="w-100">Other examples:</li>
+            ${examplesChoicesMarkup}
+        `;
     },
     templates: {
         docExampleWarningItem: function({content}) {
@@ -348,23 +367,37 @@ const bricss = {
         },
         docExampleItem: function({title, description, examplesListIndex}) {
             return `
-                <li class="fg-1 | p-6 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
+                <li class="w-6t | p-6 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2" w-12t="xs,sm">
                     <div class="d-flex ai-start gap-6">
                         <header class="d-flex fd-column gap-3 fg-1">
                             <h3 class="m-0 pb-3 | ff-lead-700 fs-4 | bbwidth-1 bbstyle-solid bcolor-primary-400">${title}</h3>
-                            <p class="m-0 maxw-70ch | lh-6 | c-primary-300">${description}</p>
+                            <p class="m-0 maxw-30ch | lh-6 | c-primary-300">${description}</p>
                         </header>
-                        <button type="button"
-                            class="
-                            d-flex gap-2
-                            pl-3 pr-3 pt-2 pb-2
-                            ff-lead-700 tt-uppercase fs-2 td-none
-                            bwidth-1 bstyle-solid bcolor-tertiary-500 bc-0 c-tertiary-500 brad-1
-                            cur-pointer"
-                            title="${bricss.messages.examples.loadBtnTitle}"
-                            onclick="bricss.loadExample('${examplesListIndex}')">
-                            ${bricss.messages.examples.loadBtnText}
-                        </button>
+                        <div class="d-flex fd-column gap-4">
+                            <button type="button"
+                                class="
+                                d-flex jc-center gap-2
+                                pl-3 pr-3 pt-2 pb-2
+                                ff-lead-700 tt-uppercase fs-2 td-none
+                                bwidth-1 bstyle-solid bcolor-tertiary-500 bc-0 c-tertiary-500 brad-1
+                                cur-pointer"
+                                title="${bricss.messages.examples.loadBtnTitle}: ${title}"
+                                onclick="bricss.loadExample('${examplesListIndex}')">
+                                ${bricss.messages.examples.loadBtnText}
+                            </button>
+                            <a  href="${bricss.messages.examples.list[examplesListIndex].jsonUrl}"
+                                target="_blank"
+                                class="d-flex ai-center | td-none fs-2"
+                                title="${bricss.messages.openJsonInANewTab}">
+                                <span class="mr-2">{}</span> JSON
+                                <svg style="height: 1em" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </li>
             `;
@@ -382,7 +415,7 @@ const bricss = {
         docClassValueResponsiveItem: function({classes, attribute, value}) {
             return `
                 <li class="d-flex jc-space-between ai-center gap-5 | mb-3">
-                    <div class="d-flex fd-column gap-1">
+                    <div class="d-flex fd-column gap-2">
                         <div class="d-flex fd-column c-secondary-500">
                             <span class="ff-lead-400 fs-1 tt-uppercase | c-primary-300">CSS Classes</span>
                             <code class="d-flex ai-center gap-1 | ff-mono fs-3 | c-secondary-500 c-secondary-200:hover | cur-pointer"
@@ -404,7 +437,7 @@ const bricss = {
                     </div>
                     <hr class="fg-1 | m-0 bb-0 bl-0 br-0 btwidth-1 btstyle-solid bcolor-primary-500">
                     <span class="d-flex fd-column ai-end">
-                        <span class="ff-lead-400 fs-1 tt-uppercase | c-tertiary-700">Value</span>
+                        <span class="ff-lead-400 fs-1 tt-uppercase | c-primary-300">${bricss.messages.value}</span>
                         <code class="ff-mono fs-3 ta-right | c-tertiary-500">${value}</code>
                     </span>
                 </li>`;
@@ -470,8 +503,8 @@ const bricss = {
                                                 target="_blank"
                                                 class="d-flex ai-center | fs-1 | c-secondary-600"
                                                 title="${bricss.messages.goToMdn.replace(`XXX`, property)}">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+                                                <svg style="height: 2em" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
                                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                                                     <polyline points="15 3 21 3 21 9"></polyline>
                                                     <line x1="10" y1="14" x2="21" y2="3"></line>
@@ -488,11 +521,11 @@ const bricss = {
                                 </span>
                             </h4>
                             <div class="d-flex gap-1 fw-wrap jc-end">
-                                <fieldset class="dsg__doc__property_item__responsive_content | d-flex fd-column gap-1 | bwidth-1 bstyle-solid bcolor-primary-500 brad-2">
+                                <fieldset class="dsg__doc__property_item__responsive_content | d-flex fd-column gap-2 | bwidth-1 bstyle-solid bcolor-primary-500 brad-2">
                                     <legend class="fs-2 | c-primary-300">${bricss.messages.responsive}</legend>
                                     ${responsiveContent}
                                 </fieldset>
-                                <fieldset class="dsg__doc__property_item__utility_content | d-flex fd-column gap-1 | bwidth-1 bstyle-solid bcolor-primary-500 brad-2">
+                                <fieldset class="dsg__doc__property_item__utility_content | d-flex fd-column gap-2 | bwidth-1 bstyle-solid bcolor-primary-500 brad-2">
                                     <legend class="fs-2 | c-primary-300">${bricss.messages.utility}</legend>
                                     ${utilityContent}
                                 </fieldset>
@@ -510,72 +543,71 @@ const bricss = {
             `;
         }
     },
+    genDocExamples: function() {
+        let examplesMarkup = '';
+        examplesMarkup += bricss.templates.docNoPropertiesItem({
+            title: bricss.messages.examples.title.replace(`XXX`, `<a href="./build.json">build.json</a>`),
+            description: bricss.messages.examples.description
+        });
+        bricss.messages.examples.list.forEach(function(example, index) {
+            examplesMarkup += bricss.templates.docExampleItem({
+                title: example.title,
+                description: example.description,
+                examplesListIndex: index
+            })
+        });
+        bricss.elDocStandard.innerHTML = examplesMarkup;
+    },
     genDocStandard: function() {
         if (bricss.elDocStandard !== null) {
             bricss.elDocStandard.innerHTML = '';
             const propertiesArray = Object.keys(bricss.build.properties);
-            if (propertiesArray.length === 0) {
-                let examplesMarkup = '';
-                examplesMarkup += bricss.templates.docNoPropertiesItem({
-                    title: bricss.messages.examples.title.replace(`XXX`, `<a href="./build.json">build.json</a>`),
-                    description: bricss.messages.examples.description
-                });
-                bricss.messages.examples.list.forEach(function(example, index) {
-                    examplesMarkup += bricss.templates.docExampleItem({
-                        title: example.title,
-                        description: example.description,
-                        examplesListIndex: index
-                    })
-                });
-                bricss.elDocStandard.innerHTML = examplesMarkup;
-            } else {
-                propertiesArray.forEach(function(property) {
-                    if (property.indexOf('--') == -1) {
-                        const propertyData = bricss.build.properties[property];
-                        const tokensKeysAndValues = bricss.genFrom(propertyData.generate_from);
-                        let classesValuesMarkup = '';
-                        let responsiveMarkup = '';
-                        let utilityMarkup = '';
-                        // Generate from custom values
-                        propertyData.values.forEach(function(value, index) {
-                            let name = value;
-                            if (typeof propertyData.names[index] == 'string') name = propertyData.names[index];
-                            // Generate from values
-                            classesValuesMarkup += bricss.templates.docClassValueItem({
-                                className: propertyData.prefix +  bricss.build.settings.separator + name,
-                                value: value
-                            })
+            propertiesArray.forEach(function(property) {
+                if (property.indexOf('--') == -1) {
+                    const propertyData = bricss.build.properties[property];
+                    const tokensKeysAndValues = bricss.genFrom(propertyData.generate_from);
+                    let classesValuesMarkup = '';
+                    let responsiveMarkup = '';
+                    let utilityMarkup = '';
+                    // Generate from custom values
+                    propertyData.values.forEach(function(value, index) {
+                        let name = value;
+                        if (typeof propertyData.names[index] == 'string') name = propertyData.names[index];
+                        // Generate from values
+                        classesValuesMarkup += bricss.templates.docClassValueItem({
+                            className: propertyData.prefix +  bricss.build.settings.separator + name,
+                            value: value
+                        })
+                    });
+                    // Generate from tokens
+                    tokensKeysAndValues.forEach(function(token) {
+                        classesValuesMarkup += bricss.templates.docClassValueItem({
+                            className: propertyData.prefix +  bricss.build.settings.separator + token.name,
+                            value: token.value
+                        })
+                    });
+                    // Responsive
+                    Object.keys(bricss.build.settings.screenSizes).forEach(function(screenSize, index) {
+                        responsiveMarkup += bricss.templates.docScreenSizeCheckboxItem({
+                            id: `dsg__doc__standard__${property}_${screenSize}`,
+                            screenSize: screenSize,
+                            disabled: propertyData.responsive ? false : true
                         });
-                        // Generate from tokens
-                        tokensKeysAndValues.forEach(function(token) {
-                            classesValuesMarkup += bricss.templates.docClassValueItem({
-                                className: propertyData.prefix +  bricss.build.settings.separator + token.name,
-                                value: token.value
-                            })
-                        });
-                        // Responsive
-                        Object.keys(bricss.build.settings.screenSizes).forEach(function(screenSize, index) {
-                            responsiveMarkup += bricss.templates.docScreenSizeCheckboxItem({
-                                id: `dsg__doc__standard__${property}_${screenSize}`,
-                                screenSize: screenSize,
-                                disabled: propertyData.responsive ? false : true
-                            });
-                        });
-                        // Utility
-                        utilityMarkup = bricss.templates.docUtilityCheckboxItem({
-                            id: `dsg__doc__utility__${property}`,
-                            label: `Apply`,
-                            disabled: propertyData.generate_utility ? false : true
-                        });
-                        bricss.elDocStandard.innerHTML += bricss.templates.docPropertyItem({
-                            property: property,
-                            content: classesValuesMarkup,
-                            responsiveContent: responsiveMarkup,
-                            utilityContent: utilityMarkup
-                        });
-                    }
-                })
-            }
+                    });
+                    // Utility
+                    utilityMarkup = bricss.templates.docUtilityCheckboxItem({
+                        id: `dsg__doc__utility__${property}`,
+                        label: `Apply`,
+                        disabled: propertyData.generate_utility ? false : true
+                    });
+                    bricss.elDocStandard.innerHTML += bricss.templates.docPropertyItem({
+                        property: property,
+                        content: classesValuesMarkup,
+                        responsiveContent: responsiveMarkup,
+                        utilityContent: utilityMarkup
+                    });
+                }
+            })
         }
     },
     updateFromUrl: function() {
@@ -599,4 +631,5 @@ const bricss = {
     }
 }
 document.addEventListener('DOMContentLoaded', bricss.update);
-window.addEventListener('resize', bricss._handlers._windowResize)
+window.addEventListener('resize', bricss._handlers._windowResize);
+bricss.getBuild('./build.json');

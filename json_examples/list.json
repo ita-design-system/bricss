@@ -1,0 +1,113 @@
+{
+    "title": "XXX seems to be empty, but...",
+    "description": "You may get inspiration from these examples:",
+    "loadBtnTitle": "Load example",
+    "loadBtnText": "Load",
+    "warning": "<strong>“XXX”</strong> JSON example,<br>the following documentation is generated from an example JSON just to help starting populating your <a href=\"./build.json\">./build.json</a>",
+    "list": [
+        {
+            "title": "Simpliest",
+            "description": "No responsive, no tokens, just one property: <code>display</code>",
+            "jsonUrl": "./json_examples/01_simpliest/build.json",
+            "stats": {
+                "screenSizes": 0,
+                "tokenFamilies": 0,
+                "tokens": 0,
+                "properties": 1
+            }
+        },
+        {
+            "title": "Adjusting CSS property prefix",
+            "description": "Setting a custom prefix for CSS property item. No responsive, no tokens, just one property: <code>display</code>",
+            "jsonUrl": "./json_examples/02_changing_css_property_prefix/build.json",
+            "stats": {
+                "screenSizes": 0,
+                "tokenFamilies": 0,
+                "tokens": 0,
+                "properties": 1
+            }
+        },
+        {
+            "title": "Adding utility <code>!important</code>",
+            "description": "Setting <code>generate_utility: true</code> to a property item",
+            "jsonUrl": "./json_examples/03_adding_utility/build.json",
+            "stats": {
+                "screenSizes": 0,
+                "tokenFamilies": 0,
+                "tokens": 0,
+                "properties": 1
+            }
+        },
+        {
+            "title": "Custom value names",
+            "description": "By default, values are displayed as names but you can add custom names.",
+            "jsonUrl": "./json_examples/04_custom_value_names/build.json",
+            "stats": {
+                "screenSizes": 0,
+                "tokenFamilies": 0,
+                "tokens": 0,
+                "properties": 1
+            }
+        },
+        {
+            "title": "Adding responsive",
+            "description": "Adding 3 screen sizes",
+            "jsonUrl": "./json_examples/05_adding_responsive/build.json",
+            "stats": {
+                "screenSizes": 3,
+                "tokenFamilies": 0,
+                "tokens": 0,
+                "properties": 1
+            }
+        },
+        {
+            "title": "Adding responsive selectively",
+            "description": "Responsive is selectively adjustable for each CSS property. The CSS property display is responsive, align-item is not.",
+            "jsonUrl": "./json_examples/06_adding_responsive_selectively/build.json",
+            "stats": {
+                "screenSizes": 3,
+                "tokenFamilies": 0,
+                "tokens": 0,
+                "properties": 2
+            }
+        },
+        {
+            "title": "Responsive utility",
+            "description": "The <code>!important</code> keyword may be added to the responsive generation selectively for each CSS property just by setting generate_utility to true and responsive to true.",
+            "jsonUrl": "./json_examples/07_responsive_utility/build.json",
+            "stats": {
+                "screenSizes": 3,
+                "tokenFamilies": 0,
+                "tokens": 0,
+                "properties": 1
+            }
+        },
+        {
+            "title": "With tokens",
+            "description": "Tokens are lists of names associated to values, organized by families and reusable on multiple CSS property items. This is an example with <code>generate_from</code> is set to a token family (“colors” for this example).",
+            "jsonUrl": "./json_examples/08_with_tokens/build.json",
+            "stats": {
+                "screenSizes": 0,
+                "tokenFamilies": 1,
+                "tokens": 9,
+                "properties": 3
+            }
+        },
+        {
+            "title": "With tokens and custom names",
+            "description": "On each CSS property, you can set standard names and values in addition of tokens.",
+            "jsonUrl": "./json_examples/09_with_tokens_and_custom_names/build.json",
+            "stats": {
+                "screenSizes": 0,
+                "tokenFamilies": 1,
+                "tokens": 9,
+                "properties": 3
+            }
+        },
+        {
+            "title": "BRiCSS website",
+            "description": "The full JSON used for BRiCSS website and current generator.",
+            "jsonUrl": "./json_examples/10_bricss_website/build.json"
+        }
+    ]
+}

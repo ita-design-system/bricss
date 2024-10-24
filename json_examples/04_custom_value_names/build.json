@@ -9,14 +9,14 @@
     "tokens": {},
     "properties": {
         "display": {
-            "prefix": "dis",
+            "prefix": "d",
             "generate_from": "",
             "values": [
                 "flex",
                 "inline-flex",
                 "none"
             ],
-            "names": [],
+            "names": ["fx", "ifx"],
             "responsive": false,
             "generate_utility": false
         }

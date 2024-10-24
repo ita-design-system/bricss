@@ -9,7 +9,7 @@
     "tokens": {},
     "properties": {
         "display": {
-            "prefix": "dis",
+            "prefix": "d",
             "generate_from": "",
             "values": [
                 "flex",
