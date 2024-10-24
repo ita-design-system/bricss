@@ -15,27 +15,29 @@ const bricss = {
         utility: `Utility`,
         cssClass: `CSS class`,
         value: `Value`,
+        reset: `Reset`,
         examples: {
-            title: "XXX seems to be empty, but...",
-            description: "You may get inspiration from these examples:",
-            loadBtnTitle: "Load example",
-            loadBtnText: "Load",
+            title: `XXX seems to be empty, but...`,
+            description: `You may get inspiration from these examples:`,
+            loadBtnTitle: `Load example`,
+            loadBtnText: `Load`,
+            warning: `This CSS library was loaded from <strong>“XXX”</strong> JSON example, just reload this page to reset.`,
             list: [
                 {
-                    title: "Simpliest",
-                    description: "No responsive, no tokens, just few properties",
-                    jsonUrl: "./json_examples/01_simpliest/build.json"
+                    title: `Simpliest`,
+                    description: `No responsive, no tokens, just few properties`,
+                    jsonUrl: `./json_examples/01_simpliest/build.json`
                 },
                 {
-                    title: "BRiCSS website",
-                    description: "The full JSON used for BRiCSS website and current generator.",
-                    jsonUrl: "./json_examples/10_bricss_website/build.json"
+                    title: `BRiCSS website`,
+                    description: `The full JSON used for BRiCSS website and current generator.`,
+                    jsonUrl: `./json_examples/10_bricss_website/build.json`
                 }
             ]
             
         }
     },
-    getBuild: function(jsonUrl) {
+    getBuild: function(jsonUrl, callback) {
         if (typeof jsonUrl == 'string') {
             fetch(`${jsonUrl}`)
                 .then(response => response.json())
@@ -47,6 +49,7 @@ const bricss = {
                     bricss.genDownload();
                     bricss.searchText();
                     // console.log(bricss.build);
+                    if (typeof callback == 'function') callback();
                 })
                 .catch(error => {
                     // Handle the error
@@ -307,8 +310,43 @@ const bricss = {
         });
         elPropertyList.innerHTML = markup;
     },
+    loadExample: function(examplesListIndex) {
+        if (typeof examplesListIndex == 'string') {
+            const exampleData = bricss.messages.examples.list[examplesListIndex];
+            if (typeof exampleData == 'object') {
+                bricss._markupExampleWarningItem = bricss.templates.docExampleWarningItem({
+                    content: bricss.messages.examples.warning.replace(`XXX`, exampleData.title)
+                });
+                // console.log(bricss._markupExampleWarningItem)
+                bricss.getBuild(exampleData.jsonUrl, bricss._insertExampleWaringItem)
+            }
+        }
+    },
+    _insertExampleWaringItem: function() {
+        if (typeof bricss._markupExampleWarningItem == 'string') bricss.elDocStandard.insertAdjacentHTML('afterbegin', bricss._markupExampleWarningItem);
+    },
     templates: {
-        docExampleItem: function({title, description, jsonUrl}) {
+        docExampleWarningItem: function({content}) {
+            return `
+                <li class="d-flex gap-3 | w-100 p-4 | bc-primary-600 brad-2 bwidth-1 bstyle-solid bcolor-primary-500">
+                    <div class="pl-2 | brad-2 bc-quaternary-500"></div>
+                    <div class="d-flex ai-center jc-space-between fw-wrap fg-1 gap-3">
+                        <p class="m-0 | fs-4 lh-6">${content}</p>
+                        <button type="button"
+                            class="
+                            d-flex gap-2
+                            pl-3 pr-3 pt-2 pb-2
+                            ff-lead-700 tt-uppercase fs-2 td-none
+                            bwidth-1 bstyle-solid bcolor-tertiary-500 bc-0 c-tertiary-500 brad-1
+                            cur-pointer"
+                            onclick="bricss.getBuild('./build.json')">
+                            ${bricss.messages.reset}
+                        </button>
+                    </div>
+                </li>
+            `;
+        },
+        docExampleItem: function({title, description, examplesListIndex}) {
             return `
                 <li class="fg-1 | p-6 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2">
                     <div class="d-flex ai-start gap-6">
@@ -324,7 +362,7 @@ const bricss = {
                             bwidth-1 bstyle-solid bcolor-tertiary-500 bc-0 c-tertiary-500 brad-1
                             cur-pointer"
                             title="${bricss.messages.examples.loadBtnTitle}"
-                            onclick="bricss.getBuild('${jsonUrl}')">
+                            onclick="bricss.loadExample('${examplesListIndex}')">
                             ${bricss.messages.examples.loadBtnText}
                         </button>
                     </div>
@@ -482,11 +520,11 @@ const bricss = {
                     title: bricss.messages.examples.title.replace(`XXX`, `<a href="./build.json">build.json</a>`),
                     description: bricss.messages.examples.description
                 });
-                bricss.messages.examples.list.forEach(function(example) {
+                bricss.messages.examples.list.forEach(function(example, index) {
                     examplesMarkup += bricss.templates.docExampleItem({
                         title: example.title,
                         description: example.description,
-                        jsonUrl: example.jsonUrl,
+                        examplesListIndex: index
                     })
                 });
                 bricss.elDocStandard.innerHTML = examplesMarkup;
