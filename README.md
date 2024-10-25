@@ -4,7 +4,7 @@
 
 A simple and customizable low-level CSS library generator.
 
-[Documentation](#)
+[Website](https://ita-design-system.github.io/bricss/) | [Example in use](https://itautomotive-dev.github.io/marques-blanches-ui/)
 
 ## General principles
 
@@ -27,7 +27,8 @@ A text editor, a web server and a browser.
 
 1. [Download](https://github.com/ita-design-system/bricss/archive/refs/heads/main.zip) or clone this repository the starter project and unpack to any web server.
 2. **Edit** `build.json` file to fit your needs.
-3. **Run through your browser!** Interactive documentation is generated automatically. 
+3. **Run through your browser!**: Interactive documentation is generated automatically. 
+4. **Customize**: Replace all "Project Name" string into the `index.html` file to your own project name. Customize or remove Github link 
 
 At first start, an onboarding menu with JSON examples is available to help populating your own `build.json`. At least one single CSS property is required to display documentation. When `build.json` is not empty, just click to download or copy your new CSS library.
 
