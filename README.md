@@ -4,7 +4,7 @@
 
 A simple and customizable low-level CSS library generator.
 
-[Website](https://ita-design-system.github.io/bricss/) | [Example in use](https://itautomotive-dev.github.io/marques-blanches-ui/)
+[Website](https://ita-design-system.github.io/bricss/) | [Example in use](https://itautomotive-dev.github.io/marques-blanches-ui/) | [BRiCSS Website UI](https://ita-design-system.github.io/bricss-website-ui/)
 
 ## General principles
 
