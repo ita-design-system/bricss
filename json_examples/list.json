@@ -3,7 +3,7 @@
     "description": "You may get inspiration from these examples:",
     "loadBtnTitle": "Load example",
     "loadBtnText": "Load",
-    "warning": "<strong>“XXX”</strong> JSON example,<br>the following documentation is generated from an example JSON just to help starting populating your <a href=\"./build.json\">./build.json</a>",
+    "warning": "The following documentation is generated from an example JSON just to help starting populating your <a href=\"./build.json\" style=\"color: currentColor; text-decoration-color: currentColor\">./build.json</a>",
     "list": [
         {
             "title": "Simpliest",

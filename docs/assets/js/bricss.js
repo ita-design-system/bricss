@@ -8,16 +8,20 @@ const bricss = {
     documentTitleOrigin: '',
     messages: {
         buildFailed: `Failed to load XXX`,
-        searchTitle: `Search XXX in class names`,
-        downloadBtnTitle: `Download CSS file XXXKB uncompressed`,
         clickToCopyToClipboard: `Click to copy XXX to clipboard`,
-        goToMdn: `Learn more about XXX on Mozilla Developer Network`,
-        responsive: `Responsive`,
-        utility: `Utility`,
         cssClass: `CSS class`,
-        value: `Value`,
+        downloadBtnTitle: `Download CSS file XXXKB uncompressed`,
+        emptyBuildJson: `XXX is empty.`,
+        example: `Example`,
+        failJsonExamplesList: `JSON examples list could not be loaded.`,
+        goToMdn: `Learn more about XXX on Mozilla Developer Network`,
+        listOfAllAvailableJsonExamples: `List of all JSON examples:`,
+        openJsonInANewTab: `Open JSON file in a new tab`,
         reset: `Reset`,
-        openJsonInANewTab: `Open JSON file in a new tab`
+        responsive: `Responsive`,
+        searchTitle: `Search XXX in class names`,
+        utility: `Utility`,
+        value: `Value`,
     },
     getBuild: function(jsonUrl, callback) {
         if (typeof jsonUrl == 'string') {
@@ -39,6 +43,7 @@ const bricss = {
                         bricss.elCopyCssBtn.disabled = false;
                         bricss.elSearchInput.disabled = false;
                         bricss.elDownloadLink.classList.remove('opa-5', 'pe-none');
+                        window.scroll({top: 0, behavior: 'smooth'});
                     }
                     // console.log(bricss.build);
                     if (typeof callback == 'function') callback();
@@ -61,7 +66,9 @@ const bricss = {
                 .catch(error => {
                     // Handle the error
                     console.log(error);
-                    alert(`Bad JSON examples URL`);
+                    bricss.elDocStandard.innerHTML = bricss.templates.docExampleWarningItem({
+                        content: bricss.messages.emptyBuildJson.replace(`XXX`, `<a href="./build.json">build.json</a>`) + ' ' + bricss.messages.failJsonExamplesList
+                    });
                 });
         }
     },
@@ -322,8 +329,14 @@ const bricss = {
             const exampleData = bricss.messages.examples.list[examplesListIndex];
             if (typeof exampleData == 'object') {
                 // Example warning
+                const markup = bricss.templates.docWarningAdvancedContent({
+                    tag: bricss.messages.example,
+                    title: exampleData.title,
+                    description: exampleData.description,
+                    footer: bricss.messages.examples.warning
+                });
                 bricss._markupExampleWarningItem = bricss.templates.docExampleWarningItem({
-                    content: bricss.messages.examples.warning.replace(`XXX`, exampleData.title)
+                    content: markup
                 });
                 bricss.getBuild(exampleData.jsonUrl, bricss._insertExampleDoc);
             }
@@ -340,17 +353,27 @@ const bricss = {
             })
         });
         bricss.elDocStandard.innerHTML += `
-            <li class="w-100">Other examples:</li>
+            <li class="w-100">${bricss.messages.listOfAllAvailableJsonExamples}</li>
             ${examplesChoicesMarkup}
         `;
     },
     templates: {
+        docWarningAdvancedContent: function({tag, title, description, footer}) {
+            return `
+                <div class="d-flex fd-column">
+                    ${tag !== undefined ? `<span class="fs-1 tt-uppercase | c-quaternary-500">${tag}</span>` : ``}
+                    ${title !== undefined ? `<h2 class="m-0 pb-2 | ff-lead-700 fs-5 | bbwidth-1 bbstyle-solid bcolor-quaternary-700">${title}</h2>` : ``}
+                    ${description !== undefined ? `<p class="mt-2 mb-2">${description}</p>` : ``}
+                    ${footer !== undefined ? `<p class="m-0 | fs-3 | c-quaternary-700">${footer}</p>` : ``}
+                </div>
+            `;
+        },
         docExampleWarningItem: function({content}) {
             return `
-                <li class="d-flex gap-3 | w-100 p-4 | bc-primary-600 brad-2 bwidth-1 bstyle-solid bcolor-primary-500">
+                <li class="d-flex gap-4 | w-100 p-4 | bc-primary-600 brad-2 bwidth-1 bstyle-solid bcolor-primary-500">
                     <div class="pl-2 | brad-2 bc-quaternary-500"></div>
                     <div class="d-flex ai-center jc-space-between fw-wrap fg-1 gap-3">
-                        <p class="m-0 | fs-4 lh-6">${content}</p>
+                        <div class="maxw-70ch | fs-4 lh-6">${content}</div>
                         <button type="button"
                             class="
                             d-flex gap-2
@@ -367,7 +390,9 @@ const bricss = {
         },
         docExampleItem: function({title, description, examplesListIndex}) {
             return `
-                <li class="w-6t | p-6 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2" w-12t="xs,sm">
+                <li class="w-4t | p-6 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2"
+                    w-6t="md"
+                    w-12t="xs,sm">
                     <div class="d-flex ai-start gap-6">
                         <header class="d-flex fd-column gap-3 fg-1">
                             <h3 class="m-0 pb-3 | ff-lead-700 fs-4 | bbwidth-1 bbstyle-solid bcolor-primary-400">${title}</h3>
