@@ -1,0 +1,74 @@
+{
+    "settings": {
+        "separator": "-",
+        "responsiveSeparator": "--",
+        "utilitiesPrefix": "u",
+        "cssVariablesPrefix": "bricss",
+        "screenSizes": {}
+    },
+    "tokens": {},
+    "properties": {
+        "--foo-tX": {
+            "prefix": "t",
+            "generate_from": "",
+            "values": [
+                "-50%",
+                "50%",
+                "-100%",
+                "100%"
+            ],
+            "names": [
+                "tX-50",
+                "tX50",
+                "tX-100",
+                "tX100"
+            ],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "--foo-tY": {
+            "prefix": "t",
+            "generate_from": "",
+            "values": [
+                "-50%",
+                "50%",
+                "-100%",
+                "100%"
+            ],
+            "names": [
+                "tY-50",
+                "tY50",
+                "tY-100",
+                "tY100"
+            ],
+            "responsive": false,
+            "generate_utility": false
+        },
+        "transform": {
+            "prefix": "t",
+            "generate_from": "",
+            "values": [
+                "translateX(var(--foo-tX, 0)) translateY(var(--foo-tY, 0))",
+                "translateX(var(--foo-tX, 0)) translateY(var(--foo-tY, 0))",
+                "translateX(var(--foo-tX, 0)) translateY(var(--foo-tY, 0))",
+                "translateX(var(--foo-tX, 0)) translateY(var(--foo-tY, 0))",
+                "translateX(var(--foo-tX, 0)) translateY(var(--foo-tY, 0))",
+                "translateX(var(--foo-tX, 0)) translateY(var(--foo-tY, 0))",
+                "translateX(var(--foo-tX, 0)) translateY(var(--foo-tY, 0))",
+                "translateX(var(--foo-tX, 0)) translateY(var(--foo-tY, 0))"
+            ],
+            "names": [
+                "tX-50",
+                "tX50",
+                "tX-100",
+                "tX100",
+                "tY-50",
+                "tY50",
+                "tY-100",
+                "tY100"
+            ],
+            "responsive": false,
+            "generate_utility": false
+        }
+    }
+}
