@@ -329,6 +329,7 @@ const bricss = {
             const exampleData = bricss.messages.examples.list[examplesListIndex];
             if (typeof exampleData == 'object') {
                 // Example warning
+                bricss._currentExampleIndex = examplesListIndex;
                 const markup = bricss.templates.docWarningAdvancedContent({
                     tag: bricss.messages.example,
                     title: exampleData.title,
@@ -343,7 +344,42 @@ const bricss = {
         }
     },
     _insertExampleDoc: function() {
-        if (typeof bricss._markupExampleWarningItem == 'string') bricss.elDocStandard.insertAdjacentHTML('afterbegin', bricss._markupExampleWarningItem);
+        // Insert warning
+        if (typeof bricss._markupExampleWarningItem == 'string') {
+            bricss.elDocStandard.insertAdjacentHTML('afterbegin', bricss._markupExampleWarningItem);
+        }
+        // Optional sandbox
+        if (typeof bricss.messages.examples.list[bricss._currentExampleIndex].sandbox == 'string') {
+            const iframeContent = `
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Sandbox</title>
+                    <link rel="stylesheet" href="${window.dsgCssFile.url}">
+                </head>
+                <body>
+                    ${bricss.messages.examples.list[bricss._currentExampleIndex].sandbox}
+                </body>
+                </html>
+            `;
+            const   elIframe = document.createElement('iframe'),
+                    elIframeCtn = document.createElement('li');
+            elIframe.setAttribute('srcdoc', iframeContent);
+            elIframe.setAttribute('class', 'b-0 w-100');
+            elIframe.setAttribute('height', '500');
+            elIframeCtn.setAttribute('class', 'w-100');
+            elIframeCtn.appendChild(elIframe);
+            bricss.elDocStandard.appendChild(elIframeCtn);
+        }
+        // Insert example heading
+        const elHeadingExamples = document.createElement('li');
+        elHeadingExamples.setAttribute('class', 'w-100');
+        elHeadingExamples.innerHTML = bricss.messages.listOfAllAvailableJsonExamples;
+        bricss.elDocStandard.appendChild(elHeadingExamples);
+
+        // Insert all examples
         let examplesChoicesMarkup = '';
         bricss.messages.examples.list.forEach(function(example, index) {
             examplesChoicesMarkup += bricss.templates.docExampleItem({
@@ -352,10 +388,8 @@ const bricss = {
                 examplesListIndex: index
             })
         });
-        bricss.elDocStandard.innerHTML += `
-            <li class="w-100">${bricss.messages.listOfAllAvailableJsonExamples}</li>
-            ${examplesChoicesMarkup}
-        `;
+        bricss.elDocStandard.innerHTML += examplesChoicesMarkup;
+        
     },
     templates: {
         docWarningAdvancedContent: function({tag, title, description, footer}) {
