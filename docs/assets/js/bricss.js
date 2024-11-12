@@ -547,7 +547,7 @@ const bricss = {
         },
         docPropertyItem: function({property, content, responsiveContent, utilityContent}) {
             return `
-                <li class="dsg__doc__property_item | fg-1 | p-6 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2"
+                <li class="dsg__doc__property_item | fg-1 | p-6 maxw-100 | bwidth-1 bstyle-solid bcolor-primary-500 bc-primary-600 brad-2"
                     w-100="xs,sm"
                     data-property="${property}">
                     <div class="d-flex fd-column gap-6">
