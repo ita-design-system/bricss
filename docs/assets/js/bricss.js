@@ -3,6 +3,7 @@ const bricss = {
     elCopyCssBtn: document.querySelector('#dsg__doc__copy_css_btn'),
     elDownloadLink: document.querySelector('#dsg__doc__download_link'),
     elFileSize: document.querySelector('#dsg__doc__download_link__file_size'),
+    elReferenceLink: document.querySelector('#dsg__doc__reference_link'),
     elSearchInput: document.querySelector('#dsg__search__input'),
     elSearchResetBtn: document.querySelector('#dsg__search__reset_btn'),
     documentTitleOrigin: '',
@@ -11,6 +12,7 @@ const bricss = {
         clickToCopyToClipboard: `Click to copy XXX to clipboard`,
         cssClass: `CSS class`,
         downloadBtnTitle: `Download CSS file XXXKB uncompressed`,
+        downloadReferenceBtnTitle: `Download machine-readable JSON reference XXXKB`,
         emptyBuildJson: `XXX is empty.`,
         example: `Example`,
         failJsonExamplesList: `JSON examples list could not be loaded.`,
@@ -34,15 +36,18 @@ const bricss = {
                         bricss.elCopyCssBtn.disabled = true;
                         bricss.elSearchInput.disabled = true;
                         bricss.elDownloadLink.classList.add('opa-5', 'pe-none');
+                        if (bricss.elReferenceLink !== null) bricss.elReferenceLink.classList.add('opa-5', 'pe-none');
                     } else {
                         bricss.genDocStandard();
                         bricss.genCodeCss();
+                        bricss.genReference();
                         bricss.genBlob();
                         bricss.genDownload();
                         bricss.searchText();
                         bricss.elCopyCssBtn.disabled = false;
                         bricss.elSearchInput.disabled = false;
                         bricss.elDownloadLink.classList.remove('opa-5', 'pe-none');
+                        if (bricss.elReferenceLink !== null) bricss.elReferenceLink.classList.remove('opa-5', 'pe-none');
                         window.scroll({top: 0, behavior: 'smooth'});
                     }
                     // console.log(bricss.build);
@@ -144,6 +149,172 @@ const bricss = {
             bricss.elDownloadLink.classList.remove('opa-5', 'pe-none');
             bricss.elDownloadLink.title = bricss.messages.downloadBtnTitle.replace('XXX', window.dsgCssFile.size);
         }
+        if (bricss.elReferenceLink !== null && typeof bricss._generatedReference == 'object') {
+            if (typeof window.dsgReferenceFile == 'object') URL.revokeObjectURL(window.dsgReferenceFile.url);
+            const blob = new Blob([JSON.stringify(bricss._generatedReference, null, 2)], { type: 'application/json' });
+            window.dsgReferenceFile = {
+                url: URL.createObjectURL(blob),
+                size: Math.ceil(blob.size / 1024)
+            };
+            bricss.elReferenceLink.href = window.dsgReferenceFile.url;
+            bricss.elReferenceLink.title = bricss.messages.downloadReferenceBtnTitle.replace('XXX', window.dsgReferenceFile.size);
+        }
+    },
+    // Machine-readable reference of everything genCodeCss() outputs.
+    // Naming rules must stay in sync with genCssProperty / genCssPropertyForScreenSize.
+    genReference: function() {
+        const settings = bricss.build.settings;
+        const screenSizesNames = Object.keys(settings.screenSizes);
+        const tokens = [];
+        const screenSizes = [];
+        const properties = [];
+
+        Object.keys(bricss.build.tokens).forEach(function(family) {
+            Object.keys(bricss.build.tokens[family]).forEach(function(tokenName) {
+                tokens.push({
+                    family: family,
+                    name: tokenName,
+                    value: bricss.build.tokens[family][tokenName],
+                    cssVariable: `--${settings.cssVariablesPrefix}-${family}-${tokenName}`
+                });
+            });
+        });
+
+        screenSizesNames.forEach(function(screenSize) {
+            const min = settings.screenSizes[screenSize][0];
+            let max = settings.screenSizes[screenSize][1];
+            if (max == 'infinite' || max == '') max = null;
+            screenSizes.push({
+                name: screenSize,
+                min: min,
+                max: max,
+                media: `(min-width: ${min})${max === null ? '' : ` and (max-width: ${max})`}`
+            });
+        });
+
+        Object.keys(bricss.build.properties).forEach(function(property) {
+            const propertyData = bricss.build.properties[property];
+            const separator = propertyData.prefix == '' ? '' : settings.separator;
+            const utility = propertyData.generate_utility ? true : false;
+            const responsive = propertyData.responsive ? true : false;
+            const entries = [];
+
+            // Same order as genCodeCss: custom values first, then tokens
+            propertyData.values.forEach(function(value, index) {
+                const name = typeof propertyData.names[index] == 'string' ? propertyData.names[index] : value;
+                entries.push({ name: name, value: value, source: 'value' });
+            });
+            bricss.genFrom(propertyData.generate_from).forEach(function(token) {
+                entries.push({
+                    name: token.name,
+                    value: `var(--${settings.cssVariablesPrefix}-${propertyData.generate_from}-${token.name}, ${token.value})`,
+                    source: 'token',
+                    token: {
+                        family: propertyData.generate_from,
+                        name: token.name,
+                        value: token.value,
+                        cssVariable: `--${settings.cssVariablesPrefix}-${propertyData.generate_from}-${token.name}`
+                    }
+                });
+            });
+
+            properties.push({
+                property: property,
+                prefix: propertyData.prefix,
+                generateFrom: propertyData.generate_from || null,
+                responsive: responsive,
+                utility: utility,
+                classes: entries.map(function(entry) {
+                    const base = `${propertyData.prefix}${separator}${entry.name}`;
+                    const utilityBase = `${settings.utilitiesPrefix}${settings.separator}${base}`;
+                    const item = {
+                        name: entry.name,
+                        className: base,
+                        value: entry.value,
+                        source: entry.source
+                    };
+                    if (entry.token) item.token = entry.token;
+                    if (utility) item.utilityClassName = utilityBase;
+                    if (responsive && screenSizesNames.length > 0) {
+                        item.responsive = {
+                            attribute: base,
+                            classNames: {}
+                        };
+                        if (utility) item.responsive.utilityAttribute = utilityBase;
+                        screenSizesNames.forEach(function(screenSize) {
+                            item.responsive.classNames[screenSize] = `${base}${settings.responsiveSeparator}${screenSize}`;
+                        });
+                        if (utility) {
+                            item.responsive.utilityClassNames = {};
+                            screenSizesNames.forEach(function(screenSize) {
+                                item.responsive.utilityClassNames[screenSize] = `${utilityBase}${settings.responsiveSeparator}${screenSize}`;
+                            });
+                        }
+                    }
+                    return item;
+                })
+            });
+        });
+
+        bricss._generatedReference = {
+            generator: 'BRiCSS',
+            generatedAt: new Date().toISOString(),
+            usage: bricss.genReferenceUsage(properties, tokens, screenSizes),
+            settings: {
+                separator: settings.separator,
+                responsiveSeparator: settings.responsiveSeparator,
+                utilitiesPrefix: settings.utilitiesPrefix,
+                cssVariablesPrefix: settings.cssVariablesPrefix
+            },
+            screenSizes: screenSizes,
+            tokens: tokens,
+            properties: properties
+        };
+        return bricss._generatedReference;
+    },
+    // Self-describing instructions for humans and AI agents, built from the actual settings
+    // and illustrated with real class names picked from this build.
+    genReferenceUsage: function(properties, tokens, screenSizes) {
+        const settings = bricss.build.settings;
+        const allClasses = [];
+        properties.forEach(function(p) {
+            p.classes.forEach(function(c) { allClasses.push(c); });
+        });
+        const exBase = allClasses[0];
+        const exToken = allClasses.find(function(c) { return c.source == 'token'; });
+        const exResponsive = allClasses.find(function(c) { return c.responsive; });
+        const exUtility = allClasses.find(function(c) { return c.utilityClassName; });
+        const exVariable = tokens[0];
+        const screenNames = screenSizes.map(function(s) { return s.name; });
+
+        const rules = [
+            `This file is generated together with the BRiCSS CSS file from build.json. It is the source of truth: only use class names listed in properties[].classes[], never invent one.`,
+            `Never edit this file or the CSS file by hand. Change build.json and regenerate both with the BRiCSS app.`,
+            `The file can be large: search it (for a CSS property or a class name) instead of reading it entirely.`,
+            `properties[].classes[].className is the class to put in markup. value is the CSS value it applies to properties[].property.`,
+            `Class naming: {prefix}${settings.separator}{name}${exBase ? ` (e.g. "${exBase.className}" applies ${properties[0].property}: ${exBase.value})` : ''}.`
+        ];
+        if (tokens.length > 0) {
+            rules.push(`Prefer classes with source "token" over source "value" when one fits: they follow the design tokens${exToken ? ` (e.g. "${exToken.className}" uses ${exToken.token.cssVariable})` : ''}.`);
+            rules.push(`When no class covers a need, write custom CSS using the token CSS variables (tokens[].cssVariable${exVariable ? `, e.g. var(${exVariable.cssVariable})` : ''}) instead of hard-coded values or inline styles.`);
+        } else {
+            rules.push(`When no class covers a need, write custom CSS; do not add inline styles.`);
+        }
+        if (screenSizes.length > 0) {
+            rules.push(`Responsive classes exist only where classes[].responsive is present. They apply only inside the screen sizes listed in screenSizes (${screenNames.join(', ')}); each screenSizes[].media gives its media query.`);
+            rules.push(`Responsive syntax, two equivalent forms: one class per screen size "{className}${settings.responsiveSeparator}{screen}", or one attribute named after the class listing screen sizes separated by commas: {className}="{screen},{screen}".` +
+                (exResponsive && screenNames.length > 1 ? ` E.g. class="${exResponsive.responsive.classNames[screenNames[0]]} ${exResponsive.responsive.classNames[screenNames[1]]}" is equivalent to ${exResponsive.responsive.attribute}="${screenNames[0]},${screenNames[1]}".` : ''));
+        } else {
+            rules.push(`No screen sizes are defined: there are no responsive classes.`);
+        }
+        if (exUtility) {
+            rules.push(`Utility classes exist only where classes[].utilityClassName is present: "${settings.utilitiesPrefix}${settings.separator}{className}" (e.g. "${exUtility.utilityClassName}") applies the same declaration with !important. Use them only to override, not by default.`);
+        }
+
+        return {
+            description: `Machine-readable reference of a BRiCSS CSS library: every generated class, its CSS property and value, the design tokens (CSS variables) and screen sizes.`,
+            rules: rules
+        };
     },
     genFrom: function(tokensFamily) {
         const array = [];
